@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B25B9270-E169-4120-B9FC-A545386707D1}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PuntoDeVentas</RootNamespace>
+    <AssemblyName>PuntoDeVentas</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <StartupObject>PuntoDeVentas.Program</StartupObject>
+    <ApplicationIcon>1363548756_103257.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ExcelExtencion, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Clases\DataBase.cs" />
+    <Compile Include="Clases\Funciones.cs" />
+    <Compile Include="Ventanas\FRM_AgregarArticulo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_AgregarArticulo.Designer.cs">
+      <DependentUpon>FRM_AgregarArticulo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_AgregarPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_AgregarPedido.Designer.cs">
+      <DependentUpon>FRM_AgregarPedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_BuscarUsuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_BuscarUsuarios.Designer.cs">
+      <DependentUpon>FRM_BuscarUsuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Cambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Cambio.Designer.cs">
+      <DependentUpon>FRM_Cambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Cbza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Cbza.Designer.cs">
+      <DependentUpon>FRM_Cbza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Config.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Config.Designer.cs">
+      <DependentUpon>FRM_Config.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ConsultarArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ConsultarArticulos.Designer.cs">
+      <DependentUpon>FRM_ConsultarArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_CorteDeCaja.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_CorteDeCaja.Designer.cs">
+      <DependentUpon>FRM_CorteDeCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Historial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Historial.Designer.cs">
+      <DependentUpon>FRM_Historial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Inventario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Inventario.Designer.cs">
+      <DependentUpon>FRM_Inventario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Login.Designer.cs">
+      <DependentUpon>FRM_Login.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_AgregarArticulo.resx">
+      <DependentUpon>FRM_AgregarArticulo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_AgregarPedido.resx">
+      <DependentUpon>FRM_AgregarPedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_BuscarUsuarios.resx">
+      <DependentUpon>FRM_BuscarUsuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Cambio.resx">
+      <DependentUpon>FRM_Cambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Cbza.resx">
+      <DependentUpon>FRM_Cbza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Config.resx">
+      <DependentUpon>FRM_Config.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_ConsultarArticulos.resx">
+      <DependentUpon>FRM_ConsultarArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_CorteDeCaja.resx">
+      <DependentUpon>FRM_CorteDeCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Historial.resx">
+      <DependentUpon>FRM_Historial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Inventario.resx">
+      <DependentUpon>FRM_Inventario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Login.resx">
+      <DependentUpon>FRM_Login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Menu.resx">
+      <DependentUpon>FRM_Menu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Message.resx">
+      <DependentUpon>FRM_Message.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Pedidos.resx">
+      <DependentUpon>FRM_Pedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_RegistrarEntrada.resx">
+      <DependentUpon>FRM_RegistrarEntrada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_ReportArticulos.resx">
+      <DependentUpon>FRM_ReportArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_ReportCajero.resx">
+      <DependentUpon>FRM_ReportCajero.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_ReportView.resx">
+      <DependentUpon>FRM_ReportView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_SplashScreen.resx">
+      <DependentUpon>FRM_SplashScreen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Total.resx">
+      <DependentUpon>FRM_Total.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_Usuarios.resx">
+      <DependentUpon>FRM_Usuarios.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_VentaDelDia.resx">
+      <DependentUpon>FRM_VentaDelDia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Ventanas\FRM_VentanaPrincipal.resx">
+      <DependentUpon>FRM_VentanaPrincipal.cs</DependentUpon>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Menu.Designer.cs">
+      <DependentUpon>FRM_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Message.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Message.Designer.cs">
+      <DependentUpon>FRM_Message.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Pedidos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Pedidos.Designer.cs">
+      <DependentUpon>FRM_Pedidos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_RegistrarEntrada.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_RegistrarEntrada.Designer.cs">
+      <DependentUpon>FRM_RegistrarEntrada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ReportArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ReportArticulos.Designer.cs">
+      <DependentUpon>FRM_ReportArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ReportCajero.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ReportCajero.Designer.cs">
+      <DependentUpon>FRM_ReportCajero.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ReportView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_ReportView.Designer.cs">
+      <DependentUpon>FRM_ReportView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_SplashScreen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_SplashScreen.Designer.cs">
+      <DependentUpon>FRM_SplashScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Total.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Total.Designer.cs">
+      <DependentUpon>FRM_Total.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Usuarios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_Usuarios.Designer.cs">
+      <DependentUpon>FRM_Usuarios.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_VentaDelDia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_VentaDelDia.Designer.cs">
+      <DependentUpon>FRM_VentaDelDia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Ventanas\FRM_VentanaPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Ventanas\FRM_VentanaPrincipal.Designer.cs">
+      <DependentUpon>FRM_VentanaPrincipal.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="1363548756_103257.ico" />
+    <Content Include="DB\dbVentas.accdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ExcelExtencion.dll" />
+    <None Include="Resources\1363913224_application_side_list.png" />
+    <None Include="Resources\1363913158_Warehouse_icon_3D_rev.png" />
+    <None Include="Resources\1363913219_issue.png" />
+    <None Include="Resources\~SS00L.ICO" />
+    <None Include="Resources\COGS03A.ICO" />
+    <None Include="Resources\PANE34C.ICO" />
+    <None Include="Resources\PANE00J.ICO" />
+    <None Include="Resources\Icon01321.ico" />
+    <None Include="Resources\eliminar.ico" />
+    <None Include="Resources\Shell_22.ico" />
+    <None Include="Resources\Icon0132.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
