@@ -158,7 +158,7 @@ namespace System {
                                     .SetProperty(NEnvironment.ShowSql, "true")
                                     .SetProperty(NEnvironment.ConnectionString, string.Format(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ rootPath +@"\DB\dbVentas.mdb;User Id=admin;Password="));
             
-            configuration.Configure().AddAssembly(assembly);
+            configuration.AddAssembly(assembly);
                        
             
             var sessions =  configuration.BuildSessionFactory();

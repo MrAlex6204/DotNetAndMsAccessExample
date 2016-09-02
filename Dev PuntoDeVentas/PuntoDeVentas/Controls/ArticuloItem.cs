@@ -20,14 +20,31 @@ namespace System {
         private bool _bIsDeleted = false;
         private Drawing.Color _DefaultColor = Drawing.Color.WhiteSmoke;
 
+        private void _SetSelectionColor() {
+
+            if (this.IsSelected) {
+                if (this.IsDeleted) {//Color de seleccion si el elemento esta marcado como eliminado
+                    this.BackColor = Color.Maroon;
+                } else {
+                    this.BackColor = _SelectionColor;
+                }
+            } else {
+                if (this.IsDeleted) {
+                    this.BackColor = Color.Tomato;
+                } else {
+                    this.BackColor = _DefaultColor;
+                }
+            }
+
+        }        
+
         public ArticuloItem(System.DbRepository.ArticuloInfo ArticuloItem, double Cantidad) {
             InitializeComponent();
             _DefaultColor = this.BackColor;
             //Llenamos la informacion del articulo
             this.Update(ArticuloItem, Cantidad);
         }
-
-       
+               
         protected ArticuloItem() {
             InitializeComponent();
             _DefaultColor = this.BackColor;
@@ -38,22 +55,8 @@ namespace System {
                 return _bIsSelected;
             }
             set {
-
-                if (value) {
-                    if (this.IsDeleted) {//Color de seleccion si el elemento esta marcado como eliminado
-                        this.BackColor = Color.Maroon;
-                    } else {
-                        this.BackColor = _SelectionColor;
-                    }
-                } else {
-                    if (this.IsDeleted) {
-                        this.BackColor = Color.Tomato;
-                    } else {
-                        this.BackColor = _DefaultColor;
-                    }
-                }
-
                 _bIsSelected = value;
+                _SetSelectionColor();
                 this.Update();
             }
         }
@@ -145,9 +148,7 @@ namespace System {
             lblCantidad.Text = this.Cantidad.ToString("0.00 " + ArticuloItem.UNIDAD);
 
         }
-
-
-
+        
 
 
     }

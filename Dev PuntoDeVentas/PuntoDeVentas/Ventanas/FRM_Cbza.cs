@@ -152,8 +152,7 @@ namespace PuntoDeVentas {
 
         #endregion
 
-
-        #region Eventos del teclado
+        #region EVENTOS DEL TECLADO
 
         private void Wnd_KeyDown(object sender, KeyEventArgs e) {
 

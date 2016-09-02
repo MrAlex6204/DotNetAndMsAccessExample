@@ -14,7 +14,7 @@ namespace PuntoDeVentas
         static void Main()
         {
 
-            var Employee = DbRepository.GetUsuario(1);
+          
             
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);            
