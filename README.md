@@ -22,3 +22,11 @@ Share this code or send to me an email if you want me to translate to english or
 
 */
 
+
+
+![alt tag](https://github.com/MrAlex6204/DotNetAndMsAccessExample/blob/Develop/Pictures/Cobranza.png)
+![alt tag](https://github.com/MrAlex6204/DotNetAndMsAccessExample/blob/Develop/Pictures/Cobranza01.png)
+![alt tag](https://github.com/MrAlex6204/DotNetAndMsAccessExample/blob/Develop/Pictures/Cobranza02.png)
+![alt tag](https://github.com/MrAlex6204/DotNetAndMsAccessExample/blob/Develop/Pictures/MainMenu.png)
+![alt tag](https://github.com/MrAlex6204/DotNetAndMsAccessExample/blob/Develop/Pictures/Tiket.png)
+
