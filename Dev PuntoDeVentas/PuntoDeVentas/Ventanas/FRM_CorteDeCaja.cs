@@ -11,7 +11,7 @@ namespace PuntoDeVentas
 {
     public partial class FRM_CorteDeCaja : Form
     {
-        System.PuntoDeVentas.CorteDeCajaInfo Info = new System.PuntoDeVentas.CorteDeCajaInfo();
+        System.DbRepository.CorteDeCajaInfo Info = new System.DbRepository.CorteDeCajaInfo();
         public FRM_CorteDeCaja()
         {
             InitializeComponent();
@@ -25,7 +25,7 @@ namespace PuntoDeVentas
         private void FRM_CorteDeCaja_Load(object sender, EventArgs e)
         {
 
-            Info = System.PuntoDeVentas.GetCorteDeCaja(System.PuntoDeVentas.CajeroId);
+            Info = System.DbRepository.GetCorteDeCaja(System.DbRepository.CajeroId);
 
             if (Info.CajeroExist)
             {
@@ -35,7 +35,7 @@ namespace PuntoDeVentas
             }
             else {
                 this.Close();
-                Funciones.Message("NO HAY VENTAS REGISTRADAS POR EL CAJERO!");
+                Functions.Message("NO HAY VENTAS REGISTRADAS POR EL CAJERO!");
             }
 
             
@@ -52,9 +52,9 @@ namespace PuntoDeVentas
         private void cmdCorte_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Desea realizar corte de Caja?", "Corte de Caja", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                System.PuntoDeVentas.CerrarCaja(System.PuntoDeVentas.CajeroId);
+                System.DbRepository.CerrarCaja(System.DbRepository.CajeroId);
                 this.Close();  
-                Funciones.Message("CORTE DE CAJA REALIZADO EXITOSAMENTE!");
+                Functions.Message("CORTE DE CAJA REALIZADO EXITOSAMENTE!");
             }
         }
 

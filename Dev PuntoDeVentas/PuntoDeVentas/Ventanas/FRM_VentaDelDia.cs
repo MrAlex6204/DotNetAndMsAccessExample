@@ -11,7 +11,7 @@ namespace PuntoDeVentas
 {
     public partial class FRM_VentaDelDia : Form
     {
-        System.PuntoDeVentas.VentadelDia VentaDelDia = new System.PuntoDeVentas.VentadelDia();
+        System.DbRepository.VentadelDia VentaDelDia = new System.DbRepository.VentadelDia();
 
         public FRM_VentaDelDia()
         {
@@ -20,7 +20,7 @@ namespace PuntoDeVentas
 
         private void FRM_VentaDelDia_Load(object sender, EventArgs e)
         {
-            VentaDelDia = System.PuntoDeVentas.GetVentaDelDia();
+            VentaDelDia = System.DbRepository.GetVentaDelDia();
 
             if (VentaDelDia.HayVenta)
             {
@@ -29,7 +29,7 @@ namespace PuntoDeVentas
             }
             else
             {
-                Funciones.Message("NO HAY CORTE DE CAJA REGISTRADAS EL DIA DE HOY!");
+                Functions.Message("NO HAY CORTE DE CAJA REGISTRADAS EL DIA DE HOY!");
                 this.Close();
             }
 

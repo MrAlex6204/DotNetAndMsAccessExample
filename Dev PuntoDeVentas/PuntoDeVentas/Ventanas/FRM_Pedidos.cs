@@ -32,7 +32,7 @@ namespace PuntoDeVentas
             cmbStatus.DataBindings.Clear();
             _Sources.DataSource = null;
             _TblResult.Rows.Clear();
-            _TblResult = System.PuntoDeVentas.GetPedidos();
+            _TblResult = System.DbRepository.GetPedidos();
 
             if (_TblResult.Rows.Count > 0)
             {
@@ -82,8 +82,8 @@ namespace PuntoDeVentas
         {
             if (MessageBox.Show("Desea eliminar este pedido?", "Eliminar pedido?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                System.PuntoDeVentas.CambiarStatus(lblNo.Text.Trim(), "ELIMINADO");
-                Funciones.Message("PEDIDO ELIMINADO!!");
+                System.DbRepository.CambiarStatus(lblNo.Text.Trim(), "ELIMINADO");
+                Functions.Message("PEDIDO ELIMINADO!!");
                 CargarInformacion();
             }
         }
@@ -92,8 +92,8 @@ namespace PuntoDeVentas
         {
             if (MessageBox.Show("Desea cambiar el status?", "Cambiar status pedido?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                System.PuntoDeVentas.CambiarStatus(lblNo.Text.Trim(), cmbStatus.Text.Trim().ToUpper());
-                Funciones.Message("STATUS CAMBIADO!!");
+                System.DbRepository.CambiarStatus(lblNo.Text.Trim(), cmbStatus.Text.Trim().ToUpper());
+                Functions.Message("STATUS CAMBIADO!!");
                 CargarInformacion();
             }
         }

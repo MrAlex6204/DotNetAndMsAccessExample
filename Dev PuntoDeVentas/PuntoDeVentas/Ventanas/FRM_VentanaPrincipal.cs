@@ -23,7 +23,7 @@ namespace PuntoDeVentas
 
         private void FRM_VentanaPrincipal_Load(object sender, EventArgs e)
         {
-            this.Text = "Punto de Ventas - " + System.PuntoDeVentas.GetConfig("EMPRESA").ToUpper();
+            this.Text = "Punto de Ventas - " + System.DbRepository.GetConfig("EMPRESA").ToUpper();
            
         }
 
@@ -51,14 +51,14 @@ namespace PuntoDeVentas
 
         private void gralToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (System.PuntoDeVentas.Tipo.ToUpper() == "ADMIN")
+            if (System.DbRepository.Tipo.ToUpper() == "ADMIN")
             {
                 FRM_Config wndConfig = new FRM_Config();
                 wndConfig.ShowDialog(this);
             }
             else
             {
-                Funciones.Message("ACCESSO RESTRINGIDO!");
+                Functions.Message("ACCESSO RESTRINGIDO!");
             }
         }
 
@@ -76,14 +76,14 @@ namespace PuntoDeVentas
 
         private void usuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            if (System.PuntoDeVentas.Tipo.ToUpper() == "ADMIN")
+            if (System.DbRepository.Tipo.ToUpper() == "ADMIN")
             {
                 FRM_Usuarios wndUsuarios = new FRM_Usuarios();
                 wndUsuarios.ShowDialog(this);
             }
             else
             {
-                Funciones.Message("ACCESSO RESTRINGIDO!");
+                Functions.Message("ACCESSO RESTRINGIDO!");
             }
         }
 

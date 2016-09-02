@@ -90,24 +90,24 @@ namespace PuntoDeVentas
         {
             string Tipo = "";
             if (txtNombre.Text.Trim() == "") {
-                Funciones.Message("NOMBRE INVALIDO");
+                Functions.Message("NOMBRE INVALIDO");
                 txtNombre.Focus();
                 return;
             }
             if (txtUsuario.Text.Trim() == "") {
-                Funciones.Message("USUARIO INVALIDO");
+                Functions.Message("USUARIO INVALIDO");
                 txtUsuario.Focus();
                 return;
             }
             if (txtPassword.Text.Trim() == "")
             {
-                Funciones.Message("CONTRASEÑA INVALIDA");
+                Functions.Message("CONTRASEÑA INVALIDA");
                 txtPassword.Focus();
                 return;
             }
 
             if (txtPassword.Text.Trim().ToUpper() != txtConfirmPassword.Text.Trim().ToUpper()) {
-                Funciones.Message("CONFIRME BIEN LA CONTRASEÑA!");
+                Functions.Message("CONFIRME BIEN LA CONTRASEÑA!");
                 txtPassword.Focus();
                 txtPassword.Text = "";
                 txtConfirmPassword.Text = "";
@@ -123,12 +123,12 @@ namespace PuntoDeVentas
                 Tipo = "ADMIN";
             }
 
-            if (System.PuntoDeVentas.GuardarUsuario(txtNombre.Text, txtUsuario.Text, txtPassword.Text, Tipo))
+            if (System.DbRepository.GuardarUsuario(txtNombre.Text, txtUsuario.Text, txtPassword.Text, Tipo))
             {
-                Funciones.Message("Usuario agregado exitosamente!");
+                Functions.Message("Usuario agregado exitosamente!");
             }
             else {
-                Funciones.Message("Fallo al agregar el usuario");
+                Functions.Message("Fallo al agregar el usuario");
             }
         }
 
@@ -138,8 +138,8 @@ namespace PuntoDeVentas
             wndBuscarUsr.ShowDialog(this);
 
             if (wndBuscarUsr.UserId.Trim() != "") {
-                System.PuntoDeVentas.UserInfo UserInfo;
-                UserInfo = System.PuntoDeVentas.GetUserInfo(wndBuscarUsr.UserId);
+                System.DbRepository.UserInfo UserInfo;
+                UserInfo = System.DbRepository.GetUserInfo(wndBuscarUsr.UserId);
 
                 txtNombre.Text = UserInfo.Nombre;
                 txtUsuario.Text = UserInfo.Login;

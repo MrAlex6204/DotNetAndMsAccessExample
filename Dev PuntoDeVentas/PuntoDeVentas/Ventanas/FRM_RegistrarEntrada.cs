@@ -28,12 +28,12 @@ namespace PuntoDeVentas
 
         private void FRM_RegistrarEntrada_Load(object sender, EventArgs e)
         {
-            lblUsr.Text = System.PuntoDeVentas.Nombre.ToUpper();
+            lblUsr.Text = System.DbRepository.Nombre.ToUpper();
         }
 
         private void txtCantidad_Leave(object sender, EventArgs e)
         {
-            if (!Funciones.IsNumber(txtCantidad.Text))
+            if (!Functions.IsNumber(txtCantidad.Text))
              {
                 txtCantidad.Text = "";
                 txtCantidad.Focus();
@@ -53,8 +53,8 @@ namespace PuntoDeVentas
                 return;
             }
             if (MessageBox.Show("Desea registrar la entrada?", "Registro de Entrada", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                System.PuntoDeVentas.InvRegistrarArticulo(lblCodigo.Text, txtCantidad.Text, "0", System.PuntoDeVentas.CajeroId, "*ENTRADA_DE_INVENTARIO**");
-                Funciones.Message("ENTRADA REGISTRADA EXITOSAMENTE!");
+                System.DbRepository.InvRegistrarArticulo(lblCodigo.Text, txtCantidad.Text, "0", System.DbRepository.CajeroId, "*ENTRADA_DE_INVENTARIO**");
+                Functions.Message("ENTRADA REGISTRADA EXITOSAMENTE!");
                 this.Close();
             }
         }

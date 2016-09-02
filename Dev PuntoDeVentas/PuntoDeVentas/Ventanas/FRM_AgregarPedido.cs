@@ -24,10 +24,10 @@ namespace PuntoDeVentas
         private void button2_Click(object sender, EventArgs e)
         {
             if(lblCodigo.Text.Trim()==""){//validamos que alla seleccionado un articulo
-                Funciones.Message("FAVOR DE SELECCIONAR EL CODIGO DEL ARTICULO!");
+                Functions.Message("FAVOR DE SELECCIONAR EL CODIGO DEL ARTICULO!");
             return;
             }
-            if(!Funciones.IsNumber(txtCantidad.Text)){//validamos que la cantidad tecleada sea numerico
+            if(!Functions.IsNumber(txtCantidad.Text)){//validamos que la cantidad tecleada sea numerico
             txtCantidad.Text="";
                 txtCantidad.Focus();
                 return;
@@ -35,9 +35,9 @@ namespace PuntoDeVentas
 
             if (MessageBox.Show("Desea Agregar el pedido?", "Agregar pedido?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 //agregamos el pedido
-                if (System.PuntoDeVentas.AgregarPedido(System.PuntoDeVentas.CajeroId, lblCodigo.Text.Trim(), txtCantidad.Text.Trim(), txtNombre.Text.Trim()))
+                if (System.DbRepository.AgregarPedido(System.DbRepository.CajeroId, lblCodigo.Text.Trim(), txtCantidad.Text.Trim(), txtNombre.Text.Trim()))
                 {
-                    Funciones.Message("PEDIDO AGREGADO EXITOSAMENTE!");
+                    Functions.Message("PEDIDO AGREGADO EXITOSAMENTE!");
                     this.Close();
                 }
                 else {
@@ -57,15 +57,15 @@ namespace PuntoDeVentas
             wndConsultarArt.ShowDialog(this);
 
             if (wndConsultarArt.ArticuloId != "") {
-                System.PuntoDeVentas.ArticuloInfo Info = new System.PuntoDeVentas.ArticuloInfo();
-               Info= System.PuntoDeVentas.GetArticuloInfo(wndConsultarArt.ArticuloId);
+                System.DbRepository.ArticuloInfo Info = new System.DbRepository.ArticuloInfo();
+               Info= System.DbRepository.GetArticuloInfo(wndConsultarArt.ArticuloId);
                 if (Info.EXIST)
                 { //Si el articulo existe
                     lblCodigo.Text = Info.ID;
                     lblArticulo.Text = Info.DESCRIPCION.ToUpper();
                 }
                 else {
-                    Funciones.Message("EL CODIGO DEL ARTICULO NO EXISTE!");
+                    Functions.Message("EL CODIGO DEL ARTICULO NO EXISTE!");
                 }
             }
 

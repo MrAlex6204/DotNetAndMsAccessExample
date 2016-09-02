@@ -33,7 +33,7 @@ namespace PuntoDeVentas
                 lblStock.DataBindings.Clear();
                 lblUnidad.DataBindings.Clear();
                 _Sources.DataSource = null;
-                TblResul = System.PuntoDeVentas.Fill(Qry.Replace("@ART_ID", _Id), "TblResult");
+                TblResul = System.DbRepository.Fill(Qry.Replace("@ART_ID", _Id), "TblResult");
                 if (TblResul.Rows.Count > 0)
                 {
                     cmdEntrada.Enabled = true;
@@ -50,7 +50,7 @@ namespace PuntoDeVentas
                 }
                 else
                 {
-                    Funciones.Message("EL ARTICULO NO ES PARTE DEL INVENTARIO!");
+                    Functions.Message("EL ARTICULO NO ES PARTE DEL INVENTARIO!");
                     cmdEntrada.Enabled = false;
                     cmdRefresh.Enabled = false;
                     cmdhist.Enabled = false;

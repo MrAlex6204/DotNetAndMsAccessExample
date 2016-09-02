@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="PuntoDeVentas" namespace="PuntoDeVentas">
+  <class name="PuntoDeVentas.Models.Usuario,PuntoDeVentas" table="[TBL_USUARIOS]">
+    <id name="Id" column="USR_ID" type="Int32" unsaved-value="-1">
+      <generator class="native">
+      </generator>
+    </id>
+    <property name="UserName" column="[LOGIN]" type="String" not-null="false"></property>
+    <property name="Nombre" column="[NOMBRE]" type="String" not-null="false"></property>
+    <property name="Type" column="[TIPO]" type="String" not-null="false"></property>
+  </class> 
+</hibernate-mapping>

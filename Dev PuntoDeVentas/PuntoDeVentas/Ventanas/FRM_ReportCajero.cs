@@ -34,7 +34,7 @@ namespace PuntoDeVentas
 
         private void cmdAceptar_Click(object sender, EventArgs e)
         {
-            TblResult = System.PuntoDeVentas.Fill(Qry.Replace("@START_DATE", FechaInicial.Text).Replace("@END_DATE", FechaFinal.Text), "Ventas_x_Cajero");
+            TblResult = System.DbRepository.Fill(Qry.Replace("@START_DATE", FechaInicial.Text).Replace("@END_DATE", FechaFinal.Text), "Ventas_x_Cajero");
             wndReportView.ReportTitle = "Reporte Ventas x Cajero";
             wndReportView.DataSources = TblResult;
             wndReportView.ShowDialog(this);

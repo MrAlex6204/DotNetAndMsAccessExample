@@ -8,7 +8,6 @@ C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeV
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Office.Interop.Excel.xml
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\office.xml
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csprojResolveAssemblyReference.cache
-C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\System.CTRL_ArticuloItem.resources
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Properties.Resources.resources
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_AgregarArticulo.resources
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_AgregarPedido.resources
@@ -36,3 +35,13 @@ C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeV
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.exe
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.pdb
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Cbza.resources
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\System.ArticuloItem.resources
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\PuntoDeVentas.exe.config
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Iesi.Collections.dll
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\NHibernate.dll
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Iesi.Collections.xml
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\NHibernate.xml
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\log4net.dll
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\NHibernate.JetDriver.dll
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\log4net.xml
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\hibernate.cfg.xml

@@ -25,14 +25,14 @@ namespace PuntoDeVentas
         {
             if (MessageBox.Show("Desea guardar los cambio?", "Configuracion", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                System.PuntoDeVentas.UpdateConfig("EMPRESA", txtEmpresa.Text.Trim());
-                Funciones.Message("La configuracion se guardo exitosamente!");
+                System.DbRepository.UpdateConfig("EMPRESA", txtEmpresa.Text.Trim());
+                Functions.Message("La configuracion se guardo exitosamente!");
             }            
         }
 
         private void FRM_Config_Load(object sender, EventArgs e)
         {
-            txtEmpresa.Text = System.PuntoDeVentas.GetConfig("EMPRESA");
+            txtEmpresa.Text = System.DbRepository.GetConfig("EMPRESA");
         }
     }
 }

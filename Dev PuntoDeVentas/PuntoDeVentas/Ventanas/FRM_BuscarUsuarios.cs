@@ -24,7 +24,7 @@ namespace PuntoDeVentas
         #region  <FUNCIONES ESPECIALES>  
         void Buscar(string Buscar) {
 
-            DataTable TblResult=  System.PuntoDeVentas.BuscarUsuario(Buscar);
+            DataTable TblResult=  System.DbRepository.BuscarUsuario(Buscar);
             Gridbuscar.DataSource = TblResult;
 
             foreach (DataGridViewColumn iColumn in Gridbuscar.Columns)

@@ -29,9 +29,9 @@ namespace PuntoDeVentas
         private void button1_Click(object sender, EventArgs e)
         {
             //Validar user y password
-            if (System.PuntoDeVentas.ValidarUsuario(txtUsuario.Text.Trim(), txtPassword.Text.Trim()))
+            if (System.DbRepository.ValidarUsuario(txtUsuario.Text.Trim(), txtPassword.Text.Trim()))
             {
-                Funciones.Message("BIENVENIDO! "+System.PuntoDeVentas.Nombre.ToUpper());
+                Functions.Message("BIENVENIDO! "+System.DbRepository.Nombre.ToUpper());
                 _bUserIsLogged = true;
                 this.Close();
             }

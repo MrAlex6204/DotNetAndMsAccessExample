@@ -61,10 +61,10 @@ namespace PuntoDeVentas
         private void txtPago_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == 13) {//Si  preciono enter
-                if (Funciones.IsNumber(txtPago.Text))
+                if (Functions.IsNumber(txtPago.Text))
                 {
-                    _SubTotal = _SubTotal - Funciones.ToNumber(txtPago.Text);//Descontamos al total el efectivo
-                    _Efectivo += Funciones.ToNumber(txtPago.Text);//sumamos el efectivo recibido
+                    _SubTotal = _SubTotal - Functions.ToNumber(txtPago.Text);//Descontamos al total el efectivo
+                    _Efectivo += Functions.ToNumber(txtPago.Text);//sumamos el efectivo recibido
                     lblEfectivo.Text = _Efectivo.ToString("$ 0.00");
                     lblTotal.Text = _SubTotal.ToString("$ 0.00");
 
@@ -73,7 +73,7 @@ namespace PuntoDeVentas
                         this.Hide();//Ocultamos el formulario
 
                         //Mostramos la pantalla de Cambio
-                        Funciones.MostrarCambio("CAMBIO " + Math.Abs(_SubTotal).ToString("$ 0.00"), _Total.ToString("0.00"), _Efectivo.ToString("0.00"), Math.Abs(_SubTotal).ToString("0.00"), this);
+                        Functions.MostrarCambio("CAMBIO " + Math.Abs(_SubTotal).ToString("$ 0.00"), _Total.ToString("0.00"), _Efectivo.ToString("0.00"), Math.Abs(_SubTotal).ToString("0.00"), this);
                         this.Close();//Cerramos el formulario 
                     }
                     txtPago.Text = "";

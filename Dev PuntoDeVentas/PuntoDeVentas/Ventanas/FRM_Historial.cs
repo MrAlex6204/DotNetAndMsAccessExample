@@ -25,7 +25,7 @@ namespace PuntoDeVentas
 
         private void gridHistorial_Load(object sender, EventArgs e)
         {
-            TblHist = System.PuntoDeVentas.GetInvHistorial(Id);//mandamos a llamar la funcion para ver el historial
+            TblHist = System.DbRepository.GetInvHistorial(Id);//mandamos a llamar la funcion para ver el historial
 
             dataGrid.DataSource = TblHist;
         }

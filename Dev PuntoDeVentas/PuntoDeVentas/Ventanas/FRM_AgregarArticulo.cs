@@ -49,13 +49,13 @@ namespace PuntoDeVentas
 
         private void cmdAceptar_Click(object sender, EventArgs e)
         {
-            if (System.PuntoDeVentas.UpdateArticulo(txtCodigo.Text.Trim(), txtDesc.Text.Trim(),txtUnidad.Text, txtPrecio.Text.Trim(), chkInventario.Checked))
+            if (System.DbRepository.UpdateArticulo(txtCodigo.Text.Trim(), txtDesc.Text.Trim(),txtUnidad.Text, txtPrecio.Text.Trim(), chkInventario.Checked))
             {
-                Funciones.Message("ARTICULO AGREGADO EXITOSAMENTE!!!");
+                Functions.Message("ARTICULO AGREGADO EXITOSAMENTE!!!");
                 this.Close();
             }
             else {
-                Funciones.Message("NO SE PUDO AGREGAR INFORMACION!");
+                Functions.Message("NO SE PUDO AGREGAR INFORMACION!");
             }
         }
 
@@ -70,10 +70,10 @@ namespace PuntoDeVentas
         private void button1_Click(object sender, EventArgs e)
         {
             FRM_ConsultarArticulos wndConsultar = new FRM_ConsultarArticulos();
-            System.PuntoDeVentas.ArticuloInfo info = new System.PuntoDeVentas.ArticuloInfo();
+            System.DbRepository.ArticuloInfo info = new System.DbRepository.ArticuloInfo();
             wndConsultar.ShowDialog(this);
             if (wndConsultar.ArticuloId.Trim() != "") {
-                info = System.PuntoDeVentas.GetArticuloInfo(wndConsultar.ArticuloId);
+                info = System.DbRepository.GetArticuloInfo(wndConsultar.ArticuloId);
                 txtCodigo.Text = info.ID;
                 txtDesc.Text = info.DESCRIPCION;
                 txtPrecio.Text = info.PRECIO;

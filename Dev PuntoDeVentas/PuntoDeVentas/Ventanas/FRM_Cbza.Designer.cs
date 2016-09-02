@@ -365,7 +365,7 @@ namespace PuntoDeVentas {
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCobranza.AutoScroll = true;
             this.pnlCobranza.AutoScrollMinSize = new System.Drawing.Size(0, 1);
-            this.pnlCobranza.BackColor = System.Drawing.Color.White;
+            this.pnlCobranza.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.pnlCobranza.Location = new System.Drawing.Point(6, 44);
             this.pnlCobranza.Name = "pnlCobranza";
             this.pnlCobranza.Size = new System.Drawing.Size(972, 596);

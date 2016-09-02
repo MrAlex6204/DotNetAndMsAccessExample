@@ -27,7 +27,7 @@ namespace PuntoDeVentas
 
         private void Buscar(string Buscar) {
             DataTable TblResults;
-            TblResults = System.PuntoDeVentas.BuscarArticulo(Buscar.Trim());
+            TblResults = System.DbRepository.BuscarArticulo(Buscar.Trim());
             Gridbuscar.DataSource = TblResults;
             foreach(DataGridViewColumn iColumn in Gridbuscar.Columns){
                 iColumn.SortMode = DataGridViewColumnSortMode.NotSortable;            

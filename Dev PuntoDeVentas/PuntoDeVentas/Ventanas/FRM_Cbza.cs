@@ -22,7 +22,7 @@ namespace PuntoDeVentas {
 
         private DataTable tblArticulosList = new DataTable();//Lista de Articulos registrados
         //Creamos una lista de articulos
-        private ArticulosCollection LstArticulos = new ArticulosCollection(System.PuntoDeVentas.CajeroId);
+        private ArticuloItemCollection LstArticulos = new ArticuloItemCollection(System.DbRepository.CajeroId);
 
 
 
@@ -31,9 +31,9 @@ namespace PuntoDeVentas {
         #region  <FUNCIONES ESPECIALES>
 
 
-        private void AddArtItem(System.PuntoDeVentas.ArticuloInfo ArticuloItem, double Cantidad) {//Agrega un Articulo ala lista
+        private void AddArtItem(System.DbRepository.ArticuloInfo ArticuloItem, double Cantidad) {//Agrega un Articulo ala lista
             DataRow ArticuloRow = tblArticulosList.NewRow();
-            CTRL_ArticuloItem Item = new CTRL_ArticuloItem(ArticuloItem, Cantidad);
+            ArticuloItem Item = new ArticuloItem(ArticuloItem, Cantidad);
 
 
             Item.Dock = DockStyle.Bottom;
@@ -78,11 +78,11 @@ namespace PuntoDeVentas {
             foreach (DataRow iRow in tblArticulosList.Rows) {//RECORREMOS TODOS LOS ARTICULOS DE LA LISTA
 
                 //Guarda la lista de articulos en la base de datos
-                System.PuntoDeVentas.RegistrarArticulo(iRow["ID"].ToString(), iRow["DESC"].ToString(), iRow["PRECIO"].ToString(), iRow["CANTIDAD"].ToString(), iRow["TOTAL"].ToString(), System.PuntoDeVentas.CajeroId);
+                System.DbRepository.RegistrarArticulo(iRow["ID"].ToString(), iRow["DESC"].ToString(), iRow["PRECIO"].ToString(), iRow["CANTIDAD"].ToString(), iRow["TOTAL"].ToString(), System.DbRepository.CajeroId);
 
                 if (iRow["INVENTARIO"].ToString().ToUpper().Trim() == "TRUE") {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
                     //REGISTRAMOS LA SALIDA DEL INVENTARIO DEL ARTICULO
-                    System.PuntoDeVentas.InvRegistrarArticulo(iRow["ID"].ToString(), "0", iRow["CANTIDAD"].ToString(), System.PuntoDeVentas.CajeroId, "**VENTA**");
+                    System.DbRepository.InvRegistrarArticulo(iRow["ID"].ToString(), "0", iRow["CANTIDAD"].ToString(), System.DbRepository.CajeroId, "**VENTA**");
                 }
 
             }
@@ -114,8 +114,8 @@ namespace PuntoDeVentas {
         private void FRM_Cbza_Load(object sender, EventArgs e) {
             pnlStatus.Text = "";
             txtCodigo.Text = "";
-            lblCajero.Text = System.PuntoDeVentas.Nombre.ToUpper();
-            lblTitle.Text = System.PuntoDeVentas.GetConfig("EMPRESA");
+            lblCajero.Text = System.DbRepository.Nombre.ToUpper();
+            lblTitle.Text = System.DbRepository.GetConfig("EMPRESA");
             txtCodigo.Focus();
             lblTotal.Text = LstArticulos.SubTotal.ToString("$ 0.00");//Seteamos as Cero el total
 
@@ -172,7 +172,7 @@ namespace PuntoDeVentas {
                         FRM_Total wndTotal = new FRM_Total();
                         wndTotal.Total = LstArticulos.SubTotal;
                         //Lista de articulo para imprimir
-                        System.PuntoDeVentas.ArticulosParaImprimir = tblArticulosList;
+                        System.DbRepository.ArticulosParaImprimir = tblArticulosList;
 
                         wndTotal.ShowDialog(this);
                         if (wndTotal.IsCancelled == false) {//si la transaccion no fue borrada
@@ -181,7 +181,7 @@ namespace PuntoDeVentas {
                         }
 
                     } else {
-                        Funciones.Message("NO HAY ARTICULOS POR COBRAR!");
+                        Functions.Message("NO HAY ARTICULOS POR COBRAR!");
                     }
 
                     break;
@@ -206,7 +206,7 @@ namespace PuntoDeVentas {
                     if (Total > 0) {
                         if (MessageBox.Show("Desea cancelar la transaccion?", "Cancelar Transaccion?", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                             BorrarCuenta();
-                            Funciones.Message("TRANSACCION CANCELADA!");
+                            Functions.Message("TRANSACCION CANCELADA!");
                         }
                     }
                     break;
@@ -292,7 +292,7 @@ namespace PuntoDeVentas {
 
                     if (txtCodigo.Text.Length > 0) {
 
-                        var Articulo = System.PuntoDeVentas.GetArticuloInfo(txtCodigo.Text.Trim());
+                        var Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
 
                         if (Articulo.EXIST) {
                             pnlStatus.Text = "Desc : " + Articulo.DESCRIPCION.ToUpper() + " $ " + Articulo.PRECIO + " Unidad :" + Articulo.UNIDAD;
@@ -317,7 +317,7 @@ namespace PuntoDeVentas {
 
                     //Declaramos una variable tipo ArticuloInfo y 
                     //obtenemos la informacion del articulo pasando le el codigo
-                    System.PuntoDeVentas.ArticuloInfo ArticuloItem = System.PuntoDeVentas.GetArticuloInfo(txtCodigo.Text.Trim());
+                    System.DbRepository.ArticuloInfo ArticuloItem = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
 
                     double Cantidad = (Convert.ToDouble(txtCantidad.Text));
 
@@ -334,7 +334,7 @@ namespace PuntoDeVentas {
 
                     } else { //Si el articulo no existe
 
-                        Funciones.Message("NO EXISTE EL ARTICULO!");
+                        Functions.Message("NO EXISTE EL ARTICULO!");
                     }
 
 

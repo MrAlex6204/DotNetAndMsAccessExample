@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" ?>
+
+  <hibernate-configuration  xmlns="urn:nhibernate-configuration-2.0" >
+    <session-factory xmlns='urn:nhibernate-configuration-2.2'>
+      <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
+    <property name="dialect">NHibernate.JetDriver.JetDialect, NHibernate.JetDriver</property>
+    <property name="connection.driver_class">NHibernate.JetDriver.JetDriver, NHibernate.JetDriver</property>
+    <!--<property name="connection.connection_string">Provider=Microsoft.Jet.OLEDB.4.0;Data Source=\DB\dbVentas.mdb;User Id=admin;Password=</property>-->
+  </session-factory>
+</hibernate-configuration>

@@ -13,6 +13,9 @@ namespace PuntoDeVentas
         [STAThread]
         static void Main()
         {
+
+            var Employee = DbRepository.GetUsuario(1);
+            
             //Application.EnableVisualStyles();
             //Application.SetCompatibleTextRenderingDefault(false);            
             //Application.Run(new FRM_Login());
