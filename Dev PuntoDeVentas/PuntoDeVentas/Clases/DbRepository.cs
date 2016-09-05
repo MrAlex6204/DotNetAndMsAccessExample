@@ -170,8 +170,7 @@ namespace System {
             return session.Get<Usuario>(Id);
 
         }
-
-
+        
         //FUNCION PARA VALIDAR SI UN USUARIO EXISTE EN EL LOGIN
         public static bool ValidarUsuario(string Login, string Password) {
             //consulta para validar si el usuario existe!

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas {
 
-    public partial class FRM_Cbza : Form {
+    public partial class FRM_Cbza : Controls.BaseForm {
 
         public FRM_Cbza() {
             InitializeComponent();
@@ -37,7 +37,7 @@ namespace PuntoDeVentas {
 
 
             Item.Dock = DockStyle.Bottom;
-            Item.SelectionColor = Color.Yellow;//Indicamos el color de seleccion
+            
 
             //Agregamos el articulo a la lista y le indicamos el el elemento seleccionado
             LstArticulos.SelectedItem = LstArticulos.Add(Item);
@@ -344,6 +344,10 @@ namespace PuntoDeVentas {
         }
 
         #endregion
+
+        private void lblCajero_Click(object sender, EventArgs e) {
+
+        }
 
 
     }

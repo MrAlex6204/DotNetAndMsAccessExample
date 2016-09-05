@@ -45,3 +45,4 @@ C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeV
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\NHibernate.JetDriver.dll
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\log4net.xml
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\hibernate.cfg.xml
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.BaseForm.resources

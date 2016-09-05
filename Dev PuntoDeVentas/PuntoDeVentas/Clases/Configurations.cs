@@ -5,5 +5,8 @@ using System.Text;
 
 namespace PuntoDeVentas.Clases {
     class Configurations {
+
+
+
     }
 }
