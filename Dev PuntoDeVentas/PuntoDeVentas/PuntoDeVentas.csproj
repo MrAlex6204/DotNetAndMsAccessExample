@@ -106,6 +106,12 @@
     <Compile Include="Controls\ArticuloItem.Designer.cs">
       <DependentUpon>ArticuloItem.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ArticuloList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\ArticuloList.Designer.cs">
+      <DependentUpon>ArticuloList.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\BaseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -192,6 +198,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Controls\ArticuloItem.resx">
       <DependentUpon>ArticuloItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\ArticuloList.resx">
+      <DependentUpon>ArticuloList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\BaseForm.resx">
       <DependentUpon>BaseForm.cs</DependentUpon>
@@ -387,6 +396,22 @@
       <CustomToolNamespace>PuntoDeVentas.Properties.Resources</CustomToolNamespace>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\LINE.png" />
+    <None Include="Resources\INPUT_SHORT.png" />
+    <None Include="Resources\INPUT.png" />
+    <None Include="Resources\SEARCH_BAR.png" />
+    <None Include="Resources\SUB_BG1.png" />
+    <None Include="Resources\GENERAL_BG.png" />
+    <None Include="Resources\LabelHolderDarkGreen2.png" />
+    <None Include="Resources\LabelHolderDarkGreen.png" />
+    <None Include="Resources\LabelHolder1.png" />
+    <None Include="Resources\LabelHolder.png" />
+    <None Include="Resources\Eliminado.png" />
+    <None Include="Resources\usr_5.png" />
+    <None Include="Resources\usr_4.png" />
+    <None Include="Resources\usr_3.png" />
+    <None Include="Resources\usr_2.png" />
+    <None Include="Resources\us_1.png" />
     <EmbeddedResource Include="Hibernate\Usuario.hbm.xml">
       <CustomToolNamespace>PuntoDeVentas.Properties.Resources</CustomToolNamespace>
       <Generator>PublicResXFileCodeGenerator</Generator>

@@ -21,17 +21,10 @@ namespace System {
         private void _SetSelectionColor() {
 
             if (this.IsSelected) {
-                if (this.IsDeleted) {//Color de seleccion si el elemento esta marcado como eliminado
-                    _SetDeletedColor();
-                } else {
-                    _SetSelectedColor();
-                }
+                  _SetSelectedColor();
+                
             } else {
-                if (this.IsDeleted) {
-                    _SetDeletedColor();
-                } else {
-                    _SetDefaultColor();
-                }
+                 _SetDefaultColor();                
             }
             this.Update();
         }
@@ -44,68 +37,37 @@ namespace System {
             Label3.ForeColor = Color.FromArgb(113, 113, 113);
             Label4.ForeColor = Color.FromArgb(113, 113, 113);
 
-
+            lblNo.ForeColor =  Color.WhiteSmoke;
             lblArticulo.ForeColor = Color.WhiteSmoke;
             lblCantidad.ForeColor = Color.FromArgb(113, 113, 113);
             lblPrecio.ForeColor = Color.FromArgb(113, 113, 113);
             lblCodigo.ForeColor = Color.FromArgb(113, 113, 113);
             lblTotal.ForeColor = Color.FromArgb(113, 113, 113);
             lblEliminado.ForeColor = Color.FromArgb(113, 113, 113);
-            lblSelectionLabel.BackColor = Color.FromArgb(113, 113, 113);
+            lblEliminado.Image = PuntoDeVentas.Properties.Resources.LabelHolder;
             
         }
+
         private void _SetSelectedColor() {
-            this.BackColor = System.Drawing.Color.FromArgb(40,40,40);
+            this.BackColor = System.Drawing.Color.FromArgb(24,24,24);
 
-            Label1.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            Label2.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            Label3.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            Label4.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
+            lblNo.ForeColor = System.Drawing.Color.FromArgb(33, 190, 74);
+            lblArticulo.ForeColor = System.Drawing.Color.FromArgb(33, 190, 74);
+            lblEliminado.ForeColor = System.Drawing.Color.FromArgb(247, 243, 247);
+            lblEliminado.Image = PuntoDeVentas.Properties.Resources.LabelHolderDarkGreen2;
 
-            lblArticulo.ForeColor = System.Drawing.Color.FromArgb(6,94,43);
-            lblCantidad.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            lblPrecio.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            lblCodigo.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            lblTotal.ForeColor = System.Drawing.Color.FromArgb(6, 94, 43);
-            lblSelectionLabel.BackColor = System.Drawing.Color.FromArgb(6, 94, 43);
+            lblCantidad.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+            lblPrecio.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+            lblCodigo.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+            lblTotal.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+
+            Label1.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+            Label2.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+            Label3.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
+            Label4.ForeColor = System.Drawing.Color.FromArgb(24, 142, 57);
                     
         }
-        private void _SetDeletedColor() {
-
-            if (this.IsSelected) {
-                this.BackColor = System.Drawing.Color.Tomato;
-
-                Label1.ForeColor = System.Drawing.Color.Maroon;
-                Label2.ForeColor = System.Drawing.Color.Maroon;
-                Label3.ForeColor = System.Drawing.Color.Maroon;
-                Label4.ForeColor = System.Drawing.Color.Maroon;
-
-                lblArticulo.ForeColor = System.Drawing.Color.DarkRed;
-                lblCantidad.ForeColor = System.Drawing.Color.Maroon;
-                lblPrecio.ForeColor = System.Drawing.Color.Maroon;
-                lblCodigo.ForeColor = System.Drawing.Color.Maroon;
-                lblTotal.ForeColor = System.Drawing.Color.Maroon;
-                lblEliminado.ForeColor = System.Drawing.Color.Maroon;
-                lblSelectionLabel.BackColor = System.Drawing.Color.Maroon;
-
-            } else {
-                this.BackColor = System.Drawing.Color.Maroon;
-
-                Label1.ForeColor = System.Drawing.Color.Red;
-                Label2.ForeColor = System.Drawing.Color.Red;
-                Label3.ForeColor = System.Drawing.Color.Red;
-                Label4.ForeColor = System.Drawing.Color.Red;
-
-                lblArticulo.ForeColor = System.Drawing.Color.Tomato;
-                lblCantidad.ForeColor = System.Drawing.Color.Red;
-                lblPrecio.ForeColor = System.Drawing.Color.Red;
-                lblCodigo.ForeColor = System.Drawing.Color.Red;
-                lblTotal.ForeColor = System.Drawing.Color.Red;
-                lblEliminado.ForeColor = System.Drawing.Color.Red;
-                lblSelectionLabel.BackColor = System.Drawing.Color.Red;
-            }
-
-        }
+               
 
         public ArticuloItem(System.DbRepository.ArticuloInfo ArticuloItem, double Cantidad) {
             InitializeComponent();
@@ -124,8 +86,7 @@ namespace System {
                 return _bIsSelected;
             }
             set {
-                _bIsSelected = value;
-                lblSelectionLabel.Visible = value;
+                _bIsSelected = value;                
                 _SetSelectionColor();                
             }
         }
@@ -136,6 +97,7 @@ namespace System {
             }
             set {
                 _Position = value;
+                lblNo.Text = (value + 1).ToString("00");
             }
         }
 
@@ -180,6 +142,7 @@ namespace System {
             this._Cantidad = Cantidad;
             this._Articulo = ArticuloItem;
 
+            
             lblArticulo.Text = _Articulo.DESCRIPCION;
             lblPrecio.Text = Double.Parse(_Articulo.PRECIO).ToString("$ 0.00");
             lblCodigo.Text = _Articulo.ID;

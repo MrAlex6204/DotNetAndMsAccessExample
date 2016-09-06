@@ -5,15 +5,10 @@ using System.Text;
 
 namespace System {
 
-    class ArticuloItemCollection : System.Collections.CollectionBase {
+    public class ArticuloItemCollection : System.Collections.CollectionBase {
 
-        private string _CajeroId;
         private ArticuloItem _SelectedItem;
-
-        public ArticuloItemCollection(string CajeroId) {
-            _CajeroId = CajeroId;
-        }
-
+                
         public double SubTotal {
             get {
                 //Realizar la suma del Total de cada articulo de la lista 
@@ -24,13 +19,7 @@ namespace System {
                 return Total;
             }
         }
-
-        public string CajeroId {
-            get {//Obtener el Cajero Id con la que se inicio la cobranza
-                return _CajeroId;
-            }
-        }
-
+        
         public ArticuloItem SelectedItem {//Indicar que elemento de la lista esta seleccionado
             get {
                 return _SelectedItem;
@@ -92,6 +81,7 @@ namespace System {
 
             //Le indicamos al elemento que posicion tiene
             ArticuloItem.Position = Index;
+            ArticuloItem.Location = new Drawing.Point(0, ArticuloItem.Height * this.Count);
 
             return ArticuloItem;//Retornamos el mismo elemento insertado ala lista.
         }

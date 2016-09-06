@@ -12,7 +12,7 @@ namespace PuntoDeVentas {
     public partial class FRM_Cbza : Controls.BaseForm {
 
         public FRM_Cbza() {
-            InitializeComponent();
+            InitializeComponent();         
         }
 
         #region  <DECLARACIONES>
@@ -21,11 +21,7 @@ namespace PuntoDeVentas {
         private double Total = 0;
 
         private DataTable tblArticulosList = new DataTable();//Lista de Articulos registrados
-        //Creamos una lista de articulos
-        private ArticuloItemCollection LstArticulos = new ArticuloItemCollection(System.DbRepository.CajeroId);
-
-
-
+        
         #endregion
 
         #region  <FUNCIONES ESPECIALES>
@@ -35,16 +31,8 @@ namespace PuntoDeVentas {
             DataRow ArticuloRow = tblArticulosList.NewRow();
             ArticuloItem Item = new ArticuloItem(ArticuloItem, Cantidad);
 
-
-            Item.Dock = DockStyle.Bottom;
+            LstArticulos.Add(Item);
             
-
-            //Agregamos el articulo a la lista y le indicamos el el elemento seleccionado
-            LstArticulos.SelectedItem = LstArticulos.Add(Item);
-            //Agregar el control item al panel de elementos
-            pnlCobranza.Controls.Add(Item);
-            pnlCobranza.VerticalScroll.Value = pnlCobranza.VerticalScroll.Maximum;
-
             ArticuloRow["ID"] = ArticuloItem.ID;
             ArticuloRow["DESC"] = ArticuloItem.DESCRIPCION;
             ArticuloRow["PRECIO"] = ArticuloItem.PRECIO;
@@ -58,20 +46,14 @@ namespace PuntoDeVentas {
             txtCodigo.Focus();
         }
 
-
-        private void ClearList() {
-
-            pnlCobranza.Controls.Clear();
-            LstArticulos.Clear();
-        }
-
+                
         private void BorrarCuenta()//Borramos todo lo de la cuenta abierta
         {            
             Total = 0;
-            lblTotal.Text = Total.ToString("$ 0.00");
-            ClearList();
+            lblTotal.Text = Total.ToString("$ 0.00");             
             tblArticulosList.Rows.Clear();//Borramos la lista de articulos
             pnlStatus.Text = "";
+            this.tblArticulosList.Clear();
         }
 
         private void GuardarTrans() {
@@ -89,7 +71,7 @@ namespace PuntoDeVentas {
         }
 
         private void FullScreen() {
-
+            
             if (isFullScreen) {
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
                 this.WindowState = FormWindowState.Normal;
@@ -108,7 +90,7 @@ namespace PuntoDeVentas {
 
         private void tmrFechayHra_Tick(object sender, EventArgs e) {
             //Mostrar fecha y Hra
-            lblFechaHra.Text = System.DateTime.Now.ToString("dddd,dd-MMMM-yyyy hh:mm:ss tt");
+            lblFechaHra.Text = System.DateTime.Now.ToString("dddd,dd-MMMM-yyyy hh:mm tt");
         }
 
         private void FRM_Cbza_Load(object sender, EventArgs e) {
@@ -117,7 +99,7 @@ namespace PuntoDeVentas {
             lblCajero.Text = System.DbRepository.Nombre.ToUpper();
             lblTitle.Text = System.DbRepository.GetConfig("EMPRESA");
             txtCodigo.Focus();
-            lblTotal.Text = LstArticulos.SubTotal.ToString("$ 0.00");//Seteamos as Cero el total
+            this.tblArticulosList.Clear();
 
             tblArticulosList.Columns.Add("ID");
             tblArticulosList.Columns.Add("DESC");
@@ -125,15 +107,10 @@ namespace PuntoDeVentas {
             tblArticulosList.Columns.Add("CANTIDAD");
             tblArticulosList.Columns.Add("TOTAL");
             tblArticulosList.Columns.Add("INVENTARIO");
+            
 
         }
-
-        private void button2_Click(object sender, EventArgs e) {
-            ClearList();
-
-        }
-
-
+        
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == 13) {
                 txtCodigo.Focus();
@@ -167,7 +144,7 @@ namespace PuntoDeVentas {
                     }
                     break;
                 case Keys.F1://F1
-                    if (LstArticulos.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
+                    if (this.LstArticulos.Items.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
                         FRM_Total wndTotal = new FRM_Total();
                         wndTotal.Total = LstArticulos.SubTotal;
                         //Lista de articulo para imprimir
@@ -219,11 +196,13 @@ namespace PuntoDeVentas {
                     break;
 
                 case Keys.Up:
-                    pnlCobranza.ScrollControlIntoView(LstArticulos.SelectPrev());
+                    var PrevSelected = LstArticulos.SelectPrev();
+                    pnlCobranza.ScrollControlIntoView(PrevSelected);
                     break;
 
                 case Keys.Down:
-                    pnlCobranza.ScrollControlIntoView(LstArticulos.SelectNext());
+                    var NextSelected = LstArticulos.SelectNext();
+                    pnlCobranza.ScrollControlIntoView(NextSelected);
                     break;
 
                 case (Keys.Control | Keys.Delete):
@@ -331,6 +310,8 @@ namespace PuntoDeVentas {
                         txtCodigo.Text = "";
                         txtCantidad.Text = "1";
 
+
+
                     } else { //Si el articulo no existe
 
                         Functions.Message("NO EXISTE EL ARTICULO!");
@@ -344,10 +325,7 @@ namespace PuntoDeVentas {
         }
 
         #endregion
-
-        private void lblCajero_Click(object sender, EventArgs e) {
-
-        }
+              
 
 
     }

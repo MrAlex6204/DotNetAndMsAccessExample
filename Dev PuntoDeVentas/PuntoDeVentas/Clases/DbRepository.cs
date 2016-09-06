@@ -50,6 +50,7 @@ namespace System {
 
         public struct ArticuloInfo//Estructura para guardar la informacion de un articulo 
         {
+            
             public string ID;
             public string DESCRIPCION;
             public string PRECIO;
@@ -196,7 +197,7 @@ namespace System {
             }
         }
 
-        //Funcion para obtener configuraciones de la tabla TBL_CONFIG
+        //FUNCION PARA OBTENER CONFIGURACIONES DE LA TABLA TBL_CONFIG
         public static string GetConfig(string Config_Name) {
             DataTable TblResult;
             string Qry =
@@ -312,11 +313,7 @@ namespace System {
             }
 
         }
-
-
-
-
-
+        
         //FUNCION PARA BUSCAR UN ARTICULO POR DESCRIPCION EN LA BD
         public static DataTable BuscarArticulo(string Buscar) {
             DataTable TblResult;
