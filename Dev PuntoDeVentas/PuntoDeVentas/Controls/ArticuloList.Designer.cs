@@ -1,5 +1,5 @@
 ﻿namespace PuntoDeVentas{
-    partial class ArticuloList {
+    public partial class ArticuloList {
         /// <summary> 
         /// Required designer variable.
         /// </summary>
@@ -36,7 +36,7 @@
             this.pnlCobranza.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnlCobranza.Location = new System.Drawing.Point(0, 0);
             this.pnlCobranza.Name = "pnlCobranza";
-            this.pnlCobranza.Size = new System.Drawing.Size(546, 402);
+            this.pnlCobranza.Size = new System.Drawing.Size(583, 402);
             this.pnlCobranza.TabIndex = 24;
             this.pnlCobranza.WrapContents = false;
             // 

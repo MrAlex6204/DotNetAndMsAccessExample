@@ -162,7 +162,7 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(17, 86);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(947, 11);
+            this.panel1.Size = new System.Drawing.Size(966, 11);
             this.panel1.TabIndex = 16;
             // 
             // lblEliminado
@@ -172,7 +172,7 @@
             this.lblEliminado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.lblEliminado.Image = ((System.Drawing.Image)(resources.GetObject("lblEliminado.Image")));
             this.lblEliminado.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lblEliminado.Location = new System.Drawing.Point(773, 47);
+            this.lblEliminado.Location = new System.Drawing.Point(780, 47);
             this.lblEliminado.Name = "lblEliminado";
             this.lblEliminado.Size = new System.Drawing.Size(201, 39);
             this.lblEliminado.TabIndex = 15;
@@ -197,9 +197,9 @@
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblArticulo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.MinimumSize = new System.Drawing.Size(938, 101);
+            this.MinimumSize = new System.Drawing.Size(994, 108);
             this.Name = "ArticuloItem";
-            this.Size = new System.Drawing.Size(975, 108);
+            this.Size = new System.Drawing.Size(994, 108);
             this.ResumeLayout(false);
             this.PerformLayout();
 

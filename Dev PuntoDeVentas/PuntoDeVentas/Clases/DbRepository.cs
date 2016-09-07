@@ -50,13 +50,28 @@ namespace System {
 
         public struct ArticuloInfo//Estructura para guardar la informacion de un articulo 
         {
-            
+
             public string ID;
             public string DESCRIPCION;
             public string PRECIO;
             public string INV;
             public string UNIDAD;
             public bool EXIST;//si el articulo existe devuelve true
+
+            public  string ToString(double Cantidad) {
+                var ArticuloDesc = string.Format(
+                                                 "{4}\n"+   
+                                                 "Cant: {0} @ ${1} = {2} Unidad: {5} Codigo: {3}",
+                                                Cantidad.ToString("0.00"),
+                                                Double.Parse(this.PRECIO),
+                                                (Double.Parse(this.PRECIO) * Cantidad).ToString("0.00"),
+                                                this.ID,
+                                                this.DESCRIPCION,
+                                                this.UNIDAD
+                                                );
+
+                return ArticuloDesc;
+            }
         }
 
         public struct CorteDeCajaInfo// ESTRUCTURA PARA GUARDAR INFORMACION DEL CORTE DE CAJA
@@ -148,30 +163,30 @@ namespace System {
         public static Usuario GetUsuario(int Id) {
 
             Assembly assembly = Assembly.GetExecutingAssembly();
-            var rootPath  = System.IO.Path.GetDirectoryName(assembly.Location);
+            var rootPath = System.IO.Path.GetDirectoryName(assembly.Location);
             NHibernate.JetDriver.JetDriver jetDriver = new NHibernate.JetDriver.JetDriver();
-                        
 
-            var configuration = new NHibernate.Cfg.Configuration()              
+
+            var configuration = new NHibernate.Cfg.Configuration()
                                     .SetProperty(NEnvironment.Dialect, typeof(NHibernate.JetDriver.JetDialect).AssemblyQualifiedName)
                                     .SetProperty(NEnvironment.ConnectionDriver, typeof(NHibernate.JetDriver.JetDriver).AssemblyQualifiedName)
                                     .SetProperty(NEnvironment.ConnectionProvider, typeof(DriverConnectionProvider).FullName)
                                     .SetProperty(NEnvironment.ShowSql, "true")
-                                    .SetProperty(NEnvironment.ConnectionString, string.Format(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source="+ rootPath +@"\DB\dbVentas.mdb;User Id=admin;Password="));
-            
+                                    .SetProperty(NEnvironment.ConnectionString, string.Format(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + rootPath + @"\DB\dbVentas.mdb;User Id=admin;Password="));
+
             configuration.AddAssembly(assembly);
-                       
-            
-            var sessions =  configuration.BuildSessionFactory();
+
+
+            var sessions = configuration.BuildSessionFactory();
 
             NHibernate.ISession session = sessions.OpenSession();
 
-            
+
 
             return session.Get<Usuario>(Id);
 
         }
-        
+
         //FUNCION PARA VALIDAR SI UN USUARIO EXISTE EN EL LOGIN
         public static bool ValidarUsuario(string Login, string Password) {
             //consulta para validar si el usuario existe!
@@ -287,7 +302,7 @@ namespace System {
                 QryUpdate = QryUpdate.Replace("@UNIDAD", Unidad.ToUpper().Trim().Replace(",", ""));
                 QryUpdate = QryUpdate.Replace("@INV", Convert.ToInt16(Inv).ToString());//Convertimos a entero la variable bool para que guarde 1 o 0
 
-                if (Execute(QryUpdate) > 0){//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL 
+                if (Execute(QryUpdate) > 0) {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL 
                     return true;//Retornamos True si la funcion _Execute nos regresa mas 0
 
                 } else {
@@ -303,7 +318,7 @@ namespace System {
                 QryInsert = QryInsert.Replace("@UNIDAD", Unidad.ToUpper().Trim().Replace(",", ""));
                 QryInsert = QryInsert.Replace("@INV", Convert.ToInt16(Inv).ToString());//Convertimos a entero la variable bool para que guarde 1 o 0
 
-                if (Execute(QryInsert) > 0){//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL {
+                if (Execute(QryInsert) > 0) {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL {
                     return true;//Retornamos True si la funcion _Execute nos regresa mas 0
 
                 } else {
@@ -313,7 +328,7 @@ namespace System {
             }
 
         }
-        
+
         //FUNCION PARA BUSCAR UN ARTICULO POR DESCRIPCION EN LA BD
         public static DataTable BuscarArticulo(string Buscar) {
             DataTable TblResult;
@@ -423,7 +438,7 @@ namespace System {
             " SET [OPEN]= False,[CORTE_DE_CAJA]=NOW()" +
             " WHERE USR_ID= @USR_ID AND [OPEN]= True ";
             QryCerrarCaja = QryCerrarCaja.Replace("@USR_ID", UsrId.Replace("'", ""));
-            if (Execute(QryCerrarCaja) > 0){//EJECUTAMOS LA CONSULTA , SI HAY HAY REGISTROS AFECTADOS NOS REGRESA EL TOTAL DE REGISTROS AFECTADO POR LA CONSULTA {
+            if (Execute(QryCerrarCaja) > 0) {//EJECUTAMOS LA CONSULTA , SI HAY HAY REGISTROS AFECTADOS NOS REGRESA EL TOTAL DE REGISTROS AFECTADO POR LA CONSULTA {
                 return true;
             } else {
                 return false;
@@ -580,13 +595,13 @@ namespace System {
 
         #region  <FUNCION PARA IMPRIMR EL TIKET>
 
-        private static DataTable _ArticulosList = new DataTable();
+        private static ArticuloItemCollection _ArticulosList = new ArticuloItemCollection();
         private static string _Total = "";//Total de la venta
         private static string _Pago = "";//Pago del efectivo 
         private static string _Cambio = "";//Cambio del cliente
 
         //PROPIEDAD PARA ESTABLECER LOS ARTICULOS A IMPRIMIR
-        public static DataTable ArticulosParaImprimir {
+        public static ArticuloItemCollection ArticulosParaImprimir {
             set {
                 _ArticulosList = value;
             }
@@ -617,8 +632,7 @@ namespace System {
                 Font font1 = new Font("Consolas", 12f, FontStyle.Regular);
                 Font font2 = new Font("Consolas", (float)PiedePagTam, FontStyle.Regular);
                 Font font4 = new Font("Courier New", 8f, FontStyle.Bold);
-                Font font5 = new Font("Courier New", 10f, FontStyle.Bold);
-                Font font6 = new Font("Courier New", 8f, FontStyle.Regular);
+
                 Font font7 = new Font("Courier New", 7f, FontStyle.Bold);
                 Font font8 = new Font("Consolas", (float)TituloTam, FontStyle.Bold);
                 Font font9 = new Font("Courier New", 8f, FontStyle.Bold);
@@ -636,17 +650,23 @@ namespace System {
                 e.Graphics.DrawString("-------------------------------------------------", font4, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
                 int iCount = 1;
-                foreach (DataRow dataRow in _ArticulosList.Rows) {
 
-                    string Articulo = iCount.ToString() + "-" + dataRow["DESC"].ToString();
-                    string Cantidad = "CANT.: " + (Convert.ToDouble(dataRow["CANTIDAD"].ToString()).ToString("00.00") + " @ $" + (Convert.ToDouble(dataRow["PRECIO"].ToString())).ToString("00.00") + " = $" + (Convert.ToDouble(dataRow["TOTAL"].ToString())).ToString("00.00"));
+                foreach (ArticuloItem Item in _ArticulosList) {
 
-                    e.Graphics.DrawString(Articulo, font5, Brushes.Black, PosX, PosY);
+                    var Articulo = iCount.ToString() + "-" + Item.Articulo.DESCRIPCION;
+                    var Cantidad = "CANT.: " + Item.Cantidad.ToString("00.00") + " @ $" + Convert.ToDouble(Item.Articulo.PRECIO).ToString("00.00") + " = $" + Item.Total.ToString("00.00");
+
+                    var FontColor = Item.IsDeleted ? Brushes.Gray : Brushes.Black;
+                    var ArticuloDescFont = Item.IsDeleted ? new Font("Courier New", 10f, FontStyle.Strikeout) : new Font("Courier New", 10f, FontStyle.Bold);
+                    var ArticuloDetailFont = Item.IsDeleted ? new Font("Courier New", 8f, FontStyle.Strikeout) : new Font("Courier New", 8f, FontStyle.Regular);
+                    
+                    e.Graphics.DrawString(Articulo, ArticuloDescFont, FontColor, PosX, PosY);
                     PosY += 14;
-                    e.Graphics.DrawString(Cantidad, font6, Brushes.Black, PosX, PosY);
+                    e.Graphics.DrawString(Cantidad, ArticuloDetailFont, FontColor, PosX, PosY);
                     PosY += 14;
                     iCount++;
                 }
+
                 e.Graphics.DrawString("-------------------------------------------------", font4, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
                 e.Graphics.DrawString("TOTAL    : $ " + _Total.ToString(), font4, Brushes.Black, PosX, PosY);

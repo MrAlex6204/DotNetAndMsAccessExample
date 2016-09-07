@@ -16,55 +16,40 @@ namespace PuntoDeVentas {
         }
 
         #region  <DECLARACIONES>
-
         private bool isFullScreen = false;        
-        private double Total = 0;
-
-        private DataTable tblArticulosList = new DataTable();//Lista de Articulos registrados
         
         #endregion
 
         #region  <FUNCIONES ESPECIALES>
-
-
-        private void AddArtItem(System.DbRepository.ArticuloInfo ArticuloItem, double Cantidad) {//Agrega un Articulo ala lista
-            DataRow ArticuloRow = tblArticulosList.NewRow();
-            ArticuloItem Item = new ArticuloItem(ArticuloItem, Cantidad);
-
-            LstArticulos.Add(Item);
-            
-            ArticuloRow["ID"] = ArticuloItem.ID;
-            ArticuloRow["DESC"] = ArticuloItem.DESCRIPCION;
-            ArticuloRow["PRECIO"] = ArticuloItem.PRECIO;
-            ArticuloRow["CANTIDAD"] = Cantidad;
-            ArticuloRow["TOTAL"] = Item.Total;
-            ArticuloRow["INVENTARIO"] = ArticuloItem.INV;
-
-            //Agregamos el Item a la colleccion para poder calcular el Subtotal
-            //y poder colorear el item agregado
-            tblArticulosList.Rows.Add(ArticuloRow);//Agregamos el articulo ala lista
-            txtCodigo.Focus();
-        }
-
-                
+        
         private void BorrarCuenta()//Borramos todo lo de la cuenta abierta
-        {            
-            Total = 0;
-            lblTotal.Text = Total.ToString("$ 0.00");             
-            tblArticulosList.Rows.Clear();//Borramos la lista de articulos
+        {   
             pnlStatus.Text = "";
-            this.tblArticulosList.Clear();
+            this.LstArticulos.Clear();           
         }
 
         private void GuardarTrans() {
-            foreach (DataRow iRow in tblArticulosList.Rows) {//RECORREMOS TODOS LOS ARTICULOS DE LA LISTA
+            foreach (ArticuloItem Item in this.LstArticulos.Items) {//RECORREMOS TODOS LOS ARTICULOS DE LA LISTA
 
                 //Guarda la lista de articulos en la base de datos
-                System.DbRepository.RegistrarArticulo(iRow["ID"].ToString(), iRow["DESC"].ToString(), iRow["PRECIO"].ToString(), iRow["CANTIDAD"].ToString(), iRow["TOTAL"].ToString(), System.DbRepository.CajeroId);
+                System.DbRepository.RegistrarArticulo(
+                                                        Item.Articulo.ID, 
+                                                        Item.Articulo.DESCRIPCION, 
+                                                        Item.Articulo.PRECIO, 
+                                                        Item.Cantidad.ToString(), 
+                                                        Item.Total.ToString(), 
+                                                        System.DbRepository.CajeroId
+                                                     );
 
-                if (iRow["INVENTARIO"].ToString().ToUpper().Trim() == "TRUE") {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
+                if (Item.Articulo.INV == "TRUE") {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
                     //REGISTRAMOS LA SALIDA DEL INVENTARIO DEL ARTICULO
-                    System.DbRepository.InvRegistrarArticulo(iRow["ID"].ToString(), "0", iRow["CANTIDAD"].ToString(), System.DbRepository.CajeroId, "**VENTA**");
+                    System.DbRepository.InvRegistrarArticulo(
+                                                                Item.Articulo.ID, "0", 
+                                                                Item.Cantidad.ToString(), 
+                                                                System.DbRepository.CajeroId, 
+                                                                "**VENTA**"
+                                                             );
+
                 }
 
             }
@@ -94,31 +79,19 @@ namespace PuntoDeVentas {
         }
 
         private void FRM_Cbza_Load(object sender, EventArgs e) {
+
             pnlStatus.Text = "";
             txtCodigo.Text = "";
             lblCajero.Text = System.DbRepository.Nombre.ToUpper();
             lblTitle.Text = System.DbRepository.GetConfig("EMPRESA");
             txtCodigo.Focus();
-            this.tblArticulosList.Clear();
-
-            tblArticulosList.Columns.Add("ID");
-            tblArticulosList.Columns.Add("DESC");
-            tblArticulosList.Columns.Add("PRECIO");
-            tblArticulosList.Columns.Add("CANTIDAD");
-            tblArticulosList.Columns.Add("TOTAL");
-            tblArticulosList.Columns.Add("INVENTARIO");
+            this.LstArticulos.Clear();
             
 
         }
-        
-        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == 13) {
-                txtCodigo.Focus();
-            }
-        }
-        
+                
         private void FRM_Cbza_FormClosing(object sender, FormClosingEventArgs e) {
-            if (Total > 0) {
+            if (this.LstArticulos.Items.SubTotal > 0) {
                 if (MessageBox.Show("Desea Salir de la Cbza?", "Desea salir ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                     e.Cancel = false;
                 } else {
@@ -127,9 +100,21 @@ namespace PuntoDeVentas {
             }
         }
 
+        private void LstArticulos_OnChange(object sende, object e) {
+            //Actualizar el total en pantalla
+            lblTotal.Text = String.Format("$ {0}", ((ArticuloList.SubtotalInfo)e).Total.ToString("0.00"));
+            lblArticuloCount.Text = String.Format("CANT. ARTICULOS : {0}", ((ArticuloList.SubtotalInfo)e).Count.ToString("00"));
+        }
+
         #endregion
 
         #region EVENTOS DEL TECLADO
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar == 13) {
+                txtCodigo.Focus();
+            }
+        }
 
         private void Wnd_KeyDown(object sender, KeyEventArgs e) {
 
@@ -146,11 +131,12 @@ namespace PuntoDeVentas {
                 case Keys.F1://F1
                     if (this.LstArticulos.Items.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
                         FRM_Total wndTotal = new FRM_Total();
-                        wndTotal.Total = LstArticulos.SubTotal;
+                        wndTotal.Total = this.LstArticulos.Items.SubTotal;
                         //Lista de articulo para imprimir
-                        System.DbRepository.ArticulosParaImprimir = tblArticulosList;
+                        System.DbRepository.ArticulosParaImprimir = this.LstArticulos.Items;
 
                         wndTotal.ShowDialog(this);
+
                         if (wndTotal.IsCancelled == false) {//si la transaccion no fue borrada
                             GuardarTrans();//Guardamos la transaccion en la Bd.
                             BorrarCuenta();
@@ -179,7 +165,7 @@ namespace PuntoDeVentas {
                     txtCodigo.Focus();
                     break;
                 case Keys.F7://F7
-                    if (Total > 0) {
+                    if (this.LstArticulos.Items.SubTotal > 0) {
                         if (MessageBox.Show("Desea cancelar la transaccion?", "Cancelar Transaccion?", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                             BorrarCuenta();
                             Functions.Message("TRANSACCION CANCELADA!");
@@ -195,27 +181,28 @@ namespace PuntoDeVentas {
                     FullScreen();
                     break;
 
-                case Keys.Up:
-                    var PrevSelected = LstArticulos.SelectPrev();
-                    pnlCobranza.ScrollControlIntoView(PrevSelected);
+                case Keys.Up://MOVER SELECCION HACIA ARRIBA
+                    var PrevSelected = this.LstArticulos.Items.SelectPrev();
+                    this.LstArticulos.ScrollIntoView(PrevSelected);
+
                     break;
 
-                case Keys.Down:
-                    var NextSelected = LstArticulos.SelectNext();
-                    pnlCobranza.ScrollControlIntoView(NextSelected);
+                case Keys.Down://MOVER SELECCION HACIA ABAJO
+                    var NextSelected = this.LstArticulos.Items.SelectNext();
+                    this.LstArticulos.ScrollIntoView(NextSelected);
+                    
                     break;
 
                 case (Keys.Control | Keys.Delete):
 
-                    if (LstArticulos.Count > 0 && LstArticulos.SelectedItem != null) {
+                    if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null) {
 
-                        if (!LstArticulos.SelectedItem.IsDeleted) {//Solo si el articulo no ha sido eliminado
+                        if (!this.LstArticulos.Items.SelectedItem.IsDeleted) {//Solo si el articulo no ha sido eliminado
 
-                            if (MessageBox.Show("Desea eliminar el articulo :" + LstArticulos.SelectedItem.Articulo.DESCRIPCION + " ?", "Eliminar", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                            if (MessageBox.Show("Desea eliminar el articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Eliminar", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
                                 //Indicar que el Articulo seleccionado esta eliminado
-                                LstArticulos.SelectedItem.IsDeleted = true;
-                                //Actualizar el subtotal con el elemnto eliminado.
-                                lblTotal.Text = LstArticulos.SubTotal.ToString("$ 0.00");
+                                this.LstArticulos.Delete(this.LstArticulos.Items.SelectedItem);                                
+                                
                             }
 
                         }
@@ -226,15 +213,14 @@ namespace PuntoDeVentas {
 
                 case (Keys.Control|Keys.Add):
 
-                    if (LstArticulos.Count > 0 && LstArticulos.SelectedItem != null) {
+                    if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null) {
 
-                        if (LstArticulos.SelectedItem.IsDeleted) {//Solo si el articulo ya fue eliminado
+                        if (this.LstArticulos.Items.SelectedItem.IsDeleted) {//Solo si el articulo ya fue eliminado
 
-                            if (MessageBox.Show("Volver agregar este articulo :" + LstArticulos.SelectedItem.Articulo.DESCRIPCION + " ?", "Volver agregar?", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                            if (MessageBox.Show("Volver agregar este articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Volver agregar?", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
                                 //Indicar que el Articulo seleccionado esta eliminado
-                                LstArticulos.SelectedItem.IsDeleted = false;
-                                //Actualizar el subtotal con el elemnto eliminado.
-                                lblTotal.Text = LstArticulos.SubTotal.ToString("$ 0.00");
+                                this.LstArticulos.Restore(this.LstArticulos.Items.SelectedItem);                                
+                                
                             }
 
                         }
@@ -272,8 +258,9 @@ namespace PuntoDeVentas {
 
                         var Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
 
-                        if (Articulo.EXIST) {
-                            pnlStatus.Text = "Desc : " + Articulo.DESCRIPCION.ToUpper() + " $ " + Articulo.PRECIO + " Unidad :" + Articulo.UNIDAD;
+                        if (Articulo.EXIST) {                            
+                            var Cantidad = double.Parse(txtCantidad.Text);
+                            pnlStatus.Text = Articulo.ToString(Cantidad);
                         } else {
                             pnlStatus.Text = "** NO EXISTE **";
                         }
@@ -285,8 +272,7 @@ namespace PuntoDeVentas {
             }
 
         }
-
-
+        
         private void ArticuloCode_KeyDown(object sender, KeyEventArgs e) {
 
             switch (e.KeyCode) { 
@@ -295,17 +281,16 @@ namespace PuntoDeVentas {
 
                     //Declaramos una variable tipo ArticuloInfo y 
                     //obtenemos la informacion del articulo pasando le el codigo
-                    System.DbRepository.ArticuloInfo ArticuloItem = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
-
-                    double Cantidad = (Convert.ToDouble(txtCantidad.Text));
-
+                    System.DbRepository.ArticuloInfo Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
+                    
                     //Si el Articulo Existe agregar a la lista
-                    if (ArticuloItem.EXIST) {
-                        //Agregar Articulo ala Lista en el Control
-                        AddArtItem(ArticuloItem, Cantidad);
-
-                        //Mostramos en pantalla el total acumulado
-                        lblTotal.Text = LstArticulos.SubTotal.ToString("$ 0.00");
+                    if (Articulo.EXIST) {
+                        double Cantidad = (Convert.ToDouble(txtCantidad.Text));
+                        ArticuloItem Item = new ArticuloItem(Articulo, Cantidad); 
+                        
+                        //Agregamos el Item a la lista
+                        LstArticulos.Add(Item);
+                        
                         txtCodigo.Focus();
                         txtCodigo.Text = "";
                         txtCantidad.Text = "1";
@@ -325,6 +310,9 @@ namespace PuntoDeVentas {
         }
 
         #endregion
+
+        
+
               
 
 

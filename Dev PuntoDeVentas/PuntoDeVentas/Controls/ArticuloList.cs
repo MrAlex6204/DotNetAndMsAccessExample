@@ -16,10 +16,16 @@ namespace PuntoDeVentas {
     public partial class ArticuloList : UserControl {
 
         private System.ArticuloItemCollection _LstArticulos = new System.ArticuloItemCollection();
-        public delegate void OnChangeHandler (object sende, object e);
 
-        public OnChangeHandler OnChange;
-        
+        public delegate void OnChangeHandler (object sende, object e);
+        public event OnChangeHandler OnChange;
+
+        public struct SubtotalInfo {
+            public int Count;
+            public double Total;
+        }
+
+
         public ArticuloList() {
 
             InitializeComponent();
@@ -27,11 +33,11 @@ namespace PuntoDeVentas {
             this.SetStyle(ControlStyles.ContainerControl, true);
 
         }
-
-
-        public ArticuloItemCollection Articulos {
+        
+        public ArticuloItemCollection Items {
 
             get {
+                
                 return _LstArticulos;
 
             }
@@ -47,37 +53,46 @@ namespace PuntoDeVentas {
         public ArticuloItem Add(ArticuloItem Item) {
 
             Item.Dock = DockStyle.Top;
-            this.Articulos.Add(Item);
-            this.Articulos.SelectedItem = Item;
+            this.Items.Add(Item);
+            this.Items.SelectedItem = Item;
             pnlCobranza.Controls.Add(Item);            
             pnlCobranza.ScrollControlIntoView(Item);
 
-
-            if( OnChange != null){
-                OnChange.Invoke(this, this.Articulos.SubTotal);
-            }
+            _RaiseEvent();        
 
             return Item;
         }
 
-        public ArticuloItem Remove(ArticuloItem Item) {
+        public ArticuloItem Delete(ArticuloItem Item) {
 
             Item.IsDeleted = true;
 
+            _RaiseEvent();
+            
+            return Item;
+        }
 
-            if (OnChange != null) {
-                OnChange.Invoke(this, this.Articulos.SubTotal);
-            }
+        public ArticuloItem Restore(ArticuloItem Item) {
+            Item.IsDeleted = false;
+
+            _RaiseEvent();
 
             return Item;
         }
 
         public void Clear() {
             _LstArticulos.Clear();
+            pnlCobranza.Controls.Clear();
+
+            _RaiseEvent();
+        }
+
+        private void _RaiseEvent() {
 
             if (OnChange != null) {
-                OnChange.Invoke(this, this.Articulos.SubTotal);
+                OnChange.Invoke(this, new SubtotalInfo { Total = this.Items.SubTotal, Count = this.Items.Count });
             }
+
         }
         
 
