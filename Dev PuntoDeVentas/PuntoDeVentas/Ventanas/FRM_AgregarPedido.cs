@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PuntoDeVentas.Models;
 
 namespace PuntoDeVentas
 {
@@ -57,7 +58,7 @@ namespace PuntoDeVentas
             wndConsultarArt.ShowDialog(this);
 
             if (wndConsultarArt.ArticuloId != "") {
-                System.DbRepository.ArticuloInfo Info = new System.DbRepository.ArticuloInfo();
+                ArticuloInfo Info = new ArticuloInfo();
                Info= System.DbRepository.GetArticuloInfo(wndConsultarArt.ArticuloId);
                 if (Info.EXIST)
                 { //Si el articulo existe

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.ComponentModel.Design;
-
+using PuntoDeVentas.Models;
 namespace System {
 
     public partial class ArticuloItem : UserControl {
@@ -15,7 +15,7 @@ namespace System {
         private bool _bIsSelected = false;
         private int _Position = 0;
         private double _Cantidad = 0;
-        private System.DbRepository.ArticuloInfo _Articulo;
+        private ArticuloInfo _Articulo;
         private bool _bIsDeleted = false;
         
         private void _SetSelectionColor() {
@@ -69,7 +69,7 @@ namespace System {
         }
                
 
-        public ArticuloItem(System.DbRepository.ArticuloInfo ArticuloItem, double Cantidad) {
+        public ArticuloItem(ArticuloInfo ArticuloItem, double Cantidad) {
             InitializeComponent();
             _SetDefaultColor();
             //Llenamos la informacion del articulo
@@ -107,7 +107,7 @@ namespace System {
             }
         }
 
-        public System.DbRepository.ArticuloInfo Articulo {
+        public ArticuloInfo Articulo {
 
             get {
                 return _Articulo;
@@ -137,7 +137,7 @@ namespace System {
         }
 
         //Con esta funcion actualizamos la informacion del articulo
-        public void Update(System.DbRepository.ArticuloInfo ArticuloItem, double Cantidad) {
+        public void Update(ArticuloInfo ArticuloItem, double Cantidad) {
 
             this._Cantidad = Cantidad;
             this._Articulo = ArticuloItem;

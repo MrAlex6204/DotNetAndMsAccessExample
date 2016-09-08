@@ -14,7 +14,6 @@ namespace PuntoDeVentas {
 
     [DefaultEvent("OnChange")]
     public partial class ArticuloList : UserControl {
-
         private System.ArticuloItemCollection _LstArticulos = new System.ArticuloItemCollection();
 
         public delegate void OnChangeHandler (object sende, object e);
@@ -31,6 +30,10 @@ namespace PuntoDeVentas {
             InitializeComponent();
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.SetStyle(ControlStyles.ContainerControl, true);
+
+            if (this.DesignMode) {
+                this.BackColor = Color.FromArgb(64, 64, 64);
+            }
 
         }
         

@@ -32,18 +32,18 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlCobranza.AutoScroll = true;
-            this.pnlCobranza.AutoScrollMargin = new System.Drawing.Size(25, 0);
+            this.pnlCobranza.AutoScrollMargin = new System.Drawing.Size(20, 20);
             this.pnlCobranza.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.pnlCobranza.Location = new System.Drawing.Point(0, 0);
             this.pnlCobranza.Name = "pnlCobranza";
-            this.pnlCobranza.Size = new System.Drawing.Size(583, 402);
+            this.pnlCobranza.Size = new System.Drawing.Size(539, 424);
             this.pnlCobranza.TabIndex = 24;
             this.pnlCobranza.WrapContents = false;
             // 
             // ArticuloList
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackColor = System.Drawing.Color.Transparent;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.Controls.Add(this.pnlCobranza);
             this.Name = "ArticuloList";
             this.Size = new System.Drawing.Size(519, 402);

@@ -6,26 +6,28 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PuntoDeVentas.Models;
 
 namespace PuntoDeVentas {
 
     public partial class FRM_Cbza : Controls.BaseForm {
 
         public FRM_Cbza() {
-            InitializeComponent();         
+            InitializeComponent();
         }
 
         #region  <DECLARACIONES>
-        private bool isFullScreen = false;        
+
         
+
         #endregion
 
         #region  <FUNCIONES ESPECIALES>
-        
+
         private void BorrarCuenta()//Borramos todo lo de la cuenta abierta
-        {   
+        {
             pnlStatus.Text = "";
-            this.LstArticulos.Clear();           
+            this.LstArticulos.Clear();
         }
 
         private void GuardarTrans() {
@@ -33,20 +35,20 @@ namespace PuntoDeVentas {
 
                 //Guarda la lista de articulos en la base de datos
                 System.DbRepository.RegistrarArticulo(
-                                                        Item.Articulo.ID, 
-                                                        Item.Articulo.DESCRIPCION, 
-                                                        Item.Articulo.PRECIO, 
-                                                        Item.Cantidad.ToString(), 
-                                                        Item.Total.ToString(), 
+                                                        Item.Articulo.ID,
+                                                        Item.Articulo.DESCRIPCION,
+                                                        Item.Articulo.PRECIO,
+                                                        Item.Cantidad.ToString(),
+                                                        Item.Total.ToString(),
                                                         System.DbRepository.CajeroId
                                                      );
 
                 if (Item.Articulo.INV == "TRUE") {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
                     //REGISTRAMOS LA SALIDA DEL INVENTARIO DEL ARTICULO
                     System.DbRepository.InvRegistrarArticulo(
-                                                                Item.Articulo.ID, "0", 
-                                                                Item.Cantidad.ToString(), 
-                                                                System.DbRepository.CajeroId, 
+                                                                Item.Articulo.ID, "0",
+                                                                Item.Cantidad.ToString(),
+                                                                System.DbRepository.CajeroId,
                                                                 "**VENTA**"
                                                              );
 
@@ -54,21 +56,7 @@ namespace PuntoDeVentas {
 
             }
         }
-
-        private void FullScreen() {
-            
-            if (isFullScreen) {
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-                this.WindowState = FormWindowState.Normal;
-            } else {
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                this.WindowState = FormWindowState.Maximized;
-            }
-
-            isFullScreen = !isFullScreen;
-
-        }
-
+        
         #endregion
 
         #region  <EVENTOS DEL FORMULARIO>
@@ -86,10 +74,10 @@ namespace PuntoDeVentas {
             lblTitle.Text = System.DbRepository.GetConfig("EMPRESA");
             txtCodigo.Focus();
             this.LstArticulos.Clear();
+            this.txtCodigo.Focus();
             
-
         }
-                
+
         private void FRM_Cbza_FormClosing(object sender, FormClosingEventArgs e) {
             if (this.LstArticulos.Items.SubTotal > 0) {
                 if (MessageBox.Show("Desea Salir de la Cbza?", "Desea salir ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
@@ -110,6 +98,28 @@ namespace PuntoDeVentas {
 
         #region EVENTOS DEL TECLADO
 
+        //Opciones del teclado
+        private const Keys
+                 BUSCAR_ARTICULO = Keys.Escape,
+                 COBRAR = Keys.F1,
+                 REGISTRAR_NVO_ARTICULO = Keys.F2,
+                 CORTE_DE_CAJA = Keys.F3,
+                 CERRA = Keys.F4,
+                 FOCUS_EN_CANTIDAD = Keys.F5,
+                 FOCUS_EN_CODIGO = Keys.F6,
+                 CANCELAR_TRANSACCION = Keys.F7,
+                 VENTA_DEL_DIA = Keys.F8,
+                 FULLSCREEN = Keys.F11,
+                 MOVER_SELECCION_HACIA_ARRIBA = Keys.Up,
+                 MOVER_SELECCION_HACIA_ABAJO = Keys.Down,
+                 ELIMINAR_ARTICULO_SELECCIONADO = (Keys.Control | Keys.Delete),
+                 RESTAURAR_ARTICULO_ELIMINADO = (Keys.Control | Keys.Add),
+                 INCREMENTAR_CANTIDAD = (Keys.Control | Keys.Up),
+                 DECREMENTAR_CANTIDAD = (Keys.Control | Keys.Down),
+                 CONSULTAR_ARTICULO = (Keys.Control | Keys.Tab),
+                 SCREEN_LEFT = (Keys.Control | Keys.Left),
+                 SCREEN_RIGHT = (Keys.Control | Keys.Right);
+
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e) {
             if (e.KeyChar == 13) {
                 txtCodigo.Focus();
@@ -117,18 +127,22 @@ namespace PuntoDeVentas {
         }
 
         private void Wnd_KeyDown(object sender, KeyEventArgs e) {
+            var OPCION = e.KeyData;
 
-            switch (e.KeyData)//Seleccionar el la funcion de acuerdo ala tecla presionada.
+            switch (OPCION)//===>Seleccionar el la funcion de acuerdo ala tecla presionada.
             {
-                case Keys.Escape:
+                case BUSCAR_ARTICULO:
+
                     FRM_ConsultarArticulos wndBuscarArt = new FRM_ConsultarArticulos();
                     wndBuscarArt.ShowDialog(this);
                     if (wndBuscarArt.ArticuloId.Trim() != "") {//Si el articulo id es diferente a vacion
                         txtCodigo.Text = wndBuscarArt.ArticuloId;//le pasamos el textbox codigo el id del articulo
                         txtCodigo.Focus();
                     }
+
                     break;
-                case Keys.F1://F1
+                case COBRAR:
+
                     if (this.LstArticulos.Items.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
                         FRM_Total wndTotal = new FRM_Total();
                         wndTotal.Total = this.LstArticulos.Items.SubTotal;
@@ -147,53 +161,78 @@ namespace PuntoDeVentas {
                     }
 
                     break;
-                case Keys.F2://F2
+                case REGISTRAR_NVO_ARTICULO:
+
                     FRM_AgregarArticulo wndAgregarArt = new FRM_AgregarArticulo();
                     wndAgregarArt.ShowDialog(this);
+
                     break;
-                case Keys.F3://F3
+                case CORTE_DE_CAJA://F3
+
                     FRM_CorteDeCaja wndCorteDeCaja = new FRM_CorteDeCaja();
                     wndCorteDeCaja.ShowDialog(this);
+
                     break;
-                case Keys.F4://F4
+                case CERRA:
+
                     this.Close();
+
                     break;
-                case Keys.F5://F5
+                case FOCUS_EN_CANTIDAD:
+
                     txtCantidad.Focus();
+
                     break;
-                case Keys.F6://F6
+                case FOCUS_EN_CODIGO:
+
                     txtCodigo.Focus();
+
                     break;
-                case Keys.F7://F7
+                case CANCELAR_TRANSACCION:
+
                     if (this.LstArticulos.Items.SubTotal > 0) {
                         if (MessageBox.Show("Desea cancelar la transaccion?", "Cancelar Transaccion?", MessageBoxButtons.YesNo) == DialogResult.Yes) {
                             BorrarCuenta();
                             Functions.Message("TRANSACCION CANCELADA!");
                         }
                     }
+
                     break;
-                case Keys.F8:
+                case VENTA_DEL_DIA:
+
                     FRM_VentaDelDia wndVentaDelDia = new FRM_VentaDelDia();
                     wndVentaDelDia.ShowDialog(this);
-                    break;
 
-                case Keys.F11:
-                    FullScreen();
                     break;
+                case FULLSCREEN:
 
-                case Keys.Up://MOVER SELECCION HACIA ARRIBA
+                    FullScreenToggle();
+
+                    break;
+                case SCREEN_LEFT:
+
+                    this.SplitLeft();
+
+                    break;
+                case SCREEN_RIGHT:
+
+                    this.SplitRigth();
+
+                    break;
+                case MOVER_SELECCION_HACIA_ARRIBA:
+
                     var PrevSelected = this.LstArticulos.Items.SelectPrev();
                     this.LstArticulos.ScrollIntoView(PrevSelected);
 
-                    break;
 
-                case Keys.Down://MOVER SELECCION HACIA ABAJO
+                    break;
+                case MOVER_SELECCION_HACIA_ABAJO:
+
                     var NextSelected = this.LstArticulos.Items.SelectNext();
                     this.LstArticulos.ScrollIntoView(NextSelected);
-                    
-                    break;
 
-                case (Keys.Control | Keys.Delete):
+                    break;
+                case ELIMINAR_ARTICULO_SELECCIONADO:
 
                     if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null) {
 
@@ -201,8 +240,8 @@ namespace PuntoDeVentas {
 
                             if (MessageBox.Show("Desea eliminar el articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Eliminar", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
                                 //Indicar que el Articulo seleccionado esta eliminado
-                                this.LstArticulos.Delete(this.LstArticulos.Items.SelectedItem);                                
-                                
+                                this.LstArticulos.Delete(this.LstArticulos.Items.SelectedItem);
+
                             }
 
                         }
@@ -210,8 +249,7 @@ namespace PuntoDeVentas {
                     }
 
                     break;
-
-                case (Keys.Control|Keys.Add):
+                case RESTAURAR_ARTICULO_ELIMINADO:
 
                     if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null) {
 
@@ -219,46 +257,45 @@ namespace PuntoDeVentas {
 
                             if (MessageBox.Show("Volver agregar este articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Volver agregar?", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
                                 //Indicar que el Articulo seleccionado esta eliminado
-                                this.LstArticulos.Restore(this.LstArticulos.Items.SelectedItem);                                
-                                
+                                this.LstArticulos.Restore(this.LstArticulos.Items.SelectedItem);
+
                             }
 
                         }
                     }
 
                     break;
-
-                case (Keys.Control | Keys.Up)://Incrementar la cantidad del articulo
+                case INCREMENTAR_CANTIDAD:
 
                     int IncrementarCantidad = 0;
 
-                    int.TryParse(txtCantidad.Text.Trim(), out IncrementarCantidad);
-
-                    IncrementarCantidad++;
-
-                    txtCantidad.Text = IncrementarCantidad.ToString();
-
-                    break;
-
-                case (Keys.Control | Keys.Down)://Decrementar la cantidad del articulo
-
-                    int DecrementarCantidad= 0;
-
-                    int.TryParse(txtCantidad.Text.Trim(), out DecrementarCantidad);
-
-                    DecrementarCantidad--;
-
-                    txtCantidad.Text = DecrementarCantidad.ToString();
+                    if (int.TryParse(txtCantidad.Text.Trim(), out IncrementarCantidad)) {
+                        IncrementarCantidad++;
+                        txtCantidad.Text = IncrementarCantidad.ToString();
+                    }
 
                     break;
+                case DECREMENTAR_CANTIDAD:
 
-                case (Keys.Control | Keys.Tab):
+                    int DecrementarCantidad = 0;
+
+                    if (int.TryParse(txtCantidad.Text.Trim(), out DecrementarCantidad)) {
+
+                        if (DecrementarCantidad > 1) {
+                            DecrementarCantidad--;
+                            txtCantidad.Text = DecrementarCantidad.ToString();
+                        }
+
+                    }
+
+                    break;
+                case CONSULTAR_ARTICULO:
 
                     if (txtCodigo.Text.Length > 0) {
 
                         var Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
 
-                        if (Articulo.EXIST) {                            
+                        if (Articulo.EXIST) {
                             var Cantidad = double.Parse(txtCantidad.Text);
                             pnlStatus.Text = Articulo.ToString(Cantidad);
                         } else {
@@ -268,29 +305,28 @@ namespace PuntoDeVentas {
                     }
 
                     break;
-
             }
 
         }
-        
+
         private void ArticuloCode_KeyDown(object sender, KeyEventArgs e) {
 
-            switch (e.KeyCode) { 
-            
+            switch (e.KeyCode) {
+
                 case Keys.Enter:
 
                     //Declaramos una variable tipo ArticuloInfo y 
                     //obtenemos la informacion del articulo pasando le el codigo
-                    System.DbRepository.ArticuloInfo Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
-                    
+                    ArticuloInfo Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
+
                     //Si el Articulo Existe agregar a la lista
                     if (Articulo.EXIST) {
                         double Cantidad = (Convert.ToDouble(txtCantidad.Text));
-                        ArticuloItem Item = new ArticuloItem(Articulo, Cantidad); 
-                        
+                        ArticuloItem Item = new ArticuloItem(Articulo, Cantidad);
+
                         //Agregamos el Item a la lista
                         LstArticulos.Add(Item);
-                        
+
                         txtCodigo.Focus();
                         txtCodigo.Text = "";
                         txtCantidad.Text = "1";
@@ -311,10 +347,9 @@ namespace PuntoDeVentas {
 
         #endregion
 
-        
-
-              
-
+        private void label2_Click(object sender, EventArgs e) {
+          
+        }
 
     }
 }

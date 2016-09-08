@@ -9,11 +9,12 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    public partial class FRM_Total : Form
+    public partial class FRM_Total : Controls.BaseForm
     {
         public FRM_Total()
         {
             InitializeComponent();
+            
             this.Activate();
             this.txtPago.Focus();
             this.txtPago.Select();
@@ -28,7 +29,7 @@ namespace PuntoDeVentas
             set {
                 _SubTotal = value;
                 _Total = value;
-                lblTotal.Text = _SubTotal.ToString("$ 0.000");
+                lblTotal.Text = _SubTotal.ToString("$ 0.00");
             }
         }
 

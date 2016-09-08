@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using PuntoDeVentas.Models;
 
 namespace PuntoDeVentas
 {
@@ -70,7 +71,7 @@ namespace PuntoDeVentas
         private void button1_Click(object sender, EventArgs e)
         {
             FRM_ConsultarArticulos wndConsultar = new FRM_ConsultarArticulos();
-            System.DbRepository.ArticuloInfo info = new System.DbRepository.ArticuloInfo();
+            ArticuloInfo info = new ArticuloInfo();
             wndConsultar.ShowDialog(this);
             if (wndConsultar.ArticuloId.Trim() != "") {
                 info = System.DbRepository.GetArticuloInfo(wndConsultar.ArticuloId);
