@@ -122,27 +122,27 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.Transparent;
-            this.panel4.BackgroundImage = global::PuntoDeVentas.Properties.Resources.INPUT_SHORT;
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel4.Controls.Add(this.txtPago);
             this.panel4.Location = new System.Drawing.Point(277, 96);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(98, 28);
+            this.panel4.Size = new System.Drawing.Size(98, 30);
             this.panel4.TabIndex = 21;
             // 
             // txtPago
             // 
-            this.txtPago.BackColor = System.Drawing.Color.White;
+            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPago.Font = new System.Drawing.Font("Segoe UI", 13.5F);
-            this.txtPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.txtPago.Location = new System.Drawing.Point(17, 1);
+            this.txtPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.txtPago.Location = new System.Drawing.Point(3, 3);
             this.txtPago.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPago.Name = "txtPago";
-            this.txtPago.Size = new System.Drawing.Size(65, 24);
+            this.txtPago.Size = new System.Drawing.Size(93, 24);
             this.txtPago.TabIndex = 8;
             this.txtPago.Text = "0";
+            this.txtPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.txtPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPago_KeyPress);
             // 
             // FRM_Total
