@@ -48,7 +48,7 @@ namespace PuntoDeVentas {
             this.panel7 = new System.Windows.Forms.Panel();
             this.LstArticulos = new PuntoDeVentas.ArticuloList();
             this.lblDireccion = new System.Windows.Forms.Label();
-            this.lblPanelTitle.SuspendLayout();
+            this.lblWndPanelTitle.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
@@ -58,15 +58,16 @@ namespace PuntoDeVentas {
             this.panel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblPanelTitle
+            // lblWndPanelTitle
             // 
-            this.lblPanelTitle.BackColor = System.Drawing.Color.Transparent;
-            this.lblPanelTitle.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
-            this.lblPanelTitle.Controls.Add(this.lblCajero);
-            this.lblPanelTitle.Controls.Add(this.pictureBox1);
-            this.lblPanelTitle.Padding = new System.Windows.Forms.Padding(1);
-            this.lblPanelTitle.Controls.SetChildIndex(this.pictureBox1, 0);
-            this.lblPanelTitle.Controls.SetChildIndex(this.lblCajero, 0);
+            this.lblWndPanelTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblWndPanelTitle.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
+            this.lblWndPanelTitle.Controls.Add(this.lblCajero);
+            this.lblWndPanelTitle.Controls.Add(this.pictureBox1);
+            this.lblWndPanelTitle.Padding = new System.Windows.Forms.Padding(1);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(1224, 55);
+            this.lblWndPanelTitle.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.lblWndPanelTitle.Controls.SetChildIndex(this.lblCajero, 0);
             // 
             // lblTitle
             // 
@@ -336,7 +337,7 @@ namespace PuntoDeVentas {
             this.lblDireccion.Padding = new System.Windows.Forms.Padding(6, 0, 0, 0);
             this.lblDireccion.Size = new System.Drawing.Size(944, 22);
             this.lblDireccion.TabIndex = 23;
-            this.lblDireccion.Text = "Sucursal #3. Av. Predro Cardenas Matamoros, Tamaulipas";
+            this.lblDireccion.Text = "[DIRECCION DEL NEGOCIO]";
             this.lblDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FRM_Cbza
@@ -354,7 +355,7 @@ namespace PuntoDeVentas {
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(33)))));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
-            this.MoveWindowBtn = true;
+            this.MoveWindowBox = true;
             this.Name = "FRM_Cbza";
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -363,14 +364,14 @@ namespace PuntoDeVentas {
             this.Load += new System.EventHandler(this.FRM_Cbza_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Wnd_KeyDown);
             this.Controls.SetChildIndex(this.LstArticulos, 0);
-            this.Controls.SetChildIndex(this.lblPanelTitle, 0);
+            this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.panel6, 0);
             this.Controls.SetChildIndex(this.lblDireccion, 0);
-            this.lblPanelTitle.ResumeLayout(false);
-            this.lblPanelTitle.PerformLayout();
+            this.lblWndPanelTitle.ResumeLayout(false);
+            this.lblWndPanelTitle.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

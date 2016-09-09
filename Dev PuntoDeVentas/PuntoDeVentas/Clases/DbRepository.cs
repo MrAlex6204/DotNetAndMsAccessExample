@@ -204,7 +204,7 @@ namespace System {
         }
 
         //FUNCION PARA ACTUALIZAR UNA CONFIGURACION EN LA TABLA CONFIG
-        public static int UpdateConfig(string Config_Name, string Config_Value) {
+        public static bool UpdateConfig(string Config_Name, string Config_Value) {
 
             string QryUpdate =
             " UPDATE TBL_CONFIG" +
@@ -226,12 +226,10 @@ namespace System {
             QryInsert = QryInsert.Replace("@CONFIG_VALUE", Config_Value.Replace("'", ""));
 
             if (tblResult.Rows.Count > 0) {
-                return Execute(QryUpdate);
+                return (Execute(QryUpdate) > 0);
             } else {
-                return Execute(QryInsert);
-            }
-
-
+                return (Execute(QryInsert) > 0);
+            }            
 
         }
 

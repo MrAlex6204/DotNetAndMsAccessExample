@@ -37,22 +37,22 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtPago = new System.Windows.Forms.TextBox();
-            this.lblPanelTitle.SuspendLayout();
+            this.lblWndPanelTitle.SuspendLayout();
             this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblPanelTitle
+            // lblWndPanelTitle
             // 
-            this.lblPanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.lblPanelTitle.Controls.Add(this.label2);
-            this.lblPanelTitle.Size = new System.Drawing.Size(417, 41);
-            this.lblPanelTitle.Controls.SetChildIndex(this.label2, 0);
+            this.lblWndPanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.lblWndPanelTitle.Controls.Add(this.label2);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(415, 42);
+            this.lblWndPanelTitle.Controls.SetChildIndex(this.label2, 0);
             // 
             // lblEfectivo
             // 
             this.lblEfectivo.Font = new System.Drawing.Font("Segoe UI", 13.5F);
             this.lblEfectivo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
-            this.lblEfectivo.Location = new System.Drawing.Point(277, 58);
+            this.lblEfectivo.Location = new System.Drawing.Point(274, 56);
             this.lblEfectivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEfectivo.Name = "lblEfectivo";
             this.lblEfectivo.Size = new System.Drawing.Size(136, 25);
@@ -66,7 +66,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 11.25F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
-            this.label2.Location = new System.Drawing.Point(4, 10);
+            this.label2.Location = new System.Drawing.Point(13, 10);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 20);
@@ -102,10 +102,10 @@
             this.lblTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.lblTotal.Font = new System.Drawing.Font("Consolas", 24.75F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(13, 58);
+            this.lblTotal.Location = new System.Drawing.Point(13, 55);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(166, 71);
+            this.lblTotal.Size = new System.Drawing.Size(176, 71);
             this.lblTotal.TabIndex = 0;
             this.lblTotal.Text = "$ 00.00";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -134,12 +134,12 @@
             // 
             this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPago.Font = new System.Drawing.Font("Segoe UI", 13.5F);
-            this.txtPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.txtPago.Location = new System.Drawing.Point(3, 3);
+            this.txtPago.Font = new System.Drawing.Font("Consolas", 13.75F, System.Drawing.FontStyle.Bold);
+            this.txtPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
+            this.txtPago.Location = new System.Drawing.Point(3, 4);
             this.txtPago.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtPago.Name = "txtPago";
-            this.txtPago.Size = new System.Drawing.Size(93, 24);
+            this.txtPago.Size = new System.Drawing.Size(93, 22);
             this.txtPago.TabIndex = 8;
             this.txtPago.Text = "0";
             this.txtPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -150,7 +150,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.ClientSize = new System.Drawing.Size(417, 147);
+            this.ClientSize = new System.Drawing.Size(415, 138);
             this.Controls.Add(this.panel4);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblEfectivo);
@@ -163,21 +163,19 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FRM_Total";
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.FRM_Total_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FRM_Total_KeyDown);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FRM_Total_KeyPress);
             this.Controls.SetChildIndex(this.label3, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.lblPanelTitle, 0);
+            this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.lblEfectivo, 0);
             this.Controls.SetChildIndex(this.lblTotal, 0);
             this.Controls.SetChildIndex(this.panel4, 0);
-            this.lblPanelTitle.ResumeLayout(false);
-            this.lblPanelTitle.PerformLayout();
+            this.lblWndPanelTitle.ResumeLayout(false);
+            this.lblWndPanelTitle.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.ResumeLayout(false);

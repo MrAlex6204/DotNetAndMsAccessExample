@@ -13,8 +13,8 @@ namespace PuntoDeVentas
     {
         public FRM_Total()
         {
-            InitializeComponent();
-            
+            InitializeComponent();        
+            this._RenderDesign();
             this.Activate();
             this.txtPago.Focus();
             this.txtPago.Select();
@@ -57,6 +57,7 @@ namespace PuntoDeVentas
         {
             txtPago.Focus();
             lblEfectivo.Text = "$ 0.00";
+            this._RenderDesign();
         }
 
         private void txtPago_KeyPress(object sender, KeyPressEventArgs e)

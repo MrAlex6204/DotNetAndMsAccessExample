@@ -29,7 +29,9 @@ namespace PuntoDeVentas
             wndLoading.ShowDialog();            
 #endif           
 
-            //Release
+            //Load main configuartions
+            System.Configurations.Load();
+
             wndLogin.ShowDialog(wndVentanaPrinicipal);
 
             if (wndLogin.UserIsLoggued) { 
@@ -38,9 +40,7 @@ namespace PuntoDeVentas
                 wndMenu.ShowDialog(wndVentanaPrinicipal);
                 Application.Run(wndVentanaPrinicipal);            
             }
-
-
-
+            
         }
     }
 }

@@ -68,10 +68,12 @@ namespace PuntoDeVentas {
 
         private void FRM_Cbza_Load(object sender, EventArgs e) {
 
+            lblCajero.Text = System.DbRepository.Nombre.ToUpper();
+            lblTitle.Text = System.Configurations.NombreDelNegocio;
+            lblDireccion.Text = System.Configurations.Direccion;
+
             pnlStatus.Text = "";
             txtCodigo.Text = "";
-            lblCajero.Text = System.DbRepository.Nombre.ToUpper();
-            lblTitle.Text = System.DbRepository.GetConfig("EMPRESA");
             txtCodigo.Focus();
             this.LstArticulos.Clear();
             this.txtCodigo.Focus();

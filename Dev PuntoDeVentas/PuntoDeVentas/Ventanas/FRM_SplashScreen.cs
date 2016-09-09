@@ -14,7 +14,7 @@ namespace PuntoDeVentas
         public FRM_SplashScreen()
         {
             InitializeComponent();
-            lblTitle.Text = System.DbRepository.GetConfig("EMPRESA").ToUpper();
+          
         }
 
         private void tmrEspera_Tick(object sender, EventArgs e)
@@ -69,6 +69,10 @@ namespace PuntoDeVentas
             Application.DoEvents();
             System.Threading.Thread.Sleep(500);
             this.Close();
+        }
+
+        private void FRM_SplashScreen_Load(object sender, EventArgs e) {
+            lblTitle.Text = System.Configurations.NombreDelNegocio;
         }
     }
 }
