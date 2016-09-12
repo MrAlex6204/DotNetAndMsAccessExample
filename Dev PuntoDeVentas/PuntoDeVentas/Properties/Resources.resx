@@ -118,82 +118,88 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="COGS03A" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\COGS03A.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="usr_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usr_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PANE34C" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PANE34C.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1363913224_application_side_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1363913224_application_side_list.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1363913158_Warehouse_icon_3D_rev" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1363913158_Warehouse_icon_3D_rev.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="usr_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usr_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SEARCH_BAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SEARCH_BAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="GENERAL_BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\GENERAL_BG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="1363913219_issue" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\1363913219_issue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LabelHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LabelHolder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Icon01321" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon01321.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="usr_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usr_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="INPUT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\INPUT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LabelHolderDarkGreen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LabelHolderDarkGreen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Shell_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Shell_22.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Icon0132" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Icon0132.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eliminar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="usr_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usr_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="INPUT_SHORT" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\INPUT_SHORT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="PANE00J" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PANE00J.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="LabelHolderDarkGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LabelHolderDarkGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Eliminado" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Eliminado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="usr_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\usr_3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="~SS00L" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\~SS00L.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="us_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\us_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="SUB_BG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\SUB_BG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="eliminar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eliminar.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="INPUT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\INPUT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="usr_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usr_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1363913219_issue" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1363913219_issue.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Shell_22" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Shell_22.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="GENERAL_BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\GENERAL_BG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Icon0132" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Icon0132.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LabelHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LabelHolder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1363913224_application_side_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1363913224_application_side_list.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Eliminado" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Eliminado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="1363913158_Warehouse_icon_3D_rev" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\1363913158_Warehouse_icon_3D_rev.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="FlagSmall" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\FlagSmall.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LabelHolderDarkGreen" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LabelHolderDarkGreen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="usr_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usr_5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="~SS00L" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\~SS00L.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PANE34C" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PANE34C.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="usr_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\usr_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PANE00J" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PANE00J.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="INPUT_SHORT" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\INPUT_SHORT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LINE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LINE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SUB_BG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SUB_BG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="LabelHolderDarkGreen2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LabelHolderDarkGreen2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="COGS03A" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\COGS03A.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="SmallFlag" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\SmallFlag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
