@@ -13,7 +13,6 @@ C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev P
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Iesi.Collections.xml
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\log4net.xml
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\NHibernate.xml
-C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csprojResolveAssemblyReference.cache
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\System.ArticuloItem.resources
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.ArticuloList.resources
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.BaseForm.resources
@@ -89,3 +88,7 @@ C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeV
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.pdb
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csprojResolveAssemblyReference.cache
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.StylizedTextBox.resources
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Office.Interop.Excel.dll
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Vbe.Interop.dll
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.StylizedTextBox.resources
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csprojResolveAssemblyReference.cache

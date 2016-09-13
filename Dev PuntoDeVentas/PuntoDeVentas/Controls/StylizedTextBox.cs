@@ -9,8 +9,10 @@ using System.ComponentModel;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace PuntoDeVentas.Controls {
-    class StylizedTextBox : System.Windows.Forms.TextBox {
+namespace PuntoDeVentas.Controls
+{
+    class StylizedTextBox : System.Windows.Forms.TextBox
+    {
 
         #region TextBoxRenderize
 
@@ -19,14 +21,12 @@ namespace PuntoDeVentas.Controls {
         [DllImport("user32.dll")]
         private static extern IntPtr GetWindowDC(IntPtr hWnd);
 
-
-
-        protected override void OnPaint(PaintEventArgs e) {
+        protected override void OnPaint(PaintEventArgs e)
+        {
             var BorderGrap = e.Graphics;
             Renderize(ref BorderGrap);
-
             BorderGrap.Dispose();
-
+            Debug.WriteLine(this.Name + " on paint e args");
         }
 
         #endregion
@@ -34,14 +34,18 @@ namespace PuntoDeVentas.Controls {
         #region Constructor Class
 
         public StylizedTextBox()
-            : base() {
+            : base()
+        {
 
-                this.OnLostFocus(null);
-                if (this.DesignMode) {
-                    SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
+            this.OnLostFocus(null);
+            if (this.DesignMode)
+            {
+                SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
 
-                }
-           
+            }
+
+              
+
         }
 
         #endregion
@@ -55,70 +59,84 @@ namespace PuntoDeVentas.Controls {
         private string _Placeholder = string.Empty, _TempValue = string.Empty;
 
 
-        public enum OuterBorderStyle {
-            None,
-            Fill,
-            Line
+        public enum OuterBorderStyle
+        {
+            None = 0,
+            Fill = 1,
+            Line = 2,
+            Both = 3
         }
 
-        public System.Drawing.Drawing2D.DashStyle BorderOuterDashStyle {
-            get {
+        public System.Drawing.Drawing2D.DashStyle BorderOuterDashStyle
+        {
+            get
+            {
                 return _BorderOuterDashStyle;
             }
-            set {
+            set
+            {
                 _BorderOuterDashStyle = value;
                 DesignerRenderize();
             }
         }
 
-        public OuterBorderStyle BorderOuterStyle {
-            get {
+        public OuterBorderStyle BorderOuterStyle
+        {
+            get
+            {
                 return _OuterBorderStyle;
             }
-            set {
+            set
+            {
                 _OuterBorderStyle = value;
                 DesignerRenderize();
             }
         }
 
-        public int BorderOuterSize {
-            get {
+        public int BorderOuterSize
+        {
+            get
+            {
                 return _BorderSize;
             }
-            set {
+            set
+            {
                 _BorderSize = value;
                 DesignerRenderize();//Refrescar el diseno
             }
 
         }
 
-        public System.Drawing.Color BorderOuterColor {
-            get {
+        public System.Drawing.Color BorderOuterColor
+        {
+            get
+            {
                 return _BorderColor;
             }
-            set {
+            set
+            {
                 _BorderColor = value;
                 DesignerRenderize();//Refrescar el diseno
             }
         }
 
-        public string Placeholder {
-            get {
+        public string Placeholder
+        {
+            get
+            {
                 return _Placeholder;
             }
-            set {
+            set
+            {
                 _Placeholder = value;
 
 
-                if (!this.DesignMode) {
-                    if (!string.IsNullOrEmpty(_Placeholder) & string.IsNullOrEmpty(this.Text)) {
-                        this.Text = _Placeholder;
-                    }
-                } else {
+                if (this.DesignMode)
+                {
+                 
+                    DrawPlaceHolder();
 
-                    this.CreateGraphics().DrawString(_Placeholder, this.Font, new SolidBrush(Color.Red), new Point(0, 0));
-
-                } 
+                }
 
                 DesignerRenderize();
             }
@@ -133,29 +151,35 @@ namespace PuntoDeVentas.Controls {
         private bool _bGotFocus = false;
 
 
-        private void DesignerRenderize() {
+        private void DesignerRenderize()
+        {
 
-            if (this.DesignMode) {//Si esta en DesignMode
+            if (this.DesignMode)
+            {//Si esta en DesignMode
                 this.Invalidate();
-            } else {
+            }
+            else
+            {
                 this.Refresh();//Si es en Runtime
             }
 
         }
 
-        private void Renderize(ref Graphics g) {
+        private void Renderize(ref Graphics g)
+        {
 
             var BorderGrap = g;
             var BorderLocation = new Point(this.Location.X - this.BorderOuterSize, this.Location.Y - BorderOuterSize);
-            var BorderSz = new Size(this.Width + (BorderOuterSize * 2), this.Height + (this.BorderOuterSize * 2));            
+            var BorderSz = new Size(this.Width + (BorderOuterSize * 2), this.Height + (this.BorderOuterSize * 2));
             var BorderBrush = _bGotFocus ? new SolidBrush(this.BorderOuterActiveColor) : new SolidBrush(this.BorderOuterColor);
             var BorderPen = new Pen(BorderBrush);
             var Rect = new Rectangle(BorderLocation, BorderSz);
-            
-            BorderPen.DashStyle = this.BorderOuterDashStyle;
-           
 
-            switch (this.BorderOuterStyle) {
+            BorderPen.DashStyle = this.BorderOuterDashStyle;
+
+
+            switch (this.BorderOuterStyle)
+            {
                 case OuterBorderStyle.Fill:
                     BorderGrap.FillRectangle(BorderBrush, Rect);
 
@@ -172,20 +196,28 @@ namespace PuntoDeVentas.Controls {
 
             }
 
-            if (this.DesignMode) {
+            if (this.DesignMode)
+            {
 
                 this.CreateGraphics().DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(1, 1));
             }
 
         }
 
+        private void DrawPlaceHolder()
+        {
 
-        
+            var g = this.CreateGraphics();
+            g.DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
 
-        protected override void WndProc(ref Message m) {
+        }
+
+        protected override void WndProc(ref Message m)
+        {
             base.WndProc(ref m);
 
-            if (m.Msg == WM_NCPAINT) {
+            if (m.Msg == WM_NCPAINT)
+            {
                 var hDC = GetWindowDC(this.Parent.Handle);
                 var Grph = Graphics.FromHdc(hDC);
 
@@ -194,16 +226,17 @@ namespace PuntoDeVentas.Controls {
                 Grph.Dispose();
 
             }
-                      
 
         }
 
-        protected override void OnGotFocus(EventArgs e) {
+        protected override void OnGotFocus(EventArgs e)
+        {
             //base.OnGotFocus(e);
 
             _bGotFocus = true;
 
-            if (this.Text == _Placeholder) {
+            if (this.Text == _Placeholder)
+            {
                 this.Text = "";
             }
 
@@ -211,19 +244,39 @@ namespace PuntoDeVentas.Controls {
 
         }
 
-        protected override void OnLeave(EventArgs e) {            
+        protected override void OnLeave(EventArgs e)
+        {
             //base.OnLeave(e);
             _bGotFocus = false;
             Debug.WriteLine("This " + this.Name + " got Leave");
+            if (string.IsNullOrEmpty(this.Text.Trim()))
+            {
+                DrawPlaceHolder();
+            }
         }
 
-        protected override void OnLostFocus(EventArgs e) {
-           // base.OnLostFocus(e);
+        protected override void OnLostFocus(EventArgs e)
+        {
+            // base.OnLostFocus(e);
 
             _bGotFocus = false;
 
+            if (string.IsNullOrEmpty(this.Text.Trim()))
+            {
+                DrawPlaceHolder();
+            }
+
             Debug.WriteLine("This " + this.Name + " Lost focus");
-          
+
+
+        }
+
+        protected override void OnTextChanged(EventArgs e)
+        {
+            if (string.IsNullOrEmpty(this.Text.Trim()))
+            {
+                DrawPlaceHolder();
+            }
 
         }
 
