@@ -31,8 +31,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblErrorMsg = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtUser = new PuntoDeVentas.Controls.StylizedTextBox();
-            this.txtPassword = new PuntoDeVentas.Controls.StylizedTextBox();
+            this.txtUser = new PuntoDeVentas.Controls.InputTextBox();
+            this.txtPassword = new PuntoDeVentas.Controls.InputTextBox();
             this.lblWndPanelTitle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -80,11 +80,11 @@
             // txtUser
             // 
             this.txtUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtUser.BorderOuterActiveColor = System.Drawing.Color.Navy;
+            this.txtUser.BorderOuterActiveColor = System.Drawing.Color.Olive;
             this.txtUser.BorderOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtUser.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.txtUser.BorderOuterSize = 5;
-            this.txtUser.BorderOuterStyle = PuntoDeVentas.Controls.StylizedTextBox.OuterBorderStyle.Both;
+            this.txtUser.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
@@ -98,11 +98,11 @@
             // txtPassword
             // 
             this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.txtPassword.BorderOuterActiveColor = System.Drawing.Color.Navy;
+            this.txtPassword.BorderOuterActiveColor = System.Drawing.Color.Olive;
             this.txtPassword.BorderOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.txtPassword.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.txtPassword.BorderOuterSize = 4;
-            this.txtPassword.BorderOuterStyle = PuntoDeVentas.Controls.StylizedTextBox.OuterBorderStyle.Fill;
+            this.txtPassword.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtPassword.Location = new System.Drawing.Point(85, 168);
@@ -147,8 +147,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblErrorMsg;
-        private Controls.StylizedTextBox txtUser;
-        private Controls.StylizedTextBox txtPassword;
+        private Controls.InputTextBox txtUser;
+        private Controls.InputTextBox txtPassword;
     }
 }
 
