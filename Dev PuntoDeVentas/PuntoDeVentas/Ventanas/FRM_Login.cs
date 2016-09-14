@@ -24,7 +24,7 @@ namespace PuntoDeVentas {
 
                        
         }
-                     
+                   
 
 
         private void Input_KeyDown(object sender, KeyEventArgs e) {
@@ -51,8 +51,9 @@ namespace PuntoDeVentas {
 
         private void FRM_Login_Load(object sender, EventArgs e) {
             this.Activate();
+            lblTitle.Text = Configurations.NombreDelNegocio;
         }
-            
+                     
 
 
     }

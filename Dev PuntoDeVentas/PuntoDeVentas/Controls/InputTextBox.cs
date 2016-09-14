@@ -26,21 +26,31 @@ namespace PuntoDeVentas.Controls {
         #endregion
 
         #region Constructor Class
-
-        
+        //Dummy Panel used to draw over the TextBox
+        private Panel pnlLayout = new Panel();
 
         public InputTextBox()
             : base() {
 
-            this.OnLostFocus(null);
             if (this.DesignMode) {
                 SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.ResizeRedraw, true);
             }
+            this.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.Controls.Add(this.pnlLayout);
 
-            
+            this.pnlLayout.Size = this.Size;
+            this.pnlLayout.Dock = DockStyle.Fill;
+            this.pnlLayout.Location = new Point(0, 0);
+            this.pnlLayout.Paint += LayoutPaint;
+            this.pnlLayout.Name = "Layout";
+            this.MouseClick += Click;
+            this.pnlLayout.Click += Click;
+            this.Modified = true;
+
+            this.OnLostFocus(null);
 
 #if DEBUG
-            //Show in the output window
+            //Show in the console output window
             TextWriterTraceListener myWriter = new TextWriterTraceListener(System.Console.Out);
             Debug.Listeners.Add(myWriter);
 
@@ -48,7 +58,7 @@ namespace PuntoDeVentas.Controls {
             Trace.Listeners.Add(myCreator);
 #endif
 
-            
+
 
         }
 
@@ -118,12 +128,7 @@ namespace PuntoDeVentas.Controls {
             set {
                 _Placeholder = value;
 
-
-                if (this.DesignMode) {
-
-                    DrawPlaceHolder();
-
-                }
+                DesignerRenderize();
 
             }
         }
@@ -131,16 +136,20 @@ namespace PuntoDeVentas.Controls {
         public System.Drawing.Color BorderOuterActiveColor { get; set; }
 
         #endregion
-        
+
         #region Functions & Events
 
         private bool _bGotFocus = false;
-                
 
         private void DesignerRenderize() {
 
             if (this.DesignMode) {//Si esta en DesignMode
-                this.Invalidate();
+                this.pnlLayout.CreateGraphics().DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
+                this.Invalidate(true);
+                if (this.FindForm() != null) {
+                    this.FindForm().Invalidate(false);
+                }
+
             } else {
                 this.Refresh();//Si es en Runtime
             }
@@ -148,15 +157,16 @@ namespace PuntoDeVentas.Controls {
         }
 
         private void Renderize(ref Graphics g) {
+
             var BorderGrap = g;
             var BorderLocation = new Point(this.Location.X - this.BorderOuterSize, this.Location.Y - BorderOuterSize);
             var BorderSz = new Size(this.Width + (BorderOuterSize * 2), this.Height + (this.BorderOuterSize * 2));
-            var BorderBrush = _bGotFocus ? new SolidBrush(this.BorderOuterActiveColor) : new SolidBrush(this.BorderOuterColor);
+            var BorderBrush = _bGotFocus & this.BorderOuterActiveColor != Color.Empty ? new SolidBrush(this.BorderOuterActiveColor) : new SolidBrush(this.BorderOuterColor);
             var BorderPen = new Pen(BorderBrush);
             var Rect = new Rectangle(BorderLocation, BorderSz);
 
             BorderPen.DashStyle = this.BorderOuterDashStyle;
-            
+
             switch (this.BorderOuterStyle) {
                 case OuterBorderStyle.Fill:
                     BorderGrap.FillRectangle(BorderBrush, Rect);
@@ -176,15 +186,18 @@ namespace PuntoDeVentas.Controls {
 
             //Redraw Textbox region
             BorderGrap.FillRectangle(new SolidBrush(this.BackColor), new Rectangle(this.Location, this.Size));
-            
-            if (!_bGotFocus && string.IsNullOrEmpty(this.Text) && !string.IsNullOrEmpty(_Placeholder)) {
-            
-                g.DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), this.Location );
 
-            } else {            
+            if (!_bGotFocus && string.IsNullOrEmpty(this.Text) && !string.IsNullOrEmpty(_Placeholder)) {
+
+                this.pnlLayout.Visible = true;
+
+            } else {
+
+                this.pnlLayout.Visible = false;
+                
                 this.Invalidate();
             }
-                                 
+
 
         }
 
@@ -199,23 +212,11 @@ namespace PuntoDeVentas.Controls {
 
         }
 
-        private void DrawPlaceHolder() {
-
-            if (string.IsNullOrEmpty(this.Text.Trim()) && !string.IsNullOrEmpty(_Placeholder.Trim())) {
-                var g = this.CreateGraphics();
-                g.DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
-                Debug.WriteLine("Place holder was painted");
-            }
-
-        }
-
         protected override void WndProc(ref Message m) {
-           
 
+            if (this.DesignMode && m.Msg == WM_NCPAINT) {
 
-            if (m.Msg == WM_NCPAINT || m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE) {
-
-                if (this.Parent.Handle != null) {
+                if (this.Parent != null && this.Parent.IsHandleCreated) {
                     var hDC = GetWindowDC(this.Parent.Handle);
                     var Grph = Graphics.FromHdc(hDC);
 
@@ -224,27 +225,50 @@ namespace PuntoDeVentas.Controls {
                     Grph.Dispose();
                 }
 
+            } else if (!this.DesignMode && m.Msg == WM_NCPAINT || m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE) {
+
+                if (this.Parent != null) {
+                    var hDC = GetWindowDC(this.Parent.Handle);
+                    var Grph = Graphics.FromHdc(hDC);
+
+                    Renderize(ref Grph);
+
+                    Grph.Dispose();
+                }
+
+                if (this.FindForm() != null) {
+                    this.FindForm().Load += delegate(object sender, EventArgs e) {
+                        //RenderizeBorderColor();
+                        //((Control)sender).Invalidate(false);
+                        this.OnLostFocus(e);
+
+                    };
+                    this.FindForm().Paint += delegate(object sender, PaintEventArgs e) {
+                        RenderizeBorderColor();
+                    };
+
+                }
+
             }
-          
 
-base.WndProc(ref m);
-                                    
+
+            base.WndProc(ref m);
+
         }
 
-        private void Paint(object sender, PaintEventArgs e) {
+        private void LayoutPaint(object sender, PaintEventArgs e) {
 
+            RenderizeBorderColor();
             var g = e.Graphics;
-            g.DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), this.Location);
-            Debug.WriteLine("PAIN EVENT IS CALLED");
-
+            g.DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
         }
-        
+
         protected override void OnGotFocus(EventArgs e) {
             base.OnGotFocus(e);
             _bGotFocus = true;
-            if (this.Text.Trim() == _Placeholder.Trim()) {
-                this.Text = "";
-            }
+            //if (this.Text.Trim() == _Placeholder.Trim()) {
+            //    this.Text = "";
+            //}
             RenderizeBorderColor();
         }
 
@@ -261,13 +285,18 @@ base.WndProc(ref m);
             RenderizeBorderColor();
         }
 
-        protected override void OnClick(EventArgs e) {
-            base.OnClick(e);
+        
+        private void Click(object sender, EventArgs e) {
+            Debug.WriteLine("TextBox clicking - " + ((Control)sender).Name);
             _bGotFocus = true;
+            this.pnlLayout.Visible = false;
+            this.Focus();
+            this.Invalidate(true);
         }
 
+
         #endregion
-        
+
     }
 
 }

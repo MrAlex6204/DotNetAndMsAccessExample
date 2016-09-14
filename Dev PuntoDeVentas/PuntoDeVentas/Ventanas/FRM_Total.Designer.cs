@@ -35,10 +35,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.txtPago = new System.Windows.Forms.TextBox();
+            this.txtPago = new PuntoDeVentas.Controls.InputTextBox();
             this.lblWndPanelTitle.SuspendLayout();
-            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
@@ -90,7 +88,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
-            this.label3.Location = new System.Drawing.Point(207, 100);
+            this.label3.Location = new System.Drawing.Point(207, 101);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 20);
@@ -120,29 +118,21 @@
             this.label1.Size = new System.Drawing.Size(0, 40);
             this.label1.TabIndex = 1;
             // 
-            // panel4
-            // 
-            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel4.Controls.Add(this.txtPago);
-            this.panel4.Location = new System.Drawing.Point(277, 96);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(98, 30);
-            this.panel4.TabIndex = 21;
-            // 
             // txtPago
             // 
-            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            this.txtPago.BorderOuterActiveColor = System.Drawing.Color.Empty;
+            this.txtPago.BorderOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            this.txtPago.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.txtPago.BorderOuterSize = 7;
+            this.txtPago.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Fill;
             this.txtPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPago.Font = new System.Drawing.Font("Consolas", 13.75F, System.Drawing.FontStyle.Bold);
-            this.txtPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
-            this.txtPago.Location = new System.Drawing.Point(3, 4);
-            this.txtPago.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtPago.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPago.Location = new System.Drawing.Point(279, 100);
             this.txtPago.Name = "txtPago";
-            this.txtPago.Size = new System.Drawing.Size(93, 22);
-            this.txtPago.TabIndex = 8;
-            this.txtPago.Text = "0";
-            this.txtPago.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.txtPago.Placeholder = "Efectivo";
+            this.txtPago.Size = new System.Drawing.Size(100, 19);
+            this.txtPago.TabIndex = 7;
             this.txtPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPago_KeyPress);
             // 
             // FRM_Total
@@ -151,7 +141,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.ClientSize = new System.Drawing.Size(415, 138);
-            this.Controls.Add(this.panel4);
+            this.Controls.Add(this.txtPago);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.lblEfectivo);
             this.Controls.Add(this.label4);
@@ -173,11 +163,9 @@
             this.Controls.SetChildIndex(this.label4, 0);
             this.Controls.SetChildIndex(this.lblEfectivo, 0);
             this.Controls.SetChildIndex(this.lblTotal, 0);
-            this.Controls.SetChildIndex(this.panel4, 0);
+            this.Controls.SetChildIndex(this.txtPago, 0);
             this.lblWndPanelTitle.ResumeLayout(false);
             this.lblWndPanelTitle.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -191,8 +179,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblEfectivo;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.TextBox txtPago;
+        private Controls.InputTextBox txtPago;
     }
 
 }

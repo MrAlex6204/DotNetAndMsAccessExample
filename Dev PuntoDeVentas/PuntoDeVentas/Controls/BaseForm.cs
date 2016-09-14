@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
-
+using System.Diagnostics;
 
 
 namespace PuntoDeVentas.Controls {
@@ -30,10 +30,19 @@ namespace PuntoDeVentas.Controls {
         private void Wnd_MouseDown(object sender, MouseEventArgs e) {
 
             if (e.Button == System.Windows.Forms.MouseButtons.Left) {
+                ((Control)sender).Cursor = Cursors.SizeAll;
                 ReleaseCapture();
-                SendMessage(Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                Wnd_MouseUp(sender, e);
             }
 
+        }
+
+        private void Wnd_MouseUp(object sender, MouseEventArgs e) {
+
+            ((Control)sender).Cursor = Cursors.Default;
+            
+                     
         }
 
         #endregion
@@ -81,13 +90,15 @@ namespace PuntoDeVentas.Controls {
             }
             set {
                 _bShowLabelTitle = value;
-                
-                if (value) {
-                    //Add Event handle to move mouse with the pointer
-                    this.MouseDown += Wnd_MouseDown;
-                } else {
+
+                if (_bShowLabelTitle) {
                     //Remove Event handle of mouse down
+                    this.MouseUp -= Wnd_MouseUp;
                     this.MouseDown -= Wnd_MouseDown;
+                } else {
+                    //Add Event handle to move mouse with the pointer
+                    this.MouseUp += Wnd_MouseUp;
+                    this.MouseDown += Wnd_MouseDown;
                 }
 
                 if (this.DesignMode) {
@@ -326,6 +337,8 @@ namespace PuntoDeVentas.Controls {
         }
 
         #endregion
+
+      
 
 
 

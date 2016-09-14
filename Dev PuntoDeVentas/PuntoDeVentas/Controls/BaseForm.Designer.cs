@@ -52,17 +52,18 @@
             // 
             this.pnlControls.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pnlControls.AutoSize = true;
+            this.pnlControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlControls.BackColor = System.Drawing.Color.Transparent;
             this.pnlControls.Controls.Add(this.cmdClose);
             this.pnlControls.Controls.Add(this.cmdMaximize);
             this.pnlControls.Controls.Add(this.cmdMinimize);
             this.pnlControls.Controls.Add(this.pnlMoveWnd);
             this.pnlControls.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.pnlControls.Location = new System.Drawing.Point(743, 10);
+            this.pnlControls.Location = new System.Drawing.Point(753, 10);
             this.pnlControls.Margin = new System.Windows.Forms.Padding(0);
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Padding = new System.Windows.Forms.Padding(2);
-            this.pnlControls.Size = new System.Drawing.Size(159, 34);
+            this.pnlControls.Size = new System.Drawing.Size(149, 34);
             this.pnlControls.TabIndex = 28;
             // 
             // cmdClose
@@ -75,7 +76,7 @@
             this.cmdClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdClose.Font = new System.Drawing.Font("Webdings", 10.25F);
             this.cmdClose.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdClose.Location = new System.Drawing.Point(126, 2);
+            this.cmdClose.Location = new System.Drawing.Point(116, 2);
             this.cmdClose.Margin = new System.Windows.Forms.Padding(0);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(29, 30);
@@ -95,7 +96,7 @@
             this.cmdMaximize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdMaximize.Font = new System.Drawing.Font("Webdings", 10.25F);
             this.cmdMaximize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdMaximize.Location = new System.Drawing.Point(97, 2);
+            this.cmdMaximize.Location = new System.Drawing.Point(87, 2);
             this.cmdMaximize.Margin = new System.Windows.Forms.Padding(0);
             this.cmdMaximize.Name = "cmdMaximize";
             this.cmdMaximize.Size = new System.Drawing.Size(29, 30);
@@ -115,7 +116,7 @@
             this.cmdMinimize.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdMinimize.Font = new System.Drawing.Font("Webdings", 10.25F);
             this.cmdMinimize.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdMinimize.Location = new System.Drawing.Point(68, 2);
+            this.cmdMinimize.Location = new System.Drawing.Point(58, 2);
             this.cmdMinimize.Margin = new System.Windows.Forms.Padding(0);
             this.cmdMinimize.Name = "cmdMinimize";
             this.cmdMinimize.Size = new System.Drawing.Size(29, 30);
@@ -132,7 +133,7 @@
             this.pnlMoveWnd.Controls.Add(this.cmdMoveRight);
             this.pnlMoveWnd.Controls.Add(this.cmdMoveLeft);
             this.pnlMoveWnd.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.pnlMoveWnd.Location = new System.Drawing.Point(10, 2);
+            this.pnlMoveWnd.Location = new System.Drawing.Point(0, 2);
             this.pnlMoveWnd.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMoveWnd.Name = "pnlMoveWnd";
             this.pnlMoveWnd.Size = new System.Drawing.Size(58, 30);
