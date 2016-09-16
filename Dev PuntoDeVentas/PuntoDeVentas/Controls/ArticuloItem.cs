@@ -144,9 +144,9 @@ namespace System {
 
             
             lblArticulo.Text = _Articulo.DESCRIPCION;
-            lblPrecio.Text = Double.Parse(_Articulo.PRECIO).ToString("$ 0.00");
+            lblPrecio.Text =  Functions.ToCurrency(_Articulo.PRECIO);
             lblCodigo.Text = _Articulo.ID;
-            lblTotal.Text = this.Total.ToString("$ 0.00");
+            lblTotal.Text = Functions.ToCurrency(this.Total);
             lblCantidad.Text = this.Cantidad.ToString("0.00 " + ArticuloItem.UNIDAD);
 
         }

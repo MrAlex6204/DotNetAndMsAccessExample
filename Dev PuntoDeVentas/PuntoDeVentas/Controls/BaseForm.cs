@@ -95,10 +95,24 @@ namespace PuntoDeVentas.Controls {
                     //Remove Event handle of mouse down
                     this.MouseUp -= Wnd_MouseUp;
                     this.MouseDown -= Wnd_MouseDown;
+
+                    //Add Event handle for each child
+                    foreach (Control iCtrl in this.Controls)
+                    {
+                        iCtrl.MouseUp -= Wnd_MouseUp;
+                        iCtrl.MouseDown -= Wnd_MouseDown;
+                    }
+
                 } else {
                     //Add Event handle to move mouse with the pointer
                     this.MouseUp += Wnd_MouseUp;
                     this.MouseDown += Wnd_MouseDown;
+
+                    //Add Event handle for each child
+                    foreach (Control iCtrl in this.Controls) {
+                        iCtrl.MouseUp += Wnd_MouseUp;
+                        iCtrl.MouseDown += Wnd_MouseDown;
+                    }
                 }
 
                 if (this.DesignMode) {

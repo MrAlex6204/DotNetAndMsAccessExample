@@ -21,7 +21,6 @@ namespace PuntoDeVentas {
 
         public FRM_Login() {
             InitializeComponent();
-
                        
         }
                    

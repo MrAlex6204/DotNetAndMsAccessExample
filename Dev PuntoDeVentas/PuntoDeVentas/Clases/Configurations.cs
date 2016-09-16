@@ -2,37 +2,71 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 
-namespace System {
-    public static class Configurations {
+namespace System
+{
+    public static class Configurations
+    {
+        private static CultureInfo _RegionCurrency = null;
 
-        public static string NombreDelNegocio {
+        public static string NombreDelNegocio
+        {
             get;
             set;
         }
-        public static string Direccion {
+        public static string Direccion
+        {
             get;
             set;
         }
-        public static string Region {
+        public static string RegionString
+        {
             get;
             set;
         }
 
-        public static void Load() {
+        public static CultureInfo RegionProvider
+        {
+            get
+            {
+                if (_RegionCurrency == null && !string.IsNullOrEmpty(RegionString))
+                {
+                    try
+                    {
+
+                        _RegionCurrency = new CultureInfo(RegionString);
+                    }
+                    catch
+                    {
+
+                        _RegionCurrency = Threading.Thread.CurrentThread.CurrentCulture;
+                    }
+                }
+
+                return _RegionCurrency;
+            }
+        }
+
+
+        public static void Load()
+        {
             NombreDelNegocio = DbRepository.GetConfig("EMPRESA");
             Direccion = DbRepository.GetConfig("DIRECCION");
-            Region = DbRepository.GetConfig("REGION");
+            RegionString = DbRepository.GetConfig("REGION");
         }
 
-        public static bool Update() {
-            var IsSaveSuccess = 
+        public static bool Update()
+        {
+            var IsSaveSuccess =
                                 DbRepository.UpdateConfig("EMPRESA", NombreDelNegocio) &
                                 DbRepository.UpdateConfig("DIRECCION", Direccion) &
-                                DbRepository.UpdateConfig("REGION", Region);
+                                DbRepository.UpdateConfig("REGION", RegionString);
 
             return IsSaveSuccess;
         }
+
+
 
     }
 }

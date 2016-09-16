@@ -43,12 +43,12 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             this.label3.Location = new System.Drawing.Point(169, 107);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(109, 45);
+            this.label3.Size = new System.Drawing.Size(104, 45);
             this.label3.TabIndex = 29;
             this.label3.Text = "Log In";
             // 
@@ -68,12 +68,12 @@
             // 
             // txtUser
             // 
-            this.txtUser.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtUser.BorderOuterActiveColor = System.Drawing.Color.Empty;
+            this.txtUser.BackColor = System.Drawing.Color.White;
+            this.txtUser.BorderOuterActiveColor = System.Drawing.Color.Silver;
             this.txtUser.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
             this.txtUser.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.txtUser.BorderOuterSize = 7;
-            this.txtUser.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Fill;
+            this.txtUser.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
@@ -86,12 +86,12 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPassword.BorderOuterActiveColor = System.Drawing.Color.Empty;
+            this.txtPassword.BackColor = System.Drawing.Color.White;
+            this.txtPassword.BorderOuterActiveColor = System.Drawing.Color.Silver;
             this.txtPassword.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
             this.txtPassword.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.txtPassword.BorderOuterSize = 7;
-            this.txtPassword.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Fill;
+            this.txtPassword.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtPassword.Location = new System.Drawing.Point(82, 250);
@@ -119,7 +119,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(249)))), ((int)(((byte)(248)))), ((int)(((byte)(249)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(447, 422);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label3);

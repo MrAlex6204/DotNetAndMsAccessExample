@@ -13,7 +13,7 @@ namespace PuntoDeVentas
     {
         public FRM_Total()
         {
-            InitializeComponent();        
+            InitializeComponent();
             this._RenderDesign();
             this.Activate();
             this.txtPago.Focus();
@@ -25,69 +25,78 @@ namespace PuntoDeVentas
         private double _Efectivo = 0;
         private bool _Cancelled = true;
 
-        public double Total {//Proiedad para establecer el total
-            set {
+        public double Total
+        {//Proiedad para establecer el total
+            set
+            {
                 _SubTotal = value;
                 _Total = value;
-                lblTotal.Text = _SubTotal.ToString("$ 0.00");
+                lblTotal.Text = Functions.ToCurrency(_SubTotal);
             }
         }
 
-        public bool IsCancelled {
-            get {
+        public bool IsCancelled
+        {
+            get
+            {
                 return _Cancelled;
             }
         }
 
-         
+
 
         private void FRM_Total_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyValue == 27) {
+            if (e.KeyValue == 27)
+            {
                 this.Close();
             }
         }
 
         private void FRM_Total_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
+
         }
 
         private void FRM_Total_Load(object sender, EventArgs e)
         {
             txtPago.Focus();
-            lblEfectivo.Text = "$ 0.00";
+            lblEfectivo.Text = Functions.ToCurrency(0.00);
             this._RenderDesign();
         }
 
         private void txtPago_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 13) {//Si  preciono enter
+            if (e.KeyChar == 13)
+            {//Si  preciono enter
                 if (Functions.IsNumber(txtPago.Text))
                 {
                     _SubTotal = _SubTotal - Functions.ToNumber(txtPago.Text);//Descontamos al total el efectivo
                     _Efectivo += Functions.ToNumber(txtPago.Text);//sumamos el efectivo recibido
-                    lblEfectivo.Text = _Efectivo.ToString("$ 0.00");
-                    lblTotal.Text = _SubTotal.ToString("$ 0.00");
+                    lblEfectivo.Text = Functions.ToCurrency(_Efectivo);
+                    lblTotal.Text = Functions.ToCurrency(_SubTotal);
 
-                    if (_SubTotal <= 0) {//si total es menor o igual a cero
+                    if (_SubTotal <= 0)
+                    {//si total es menor o igual a cero
                         _Cancelled = false;
                         this.Hide();//Ocultamos el formulario
 
                         //Mostramos la pantalla de Cambio
-                        Functions.MostrarCambio("CAMBIO " + Math.Abs(_SubTotal).ToString("$ 0.00"), _Total.ToString("0.00"), _Efectivo.ToString("0.00"), Math.Abs(_SubTotal).ToString("0.00"), this);
+                        Functions.MostrarCambio("CAMBIO " + Functions.ToCurrency(Math.Abs(_SubTotal)), Functions.ToCurrency(_Total), Functions.ToCurrency(_Efectivo), Functions.ToCurrency(Math.Abs(_SubTotal)), this);
                         this.Close();//Cerramos el formulario 
                     }
                     txtPago.Text = "";
 
 
                 }
-                else {
+                else
+                {
                     txtPago.Text = "";
                     txtPago.Focus();
-                }
-            }
 
+                }
+
+            }
         }
     }
 }

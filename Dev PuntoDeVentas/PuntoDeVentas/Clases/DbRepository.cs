@@ -598,7 +598,7 @@ namespace System {
                 int PosY = 31;
                 int TituloTam = 16;
                 int PiedePagTam = 12;
-                string Titulo = System.DbRepository.GetConfig("EMPRESA").ToUpper();//Obtenemos el nombre de la empresa de la base de datos
+                string Titulo = Configurations.NombreDelNegocio.ToUpper();//Obtenemos el nombre de la empresa de la base de datos
                 string PiedeTiket = "Gracias por su compra!";
 
                 Font font1 = new Font("Consolas", 12f, FontStyle.Regular);
@@ -615,7 +615,7 @@ namespace System {
                 e.PageSettings.Margins.Right = 0;
                 e.Graphics.DrawString(Titulo, font8, Brushes.Black, PosX, PosY);
                 PosY = PosY + 30;
-                e.Graphics.DrawString("FECHA : " + DateTime.Now.ToString("dddd, dd-MMMM-yyyy").ToUpper(), font7, Brushes.Black, PosX, PosY);
+                e.Graphics.DrawString("FECHA : " + DateTime.Now.ToString("dddd, dd-MMMM-yyyy",Configurations.RegionProvider).ToUpper(), font7, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
                 e.Graphics.DrawString(Cajero, font4, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
@@ -626,7 +626,7 @@ namespace System {
                 foreach (ArticuloItem Item in _ArticulosList) {
 
                     var Articulo = iCount.ToString() + "-" + Item.Articulo.DESCRIPCION;
-                    var Cantidad = "CANT.: " + Item.Cantidad.ToString("00.00") + " @ $" + Convert.ToDouble(Item.Articulo.PRECIO).ToString("00.00") + " = $" + Item.Total.ToString("00.00");
+                    var Cantidad = "CANT.: " + Item.Cantidad.ToString("00.00") + " @ $" + Functions.ToCurrency(Item.Articulo.PRECIO) + " = " + Functions.ToCurrency(Item.Total);
 
                     var FontColor = Item.IsDeleted ? Brushes.Gray : Brushes.Black;
                     var ArticuloDescFont = Item.IsDeleted ? new Font("Courier New", 10f, FontStyle.Strikeout) : new Font("Courier New", 10f, FontStyle.Bold);
@@ -641,16 +641,16 @@ namespace System {
 
                 e.Graphics.DrawString("-------------------------------------------------", font4, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
-                e.Graphics.DrawString("TOTAL    : $ " + _Total.ToString(), font4, Brushes.Black, PosX, PosY);
+                e.Graphics.DrawString("TOTAL    : " +  _Total, font4, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
-                e.Graphics.DrawString("EFECTIVO : " + _Pago.ToString(), font4, Brushes.Black, PosX, PosY);
+                e.Graphics.DrawString("EFECTIVO : " +  _Pago, font4, Brushes.Black, PosX, PosY);
                 PosY = PosY + 14;
                 e.Graphics.DrawString("SU CAMBIO! " + _Cambio, font2, Brushes.Black, PosX, PosY);
                 PosY = PosY + 16;
                 e.Graphics.DrawString(PiedeTiket, font2, Brushes.Black, PosX, PosY);//Pie de tiket
                 PosY = PosY + 24;
                 //Fecha y Hra
-                e.Graphics.DrawString(">" + DateTime.Now.ToString("dd-MMMM-yyyy hh:mm:ss tt").ToUpper(), font9, Brushes.Black, PosX, PosY);
+                e.Graphics.DrawString(">" + DateTime.Now.ToString("dd-MMMM-yyyy hh:mm:ss tt", Configurations.RegionProvider).ToUpper(), font9, Brushes.Black, PosX, PosY);
 
             } catch (Exception ex) {
                 throw new Exception("Erro al imprimir Tiket.\nError Msg:\n" + ex.Message);

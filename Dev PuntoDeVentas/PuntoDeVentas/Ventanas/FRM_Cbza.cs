@@ -63,7 +63,7 @@ namespace PuntoDeVentas {
 
         private void tmrFechayHra_Tick(object sender, EventArgs e) {
             //Mostrar fecha y Hra
-            lblFechaHra.Text = System.DateTime.Now.ToString("dddd,dd-MMMM-yyyy hh:mm tt");
+            lblFechaHra.Text = System.DateTime.Now.ToString("dddd,dd-MMMM-yyyy hh:mm tt",Configurations.RegionProvider);
         }
 
         private void FRM_Cbza_Load(object sender, EventArgs e) {
@@ -92,7 +92,7 @@ namespace PuntoDeVentas {
 
         private void LstArticulos_OnChange(object sende, object e) {
             //Actualizar el total en pantalla
-            lblTotal.Text = String.Format("$ {0}", ((ArticuloList.SubtotalInfo)e).Total.ToString("0.00"));
+            lblTotal.Text = Functions.ToCurrency(((ArticuloList.SubtotalInfo)e).Total);
             lblArticuloCount.Text = String.Format("CANT. ARTICULOS : {0}", ((ArticuloList.SubtotalInfo)e).Count.ToString("00"));
         }
 

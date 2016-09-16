@@ -6,48 +6,74 @@ using System.Text;
 using System.Drawing;
 using System.Drawing.Printing;
 
-   public static class Functions
+public static class Functions
+{
+    //FUNCION PARA MOSTRAR UN MESAJE EN PANTALLA
+    public static void Message(string Text)
     {
-       //FUNCION PARA MOSTRAR UN MESAJE EN PANTALLA
-       public static void Message(string Text) {
-           PuntoDeVentas.FRM_Message wndMessage = new PuntoDeVentas.FRM_Message();
-           wndMessage.Message = Text;
-           wndMessage.ShowDialog();
-       }
+        PuntoDeVentas.FRM_Message wndMessage = new PuntoDeVentas.FRM_Message();
+        wndMessage.Message = Text;
+        wndMessage.ShowDialog();
+    }
 
-       public static void MostrarCambio(string Text,string Total,string Pago,string Cambio,System.Windows.Forms.Form Owner)
-       {
-           PuntoDeVentas.FRM_Cambio wndMessage = new PuntoDeVentas.FRM_Cambio();
-           wndMessage.Message = Text;
-           wndMessage.ShowDialog(Owner);
-           if (wndMessage.ImprimirTiket) { //Si el usuario desea imprimir el tiket
-               try
-               {
-                   System.DbRepository.ImprimirTiket(Total, Pago, Cambio);
-               }
-               catch (Exception ex) {
-                   //Si marca un error mostramos en pantalla 
-                   Message(ex.Message);
-               }
-           }
-       }
+    public static void MostrarCambio(string Text, string Total, string Pago, string Cambio, System.Windows.Forms.Form Owner)
+    {
+        PuntoDeVentas.FRM_Cambio wndMessage = new PuntoDeVentas.FRM_Cambio();
+        wndMessage.Message = Text;
+        wndMessage.ShowDialog(Owner);
+        if (wndMessage.ImprimirTiket)
+        { //Si el usuario desea imprimir el tiket
+            try
+            {
+                System.DbRepository.ImprimirTiket(Total, Pago, Cambio);
+            }
+            catch (Exception ex)
+            {
+                //Si marca un error mostramos en pantalla 
+                Message(ex.Message);
+            }
+        }
+    }
 
-       //FUNCION PARA VALIDAR SI UN DATO ES NUMERICO
-       public static bool IsNumber(string Value) {
-           try//retorna false si marca un error al hacer la conversion
-           {
-               double number = 0;
-               number = Convert.ToDouble(Value.Trim());
-               return true;
-           }
-           catch {
-               return false;
-           }
-       }
-       
-       public static double ToNumber(string Value){
+    //FUNCION PARA VALIDAR SI UN DATO ES NUMERICO
+    public static bool IsNumber(string Value)
+    {
+        try//retorna false si marca un error al hacer la conversion
+        {
+            double number = 0;
+            number = Convert.ToDouble(Value.Trim());
+            return true;
+        }
+        catch
+        {
+            return false;
+        }
+    }
+
+    public static double ToNumber(string Value)
+    {
         return Convert.ToDouble(Value);
-       }
+    }
+
+    public static string ToCurrency(double value)
+    {
+        return string.Format(Configurations.RegionProvider, "{0:C2}", value);
+    }
+
+    public static string ToCurrency(string value) {
+        var val = 0.0d;
+
+        if (double.TryParse(value, out val))
+        {
+            return ToCurrency(val);
+        }
+        else {
+            return value;
+        }
 
     }
+
+
+
+}
 
