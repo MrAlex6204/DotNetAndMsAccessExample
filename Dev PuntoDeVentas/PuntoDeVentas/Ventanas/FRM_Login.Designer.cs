@@ -81,7 +81,7 @@
             this.txtUser.Name = "txtUser";
             this.txtUser.Placeholder = "Username";
             this.txtUser.Size = new System.Drawing.Size(283, 22);
-            this.txtUser.TabIndex = 32;
+            this.txtUser.TabIndex = 0;
             this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
             // 
             // txtPassword
@@ -99,7 +99,7 @@
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Placeholder = "Password";
             this.txtPassword.Size = new System.Drawing.Size(283, 22);
-            this.txtPassword.TabIndex = 33;
+            this.txtPassword.TabIndex = 1;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
             // 
             // lblTitle
@@ -110,7 +110,7 @@
             this.lblTitle.Location = new System.Drawing.Point(13, 9);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(421, 98);
+            this.lblTitle.Size = new System.Drawing.Size(421, 77);
             this.lblTitle.TabIndex = 34;
             this.lblTitle.Text = "[EMPRESA]";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -121,6 +121,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(447, 422);
+            this.ControlBox = false;
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPassword);
@@ -134,6 +135,7 @@
             this.ShowTitleLabel = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " Login";
+            this.WindowBorderColor = System.Drawing.Color.WhiteSmoke;
             this.Load += new System.EventHandler(this.FRM_Login_Load);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.lblErrorMsg, 0);

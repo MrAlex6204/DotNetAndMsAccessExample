@@ -301,6 +301,25 @@ namespace System {
 
         }
 
+
+        //FUNCION PARA GUARDARLA INFORMACION DE LA FOTO DELARTICULO EN LA BD
+        public static bool GuardarFoto(string ArticuloId,object Foto) {
+            string InsertQry = "INSERT INTO TBL_ARTICULOS_FOTO (ARTICULO_ID,FOTO) VALUES(?,?)";
+            int Counter = -1;
+
+
+            
+            _objCmd.Parameters.Clear();
+            _objCmd.CommandText = InsertQry;
+            _objCmd.Parameters.Add(new OleDbParameter("?", ArticuloId));
+            _objCmd.Parameters.Add(new OleDbParameter("?", Foto));
+
+            Counter = _objCmd.ExecuteNonQuery();
+            
+            return (Counter > 0);
+
+        }
+
         //FUNCION PARA BUSCAR UN ARTICULO POR DESCRIPCION EN LA BD
         public static DataTable BuscarArticulo(string Buscar) {
             DataTable TblResult;

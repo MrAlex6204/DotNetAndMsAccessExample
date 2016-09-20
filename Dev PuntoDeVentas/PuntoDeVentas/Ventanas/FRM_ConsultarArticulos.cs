@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    public partial class FRM_ConsultarArticulos : Form
+    public partial class FRM_ConsultarArticulos : Controls.BaseForm
     {
         public FRM_ConsultarArticulos()
         {
@@ -39,10 +39,10 @@ namespace PuntoDeVentas
             }
             if (TblResults.Rows.Count <= 0)
             {
-                cmdAceptar.Enabled = false;//Deshabilitamos el boton aceptar si no hay registros
+                //cmdAceptar.Enabled = false;//Deshabilitamos el boton aceptar si no hay registros
             }
             else {
-                cmdAceptar.Enabled = true;//lo habilitamos si nos trajo mas de un registro
+                //cmdAceptar.Enabled = true;//lo habilitamos si nos trajo mas de un registro
                 Gridbuscar.Focus();
             }
 

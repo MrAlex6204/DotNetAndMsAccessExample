@@ -95,6 +95,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Clases\ArticuloItemCollection.cs" />
+    <Compile Include="Clases\ImageInfo.cs" />
     <Compile Include="Clases\SystemTheme.cs" />
     <Compile Include="Clases\Configurations.cs" />
     <Compile Include="Clases\DbRepository.cs" />
