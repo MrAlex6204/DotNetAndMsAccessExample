@@ -12,12 +12,12 @@ namespace PuntoDeVentas {
 
 
 
-    [DefaultEvent("OnChange")]
+    [DefaultEvent("OnListChange")]
     public partial class ArticuloList : UserControl {
         private System.ArticuloItemCollection _LstArticulos = new System.ArticuloItemCollection();
 
-        public delegate void OnChangeHandler (object sende, object e);
-        public event OnChangeHandler OnChange;
+        public delegate void OnChangeHandler (object sender, object e);
+        public event OnChangeHandler OnListChange;
 
         public struct SubtotalInfo {
             public int Count;
@@ -92,8 +92,8 @@ namespace PuntoDeVentas {
 
         private void _RaiseEvent() {
 
-            if (OnChange != null) {
-                OnChange.Invoke(this, new SubtotalInfo { Total = this.Items.SubTotal, Count = this.Items.Count });
+            if (OnListChange != null) {
+                OnListChange.Invoke(this, new SubtotalInfo { Total = this.Items.SubTotal, Count = this.Items.Count });
             }
 
         }

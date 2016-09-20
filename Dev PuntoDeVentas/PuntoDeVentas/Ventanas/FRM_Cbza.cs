@@ -26,8 +26,9 @@ namespace PuntoDeVentas {
 
         private void BorrarCuenta()//Borramos todo lo de la cuenta abierta
         {
-            pnlStatus.Text = "";
+            this.pnlStatus.Text = "";
             this.LstArticulos.Clear();
+            this.picArticulo.Image = null;
         }
 
         private void GuardarTrans() {
@@ -90,10 +91,22 @@ namespace PuntoDeVentas {
             }
         }
 
-        private void LstArticulos_OnChange(object sende, object e) {
-            //Actualizar el total en pantalla
+        private void LstArticulos_OnListChange(object sender, object e) {
+            
+            //ACTUALIZAR EL TOTAL EN PANTALLA
             lblTotal.Text = Functions.ToCurrency(((ArticuloList.SubtotalInfo)e).Total);
             lblArticuloCount.Text = String.Format("CANT. ARTICULOS : {0}", ((ArticuloList.SubtotalInfo)e).Count.ToString("00"));
+
+
+            if (((ArticuloList.SubtotalInfo)e).Count > 0) {
+                //SI HAY ARTICULOS EN LA LISTA COLOREAR DE NARANJA PARA INDICAR QUE SE ESTA COBRANDO
+                this.WindowBorderColor = Color.FromArgb(192, 64, 0);
+
+            } else { 
+                //SI NO HAY ARTICULOS EN LA LISTA COLOREAR DE VERDE PARA INDICAR QUE ESTA DISPONIBLE
+                this.WindowBorderColor = Color.FromArgb(60, 184, 120);
+            }
+
         }
 
         #endregion
@@ -329,6 +342,17 @@ namespace PuntoDeVentas {
                         //Agregamos el Item a la lista
                         LstArticulos.Add(Item);
 
+                        //Verificamos si el articulo contiene imagen
+                        if (Articulo.FOTO.IsEmpty) {
+                            //La Imagen esta vacia
+                            picArticulo.Image = null;
+                        } else {
+                            //Mostramos la foto del articulo ajustandolo al size del control
+                            var Size = picArticulo.Size;
+                            picArticulo.Image = Articulo.FOTO.GetImageSzOf(Size);
+
+                        }
+
                         txtCodigo.Focus();
                         txtCodigo.Text = "";
                         txtCantidad.Text = "1";
@@ -348,10 +372,6 @@ namespace PuntoDeVentas {
         }
 
         #endregion
-
-        private void label2_Click(object sender, EventArgs e) {
-          
-        }
 
     }
 }

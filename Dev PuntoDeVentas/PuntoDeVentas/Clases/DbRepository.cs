@@ -23,6 +23,7 @@ using NEnvironment = NHibernate.Cfg.Environment;
 
 
 //MODELS DEL SISTEMA DE VENTA
+using PuntoDeVentas;
 using PuntoDeVentas.Models;
 
 namespace System {
@@ -235,29 +236,31 @@ namespace System {
 
         //FUNCION PARA OBTENER LA INFORMACION DEL UN ARTICULO
         public static ArticuloInfo GetArticuloInfo(string ArticuloId) {
-            ArticuloInfo info = new ArticuloInfo();
+            ArticuloInfo Articulo = new ArticuloInfo();
             DataTable TblResult;
             string Qry = "SELECT * FROM [TBL_ARTICULOS] WHERE [ARTICULO_ID]='@ART_ID'";
             Qry = Qry.Replace("@ART_ID", ArticuloId.Replace("'", ""));
             TblResult = Fill(Qry, "TblResult");
 
             if (TblResult.Rows.Count > 0) {
-                info.EXIST = true;
-                info.ID = TblResult.Rows[0]["ARTICULO_ID"].ToString();
-                info.DESCRIPCION = TblResult.Rows[0]["DESCRIPCION"].ToString();
-                info.PRECIO = TblResult.Rows[0]["PRECIO"].ToString();
-                info.INV = TblResult.Rows[0]["INV"].ToString();
-                info.UNIDAD = TblResult.Rows[0]["UNIDAD"].ToString();
+                Articulo.EXIST = true;
+                Articulo.ID = TblResult.Rows[0]["ARTICULO_ID"].ToString();
+                Articulo.DESCRIPCION = TblResult.Rows[0]["DESCRIPCION"].ToString();
+                Articulo.PRECIO = TblResult.Rows[0]["PRECIO"].ToString();
+                Articulo.INV = TblResult.Rows[0]["INV"].ToString();
+                Articulo.UNIDAD = TblResult.Rows[0]["UNIDAD"].ToString();
+                Articulo.FOTO = GetArticuloFoto(Articulo.ID);//Obtener la foto del articulo.
+
             } else {
-                info.EXIST = false;
-                info.PRECIO = "0";
+                Articulo.EXIST = false;
+                Articulo.PRECIO = "0";
 
             }
-            return info;
+            return Articulo;
         }
 
         //FUNCION PARA AGREGAR UN NUEVO ARTICULO ALA BD.
-        public static bool UpdateArticulo(string Id, string Descripcion, string Unidad, string Precio, bool Inv) {
+        public static bool UpdateArticulo(ArticuloInfo Articulo) {
             string QryInsert = //ESTA INSTRUCCION SQL ES PARA INSERTAR UN ARTICULO EN LA BD.
            " INSERT INTO TBL_ARTICULOS (ARTICULO_ID,DESCRIPCION,UNIDAD,PRECIO,INV)" +
            " VALUES('@ID','@DESCRIPCION','@UNIDAD','@PRECIO','@INV')";
@@ -266,12 +269,14 @@ namespace System {
             " SET ARTICULO_ID='@ID',DESCRIPCION='@DESCRIPCION',UNIDAD='@UNIDAD',PRECIO='@PRECIO',INV='@INV'" +
             " WHERE ARTICULO_ID='@ID'";
 
+            int Inv = Articulo.INV == "TRUE" ? 1 : 0;
+
             //Validamos si no esta registrado ya este articulo
-            if (GetArticuloInfo(Id).EXIST) { //Llamamos a la funcion GetArticuloInfo para saber si existe
-                QryUpdate = QryUpdate.Replace("@ID", Id.Replace(",", ""));
-                QryUpdate = QryUpdate.Replace("@DESCRIPCION", Descripcion.ToUpper().Trim().Replace(",", ""));
-                QryUpdate = QryUpdate.Replace("@PRECIO", Precio.Trim().Replace(",", ""));
-                QryUpdate = QryUpdate.Replace("@UNIDAD", Unidad.ToUpper().Trim().Replace(",", ""));
+            if (GetArticuloInfo(Articulo.ID).EXIST) { //Llamamos a la funcion GetArticuloInfo para saber si existe
+                QryUpdate = QryUpdate.Replace("@ID", Articulo.ID.Replace(",", ""));
+                QryUpdate = QryUpdate.Replace("@DESCRIPCION", Articulo.DESCRIPCION.ToUpper().Trim().Replace(",", ""));
+                QryUpdate = QryUpdate.Replace("@PRECIO", Articulo.PRECIO.Trim().Replace(",", ""));
+                QryUpdate = QryUpdate.Replace("@UNIDAD", Articulo.UNIDAD.ToUpper().Trim().Replace(",", ""));
                 QryUpdate = QryUpdate.Replace("@INV", Convert.ToInt16(Inv).ToString());//Convertimos a entero la variable bool para que guarde 1 o 0
 
                 if (Execute(QryUpdate) > 0) {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL 
@@ -284,10 +289,10 @@ namespace System {
 
             } else {
                 //Remplazamos los valores en la de la instruccion por los valores a insertar
-                QryInsert = QryInsert.Replace("@ID", Id.Replace(",", ""));
-                QryInsert = QryInsert.Replace("@DESCRIPCION", Descripcion.ToUpper().Trim().Replace(",", ""));
-                QryInsert = QryInsert.Replace("@PRECIO", Precio.Trim().Replace(",", ""));
-                QryInsert = QryInsert.Replace("@UNIDAD", Unidad.ToUpper().Trim().Replace(",", ""));
+                QryInsert = QryInsert.Replace("@ID", Articulo.ID.Replace(",", ""));
+                QryInsert = QryInsert.Replace("@DESCRIPCION", Articulo.DESCRIPCION.ToUpper().Trim().Replace(",", ""));
+                QryInsert = QryInsert.Replace("@PRECIO", Articulo.PRECIO.Trim().Replace(",", ""));
+                QryInsert = QryInsert.Replace("@UNIDAD", Articulo.UNIDAD.ToUpper().Trim().Replace(",", ""));
                 QryInsert = QryInsert.Replace("@INV", Convert.ToInt16(Inv).ToString());//Convertimos a entero la variable bool para que guarde 1 o 0
 
                 if (Execute(QryInsert) > 0) {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL {
@@ -301,14 +306,28 @@ namespace System {
 
         }
 
+        public static ImageInfo GetArticuloFoto(string ArticuloId) {
+            var ImgInfo = new ImageInfo();
+            var Tbl = new DataTable();
+            var Qry  = "SELECT FOTO FROM TBL_ARTICULOS_FOTO WHERE ARTICULO_ID = '@ARTICULO_ID' ";
+
+            Qry = Qry.Replace("@ARTICULO_ID",ArticuloId.Replace("'","''"));
+
+            Tbl = Fill(Qry, "Temp");
+
+            if (Tbl.Rows.Count > 0) {
+                //Descomprimir foto de la Tbl a byte array
+                ImgInfo.FSImage = (byte[])Tbl.Rows[0]["FOTO"];
+            }
+            
+            return ImgInfo;        
+        }
 
         //FUNCION PARA GUARDARLA INFORMACION DE LA FOTO DELARTICULO EN LA BD
         public static bool GuardarFoto(string ArticuloId,object Foto) {
             string InsertQry = "INSERT INTO TBL_ARTICULOS_FOTO (ARTICULO_ID,FOTO) VALUES(?,?)";
             int Counter = -1;
-
-
-            
+                        
             _objCmd.Parameters.Clear();
             _objCmd.CommandText = InsertQry;
             _objCmd.Parameters.Add(new OleDbParameter("?", ArticuloId));

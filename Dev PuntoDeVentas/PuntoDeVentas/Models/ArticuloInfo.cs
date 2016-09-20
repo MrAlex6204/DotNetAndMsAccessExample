@@ -13,8 +13,24 @@ namespace PuntoDeVentas.Models {
         public string INV;
         public string UNIDAD;
         public bool EXIST;//SI EL ARTICULO EXISTE DEVUELVE TRUE
-        public ImageInfo Foto = new ImageInfo(); //INFORMACION DE LA FOTO DEL ARTICULO
-        
+        public ImageInfo FOTO = new ImageInfo(); //INFORMACION DE LA FOTO DEL ARTICULO
+
+
+        public ArticuloInfo() {
+            this.Clear();
+        }
+
+        public void Clear() { 
+        ID = string.Empty;
+        DESCRIPCION = string.Empty;
+        PRECIO = string.Empty;
+        INV = string.Empty;
+        UNIDAD = string.Empty;
+        EXIST = false;
+        FOTO.Clear();
+
+        }
+
         //RETORNAR EN TEXTO LA INFORMACION DEL ARTICULO
         public string ToString(double Cantidad) {
             var ArticuloDesc = string.Format(
