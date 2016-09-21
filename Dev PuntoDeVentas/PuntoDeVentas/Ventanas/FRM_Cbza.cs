@@ -8,17 +8,20 @@ using System.Text;
 using System.Windows.Forms;
 using PuntoDeVentas.Models;
 
-namespace PuntoDeVentas {
+namespace PuntoDeVentas
+{
 
-    public partial class FRM_Cbza : Controls.BaseForm {
+    public partial class FRM_Cbza : Controls.BaseForm
+    {
 
-        public FRM_Cbza() {
+        public FRM_Cbza()
+        {
             InitializeComponent();
         }
 
         #region  <DECLARACIONES>
 
-        
+
 
         #endregion
 
@@ -31,8 +34,10 @@ namespace PuntoDeVentas {
             this.picArticulo.Image = null;
         }
 
-        private void GuardarTrans() {
-            foreach (ArticuloItem Item in this.LstArticulos.Items) {//RECORREMOS TODOS LOS ARTICULOS DE LA LISTA
+        private void GuardarTrans()
+        {
+            foreach (ArticuloItem Item in this.LstArticulos.Items)
+            {//RECORREMOS TODOS LOS ARTICULOS DE LA LISTA
 
                 //Guarda la lista de articulos en la base de datos
                 System.DbRepository.RegistrarArticulo(
@@ -44,7 +49,8 @@ namespace PuntoDeVentas {
                                                         System.DbRepository.CajeroId
                                                      );
 
-                if (Item.Articulo.INV == "TRUE") {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
+                if (Item.Articulo.INV == "TRUE")
+                {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
                     //REGISTRAMOS LA SALIDA DEL INVENTARIO DEL ARTICULO
                     System.DbRepository.InvRegistrarArticulo(
                                                                 Item.Articulo.ID, "0",
@@ -57,17 +63,19 @@ namespace PuntoDeVentas {
 
             }
         }
-        
+
         #endregion
 
         #region  <EVENTOS DEL FORMULARIO>
 
-        private void tmrFechayHra_Tick(object sender, EventArgs e) {
+        private void tmrFechayHra_Tick(object sender, EventArgs e)
+        {
             //Mostrar fecha y Hra
-            lblFechaHra.Text = System.DateTime.Now.ToString("dddd,dd-MMMM-yyyy hh:mm tt",Configurations.RegionProvider);
+            lblFechaHra.Text = System.DateTime.Now.ToString("dddd,dd-MMMM-yyyy hh:mm tt", Configurations.RegionProvider);
         }
 
-        private void FRM_Cbza_Load(object sender, EventArgs e) {
+        private void FRM_Cbza_Load(object sender, EventArgs e)
+        {
 
             lblCajero.Text = System.DbRepository.Nombre.ToUpper();
             lblTitle.Text = System.Configurations.NombreDelNegocio;
@@ -78,34 +86,63 @@ namespace PuntoDeVentas {
             txtCodigo.Focus();
             this.LstArticulos.Clear();
             this.txtCodigo.Focus();
-            
+
         }
 
-        private void FRM_Cbza_FormClosing(object sender, FormClosingEventArgs e) {
-            if (this.LstArticulos.Items.SubTotal > 0) {
-                if (MessageBox.Show("Desea Salir de la Cbza?", "Desea salir ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
+        private void FRM_Cbza_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (this.LstArticulos.Items.SubTotal > 0)
+            {
+                if (MessageBox.Show("Desea Salir de la Cbza?", "Desea salir ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
                     e.Cancel = false;
-                } else {
+                }
+                else
+                {
                     e.Cancel = true;
                 }
             }
         }
 
-        private void LstArticulos_OnListChange(object sender, object e) {
-            
+        private void LstArticulos_OnListChange(object sender, object e)
+        {
+
             //ACTUALIZAR EL TOTAL EN PANTALLA
             lblTotal.Text = Functions.ToCurrency(((ArticuloList.SubtotalInfo)e).Total);
             lblArticuloCount.Text = String.Format("CANT. ARTICULOS : {0}", ((ArticuloList.SubtotalInfo)e).Count.ToString("00"));
 
 
-            if (((ArticuloList.SubtotalInfo)e).Count > 0) {
+            if (((ArticuloList.SubtotalInfo)e).Count > 0)
+            {
                 //SI HAY ARTICULOS EN LA LISTA COLOREAR DE NARANJA PARA INDICAR QUE SE ESTA COBRANDO
                 this.WindowBorderColor = Color.FromArgb(192, 64, 0);
 
-            } else { 
+            }
+            else
+            {
                 //SI NO HAY ARTICULOS EN LA LISTA COLOREAR DE VERDE PARA INDICAR QUE ESTA DISPONIBLE
                 this.WindowBorderColor = Color.FromArgb(60, 184, 120);
             }
+
+        }
+
+        private void LstArticulos_OnSelectedItemChange(ArticuloItem e)
+        {
+
+            if (!e.Articulo.FOTO.IsEmpty)
+            {
+                //VERIFICAMOS SI EL ITEM SELECCIONADO TIENE FOTO
+                var Size = picArticulo.Size;
+
+                //OBTENER LA IMAGEN Y AJUSTARLA AL TAMANO DEL PICTUREBOX
+                picArticulo.Image = e.Articulo.FOTO.GetImageSzOf(Size);
+
+            }
+            else {
+
+                picArticulo.Image = null;   
+            }
+
 
         }
 
@@ -135,13 +172,17 @@ namespace PuntoDeVentas {
                  SCREEN_LEFT = (Keys.Control | Keys.Left),
                  SCREEN_RIGHT = (Keys.Control | Keys.Right);
 
-        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar == 13) {
+
+        private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
                 txtCodigo.Focus();
             }
         }
 
-        private void Wnd_KeyDown(object sender, KeyEventArgs e) {
+        private void Wnd_KeyDown(object sender, KeyEventArgs e)
+        {
             var OPCION = e.KeyData;
 
             switch (OPCION)//===>Seleccionar el la funcion de acuerdo ala tecla presionada.
@@ -150,7 +191,8 @@ namespace PuntoDeVentas {
 
                     FRM_ConsultarArticulos wndBuscarArt = new FRM_ConsultarArticulos();
                     wndBuscarArt.ShowDialog(this);
-                    if (wndBuscarArt.ArticuloId.Trim() != "") {//Si el articulo id es diferente a vacion
+                    if (wndBuscarArt.ArticuloId.Trim() != "")
+                    {//Si el articulo id es diferente a vacion
                         txtCodigo.Text = wndBuscarArt.ArticuloId;//le pasamos el textbox codigo el id del articulo
                         txtCodigo.Focus();
                     }
@@ -158,7 +200,8 @@ namespace PuntoDeVentas {
                     break;
                 case COBRAR:
 
-                    if (this.LstArticulos.Items.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
+                    if (this.LstArticulos.Items.SubTotal > 0)
+                    {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
                         FRM_Total wndTotal = new FRM_Total();
                         wndTotal.Total = this.LstArticulos.Items.SubTotal;
                         //Lista de articulo para imprimir
@@ -166,12 +209,15 @@ namespace PuntoDeVentas {
 
                         wndTotal.ShowDialog(this);
 
-                        if (wndTotal.IsCancelled == false) {//si la transaccion no fue borrada
+                        if (wndTotal.IsCancelled == false)
+                        {//si la transaccion no fue borrada
                             GuardarTrans();//Guardamos la transaccion en la Bd.
                             BorrarCuenta();
                         }
 
-                    } else {
+                    }
+                    else
+                    {
                         Functions.Message("NO HAY ARTICULOS POR COBRAR!");
                     }
 
@@ -205,8 +251,10 @@ namespace PuntoDeVentas {
                     break;
                 case CANCELAR_TRANSACCION:
 
-                    if (this.LstArticulos.Items.SubTotal > 0) {
-                        if (MessageBox.Show("Desea cancelar la transaccion?", "Cancelar Transaccion?", MessageBoxButtons.YesNo) == DialogResult.Yes) {
+                    if (this.LstArticulos.Items.SubTotal > 0)
+                    {
+                        if (MessageBox.Show("Desea cancelar la transaccion?", "Cancelar Transaccion?", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                        {
                             BorrarCuenta();
                             Functions.Message("TRANSACCION CANCELADA!");
                         }
@@ -249,11 +297,14 @@ namespace PuntoDeVentas {
                     break;
                 case ELIMINAR_ARTICULO_SELECCIONADO:
 
-                    if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null) {
+                    if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null)
+                    {
 
-                        if (!this.LstArticulos.Items.SelectedItem.IsDeleted) {//Solo si el articulo no ha sido eliminado
+                        if (!this.LstArticulos.Items.SelectedItem.IsDeleted)
+                        {//Solo si el articulo no ha sido eliminado
 
-                            if (MessageBox.Show("Desea eliminar el articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Eliminar", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                            if (MessageBox.Show("Desea eliminar el articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Eliminar", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                            {
                                 //Indicar que el Articulo seleccionado esta eliminado
                                 this.LstArticulos.Delete(this.LstArticulos.Items.SelectedItem);
 
@@ -266,11 +317,14 @@ namespace PuntoDeVentas {
                     break;
                 case RESTAURAR_ARTICULO_ELIMINADO:
 
-                    if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null) {
+                    if (this.LstArticulos.Items.Count > 0 && this.LstArticulos.Items.SelectedItem != null)
+                    {
 
-                        if (this.LstArticulos.Items.SelectedItem.IsDeleted) {//Solo si el articulo ya fue eliminado
+                        if (this.LstArticulos.Items.SelectedItem.IsDeleted)
+                        {//Solo si el articulo ya fue eliminado
 
-                            if (MessageBox.Show("Volver agregar este articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Volver agregar?", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes) {
+                            if (MessageBox.Show("Volver agregar este articulo :" + this.LstArticulos.Items.SelectedItem.Articulo.DESCRIPCION + " ?", "Volver agregar?", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+                            {
                                 //Indicar que el Articulo seleccionado esta eliminado
                                 this.LstArticulos.Restore(this.LstArticulos.Items.SelectedItem);
 
@@ -284,7 +338,8 @@ namespace PuntoDeVentas {
 
                     int IncrementarCantidad = 0;
 
-                    if (int.TryParse(txtCantidad.Text.Trim(), out IncrementarCantidad)) {
+                    if (int.TryParse(txtCantidad.Text.Trim(), out IncrementarCantidad))
+                    {
                         IncrementarCantidad++;
                         txtCantidad.Text = IncrementarCantidad.ToString();
                     }
@@ -294,9 +349,11 @@ namespace PuntoDeVentas {
 
                     int DecrementarCantidad = 0;
 
-                    if (int.TryParse(txtCantidad.Text.Trim(), out DecrementarCantidad)) {
+                    if (int.TryParse(txtCantidad.Text.Trim(), out DecrementarCantidad))
+                    {
 
-                        if (DecrementarCantidad > 1) {
+                        if (DecrementarCantidad > 1)
+                        {
                             DecrementarCantidad--;
                             txtCantidad.Text = DecrementarCantidad.ToString();
                         }
@@ -306,14 +363,18 @@ namespace PuntoDeVentas {
                     break;
                 case CONSULTAR_ARTICULO:
 
-                    if (txtCodigo.Text.Length > 0) {
+                    if (txtCodigo.Text.Length > 0)
+                    {
 
                         var Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
 
-                        if (Articulo.EXIST) {
+                        if (Articulo.EXIST)
+                        {
                             var Cantidad = double.Parse(txtCantidad.Text);
                             pnlStatus.Text = Articulo.ToString(Cantidad);
-                        } else {
+                        }
+                        else
+                        {
                             pnlStatus.Text = "** NO EXISTE **";
                         }
 
@@ -324,9 +385,11 @@ namespace PuntoDeVentas {
 
         }
 
-        private void ArticuloCode_KeyDown(object sender, KeyEventArgs e) {
+        private void ArticuloCode_KeyDown(object sender, KeyEventArgs e)
+        {
 
-            switch (e.KeyCode) {
+            switch (e.KeyCode)
+            {
 
                 case Keys.Enter:
 
@@ -335,23 +398,14 @@ namespace PuntoDeVentas {
                     ArticuloInfo Articulo = System.DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
 
                     //Si el Articulo Existe agregar a la lista
-                    if (Articulo.EXIST) {
+                    if (Articulo.EXIST)
+                    {
                         double Cantidad = (Convert.ToDouble(txtCantidad.Text));
                         ArticuloItem Item = new ArticuloItem(Articulo, Cantidad);
 
                         //Agregamos el Item a la lista
                         LstArticulos.Add(Item);
 
-                        //Verificamos si el articulo contiene imagen
-                        if (Articulo.FOTO.IsEmpty) {
-                            //La Imagen esta vacia
-                            picArticulo.Image = null;
-                        } else {
-                            //Mostramos la foto del articulo ajustandolo al size del control
-                            var Size = picArticulo.Size;
-                            picArticulo.Image = Articulo.FOTO.GetImageSzOf(Size);
-
-                        }
 
                         txtCodigo.Focus();
                         txtCodigo.Text = "";
@@ -359,7 +413,9 @@ namespace PuntoDeVentas {
 
 
 
-                    } else { //Si el articulo no existe
+                    }
+                    else
+                    { //Si el articulo no existe
 
                         Functions.Message("NO EXISTE EL ARTICULO!");
                     }

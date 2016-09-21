@@ -105,8 +105,11 @@ namespace PuntoDeVentas.Controls
                     foreach (Control iCtrl in this.Controls)
                     {
 
-                        iCtrl.MouseUp -= Wnd_MouseUp;
-                        iCtrl.MouseDown -= Wnd_MouseDown;
+                        if (iCtrl.GetType() == typeof(Label))
+                        {
+                            iCtrl.MouseUp -= Wnd_MouseUp;
+                            iCtrl.MouseDown -= Wnd_MouseDown;
+                        }
                     }
 
                 }
@@ -120,7 +123,7 @@ namespace PuntoDeVentas.Controls
                     foreach (Control iCtrl in this.Controls)
                     {
 
-                        if (iCtrl.GetType() != typeof(Button) && iCtrl.GetType() != typeof(Controls.InputTextBox))
+                        if (iCtrl.GetType() == typeof(Label))
                         {
                             iCtrl.MouseUp += Wnd_MouseUp;
                             iCtrl.MouseDown += Wnd_MouseDown;

@@ -41,9 +41,9 @@
             this.lblWndPanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.lblWndPanelTitle.Controls.Add(this.pnlControls);
             this.lblWndPanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWndPanelTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblWndPanelTitle.Location = new System.Drawing.Point(2, 2);
             this.lblWndPanelTitle.Name = "lblWndPanelTitle";
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(911, 55);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(907, 55);
             this.lblWndPanelTitle.TabIndex = 0;
             this.lblWndPanelTitle.DoubleClick += new System.EventHandler(this.lblPanelTitle_DoubleClick);
             this.lblWndPanelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Wnd_MouseDown);
@@ -59,7 +59,7 @@
             this.pnlControls.Controls.Add(this.cmdMinimize);
             this.pnlControls.Controls.Add(this.pnlMoveWnd);
             this.pnlControls.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.pnlControls.Location = new System.Drawing.Point(753, 10);
+            this.pnlControls.Location = new System.Drawing.Point(749, 10);
             this.pnlControls.Margin = new System.Windows.Forms.Padding(0);
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Padding = new System.Windows.Forms.Padding(2);
@@ -191,6 +191,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "BaseForm";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "BaseForm";

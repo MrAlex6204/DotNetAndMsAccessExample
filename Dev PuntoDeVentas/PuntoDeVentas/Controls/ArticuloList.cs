@@ -18,6 +18,8 @@ namespace PuntoDeVentas {
 
         public delegate void OnChangeHandler (object sender, object e);
         public event OnChangeHandler OnListChange;
+        //Creamos un evento de SelectedItemChange para notificar cuando el item seleccionado cambio
+        public event ArticuloItemCollection.OnSelectedItemChangeHanlder OnSelectedItemChange;
 
         public struct SubtotalInfo {
             public int Count;
@@ -34,6 +36,16 @@ namespace PuntoDeVentas {
             if (this.DesignMode) {
                 this.BackColor = Color.FromArgb(64, 64, 64);
             }
+            //ADJUNTAR EVENTO A LA LISTA CUANDO EL ITEM SELECCIONADO CAMBIO
+            this.Items.OnSelectedItemChange += delegate (ArticuloItem e)
+            {
+
+                if (this.OnSelectedItemChange != null) {
+                    //INVOCAR EVENTO CUANDO EL ITEM SELECCIONADO CAMBIO
+                    this.OnSelectedItemChange.Invoke(e);
+                }
+
+            };
 
         }
         

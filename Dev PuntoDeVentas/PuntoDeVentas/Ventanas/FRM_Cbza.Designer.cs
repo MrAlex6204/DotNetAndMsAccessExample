@@ -68,7 +68,6 @@ namespace PuntoDeVentas {
             this.lblWndPanelTitle.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
             this.lblWndPanelTitle.Controls.Add(this.lblCajero);
             this.lblWndPanelTitle.Controls.Add(this.pictureBox1);
-            this.lblWndPanelTitle.Location = new System.Drawing.Point(2, 2);
             this.lblWndPanelTitle.Padding = new System.Windows.Forms.Padding(1);
             this.lblWndPanelTitle.Size = new System.Drawing.Size(1220, 55);
             this.lblWndPanelTitle.Controls.SetChildIndex(this.pictureBox1, 0);
@@ -183,7 +182,7 @@ namespace PuntoDeVentas {
             this.lblCajero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCajero.Name = "lblCajero";
             this.lblCajero.Padding = new System.Windows.Forms.Padding(0, 15, 6, 0);
-            this.lblCajero.Size = new System.Drawing.Size(73, 35);
+            this.lblCajero.Size = new System.Drawing.Size(74, 35);
             this.lblCajero.TabIndex = 4;
             this.lblCajero.Text = "[CAJERO]";
             this.lblCajero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -348,6 +347,7 @@ namespace PuntoDeVentas {
             this.LstArticulos.Size = new System.Drawing.Size(945, 616);
             this.LstArticulos.TabIndex = 0;
             this.LstArticulos.OnListChange += new PuntoDeVentas.ArticuloList.OnChangeHandler(this.LstArticulos_OnListChange);
+            this.LstArticulos.OnSelectedItemChange += new System.ArticuloItemCollection.OnSelectedItemChangeHanlder(this.LstArticulos_OnSelectedItemChange);
             // 
             // lblDireccion
             // 
@@ -382,11 +382,10 @@ namespace PuntoDeVentas {
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.MoveWindowBox = true;
             this.Name = "FRM_Cbza";
-            this.Padding = new System.Windows.Forms.Padding(2);
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Cobranza";
-            this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FRM_Cbza_FormClosing);
             this.Load += new System.EventHandler(this.FRM_Cbza_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Wnd_KeyDown);

@@ -44,7 +44,7 @@
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(682, 55);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(678, 55);
             // 
             // cmdAceptar
             // 
@@ -55,7 +55,7 @@
             this.cmdAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdAceptar.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.cmdAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdAceptar.Location = new System.Drawing.Point(256, 345);
+            this.cmdAceptar.Location = new System.Drawing.Point(256, 348);
             this.cmdAceptar.Name = "cmdAceptar";
             this.cmdAceptar.Size = new System.Drawing.Size(80, 33);
             this.cmdAceptar.TabIndex = 6;
@@ -72,7 +72,7 @@
             this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdCancelar.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.cmdCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdCancelar.Location = new System.Drawing.Point(345, 345);
+            this.cmdCancelar.Location = new System.Drawing.Point(345, 348);
             this.cmdCancelar.Name = "cmdCancelar";
             this.cmdCancelar.Size = new System.Drawing.Size(80, 33);
             this.cmdCancelar.TabIndex = 7;
@@ -114,10 +114,10 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label5.Location = new System.Drawing.Point(4, -1);
+            this.label5.Location = new System.Drawing.Point(6, 6);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(218, 45);
+            this.label5.Size = new System.Drawing.Size(219, 45);
             this.label5.TabIndex = 30;
             this.label5.Text = "Nuevo articulo";
             // 
@@ -218,7 +218,7 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(682, 390);
+            this.ClientSize = new System.Drawing.Size(682, 393);
             this.ControlBox = false;
             this.Controls.Add(this.picArticuloFoto);
             this.Controls.Add(this.cmdExaminar);
@@ -238,6 +238,7 @@
             this.ShowTitleLabel = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Articulos";
+            this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_AgregarArticulo_Load);
             this.Controls.SetChildIndex(this.cmdAceptar, 0);
             this.Controls.SetChildIndex(this.cmdCancelar, 0);
