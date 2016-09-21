@@ -411,7 +411,12 @@ namespace System
         public static DataTable BuscarArticulo(string Buscar)
         {
             DataTable TblResult;
-            string QryBuscar = "SELECT ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,PRECIO FROM TBL_ARTICULOS WHERE DESCRIPCION LIKE '%@BUSCAR%'";
+            string QryBuscar = @"
+                SELECT ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,PRECIO,FOTO 
+                FROM TBL_ARTICULOS_SEARCH_VIEW 
+                WHERE DESCRIPCION LIKE '%@BUSCAR%'
+                ORDER BY ARTICULO_ID
+            ";
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
             TblResult = Fill(QryBuscar, "TblResultados");
             return TblResult;

@@ -10,7 +10,7 @@ namespace PuntoDeVentas {
         //Image Stream
         public byte[] FSImage;
 
-        //Propiedad de ReadOnly para descomprimir la imagen de bytes
+        //PROPIEDAD DE READONLY PARA DESCOMPRIMIR LA IMAGEN DE BYTES
         public System.Drawing.Image GetImageSzOf(System.Drawing.Size sz) {
 
             if (FSImage != null) {
@@ -35,6 +35,35 @@ namespace PuntoDeVentas {
             }
 
         }
+
+
+        public static System.Drawing.Image GetImageSzOf(byte[] Fs,System.Drawing.Size sz) {
+
+            if (Fs != null) {
+                System.Drawing.Image Img, FixedImg;
+                System.Drawing.Size AspectRatioSz = new System.Drawing.Size();
+
+                using (System.IO.MemoryStream ImgStream = new System.IO.MemoryStream(Fs)) {
+                    Img = System.Drawing.Image.FromStream(ImgStream);
+                    float Orignal_Height = Img.Size.Height;
+                    float Orignal_Width = Img.Size.Width;
+
+                    //Calcular el aspect ratio para evitar que se distorcione                    
+                    AspectRatioSz = new System.Drawing.Size(sz.Width, (int)((Orignal_Height / Orignal_Width) * sz.Width));
+
+                    FixedImg = Img.GetThumbnailImage(AspectRatioSz.Width, AspectRatioSz.Height, null, IntPtr.Zero);
+
+                }
+
+                return FixedImg;
+            } else {
+                return null;
+            }
+
+        }
+
+
+
 
         //Limpiar el stream
         public void Clear() {

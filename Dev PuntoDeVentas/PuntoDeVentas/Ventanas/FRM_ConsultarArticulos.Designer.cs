@@ -35,12 +35,14 @@
             this.Gridbuscar = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new PuntoDeVentas.Controls.InputTextBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.pictArticulo = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.Gridbuscar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(454, 45);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(807, 45);
             // 
             // Gridbuscar
             // 
@@ -69,8 +71,8 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Yellow;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Gridbuscar.DefaultCellStyle = dataGridViewCellStyle2;
             this.Gridbuscar.GridColor = System.Drawing.SystemColors.Control;
@@ -90,9 +92,10 @@
             this.Gridbuscar.RowHeadersVisible = false;
             this.Gridbuscar.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Gridbuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Gridbuscar.Size = new System.Drawing.Size(422, 377);
+            this.Gridbuscar.Size = new System.Drawing.Size(511, 302);
             this.Gridbuscar.StandardTab = true;
             this.Gridbuscar.TabIndex = 2;
+            this.Gridbuscar.SelectionChanged += new System.EventHandler(this.SelectedRow_Change);
             this.Gridbuscar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gridbuscar_KeyDown);
             // 
             // txtBuscar
@@ -100,7 +103,7 @@
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtBuscar.BackColor = System.Drawing.Color.White;
-            this.txtBuscar.BorderOuterActiveColor = System.Drawing.Color.Silver;
+            this.txtBuscar.BorderOuterActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.txtBuscar.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
             this.txtBuscar.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             this.txtBuscar.BorderOuterSize = 7;
@@ -111,7 +114,7 @@
             this.txtBuscar.Location = new System.Drawing.Point(27, 51);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Placeholder = "Teclee el nombre del articulo";
-            this.txtBuscar.Size = new System.Drawing.Size(401, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(758, 22);
             this.txtBuscar.TabIndex = 33;
             this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
@@ -123,17 +126,28 @@
             this.label5.Location = new System.Drawing.Point(18, 9);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(126, 25);
+            this.label5.Size = new System.Drawing.Size(125, 25);
             this.label5.TabIndex = 34;
             this.label5.Text = "Buscar articulo";
+            // 
+            // pictArticulo
+            // 
+            this.pictArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictArticulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictArticulo.Location = new System.Drawing.Point(534, 90);
+            this.pictArticulo.Name = "pictArticulo";
+            this.pictArticulo.Size = new System.Drawing.Size(260, 302);
+            this.pictArticulo.TabIndex = 35;
+            this.pictArticulo.TabStop = false;
             // 
             // FRM_ConsultarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(454, 481);
+            this.ClientSize = new System.Drawing.Size(811, 406);
             this.ControlBox = false;
+            this.Controls.Add(this.pictArticulo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.Gridbuscar);
@@ -146,14 +160,16 @@
             this.ShowTitleLabel = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Buscar Articulos";
-            this.WindowBorderColor = System.Drawing.Color.Navy;
+            this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_ConsultarArticuloscs_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FRM_ConsultarArticuloscs_KeyPress);
             this.Controls.SetChildIndex(this.Gridbuscar, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.txtBuscar, 0);
             this.Controls.SetChildIndex(this.label5, 0);
+            this.Controls.SetChildIndex(this.pictArticulo, 0);
             ((System.ComponentModel.ISupportInitialize)(this.Gridbuscar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -163,6 +179,7 @@
         private System.Windows.Forms.DataGridView Gridbuscar;
         private Controls.InputTextBox txtBuscar;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.PictureBox pictArticulo;
     }
 
 }

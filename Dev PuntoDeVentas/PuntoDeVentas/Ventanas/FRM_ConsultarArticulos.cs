@@ -7,12 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace PuntoDeVentas
-{
-    public partial class FRM_ConsultarArticulos : Controls.BaseForm
-    {
-        public FRM_ConsultarArticulos()
-        {
+namespace PuntoDeVentas {
+    public partial class FRM_ConsultarArticulos : Controls.BaseForm {
+        public FRM_ConsultarArticulos() {
             InitializeComponent();
         }
 
@@ -24,57 +21,46 @@ namespace PuntoDeVentas
             }
         }
 
-
         private void Buscar(string Buscar) {
             DataTable TblResults;
             TblResults = System.DbRepository.BuscarArticulo(Buscar.Trim());
             Gridbuscar.DataSource = TblResults;
-            foreach(DataGridViewColumn iColumn in Gridbuscar.Columns){
-                iColumn.SortMode = DataGridViewColumnSortMode.NotSortable;            
+            foreach (DataGridViewColumn iColumn in Gridbuscar.Columns) {
+                iColumn.SortMode = DataGridViewColumnSortMode.NotSortable;
+                if (iColumn.Name == "FOTO") {
+                    iColumn.Visible = false;
+                }
             }
-            int iCount = 1;
-            foreach (DataGridViewRow iRow in Gridbuscar.Rows) {
-                iRow.HeaderCell.Value = iCount.ToString("00");
-                iCount++;
-            }
-            if (TblResults.Rows.Count <= 0)
-            {
-                //cmdAceptar.Enabled = false;//Deshabilitamos el boton aceptar si no hay registros
-            }
-            else {
-                //cmdAceptar.Enabled = true;//lo habilitamos si nos trajo mas de un registro
+
+            if (TblResults.Rows.Count > 0) {
                 Gridbuscar.Focus();
+
             }
 
         }
 
-        private void FRM_ConsultarArticuloscs_Load(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void txtBuscar_TextChanged(object sender, EventArgs e)
-        {
+        private void FRM_ConsultarArticuloscs_Load(object sender, EventArgs e) {
 
         }
 
-        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void txtBuscar_TextChanged(object sender, EventArgs e) {
+
+        }
+
+        private void txtBuscar_KeyPress(object sender, KeyPressEventArgs e) {
             switch ((Keys)((int)e.KeyChar)) {
                 case Keys.Enter:
-                    Buscar(txtBuscar.Text);                                    
+                    Buscar(txtBuscar.Text);
                     break;
             }
-                        
+
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
+        private void button2_Click(object sender, EventArgs e) {
             Buscar(txtBuscar.Text);
         }
 
-        private void FRM_ConsultarArticuloscs_KeyPress(object sender, KeyPressEventArgs e)
-        {
+        private void FRM_ConsultarArticuloscs_KeyPress(object sender, KeyPressEventArgs e) {
             switch ((Keys)((int)e.KeyChar)) {
                 case Keys.Enter:
                     if (txtBuscar.Focused) {
@@ -98,17 +84,15 @@ namespace PuntoDeVentas
             }
         }
 
-        private void cmdAceptar_Click(object sender, EventArgs e)
-        {
+        private void cmdAceptar_Click(object sender, EventArgs e) {
             if (Gridbuscar.SelectedRows.Count > 0) {
                 //GUARDAMOS EL CODIGO DEL ARTICULO SELECCIONADO, PARA DESPUES GUARDARLO
-               _ArticuloId = Gridbuscar.SelectedRows[0].Cells["CODIGO"].Value.ToString();
-               this.Close();
+                _ArticuloId = Gridbuscar.SelectedRows[0].Cells["CODIGO"].Value.ToString();
+                this.Close();
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
+        private void button1_Click(object sender, EventArgs e) {
             this.Close();
         }
 
@@ -117,7 +101,22 @@ namespace PuntoDeVentas
                 e.Handled = true;
             }
         }
-        
+
+        private void SelectedRow_Change(object sender, EventArgs e) {
+
+            if (Gridbuscar.SelectedRows.Count > 0) {
+
+                //OBTENEMOS EL STREAM DE LA FOTO DEL VALOR DE LA CELDA QUE SE ENCUENTRA EN EL GRID
+                var Fs = Gridbuscar.SelectedRows[0].Cells["FOTO"].Value;
+                var Sz = pictArticulo.Size;//OBTENEMOS EL SIZE DEL PICTUREBOX
+
+                pictArticulo.Image = ImageInfo.GetImageSzOf((byte[])Fs, Sz);
+
+            }
+
+
+        }
+
 
     }
 }
