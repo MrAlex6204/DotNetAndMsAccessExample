@@ -37,7 +37,7 @@
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(447, 51);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(443, 51);
             // 
             // label3
             // 
@@ -107,10 +107,10 @@
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.lblTitle.Location = new System.Drawing.Point(13, 9);
+            this.lblTitle.Location = new System.Drawing.Point(6, 8);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(421, 77);
+            this.lblTitle.Size = new System.Drawing.Size(435, 78);
             this.lblTitle.TabIndex = 34;
             this.lblTitle.Text = "[EMPRESA]";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -122,11 +122,11 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(447, 422);
             this.ControlBox = false;
-            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.lblErrorMsg);
+            this.Controls.Add(this.lblTitle);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.MaximizeBox = false;
@@ -137,12 +137,12 @@
             this.Text = " Login";
             this.WindowBorderColor = System.Drawing.Color.WhiteSmoke;
             this.Load += new System.EventHandler(this.FRM_Login_Load);
+            this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.lblErrorMsg, 0);
             this.Controls.SetChildIndex(this.txtUser, 0);
             this.Controls.SetChildIndex(this.txtPassword, 0);
             this.Controls.SetChildIndex(this.label3, 0);
-            this.Controls.SetChildIndex(this.lblTitle, 0);
             this.ResumeLayout(false);
             this.PerformLayout();
 

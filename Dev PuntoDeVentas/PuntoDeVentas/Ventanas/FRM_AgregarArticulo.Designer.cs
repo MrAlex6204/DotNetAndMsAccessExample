@@ -39,6 +39,7 @@
             this.txtUnidad = new PuntoDeVentas.Controls.InputTextBox();
             this.cmdExaminar = new System.Windows.Forms.Button();
             this.picArticuloFoto = new System.Windows.Forms.PictureBox();
+            this.lblErrorMsg = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -67,6 +68,7 @@
             // 
             this.cmdCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.cmdCancelar.AutoSize = true;
+            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancelar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
             this.cmdCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -89,7 +91,7 @@
             this.chkInventario.Location = new System.Drawing.Point(144, 258);
             this.chkInventario.Name = "chkInventario";
             this.chkInventario.Size = new System.Drawing.Size(166, 25);
-            this.chkInventario.TabIndex = 5;
+            this.chkInventario.TabIndex = 4;
             this.chkInventario.Text = "Agregar al Inventario";
             this.chkInventario.UseVisualStyleBackColor = true;
             // 
@@ -117,7 +119,7 @@
             this.label5.Location = new System.Drawing.Point(6, 6);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(219, 45);
+            this.label5.Size = new System.Drawing.Size(218, 45);
             this.label5.TabIndex = 30;
             this.label5.Text = "Nuevo articulo";
             // 
@@ -137,6 +139,8 @@
             this.txtCodigo.Placeholder = "Codigo";
             this.txtCodigo.Size = new System.Drawing.Size(342, 22);
             this.txtCodigo.TabIndex = 0;
+            this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
+            this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
             // 
             // txtDesc
             // 
@@ -149,11 +153,12 @@
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDesc.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.txtDesc.Location = new System.Drawing.Point(56, 120);
+            this.txtDesc.Location = new System.Drawing.Point(56, 129);
             this.txtDesc.Name = "txtDesc";
             this.txtDesc.Placeholder = "Descripcion";
             this.txtDesc.Size = new System.Drawing.Size(387, 22);
-            this.txtDesc.TabIndex = 2;
+            this.txtDesc.TabIndex = 1;
+            this.txtDesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc_KeyPress);
             // 
             // txtPrecio
             // 
@@ -166,11 +171,12 @@
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.txtPrecio.Location = new System.Drawing.Point(55, 174);
+            this.txtPrecio.Location = new System.Drawing.Point(55, 183);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Placeholder = "$ Precio";
             this.txtPrecio.Size = new System.Drawing.Size(134, 22);
-            this.txtPrecio.TabIndex = 3;
+            this.txtPrecio.TabIndex = 2;
+            this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtUnidad
             // 
@@ -183,11 +189,12 @@
             this.txtUnidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUnidad.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.txtUnidad.Location = new System.Drawing.Point(212, 174);
+            this.txtUnidad.Location = new System.Drawing.Point(212, 183);
             this.txtUnidad.Name = "txtUnidad";
             this.txtUnidad.Placeholder = "Unidad";
             this.txtUnidad.Size = new System.Drawing.Size(231, 22);
-            this.txtUnidad.TabIndex = 4;
+            this.txtUnidad.TabIndex = 3;
+            this.txtUnidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidad_KeyPress);
             // 
             // cmdExaminar
             // 
@@ -200,7 +207,7 @@
             this.cmdExaminar.Location = new System.Drawing.Point(472, 274);
             this.cmdExaminar.Name = "cmdExaminar";
             this.cmdExaminar.Size = new System.Drawing.Size(191, 33);
-            this.cmdExaminar.TabIndex = 32;
+            this.cmdExaminar.TabIndex = 5;
             this.cmdExaminar.Text = "Examinar ...";
             this.cmdExaminar.UseVisualStyleBackColor = true;
             this.cmdExaminar.Click += new System.EventHandler(this.cmdExaminar_Click);
@@ -214,12 +221,24 @@
             this.picArticuloFoto.TabIndex = 33;
             this.picArticuloFoto.TabStop = false;
             // 
+            // lblErrorMsg
+            // 
+            this.lblErrorMsg.AutoSize = true;
+            this.lblErrorMsg.ForeColor = System.Drawing.Color.Maroon;
+            this.lblErrorMsg.Location = new System.Drawing.Point(53, 101);
+            this.lblErrorMsg.Name = "lblErrorMsg";
+            this.lblErrorMsg.Size = new System.Drawing.Size(173, 13);
+            this.lblErrorMsg.TabIndex = 34;
+            this.lblErrorMsg.Text = "Este codigo ya existe! [ARTICULO]";
+            // 
             // FRM_AgregarArticulo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
+            this.CancelButton = this.cmdCancelar;
             this.ClientSize = new System.Drawing.Size(682, 393);
             this.ControlBox = false;
+            this.Controls.Add(this.lblErrorMsg);
             this.Controls.Add(this.picArticuloFoto);
             this.Controls.Add(this.cmdExaminar);
             this.Controls.Add(this.chkInventario);
@@ -240,6 +259,7 @@
             this.Text = "Articulos";
             this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_AgregarArticulo_Load);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FRM_AgregarArticulo_KeyPress);
             this.Controls.SetChildIndex(this.cmdAceptar, 0);
             this.Controls.SetChildIndex(this.cmdCancelar, 0);
             this.Controls.SetChildIndex(this.button1, 0);
@@ -252,6 +272,7 @@
             this.Controls.SetChildIndex(this.chkInventario, 0);
             this.Controls.SetChildIndex(this.cmdExaminar, 0);
             this.Controls.SetChildIndex(this.picArticuloFoto, 0);
+            this.Controls.SetChildIndex(this.lblErrorMsg, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -270,6 +291,7 @@
         private Controls.InputTextBox txtUnidad;
         private System.Windows.Forms.Button cmdExaminar;
         private System.Windows.Forms.PictureBox picArticuloFoto;
+        private System.Windows.Forms.Label lblErrorMsg;
     }
 
 }

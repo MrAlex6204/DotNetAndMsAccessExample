@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    static class Program
+    static class MainCore
     {
         /// <summary>
         /// The main entry point for the application.
@@ -19,25 +19,24 @@ namespace PuntoDeVentas
             //Application.SetCompatibleTextRenderingDefault(false);            
             //Application.Run(new FRM_Login());
             FRM_Login wndLogin = new FRM_Login();
-            FRM_VentanaPrincipal wndVentanaPrinicipal = new FRM_VentanaPrincipal();
-            FRM_Menu wndMenu = new FRM_Menu();
+            FRM_VentanaPrincipal wndVentanaPrinicipal = new FRM_VentanaPrincipal();            
             FRM_SplashScreen wndLoading = new FRM_SplashScreen();
 
+            //Load main configuartions
+            System.Configurations.Load();
 
 #if !DEBUG
             //Omitir el Splash creen en DEBUG
             wndLoading.ShowDialog();            
 #endif           
-
-            //Load main configuartions
-            System.Configurations.Load();
-
+            
             wndLogin.ShowDialog(wndVentanaPrinicipal);
 
             if (wndLogin.UserIsLoggued) { 
                 //Correr applicacion solo si esta logueado
                 wndVentanaPrinicipal.Show();
-                wndMenu.ShowDialog(wndVentanaPrinicipal);
+                
+
                 Application.Run(wndVentanaPrinicipal);            
             }
             

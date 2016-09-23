@@ -412,10 +412,10 @@ namespace System
         {
             DataTable TblResult;
             string QryBuscar = @"
-                SELECT ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,PRECIO,FOTO 
+                SELECT TOP 1000 ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,PRECIO,FOTO 
                 FROM TBL_ARTICULOS_SEARCH_VIEW 
                 WHERE DESCRIPCION LIKE '%@BUSCAR%'
-                ORDER BY ARTICULO_ID
+                ORDER BY ARTICULO_ID,DESCRIPCION
             ";
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
             TblResult = Fill(QryBuscar, "TblResultados");

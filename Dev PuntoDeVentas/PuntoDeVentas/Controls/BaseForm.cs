@@ -54,14 +54,13 @@ namespace PuntoDeVentas.Controls
         private Color _WindowBorderColor = Color.Empty;
         private Size _normalSize;
         private Color _ControlBoxForeColor, _ControlBoxBackColor;
-        private ControlAppearance _ControlBoxAppearance = ControlAppearance.GetInstance();
+        private AnchorStyles _ControlBoxAnchor = new AnchorStyles();
+        private ControlAppearance _ControlBoxstyle = new ControlAppearance();
         private bool _bisFullScreen = false,
                   _bIsOpaque = false,
                   _bMoveWindowBtn = false,
                   _bShowLabelTitle = true;
-
-
-
+        
         #endregion
 
         #region CONTRUCTOR DE CLASE
@@ -157,58 +156,34 @@ namespace PuntoDeVentas.Controls
             }
         }
 
-        public ControlAppearance ControlBoxFlatStyle
+      
+        public ControlAppearance ControlBoxStyle
         {
             get
             {
 
-                return _ControlBoxAppearance;
+                return _ControlBoxstyle;
             }
             set
             {
 
-                _ControlBoxAppearance = value;
-
-                _RenderButtonnFlatStyle(cmdMaximize, value);
-                _RenderButtonnFlatStyle(cmdMinimize, value);
-                _RenderButtonnFlatStyle(cmdClose, value);
-                _RenderButtonnFlatStyle(cmdMoveRight, value);
-                _RenderButtonnFlatStyle(cmdMoveLeft, value);
-
-                if (this.DesignMode)
-                {
-                    this.Invalidate();
-                }
-
+                _ControlBoxstyle = value;
+                _RenderDesign();
             }
 
         }
 
-        public Color ControlBoxForeColor
-        {
-            get
-            {
-
-                return _ControlBoxForeColor;
+        public AnchorStyles ControlBoxAnchor {
+            get {
+                return _ControlBoxAnchor;
             }
-            set
-            {
-
-                cmdMaximize.ForeColor = value;
-                cmdMinimize.ForeColor = value;
-                cmdClose.ForeColor = value;
-                cmdMoveRight.ForeColor = value;
-                cmdMoveLeft.ForeColor = value;
-                _ControlBoxForeColor = value;
-
-                if (this.DesignMode)
-                {
-                    this.Invalidate();
-                }
-            }
+            set {
+                _ControlBoxAnchor = value;
+            
+            }        
         }
 
-        public Color ConrolBoxBackColor
+        public Color ControlBoxBackColor
         {
             get
             {
@@ -339,6 +314,12 @@ namespace PuntoDeVentas.Controls
             pnlMoveWnd.Visible = this.MoveWindowBox;
             lblWndPanelTitle.Visible = _bShowLabelTitle;
 
+            _RenderButtonnFlatStyle(cmdMaximize, _ControlBoxstyle);
+            _RenderButtonnFlatStyle(cmdMinimize, _ControlBoxstyle);
+            _RenderButtonnFlatStyle(cmdClose, _ControlBoxstyle);
+            _RenderButtonnFlatStyle(cmdMoveRight, _ControlBoxstyle);
+            _RenderButtonnFlatStyle(cmdMoveLeft, _ControlBoxstyle);
+
             if (this.WindowState == FormWindowState.Maximized)
             {
                 cmdMaximize.Text = "2";
@@ -360,11 +341,13 @@ namespace PuntoDeVentas.Controls
                 lblWndPanelTitle.Controls.Add(pnlControls);
             }
 
+            pnlControls.Anchor = _ControlBoxAnchor;
 
         }
 
         private void _RenderButtonnFlatStyle(Button Cmd, ControlAppearance Value)
         {
+            Cmd.ForeColor = Value.Forecolor;
             Cmd.FlatAppearance.BorderColor = Value.BorderColor;
             Cmd.FlatAppearance.BorderSize = Value.BorderSize;
             Cmd.FlatAppearance.CheckedBackColor = Value.CheckedBackColor;
@@ -375,6 +358,7 @@ namespace PuntoDeVentas.Controls
         #endregion
 
         #region IMPLEMENTED FORM EVENTS
+
         private const int WM_NCPAINT = 0x85;
 
 
@@ -473,6 +457,80 @@ namespace PuntoDeVentas.Controls
             SplitLeft();
         }
 
+        #endregion
+        
+        #region APPAREANCE
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public class ControlAppearance {
+
+            private int _BorderSize;
+            private Color
+                        _Forecolor = Color.Empty,
+                        _BorderColor = Color.Empty,
+                        _CheckedBackColor = Color.Empty,
+                        _MouseDownBackColor = Color.Empty,
+                        _MouseOverBackColor = Color.Empty;
+
+            public Color Forecolor {
+                get {
+                    return _Forecolor;
+                }
+                set {
+                    _Forecolor = value;
+                }
+            }
+
+            public int BorderSize {
+                get {
+                    return _BorderSize;
+                }
+                set {
+                    _BorderSize = value;
+                }
+            }
+
+            public Color BorderColor {
+                get {
+                    return _BorderColor;
+                }
+                set {
+                    _BorderColor = value;
+                }
+            }
+
+            public Color CheckedBackColor {
+                get {
+                    return _CheckedBackColor;
+                }
+                set {
+                    _CheckedBackColor = value;
+                }
+            }
+
+            public Color MouseDownBackColor {
+                get {
+                    return _MouseDownBackColor;
+                }
+                set {
+                    _MouseDownBackColor = value;
+                }
+            }
+
+            public Color MouseOverBackColor {
+                get {
+
+                    return _MouseOverBackColor;
+                }
+                set {
+                    _MouseOverBackColor = value;
+                }
+            }
+
+            public override string ToString() {
+                return "Style";
+            }
+
+        }
         #endregion
 
     }

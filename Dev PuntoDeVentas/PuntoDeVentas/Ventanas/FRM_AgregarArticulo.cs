@@ -14,6 +14,8 @@ namespace PuntoDeVentas {
 
         public FRM_AgregarArticulo() {
             InitializeComponent();
+            lblErrorMsg.Visible = this.DesignMode;
+
         }
 
         private void FRM_AgregarArticulo_Load(object sender, EventArgs e) {
@@ -49,7 +51,7 @@ namespace PuntoDeVentas {
             Articulo.UNIDAD = txtUnidad.Text.Trim();
             Articulo.PRECIO = txtPrecio.Text.Trim();
             Articulo.INV = chkInventario.Checked ? "TRUE" : "FALSE";
-
+            
             if (System.DbRepository.UpdateArticulo(Articulo)) {
                 if (!Articulo.FOTO.IsEmpty) {
                     //Guardar el Stream de la foto
@@ -61,6 +63,8 @@ namespace PuntoDeVentas {
             } else {
                 Functions.Message("NO SE PUDO AGREGAR INFORMACION!");
             }
+
+
         }
 
         private void txtUnidad_KeyPress(object sender, KeyPressEventArgs e) {
@@ -108,6 +112,30 @@ namespace PuntoDeVentas {
 
             }
 
+        }
+
+        private void txtCodigo_Leave(object sender, EventArgs e) {
+            var Art = DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
+            
+            if (Art.EXIST) {
+                txtCodigo.BorderOuterColor = Color.Maroon;
+                lblErrorMsg.Text = "Este codigo ya existe! para el articulo "+Art.DESCRIPCION;
+                lblErrorMsg.Visible = true;
+
+                picArticuloFoto.Image = Art.FOTO.GetImageSzOf(picArticuloFoto.Size);
+
+            } else {
+                txtCodigo.BorderOuterColor = Color.WhiteSmoke;
+                lblErrorMsg.Text = "";
+                lblErrorMsg.Visible = false;
+                picArticuloFoto.Image = null;
+            }
+        }
+
+        private void FRM_AgregarArticulo_KeyPress(object sender, KeyPressEventArgs e) {
+            if (e.KeyChar ==  27) {
+                this.Close();
+            }
         }
 
     }

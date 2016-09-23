@@ -91,6 +91,7 @@
             this.Gridbuscar.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.Gridbuscar.RowHeadersVisible = false;
             this.Gridbuscar.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.Gridbuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Gridbuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Gridbuscar.Size = new System.Drawing.Size(511, 302);
             this.Gridbuscar.StandardTab = true;
@@ -116,7 +117,6 @@
             this.txtBuscar.Placeholder = "Teclee el nombre del articulo";
             this.txtBuscar.Size = new System.Drawing.Size(758, 22);
             this.txtBuscar.TabIndex = 33;
-            this.txtBuscar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBuscar_KeyPress);
             // 
             // label5
             // 
@@ -137,6 +137,7 @@
             this.pictArticulo.Location = new System.Drawing.Point(534, 90);
             this.pictArticulo.Name = "pictArticulo";
             this.pictArticulo.Size = new System.Drawing.Size(260, 302);
+            this.pictArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pictArticulo.TabIndex = 35;
             this.pictArticulo.TabStop = false;
             // 
@@ -162,7 +163,7 @@
             this.Text = "Buscar Articulos";
             this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_ConsultarArticuloscs_Load);
-            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FRM_ConsultarArticuloscs_KeyPress);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEvent);
             this.Controls.SetChildIndex(this.Gridbuscar, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.txtBuscar, 0);

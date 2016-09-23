@@ -1,11 +1,11 @@
 ﻿namespace PuntoDeVentas.Controls {
-    partial class BaseForm {
-        /// <summary>
+    partial class WindowControlBox {
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -16,14 +16,13 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.lblWndPanelTitle = new System.Windows.Forms.Panel();
             this.pnlControls = new System.Windows.Forms.FlowLayoutPanel();
             this.cmdClose = new System.Windows.Forms.Button();
             this.cmdMaximize = new System.Windows.Forms.Button();
@@ -31,26 +30,12 @@
             this.pnlMoveWnd = new System.Windows.Forms.FlowLayoutPanel();
             this.cmdMoveRight = new System.Windows.Forms.Button();
             this.cmdMoveLeft = new System.Windows.Forms.Button();
-            this.lblWndPanelTitle.SuspendLayout();
             this.pnlControls.SuspendLayout();
             this.pnlMoveWnd.SuspendLayout();
             this.SuspendLayout();
             // 
-            // lblWndPanelTitle
-            // 
-            this.lblWndPanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.lblWndPanelTitle.Controls.Add(this.pnlControls);
-            this.lblWndPanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.lblWndPanelTitle.Location = new System.Drawing.Point(2, 2);
-            this.lblWndPanelTitle.Name = "lblWndPanelTitle";
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(907, 58);
-            this.lblWndPanelTitle.TabIndex = 0;
-            this.lblWndPanelTitle.DoubleClick += new System.EventHandler(this.lblPanelTitle_DoubleClick);
-            this.lblWndPanelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Wnd_MouseDown);
-            // 
             // pnlControls
             // 
-            this.pnlControls.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.pnlControls.AutoSize = true;
             this.pnlControls.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.pnlControls.BackColor = System.Drawing.Color.Transparent;
@@ -59,12 +44,14 @@
             this.pnlControls.Controls.Add(this.cmdMinimize);
             this.pnlControls.Controls.Add(this.pnlMoveWnd);
             this.pnlControls.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.pnlControls.Location = new System.Drawing.Point(755, 11);
+            this.pnlControls.Location = new System.Drawing.Point(0, 0);
             this.pnlControls.Margin = new System.Windows.Forms.Padding(0);
+            this.pnlControls.MaximumSize = new System.Drawing.Size(149, 34);
+            this.pnlControls.MinimumSize = new System.Drawing.Size(149, 34);
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Padding = new System.Windows.Forms.Padding(2);
             this.pnlControls.Size = new System.Drawing.Size(149, 34);
-            this.pnlControls.TabIndex = 28;
+            this.pnlControls.TabIndex = 29;
             // 
             // cmdClose
             // 
@@ -84,7 +71,6 @@
             this.cmdClose.Text = "r";
             this.cmdClose.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cmdClose.UseVisualStyleBackColor = false;
-            this.cmdClose.Click += new System.EventHandler(this.cmdClose_Click);
             // 
             // cmdMaximize
             // 
@@ -104,7 +90,6 @@
             this.cmdMaximize.Text = "c";
             this.cmdMaximize.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cmdMaximize.UseVisualStyleBackColor = false;
-            this.cmdMaximize.Click += new System.EventHandler(this.cmdMaximize_Click);
             // 
             // cmdMinimize
             // 
@@ -124,7 +109,6 @@
             this.cmdMinimize.Text = "0";
             this.cmdMinimize.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cmdMinimize.UseVisualStyleBackColor = false;
-            this.cmdMinimize.Click += new System.EventHandler(this.cmdMinimize_Click);
             // 
             // pnlMoveWnd
             // 
@@ -157,7 +141,6 @@
             this.cmdMoveRight.Text = ";";
             this.cmdMoveRight.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cmdMoveRight.UseVisualStyleBackColor = false;
-            this.cmdMoveRight.Click += new System.EventHandler(this.cmdMoveRigth_Click);
             // 
             // cmdMoveLeft
             // 
@@ -177,45 +160,35 @@
             this.cmdMoveLeft.Text = ":";
             this.cmdMoveLeft.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.cmdMoveLeft.UseVisualStyleBackColor = false;
-            this.cmdMoveLeft.Click += new System.EventHandler(this.cmdMoveLeft_Click);
             // 
-            // BaseForm
+            // WindowControlBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(911, 240);
-            this.Controls.Add(this.lblWndPanelTitle);
-            this.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "BaseForm";
-            this.Padding = new System.Windows.Forms.Padding(2);
-            this.ShowIcon = false;
-            this.ShowInTaskbar = false;
-            this.Text = "BaseForm";
-            this.Load += new System.EventHandler(this.BaseForm_Load);
-            this.Paint += new System.Windows.Forms.PaintEventHandler(this.BaseForm_Paint);
-            this.lblWndPanelTitle.ResumeLayout(false);
-            this.lblWndPanelTitle.PerformLayout();
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.Controls.Add(this.pnlControls);
+            this.ForeColor = System.Drawing.SystemColors.Control;
+            this.MaximumSize = new System.Drawing.Size(149, 34);
+            this.MinimumSize = new System.Drawing.Size(149, 34);
+            this.Name = "WindowControlBox";
+            this.Size = new System.Drawing.Size(149, 34);
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
             this.pnlMoveWnd.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        protected System.Windows.Forms.Panel lblWndPanelTitle;
-        protected System.Windows.Forms.Button cmdMaximize;
-        protected System.Windows.Forms.Button cmdMinimize;
-        protected System.Windows.Forms.Button cmdClose;
-        protected System.Windows.Forms.Button cmdMoveRight;
-        protected System.Windows.Forms.Button cmdMoveLeft;
-        protected System.Windows.Forms.FlowLayoutPanel pnlMoveWnd;
-        protected System.Windows.Forms.FlowLayoutPanel pnlControls;
+        private System.Windows.Forms.FlowLayoutPanel pnlControls;
+        private System.Windows.Forms.Button cmdClose;
+        private System.Windows.Forms.Button cmdMaximize;
+        private System.Windows.Forms.Button cmdMinimize;
+        private System.Windows.Forms.FlowLayoutPanel pnlMoveWnd;
+        private System.Windows.Forms.Button cmdMoveRight;
+        private System.Windows.Forms.Button cmdMoveLeft;
 
     }
 }
