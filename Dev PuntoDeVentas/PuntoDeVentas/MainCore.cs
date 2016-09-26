@@ -19,7 +19,7 @@ namespace PuntoDeVentas
             //Application.SetCompatibleTextRenderingDefault(false);            
             //Application.Run(new FRM_Login());
             FRM_Login wndLogin = new FRM_Login();
-            FRM_VentanaPrincipal wndVentanaPrinicipal = new FRM_VentanaPrincipal();            
+            FRM_Main wndVentanaPrinicipal = new FRM_Main();            
             FRM_SplashScreen wndLoading = new FRM_SplashScreen();
 
             //Load main configuartions

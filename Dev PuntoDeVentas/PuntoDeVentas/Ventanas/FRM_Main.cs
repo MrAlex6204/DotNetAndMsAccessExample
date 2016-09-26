@@ -9,11 +9,19 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    public partial class FRM_VentanaPrincipal : Controls.BaseForm
+    public partial class FRM_Main : Controls.BaseForm
     {
-        public FRM_VentanaPrincipal()
+        public FRM_Main()
         {
             InitializeComponent();
+        }
+
+        private void windowControlBox1_Load(object sender, EventArgs e) {
+
+        }
+
+        private void windowControlBox1_Load_1(object sender, EventArgs e) {
+
         }
 
     }

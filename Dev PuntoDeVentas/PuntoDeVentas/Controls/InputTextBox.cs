@@ -286,8 +286,7 @@ namespace PuntoDeVentas.Controls {
         }
 
         
-        private void Click(object sender, EventArgs e) {
-            Debug.WriteLine("TextBox clicking - " + ((Control)sender).Name);
+        private void Click(object sender, EventArgs e) {            
             _bGotFocus = true;
             this.pnlLayout.Visible = false;
             this.Focus();

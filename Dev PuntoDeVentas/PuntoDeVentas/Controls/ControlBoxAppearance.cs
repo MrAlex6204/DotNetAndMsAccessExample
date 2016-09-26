@@ -84,7 +84,7 @@ namespace PuntoDeVentas.Controls {
     public class ControlAppearanceConverter : ExpandableObjectConverter {
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destinationType) {
-            if (destinationType == typeof(BaseForm.ControlAppearance)) {
+            if (destinationType == typeof(ControlAppearance)) {
                 return true;
             }
             return base.CanConvertTo(context, destinationType);
@@ -92,7 +92,7 @@ namespace PuntoDeVentas.Controls {
 
         public override object ConvertTo(ITypeDescriptorContext context, System.Globalization.CultureInfo culture, object value, Type destinationType) {
 
-            return (BaseForm.ControlAppearance)value;
+            return (ControlAppearance)value;
         }
 
 

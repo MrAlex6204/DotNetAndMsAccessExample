@@ -10,11 +10,9 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 
-namespace PuntoDeVentas.Controls
-{
+namespace PuntoDeVentas.Controls {
 
-    public partial class BaseForm : Form
-    {
+    public partial class BaseForm : Form {
 
         #region WINDOWS API PARA MOVER EL FORMULARIO
 
@@ -26,11 +24,9 @@ namespace PuntoDeVentas.Controls
         [DllImportAttribute("user32.dll")]
         public static extern bool ReleaseCapture();
 
-        private void Wnd_MouseDown(object sender, MouseEventArgs e)
-        {
+        private void Wnd_MouseDown(object sender, MouseEventArgs e) {
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Left)
-            {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left) {
                 ((Control)sender).Cursor = Cursors.SizeAll;
                 ReleaseCapture();
                 SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
@@ -39,8 +35,7 @@ namespace PuntoDeVentas.Controls
 
         }
 
-        private void Wnd_MouseUp(object sender, MouseEventArgs e)
-        {
+        private void Wnd_MouseUp(object sender, MouseEventArgs e) {
 
             ((Control)sender).Cursor = Cursors.Default;
             SendMessage(this.Handle, WM_NCLBUTTONUP, HT_CAPTION, 6);
@@ -60,21 +55,16 @@ namespace PuntoDeVentas.Controls
                   _bIsOpaque = false,
                   _bMoveWindowBtn = false,
                   _bShowLabelTitle = true;
-        
+
         #endregion
 
         #region CONTRUCTOR DE CLASE
 
-        public BaseForm()
-        {
+        public BaseForm() {
             this.InitializeComponent();
-
             MoveWindowBox = false;
-            _ControlBoxForeColor = cmdClose.ForeColor;
-            _ControlBoxBackColor = cmdClose.BackColor;
-
-            if (this.DesignMode)
-            {
+            
+            if (this.DesignMode) {
                 this.Invalidate();
             }
 
@@ -84,46 +74,36 @@ namespace PuntoDeVentas.Controls
 
         #region PROPERTIES
 
-        public bool ShowTitleLabel
-        {
-            get
-            {
+        public bool ShowTitleLabel {
+            get {
                 return _bShowLabelTitle;
             }
-            set
-            {
+            set {
                 _bShowLabelTitle = value;
 
-                if (_bShowLabelTitle)
-                {
+                if (_bShowLabelTitle) {
                     //Remove Event handle of mouse down
                     this.MouseUp -= Wnd_MouseUp;
                     this.MouseDown -= Wnd_MouseDown;
 
                     //Remove Event handle for each child
-                    foreach (Control iCtrl in this.Controls)
-                    {
+                    foreach (Control iCtrl in this.Controls) {
 
-                        if (iCtrl.GetType() == typeof(Label))
-                        {
+                        if (iCtrl.GetType() == typeof(Label)) {
                             iCtrl.MouseUp -= Wnd_MouseUp;
                             iCtrl.MouseDown -= Wnd_MouseDown;
                         }
                     }
 
-                }
-                else
-                {
+                } else {
                     //Add Event handle to move mouse with the pointer
                     this.MouseUp += Wnd_MouseUp;
                     this.MouseDown += Wnd_MouseDown;
 
                     //Add Event handle for each child
-                    foreach (Control iCtrl in this.Controls)
-                    {
+                    foreach (Control iCtrl in this.Controls) {
 
-                        if (iCtrl.GetType() == typeof(Label))
-                        {
+                        if (iCtrl.GetType() == typeof(Label)) {
                             iCtrl.MouseUp += Wnd_MouseUp;
                             iCtrl.MouseDown += Wnd_MouseDown;
 
@@ -132,40 +112,32 @@ namespace PuntoDeVentas.Controls
                     }
                 }
 
-                if (this.DesignMode)
-                {
+                if (this.DesignMode) {
                     this.Invalidate();
                 }
             }
         }
 
-        public bool MoveWindowBox
-        {
-            get
-            {
+        public bool MoveWindowBox {
+            get {
                 return _bMoveWindowBtn;
             }
-            set
-            {
+            set {
                 _bMoveWindowBtn = value;
-                if (this.DesignMode)
-                {
+                if (this.DesignMode) {
                     this.Invalidate();
                 }
 
             }
         }
 
-      
-        public ControlAppearance ControlBoxStyle
-        {
-            get
-            {
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public ControlAppearance ControlBoxStyle {
+            get {
 
                 return _ControlBoxstyle;
             }
-            set
-            {
+            set {
 
                 _ControlBoxstyle = value;
                 _RenderDesign();
@@ -179,41 +151,15 @@ namespace PuntoDeVentas.Controls
             }
             set {
                 _ControlBoxAnchor = value;
-            
-            }        
-        }
 
-        public Color ControlBoxBackColor
-        {
-            get
-            {
-                return _ControlBoxBackColor;
-            }
-            set
-            {
-
-                cmdMaximize.BackColor = value;
-                cmdMinimize.BackColor = value;
-                cmdClose.BackColor = value;
-                cmdMoveRight.BackColor = value;
-                cmdMoveLeft.BackColor = value;
-                _ControlBoxBackColor = value;
-
-                if (this.DesignMode)
-                {
-                    this.Invalidate();
-                }
             }
         }
 
-        public Color WindowBorderColor
-        {
-            get
-            {
+        public Color WindowBorderColor {
+            get {
                 return _WindowBorderColor;
             }
-            set
-            {
+            set {
                 _WindowBorderColor = value;
                 this.Invalidate();
             }
@@ -224,18 +170,13 @@ namespace PuntoDeVentas.Controls
 
         #region ADITIONAL FUNCTIONS
 
-        public void FullScreenToggle()
-        {
+        public void FullScreenToggle() {
 
-            if (this.MaximizeBox)
-            {
+            if (this.MaximizeBox) {
 
-                if (_bisFullScreen)
-                {
+                if (_bisFullScreen) {
                     this.WindowState = FormWindowState.Normal;
-                }
-                else
-                {
+                } else {
                     this.WindowState = FormWindowState.Maximized;
                 }
 
@@ -247,55 +188,46 @@ namespace PuntoDeVentas.Controls
 
         }
 
-        public void SplitLeft()
-        {
+        public void SplitLeft() {
             var primaryScreen = Screen.PrimaryScreen.WorkingArea;
             var size = new Size(primaryScreen.Size.Width / 2, primaryScreen.Size.Height);
             this.Size = size;
 
-            if (_bisFullScreen)
-            {
+            if (_bisFullScreen) {
                 FullScreenToggle();
             }
 
             this.Location = new Point(0, 0);
         }
 
-        public void SplitRigth()
-        {
+        public void SplitRigth() {
             var primaryScreen = Screen.PrimaryScreen.WorkingArea;
             var size = new Size(primaryScreen.Size.Width / 2, primaryScreen.Size.Height);
             this.Size = size;
 
-            if (_bisFullScreen)
-            {
+            if (_bisFullScreen) {
                 FullScreenToggle();
             }
 
             this.Location = new Point(size.Width, 0);
         }
 
-        private void OpaqueWindow()
-        {
+        private void OpaqueWindow() {
             var Rect = new Rectangle(new Point(0, 0), this.Size);
             var Br = new SolidBrush(Color.FromArgb(128, 64, 64, 64));
             var wndGraphic = this.CreateGraphics();
 
-            if (!_bIsOpaque)
-            {
+            if (!_bIsOpaque) {
                 wndGraphic.Clear(Br.Color);
                 wndGraphic.FillRectangle(Br, Rect);
 
-                foreach (Control iCtrl in this.Controls)
-                {
+                foreach (Control iCtrl in this.Controls) {
                     var iGraphic = iCtrl.CreateGraphics();
                     iGraphic.Clear(Br.Color);
                     iGraphic.FillRectangle(Br, Rect);
                 }
 
-            }
-            else
-            {
+            } else {
                 this.Refresh();
 
             }
@@ -305,55 +237,20 @@ namespace PuntoDeVentas.Controls
 
         }
 
-        public void _RenderDesign()
-        {
+        public void _RenderDesign() {
 
-            pnlControls.Visible = this.ControlBox;
-            cmdMaximize.Visible = this.MaximizeBox;
-            cmdMinimize.Visible = this.MinimizeBox;
-            pnlMoveWnd.Visible = this.MoveWindowBox;
+            WindowBox.Visible = this.ControlBox;            
             lblWndPanelTitle.Visible = _bShowLabelTitle;
-
-            _RenderButtonnFlatStyle(cmdMaximize, _ControlBoxstyle);
-            _RenderButtonnFlatStyle(cmdMinimize, _ControlBoxstyle);
-            _RenderButtonnFlatStyle(cmdClose, _ControlBoxstyle);
-            _RenderButtonnFlatStyle(cmdMoveRight, _ControlBoxstyle);
-            _RenderButtonnFlatStyle(cmdMoveLeft, _ControlBoxstyle);
-
-            if (this.WindowState == FormWindowState.Maximized)
-            {
-                cmdMaximize.Text = "2";
+                
+            if (!_bShowLabelTitle && this.ControlBox) {
+                WindowBox.Location = new Point(this.Size.Width - WindowBox.Size.Width - 5, (this.lblWndPanelTitle.Size.Height / 2) - (WindowBox.Size.Height / 2));
+                this.Controls.Add(this.WindowBox);
+            } else {
+                lblWndPanelTitle.Controls.Add(this.WindowBox);
             }
-            else
-            {
-                cmdMaximize.Text = "c";
-            }
-
-            pnlControls.Location = new Point(this.Size.Width - pnlControls.Size.Width - 5, (this.lblWndPanelTitle.Size.Height / 2) - (pnlControls.Size.Height / 2));
-
-
-            if (!_bShowLabelTitle && this.ControlBox)
-            {
-                this.Controls.Add(pnlControls);
-            }
-            else
-            {
-                lblWndPanelTitle.Controls.Add(pnlControls);
-            }
-
-            pnlControls.Anchor = _ControlBoxAnchor;
-
+                        
         }
-
-        private void _RenderButtonnFlatStyle(Button Cmd, ControlAppearance Value)
-        {
-            Cmd.ForeColor = Value.Forecolor;
-            Cmd.FlatAppearance.BorderColor = Value.BorderColor;
-            Cmd.FlatAppearance.BorderSize = Value.BorderSize;
-            Cmd.FlatAppearance.CheckedBackColor = Value.CheckedBackColor;
-            Cmd.FlatAppearance.MouseDownBackColor = Value.MouseDownBackColor;
-            Cmd.FlatAppearance.MouseOverBackColor = Value.MouseOverBackColor;
-        }
+             
 
         #endregion
 
@@ -362,8 +259,7 @@ namespace PuntoDeVentas.Controls
         private const int WM_NCPAINT = 0x85;
 
 
-        private void RenderizeBorder(ref Graphics g)
-        {
+        private void RenderizeBorder(ref Graphics g) {
             var r = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
             var p = new Pen(new SolidBrush(_WindowBorderColor));
 
@@ -374,8 +270,7 @@ namespace PuntoDeVentas.Controls
 
         }
 
-        protected override void OnPaint(PaintEventArgs e)
-        {
+        protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
 
             var g = e.Graphics;
@@ -384,10 +279,8 @@ namespace PuntoDeVentas.Controls
 
         }
 
-        protected override void WndProc(ref Message m)
-        {
-            if (m.Msg == WM_NCPAINT)
-            {
+        protected override void WndProc(ref Message m) {
+            if (m.Msg == WM_NCPAINT) {
                 var g = this.CreateGraphics();
 
                 RenderizeBorder(ref g);
@@ -397,20 +290,15 @@ namespace PuntoDeVentas.Controls
             base.WndProc(ref m);
         }
 
-        private void cmdClose_Click(object sender, EventArgs e)
-        {
+        private void cmdClose_Click(object sender, EventArgs e) {
             this.Close();
         }
 
-        private void cmdMaximize_Click(object sender, EventArgs e)
-        {
+        private void cmdMaximize_Click(object sender, EventArgs e) {
 
-            if (this.WindowState == FormWindowState.Normal)
-            {
+            if (this.WindowState == FormWindowState.Normal) {
                 this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
+            } else {
                 this.WindowState = FormWindowState.Normal;
                 this.Size = _normalSize;
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -420,119 +308,41 @@ namespace PuntoDeVentas.Controls
 
         }
 
-        private void cmdMinimize_Click(object sender, EventArgs e)
-        {
+        private void cmdMinimize_Click(object sender, EventArgs e) {
             this.WindowState = FormWindowState.Minimized;
         }
 
-        private void lblPanelTitle_DoubleClick(object sender, EventArgs e)
-        {
+        private void lblPanelTitle_DoubleClick(object sender, EventArgs e) {
             FullScreenToggle();
         }
 
-        private void BaseForm_Load(object sender, EventArgs e)
-        {
+        private void BaseForm_Load(object sender, EventArgs e) {
             _normalSize = this.Size;
             _RenderDesign();
 
         }
 
-        private void BaseForm_Paint(object sender, PaintEventArgs e)
-        {
-            if (this.DesignMode)
-            {
+        private void BaseForm_Paint(object sender, PaintEventArgs e) {
+            if (this.DesignMode) {
                 _RenderDesign();
 
             }
 
         }
 
-        private void cmdMoveRigth_Click(object sender, EventArgs e)
-        {
+        private void cmdMoveRigth_Click(object sender, EventArgs e) {
             SplitRigth();
         }
 
-        private void cmdMoveLeft_Click(object sender, EventArgs e)
-        {
+        private void cmdMoveLeft_Click(object sender, EventArgs e) {
             SplitLeft();
         }
 
         #endregion
         
-        #region APPAREANCE
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        public class ControlAppearance {
-
-            private int _BorderSize;
-            private Color
-                        _Forecolor = Color.Empty,
-                        _BorderColor = Color.Empty,
-                        _CheckedBackColor = Color.Empty,
-                        _MouseDownBackColor = Color.Empty,
-                        _MouseOverBackColor = Color.Empty;
-
-            public Color Forecolor {
-                get {
-                    return _Forecolor;
-                }
-                set {
-                    _Forecolor = value;
-                }
-            }
-
-            public int BorderSize {
-                get {
-                    return _BorderSize;
-                }
-                set {
-                    _BorderSize = value;
-                }
-            }
-
-            public Color BorderColor {
-                get {
-                    return _BorderColor;
-                }
-                set {
-                    _BorderColor = value;
-                }
-            }
-
-            public Color CheckedBackColor {
-                get {
-                    return _CheckedBackColor;
-                }
-                set {
-                    _CheckedBackColor = value;
-                }
-            }
-
-            public Color MouseDownBackColor {
-                get {
-                    return _MouseDownBackColor;
-                }
-                set {
-                    _MouseDownBackColor = value;
-                }
-            }
-
-            public Color MouseOverBackColor {
-                get {
-
-                    return _MouseOverBackColor;
-                }
-                set {
-                    _MouseOverBackColor = value;
-                }
-            }
-
-            public override string ToString() {
-                return "Style";
-            }
-
-        }
-        #endregion
 
     }
+
+    
 
 }

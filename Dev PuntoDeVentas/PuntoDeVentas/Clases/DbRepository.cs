@@ -11,17 +11,6 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Printing;
 
-//NAME SPACE PARA NHIBERNATE
-using System.Reflection;
-using NHibernate.Cfg;
-using NHibernate.Connection;
-using NHibernate.Engine;
-using NHibernate.SqlCommand;
-using NHibernate.SqlTypes;
-using NHibernate.Tool.hbm2ddl;
-using NEnvironment = NHibernate.Cfg.Environment;
-
-
 //MODELS DEL SISTEMA DE VENTA
 using PuntoDeVentas;
 using PuntoDeVentas.Models;
@@ -29,38 +18,37 @@ using PuntoDeVentas.Models;
 namespace System
 {
 
-    public static class DbRepository //Clase para hacer consultas a nuestra base de datos
+    public static class DbRepository //CLASE PARA HACER CONSULTAS A NUESTRA BASE DE DATOS
     {
 
         #region  <DECLARACIONES GLOBALES>
 
-        //Cadena de conexion hacia la base de datos access        
+        //CADENA DE CONEXION HACIA LA BASE DE DATOS ACCESS
         private static string _strCadenaDeConexion = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=|DataDirectory|\DB\dbVentas.mdb;User Id=admin;Password=";
-        //Objeto de conexion para hacer las consultas
+        //OBJETO DE CONEXION PARA HACER LAS CONSULTAS
         private static OleDbConnection _objConn = new OleDbConnection(_strCadenaDeConexion);
-        //Objeto para ejecutar las consulas hacia Bd.
+        //OBJETO PARA EJECUTAR LAS CONSULAS HACIA BD.
         private static OleDbCommand _objCmd = new OleDbCommand();
-
+        //OBJETO DE PRINTDOCUMENT PARA IMPRIMIR EL TICKET
         private static PrintDocument _PrintTiket = new PrintDocument();
 
-        //Informacion de el usuario logueado!
+        //INFORMACION DE EL USUARIO LOGUEADO!
         private static string _Usr = "";//Usuario
         private static string _Nombre = "";//Nombre
         private static string _Tipo = "";//Tipo
         private static string _Id = ""; //Id del usuario
-
-
+        
         public struct CorteDeCajaInfo// ESTRUCTURA PARA GUARDAR INFORMACION DEL CORTE DE CAJA
         {
             public string NomCajero;
             public DataTable Articulos;
             public Double Total;
             public int TotalArticulos;
-            public bool CajeroExist;//si el cajero existe devuelve true
+            public bool CajeroExist;//SI EL CAJERO EXISTE DEVUELVE TRUE
         }
 
-        public struct VentadelDia
-        {//En para guardar la venta del dia
+        public struct VentadelDia //EN PARA GUARDAR LA VENTA DEL DIA
+        {
             public double Total;
             public double TotalArticulos;
             public DataTable Articulos;
@@ -68,8 +56,8 @@ namespace System
             public bool HayVenta;
         }
 
-        public struct UserInfo
-        { //ESTRUCTURA PARA GUARDAR INFORMACION DE UN USUARIO...
+        public struct UserInfo//ESTRUCTURA PARA GUARDAR INFORMACION DE UN USUARIO...
+        { 
             public string Nombre;
             public string Login;
             public string Password;
@@ -118,33 +106,33 @@ namespace System
         #endregion
 
         #region  <CONSTRUCTOR DE LA CLASE>
-        //Constructor de la clase
-        static DbRepository()
+
+        static DbRepository() //CONSTRUCTOR DE LA CLASE
         {
 
             try
             {
 
-                //Si la conexion no esta abierta la abrimos
+                //SI LA CONEXION NO ESTA ABIERTA LA ABRIMOS
                 if (_objConn.State != ConnectionState.Open)
                 {
-                    _objConn.Open();//Abrimos la conexion si no esta en el estado open.
+                    _objConn.Open();//ABRIMOS LA CONEXION SI NO ESTA EN EL ESTADO OPEN.
                 }
 
             }
             catch (OleDbException OleDbEx)
             {
-                throw OleDbEx;
+                throw OleDbEx;//ARROJAR ERROR DE OLEDB
 
             }
             catch (Exception ex)
             {
-                throw ex;
+                throw ex;//ARROJAR CUALQUIER OTRO TIPO DE ERROR
             }
 
-            _objCmd.Connection = _objConn;
+            _objCmd.Connection = _objConn;//ASIGNARLE EL OBJETO DE CONEXION AL SQL CMD 
 
-            //Agregamos el evento PrintPage ala funcion PrintTiketPage
+            //AGREGAMOS EL EVENTO PRINTPAGE ALA FUNCION PRINTTIKETPAGE
             _PrintTiket.PrintPage += new PrintPageEventHandler(PrintTiketPage);
 
 
@@ -152,35 +140,7 @@ namespace System
         #endregion
 
         #region  <FUNCIONES PUBLICAS>
-
-        public static Usuario GetUsuario(int Id)
-        {
-
-            Assembly assembly = Assembly.GetExecutingAssembly();
-            var rootPath = System.IO.Path.GetDirectoryName(assembly.Location);
-            NHibernate.JetDriver.JetDriver jetDriver = new NHibernate.JetDriver.JetDriver();
-
-
-            var configuration = new NHibernate.Cfg.Configuration()
-                                    .SetProperty(NEnvironment.Dialect, typeof(NHibernate.JetDriver.JetDialect).AssemblyQualifiedName)
-                                    .SetProperty(NEnvironment.ConnectionDriver, typeof(NHibernate.JetDriver.JetDriver).AssemblyQualifiedName)
-                                    .SetProperty(NEnvironment.ConnectionProvider, typeof(DriverConnectionProvider).FullName)
-                                    .SetProperty(NEnvironment.ShowSql, "true")
-                                    .SetProperty(NEnvironment.ConnectionString, string.Format(@"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + rootPath + @"\DB\dbVentas.mdb;User Id=admin;Password="));
-
-            configuration.AddAssembly(assembly);
-
-
-            var sessions = configuration.BuildSessionFactory();
-
-            NHibernate.ISession session = sessions.OpenSession();
-
-
-
-            return session.Get<Usuario>(Id);
-
-        }
-
+        
         //FUNCION PARA VALIDAR SI UN USUARIO EXISTE EN EL LOGIN
         public static bool ValidarUsuario(string Login, string Password)
         {
