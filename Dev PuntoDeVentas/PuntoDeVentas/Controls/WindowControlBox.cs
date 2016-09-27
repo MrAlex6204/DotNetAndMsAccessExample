@@ -42,10 +42,10 @@ namespace PuntoDeVentas.Controls {
             }
             set {
                 _Buttons = value;
+                _RenderDesign();
             }
         }
         
-
         private void _MouseHover(object sender, object e) {
             ((Control)sender).ForeColor = _Appearance.MouseOverForecolor;
         }
@@ -216,6 +216,10 @@ namespace PuntoDeVentas.Controls {
             public bool Minimize { get; set; }
             public bool Maximize { get; set; }
             public bool MoveButtons { get; set; }
+
+            public override string ToString() {
+                return "(Window Buttons)";                
+            }
 
         }
 

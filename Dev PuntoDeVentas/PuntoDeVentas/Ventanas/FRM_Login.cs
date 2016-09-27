@@ -29,7 +29,10 @@ namespace PuntoDeVentas {
         private void Input_KeyDown(object sender, KeyEventArgs e) {
             var input = (TextBox)sender;
 
-            if (e.KeyCode == Keys.Enter && input == txtPassword) {
+
+            if (e.KeyCode == Keys.Enter && input == txtUser) {
+                txtPassword.Focus();
+            }else if (e.KeyCode == Keys.Enter && input == txtPassword) {
                 //Validar user y password
                 if (System.DbRepository.ValidarUsuario(txtUser.Text.Trim(), txtPassword.Text.Trim())) {
                     lblErrorMsg.Visible = false;
@@ -51,6 +54,10 @@ namespace PuntoDeVentas {
         private void FRM_Login_Load(object sender, EventArgs e) {
             this.Activate();
             lblTitle.Text = Configurations.NombreDelNegocio;
+        }
+
+        private void label3_Click(object sender, EventArgs e) {
+
         }
                      
 

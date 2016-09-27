@@ -47,7 +47,6 @@
             this.pnlControls.Location = new System.Drawing.Point(0, 0);
             this.pnlControls.Margin = new System.Windows.Forms.Padding(0);
             this.pnlControls.MaximumSize = new System.Drawing.Size(159, 36);
-            this.pnlControls.MinimumSize = new System.Drawing.Size(159, 36);
             this.pnlControls.Name = "pnlControls";
             this.pnlControls.Padding = new System.Windows.Forms.Padding(2);
             this.pnlControls.Size = new System.Drawing.Size(159, 36);
@@ -175,7 +174,7 @@
             this.Controls.Add(this.pnlControls);
             this.ForeColor = System.Drawing.SystemColors.Control;
             this.Name = "WindowControlBox";
-            this.Size = new System.Drawing.Size(159, 36);            
+            this.Size = new System.Drawing.Size(159, 36);
             this.pnlControls.ResumeLayout(false);
             this.pnlControls.PerformLayout();
             this.pnlMoveWnd.ResumeLayout(false);

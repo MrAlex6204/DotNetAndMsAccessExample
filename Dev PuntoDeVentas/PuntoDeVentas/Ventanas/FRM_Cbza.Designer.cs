@@ -182,7 +182,7 @@ namespace PuntoDeVentas {
             this.lblCajero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCajero.Name = "lblCajero";
             this.lblCajero.Padding = new System.Windows.Forms.Padding(0, 15, 6, 0);
-            this.lblCajero.Size = new System.Drawing.Size(74, 35);
+            this.lblCajero.Size = new System.Drawing.Size(73, 35);
             this.lblCajero.TabIndex = 4;
             this.lblCajero.Text = "[CAJERO]";
             this.lblCajero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

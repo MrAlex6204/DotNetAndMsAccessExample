@@ -120,17 +120,11 @@
             // 
             // txtPago
             // 
-            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtPago.BorderOuterActiveColor = System.Drawing.Color.Empty;
-            this.txtPago.BorderOuterColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtPago.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtPago.BorderOuterSize = 7;
-            this.txtPago.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Fill;
+            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));            
             this.txtPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPago.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPago.Location = new System.Drawing.Point(279, 100);
-            this.txtPago.Name = "txtPago";
-            this.txtPago.Placeholder = "Efectivo";
+            this.txtPago.Name = "txtPago";            
             this.txtPago.Size = new System.Drawing.Size(100, 19);
             this.txtPago.TabIndex = 7;
             this.txtPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPago_KeyPress);

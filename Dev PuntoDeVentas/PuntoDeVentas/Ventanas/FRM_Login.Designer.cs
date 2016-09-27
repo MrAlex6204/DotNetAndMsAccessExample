@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance2 = new PuntoDeVentas.InputAppearance();
             this.label3 = new System.Windows.Forms.Label();
             this.lblErrorMsg = new System.Windows.Forms.Label();
             this.txtUser = new PuntoDeVentas.Controls.InputTextBox();
@@ -44,13 +46,14 @@
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label3.Location = new System.Drawing.Point(169, 107);
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.label3.Location = new System.Drawing.Point(164, 115);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(104, 45);
             this.label3.TabIndex = 29;
             this.label3.Text = "Log In";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // lblErrorMsg
             // 
@@ -58,7 +61,7 @@
             this.lblErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.lblErrorMsg.Image = global::PuntoDeVentas.Properties.Resources.SmallFlag;
             this.lblErrorMsg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblErrorMsg.Location = new System.Drawing.Point(73, 313);
+            this.lblErrorMsg.Location = new System.Drawing.Point(65, 351);
             this.lblErrorMsg.Name = "lblErrorMsg";
             this.lblErrorMsg.Size = new System.Drawing.Size(300, 43);
             this.lblErrorMsg.TabIndex = 31;
@@ -68,37 +71,45 @@
             // 
             // txtUser
             // 
-            this.txtUser.BackColor = System.Drawing.Color.White;
-            this.txtUser.BorderOuterActiveColor = System.Drawing.Color.Silver;
-            this.txtUser.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtUser.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtUser.BorderOuterSize = 7;
-            this.txtUser.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtUser.BackColor = System.Drawing.SystemColors.Window;
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.txtUser.Location = new System.Drawing.Point(82, 192);
+            this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.txtUser.Location = new System.Drawing.Point(82, 212);
             this.txtUser.Name = "txtUser";
-            this.txtUser.Placeholder = "Username";
             this.txtUser.Size = new System.Drawing.Size(283, 22);
+            inputAppearance1.ActiveBackcolor = System.Drawing.Color.Silver;
+            inputAppearance1.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance1.BorderActiveColor = System.Drawing.Color.Silver;
+            inputAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance1.BorderPadding = 7;
+            inputAppearance1.BorderSize = 1;
+            inputAppearance1.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance1.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance1.TextPlaceholder = "Username";
+            this.txtUser.Style = inputAppearance1;
             this.txtUser.TabIndex = 0;
             this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
             // 
             // txtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.Color.White;
-            this.txtPassword.BorderOuterActiveColor = System.Drawing.Color.Silver;
-            this.txtPassword.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPassword.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtPassword.BorderOuterSize = 7;
-            this.txtPassword.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.txtPassword.Location = new System.Drawing.Point(82, 250);
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.txtPassword.Location = new System.Drawing.Point(82, 270);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Placeholder = "Password";
             this.txtPassword.Size = new System.Drawing.Size(283, 22);
+            inputAppearance2.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance2.ActiveForecolor = System.Drawing.Color.Silver;
+            inputAppearance2.BorderActiveColor = System.Drawing.Color.Silver;
+            inputAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance2.BorderPadding = 7;
+            inputAppearance2.BorderSize = 1;
+            inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance2.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance2.TextPlaceholder = "Password";
+            this.txtPassword.Style = inputAppearance2;
             this.txtPassword.TabIndex = 1;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
             // 
@@ -106,7 +117,7 @@
             // 
             this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             this.lblTitle.Location = new System.Drawing.Point(6, 8);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitle.Name = "lblTitle";

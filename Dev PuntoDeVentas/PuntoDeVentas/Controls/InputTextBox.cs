@@ -28,6 +28,8 @@ namespace PuntoDeVentas.Controls {
         #region Constructor Class
         //Dummy Panel used to draw over the TextBox
         private Panel pnlLayout = new Panel();
+        private Color _Backcolor = Color.Empty;
+        private Color _Forecolor = Color.Empty;
 
         public InputTextBox()
             : base() {
@@ -43,97 +45,35 @@ namespace PuntoDeVentas.Controls {
             this.pnlLayout.Location = new Point(0, 0);
             this.pnlLayout.Paint += LayoutPaint;
             this.pnlLayout.Name = "Layout";
-            this.MouseClick += Click;
-            this.pnlLayout.Click += Click;
+            this.Click += MouseClick;
+            this.pnlLayout.Click += MouseClick;
             this.Modified = true;
 
             this.OnLostFocus(null);
 
-#if DEBUG
-            //Show in the console output window
-            TextWriterTraceListener myWriter = new TextWriterTraceListener(System.Console.Out);
-            Debug.Listeners.Add(myWriter);
-
-            TextWriterTraceListener myCreator = new TextWriterTraceListener(System.Console.Out);
-            Trace.Listeners.Add(myCreator);
-#endif
-
-
+            _Backcolor = this.BackColor;
+            _Forecolor = this.ForeColor;
 
         }
 
         #endregion
 
         #region Custom Properties
+              
 
-        private int _BorderSize = 4;
-        private System.Drawing.Color _BorderColor = Color.Gray;
-        private OuterBorderStyle _OuterBorderStyle = OuterBorderStyle.Line;
-        private System.Drawing.Drawing2D.DashStyle _BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-        private string _Placeholder = string.Empty, _TempValue = string.Empty;
-
-
-        public enum OuterBorderStyle {
-            None = 0,
-            Fill = 1,
-            Line = 2,
-            Both = 3
-        }
-
-        public System.Drawing.Drawing2D.DashStyle BorderOuterDashStyle {
+        private InputAppearance _InputStyle = new InputAppearance();
+      
+        [Description("Input style preference")]
+        [TypeConverter(typeof(ExpandableObjectConverter))]
+        public InputAppearance Style {
             get {
-                return _BorderOuterDashStyle;
+                return _InputStyle;
             }
             set {
-                _BorderOuterDashStyle = value;
+                _InputStyle = value;
                 DesignerRenderize();
             }
         }
-
-        public OuterBorderStyle BorderOuterStyle {
-            get {
-                return _OuterBorderStyle;
-            }
-            set {
-                _OuterBorderStyle = value;
-                DesignerRenderize();
-            }
-        }
-
-        public int BorderOuterSize {
-            get {
-                return _BorderSize;
-            }
-            set {
-                _BorderSize = value;
-                DesignerRenderize();//Refrescar el diseno
-            }
-
-        }
-
-        public System.Drawing.Color BorderOuterColor {
-            get {
-                return _BorderColor;
-            }
-            set {
-                _BorderColor = value;
-                DesignerRenderize();//Refrescar el diseno
-            }
-        }
-
-        public string Placeholder {
-            get {
-                return _Placeholder;
-            }
-            set {
-                _Placeholder = value;
-
-                DesignerRenderize();
-
-            }
-        }
-
-        public System.Drawing.Color BorderOuterActiveColor { get; set; }
 
         #endregion
 
@@ -144,7 +84,7 @@ namespace PuntoDeVentas.Controls {
         private void DesignerRenderize() {
 
             if (this.DesignMode) {//Si esta en DesignMode
-                this.pnlLayout.CreateGraphics().DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
+                this.pnlLayout.CreateGraphics().DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
                 this.Invalidate(true);
                 if (this.FindForm() != null) {
                     this.FindForm().Invalidate(false);
@@ -159,24 +99,35 @@ namespace PuntoDeVentas.Controls {
         private void Renderize(ref Graphics g) {
 
             var BorderGrap = g;
-            var BorderLocation = new Point(this.Location.X - this.BorderOuterSize, this.Location.Y - BorderOuterSize);
-            var BorderSz = new Size(this.Width + (BorderOuterSize * 2), this.Height + (this.BorderOuterSize * 2));
-            var BorderBrush = _bGotFocus & this.BorderOuterActiveColor != Color.Empty ? new SolidBrush(this.BorderOuterActiveColor) : new SolidBrush(this.BorderOuterColor);
+            var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding-this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding-this.Style.BorderSize);
+            var BorderSz = new Size(this.Width + ((this.Style.BorderSize+this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize+this.Style.BorderPadding) * 2));
+            var BackBrush = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? new SolidBrush(this.Style.ActiveBackcolor) : new SolidBrush(_Backcolor);
+            var BorderBrush = _bGotFocus & this.Style.BorderActiveColor != Color.Empty ? new SolidBrush(this.Style.BorderActiveColor) : new SolidBrush(this.Style.BorderColor);
             var BorderPen = new Pen(BorderBrush);
             var Rect = new Rectangle(BorderLocation, BorderSz);
 
-            BorderPen.DashStyle = this.BorderOuterDashStyle;
+            BorderPen.DashStyle = this.Style.Style;
+            BorderPen.Width = this.Style.BorderSize;
 
-            switch (this.BorderOuterStyle) {
-                case OuterBorderStyle.Fill:
+         
+            //Colorea el fondo del control si esta activo
+            this.BackColor = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? this.Style.ActiveBackcolor : _Backcolor;
+            this.ForeColor = _bGotFocus & this.Style.ActiveForecolor != Color.Empty ? this.Style.ActiveForecolor : _Forecolor;
+            BorderGrap.FillRectangle(BackBrush, Rect);
+            
+         
+                       
+
+            switch (this.Style.Draw) {
+                case InputAppearance.DrawStyle.Fill:
                     BorderGrap.FillRectangle(BorderBrush, Rect);
 
                     break;
-                case OuterBorderStyle.Line:
+                case InputAppearance.DrawStyle.Line:
                     BorderGrap.DrawRectangle(BorderPen, Rect);
 
                     break;
-                case (OuterBorderStyle.Fill | OuterBorderStyle.Line):
+                case (InputAppearance.DrawStyle.Fill | InputAppearance.DrawStyle.Line):
 
                     BorderGrap.FillRectangle(BorderBrush, Rect);
                     BorderGrap.DrawRectangle(BorderPen, Rect);
@@ -187,7 +138,7 @@ namespace PuntoDeVentas.Controls {
             //Redraw Textbox region
             BorderGrap.FillRectangle(new SolidBrush(this.BackColor), new Rectangle(this.Location, this.Size));
 
-            if (!_bGotFocus && string.IsNullOrEmpty(this.Text) && !string.IsNullOrEmpty(_Placeholder)) {
+            if (!_bGotFocus && string.IsNullOrEmpty(this.Text) && !string.IsNullOrEmpty(this.Style.TextPlaceholder)) {
 
                 this.pnlLayout.Visible = true;
 
@@ -260,7 +211,7 @@ namespace PuntoDeVentas.Controls {
 
             RenderizeBorderColor();
             var g = e.Graphics;
-            g.DrawString(_Placeholder, this.Font, new SolidBrush(this.ForeColor), new Point(0, 0));
+            g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0));
         }
 
         protected override void OnGotFocus(EventArgs e) {
@@ -276,6 +227,7 @@ namespace PuntoDeVentas.Controls {
             base.OnLeave(e);
             _bGotFocus = false;
             RenderizeBorderColor();
+            this.Invalidate();
 
         }
 
@@ -283,17 +235,16 @@ namespace PuntoDeVentas.Controls {
             base.OnLostFocus(e);
             _bGotFocus = false;
             RenderizeBorderColor();
+            this.Invalidate();
         }
-
-        
-        private void Click(object sender, EventArgs e) {            
+                
+        private void MouseClick(object sender, EventArgs e) {            
             _bGotFocus = true;
             this.pnlLayout.Visible = false;
             this.Focus();
             this.Invalidate(true);
         }
-
-
+        
         #endregion
 
     }

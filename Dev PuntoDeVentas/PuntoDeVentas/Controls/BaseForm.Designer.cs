@@ -24,6 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
             this.lblWndPanelTitle = new System.Windows.Forms.Panel();
             this.WindowBox = new PuntoDeVentas.Controls.WindowControlBox();
             this.lblWndPanelTitle.SuspendLayout();
@@ -43,6 +44,7 @@
             // 
             // WindowBox
             // 
+            this.WindowBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             controlAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             controlAppearance1.BorderSize = 0;
             controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
@@ -54,6 +56,10 @@
             this.WindowBox.AutoSize = true;
             this.WindowBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.WindowBox.BackColor = System.Drawing.Color.Transparent;
+            buttons1.Maximize = true;
+            buttons1.Minimize = true;
+            buttons1.MoveButtons = true;
+            this.WindowBox.ControlButtons = buttons1;
             this.WindowBox.ForeColor = System.Drawing.SystemColors.Control;
             this.WindowBox.Location = new System.Drawing.Point(741, 10);
             this.WindowBox.Name = "WindowBox";

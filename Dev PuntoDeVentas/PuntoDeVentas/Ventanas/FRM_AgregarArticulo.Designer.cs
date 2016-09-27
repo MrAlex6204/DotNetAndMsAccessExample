@@ -125,73 +125,57 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.BackColor = System.Drawing.Color.White;
-            this.txtCodigo.BorderOuterActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtCodigo.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtCodigo.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtCodigo.BorderOuterSize = 7;
-            this.txtCodigo.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtCodigo.BackColor = System.Drawing.Color.White;            
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtCodigo.Location = new System.Drawing.Point(56, 67);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Placeholder = "Codigo";
+            this.txtCodigo.Name = "txtCodigo";            
             this.txtCodigo.Size = new System.Drawing.Size(342, 22);
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
+
+            this.txtCodigo.Style.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            this.txtCodigo.Style.BorderSize = 1;
+            this.txtCodigo.Style.BorderPadding = 7;
+            this.txtCodigo.Style.TextPlaceholder = "Codigo";
+            this.txtCodigo.Style.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            this.txtCodigo.Style.Draw = InputAppearance.DrawStyle.Line;
+            this.txtCodigo.Style.BorderColor = System.Drawing.Color.WhiteSmoke; 
             // 
             // txtDesc
             // 
-            this.txtDesc.BackColor = System.Drawing.Color.White;
-            this.txtDesc.BorderOuterActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(194)))), ((int)(((byte)(120)))));
-            this.txtDesc.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtDesc.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtDesc.BorderOuterSize = 7;
-            this.txtDesc.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtDesc.BackColor = System.Drawing.Color.White;            
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDesc.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtDesc.Location = new System.Drawing.Point(56, 129);
-            this.txtDesc.Name = "txtDesc";
-            this.txtDesc.Placeholder = "Descripcion";
+            this.txtDesc.Name = "txtDesc";            
             this.txtDesc.Size = new System.Drawing.Size(387, 22);
             this.txtDesc.TabIndex = 1;
             this.txtDesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc_KeyPress);
             // 
             // txtPrecio
             // 
-            this.txtPrecio.BackColor = System.Drawing.Color.White;
-            this.txtPrecio.BorderOuterActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtPrecio.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtPrecio.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtPrecio.BorderOuterSize = 7;
-            this.txtPrecio.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtPrecio.BackColor = System.Drawing.Color.White;            
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtPrecio.Location = new System.Drawing.Point(55, 183);
-            this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Placeholder = "$ Precio";
+            this.txtPrecio.Name = "txtPrecio";            
             this.txtPrecio.Size = new System.Drawing.Size(134, 22);
             this.txtPrecio.TabIndex = 2;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtUnidad
             // 
-            this.txtUnidad.BackColor = System.Drawing.Color.White;
-            this.txtUnidad.BorderOuterActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtUnidad.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtUnidad.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtUnidad.BorderOuterSize = 7;
-            this.txtUnidad.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtUnidad.BackColor = System.Drawing.Color.White;            
             this.txtUnidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUnidad.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtUnidad.Location = new System.Drawing.Point(212, 183);
-            this.txtUnidad.Name = "txtUnidad";
-            this.txtUnidad.Placeholder = "Unidad";
+            this.txtUnidad.Name = "txtUnidad";            
             this.txtUnidad.Size = new System.Drawing.Size(231, 22);
             this.txtUnidad.TabIndex = 3;
             this.txtUnidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidad_KeyPress);

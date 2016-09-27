@@ -48,9 +48,9 @@ namespace PuntoDeVentas.Controls {
 
         private Color _WindowBorderColor = Color.Empty;
         private Size _normalSize;
-        private Color _ControlBoxForeColor, _ControlBoxBackColor;
         private AnchorStyles _ControlBoxAnchor = new AnchorStyles();
         private ControlAppearance _ControlBoxstyle = new ControlAppearance();
+        private Rectangle _BorderRectangle = Rectangle.Empty;
         private bool _bisFullScreen = false,
                   _bIsOpaque = false,
                   _bMoveWindowBtn = false,
@@ -63,7 +63,7 @@ namespace PuntoDeVentas.Controls {
         public BaseForm() {
             this.InitializeComponent();
             MoveWindowBox = false;
-            
+
             if (this.DesignMode) {
                 this.Invalidate();
             }
@@ -239,18 +239,17 @@ namespace PuntoDeVentas.Controls {
 
         public void _RenderDesign() {
 
-            WindowBox.Visible = this.ControlBox;            
+            WindowBox.Visible = this.ControlBox;
             lblWndPanelTitle.Visible = _bShowLabelTitle;
-                
+
             if (!_bShowLabelTitle && this.ControlBox) {
                 WindowBox.Location = new Point(this.Size.Width - WindowBox.Size.Width - 5, (this.lblWndPanelTitle.Size.Height / 2) - (WindowBox.Size.Height / 2));
                 this.Controls.Add(this.WindowBox);
             } else {
                 lblWndPanelTitle.Controls.Add(this.WindowBox);
             }
-                        
+
         }
-             
 
         #endregion
 
@@ -260,14 +259,24 @@ namespace PuntoDeVentas.Controls {
 
 
         private void RenderizeBorder(ref Graphics g) {
-            var r = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
             var p = new Pen(new SolidBrush(_WindowBorderColor));
+
+            _BorderRectangle = new Rectangle(0, 0, this.Width - 1, this.Height - 1);
+
 
             p.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             p.Width = 1;
 
-            g.DrawRectangle(p, r);
 
+
+
+            g.DrawRectangle(p, _BorderRectangle);
+
+        }
+
+        protected override void OnResize(EventArgs e) {
+            base.OnResize(e);
+            this.Invalidate();
         }
 
         protected override void OnPaint(PaintEventArgs e) {
@@ -339,10 +348,9 @@ namespace PuntoDeVentas.Controls {
         }
 
         #endregion
-        
 
     }
 
-    
+
 
 }

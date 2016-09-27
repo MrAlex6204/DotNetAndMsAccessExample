@@ -118,14 +118,14 @@ namespace PuntoDeVentas {
             var Art = DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
             
             if (Art.EXIST) {
-                txtCodigo.BorderOuterColor = Color.Maroon;
+                txtCodigo.Style.BorderColor = Color.Maroon;
                 lblErrorMsg.Text = "Este codigo ya existe! para el articulo "+Art.DESCRIPCION;
                 lblErrorMsg.Visible = true;
 
                 picArticuloFoto.Image = Art.FOTO.GetImageSzOf(picArticuloFoto.Size);
 
             } else {
-                txtCodigo.BorderOuterColor = Color.WhiteSmoke;
+                txtCodigo.Style.BorderColor = Color.WhiteSmoke;
                 lblErrorMsg.Text = "";
                 lblErrorMsg.Visible = false;
                 picArticuloFoto.Image = null;

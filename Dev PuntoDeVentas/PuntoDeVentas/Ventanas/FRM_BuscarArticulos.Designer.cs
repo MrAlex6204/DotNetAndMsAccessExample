@@ -103,18 +103,12 @@
             // 
             this.txtBuscar.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtBuscar.BackColor = System.Drawing.Color.White;
-            this.txtBuscar.BorderOuterActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtBuscar.BorderOuterColor = System.Drawing.Color.WhiteSmoke;
-            this.txtBuscar.BorderOuterDashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtBuscar.BorderOuterSize = 7;
-            this.txtBuscar.BorderOuterStyle = PuntoDeVentas.Controls.InputTextBox.OuterBorderStyle.Line;
+            this.txtBuscar.BackColor = System.Drawing.Color.White;            
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtBuscar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.txtBuscar.Location = new System.Drawing.Point(27, 51);
-            this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Placeholder = "Teclee el nombre del articulo";
+            this.txtBuscar.Name = "txtBuscar";            
             this.txtBuscar.Size = new System.Drawing.Size(758, 22);
             this.txtBuscar.TabIndex = 33;
             // 

@@ -1,7 +1,5 @@
-﻿namespace PuntoDeVentas
-{
-    partial class FRM_Main
-    {
+﻿namespace PuntoDeVentas {
+    partial class FRM_Main {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -11,10 +9,8 @@
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing && (components != null))
-            {
+        protected override void Dispose(bool disposing) {
+            if (disposing && (components != null)) {
                 components.Dispose();
             }
             base.Dispose(disposing);
@@ -26,45 +22,110 @@
         /// Required method for Designer support - do not modify
         /// the contents of this method with the code editor.
         /// </summary>
-        private void InitializeComponent()
-        {
+        private void InitializeComponent() {
             PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
-            this.windowControlBox1 = new PuntoDeVentas.Controls.WindowControlBox();
+            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
+            this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(772, 38);
+            this.lblWndPanelTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(1020, 58);
             // 
-            // windowControlBox1
+            // wndControlBox
             // 
+            this.wndControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             controlAppearance1.BorderColor = System.Drawing.Color.Empty;
             controlAppearance1.BorderSize = 0;
             controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
-            controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             controlAppearance1.MouseDownBackColor = System.Drawing.Color.Empty;
-            controlAppearance1.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            controlAppearance1.MouseOverForecolor = System.Drawing.Color.Green;
-            this.windowControlBox1.Appearance = controlAppearance1;
-            this.windowControlBox1.AutoSize = true;
-            this.windowControlBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.windowControlBox1.BackColor = System.Drawing.Color.Transparent;
-            this.windowControlBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.windowControlBox1.Location = new System.Drawing.Point(507, 109);
-            this.windowControlBox1.Name = "windowControlBox1";
-            this.windowControlBox1.Size = new System.Drawing.Size(159, 36);
-            this.windowControlBox1.TabIndex = 1;
-            this.windowControlBox1.Load += new System.EventHandler(this.windowControlBox1_Load_1);
+            controlAppearance1.MouseOverBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            this.wndControlBox.Appearance = controlAppearance1;
+            this.wndControlBox.AutoSize = true;
+            this.wndControlBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.wndControlBox.BackColor = System.Drawing.Color.Transparent;
+            buttons1.Maximize = true;
+            buttons1.Minimize = true;
+            buttons1.MoveButtons = false;
+            this.wndControlBox.ControlButtons = buttons1;
+            this.wndControlBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            this.wndControlBox.Location = new System.Drawing.Point(916, 12);
+            this.wndControlBox.Name = "wndControlBox";
+            this.wndControlBox.Size = new System.Drawing.Size(97, 36);
+            this.wndControlBox.TabIndex = 1;
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(208)))), ((int)(((byte)(186)))));
+            this.panel1.Controls.Add(this.panel4);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(0, 0, 5, 0);
+            this.panel1.Size = new System.Drawing.Size(210, 596);
+            this.panel1.TabIndex = 2;
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(205, 596);
+            this.panel4.TabIndex = 0;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.panel2.Controls.Add(this.panel3);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.panel2.Location = new System.Drawing.Point(210, 501);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(810, 95);
+            this.panel2.TabIndex = 3;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.LightGray;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.ForeColor = System.Drawing.Color.Gray;
+            this.panel3.Location = new System.Drawing.Point(0, 66);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(810, 29);
+            this.panel3.TabIndex = 0;
             // 
             // FRM_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
-            this.ClientSize = new System.Drawing.Size(776, 321);
-            this.ControlBoxAnchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Controls.Add(this.windowControlBox1);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
+            this.ClientSize = new System.Drawing.Size(1020, 596);
+            this.ControlBox = false;
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.wndControlBox);
             this.Name = "FRM_Main";
+            this.Padding = new System.Windows.Forms.Padding(0);
+            this.ShowTitleLabel = false;
+            this.Text = "FRM_Main";
+            this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            this.Load += new System.EventHandler(this.FRM_Main_Load);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
-            this.Controls.SetChildIndex(this.windowControlBox1, 0);
+            this.Controls.SetChildIndex(this.wndControlBox, 0);
+            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.panel2, 0);
+            this.panel1.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -72,11 +133,11 @@
 
         #endregion
 
-        private Controls.WindowControlBox windowControlBox1;
-
-
-
+        private Controls.WindowControlBox wndControlBox;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel4;
 
     }
-
 }
