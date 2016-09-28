@@ -24,7 +24,7 @@ namespace PuntoDeVentas {
             this.BorderSize = 1;
             this.BorderPadding = 4;
             this.Draw = DrawStyle.Line;
-            this.BorderRadius = new Radius();
+            this.BorderRadius = 2;
 
         }
 
@@ -58,9 +58,8 @@ namespace PuntoDeVentas {
         [Description("Input place holder to display when is empty")]
         public string TextPlaceholder { get; set; }
 
-        [Description("Input border radius")]
-        [TypeConverter(typeof(ExpandableObjectConverter))]
-        public Radius BorderRadius { get; set; }
+        [Description("Input border radius")]        
+        public int BorderRadius { get; set; }
 
         public override string ToString() {
             return "(Input style appearance)";

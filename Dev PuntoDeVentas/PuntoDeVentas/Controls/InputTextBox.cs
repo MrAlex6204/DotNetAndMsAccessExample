@@ -144,7 +144,7 @@ namespace PuntoDeVentas.Controls
             var BackBrush = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? new SolidBrush(this.Style.ActiveBackcolor) : new SolidBrush(_Backcolor);
             var BorderBrush = _bGotFocus & this.Style.BorderActiveColor != Color.Empty ? new SolidBrush(this.Style.BorderActiveColor) : new SolidBrush(this.Style.BorderColor);
             var BorderPen = new Pen(BorderBrush);
-            var Rect = new Rectangle(BorderLocation, RegionSz);
+            var Rect = new RoundedRect (BorderLocation, RegionSz,this.Style.BorderRadius);
 
             BorderPen.DashStyle = this.Style.Style;
             BorderPen.Width = this.Style.BorderSize;
@@ -153,27 +153,28 @@ namespace PuntoDeVentas.Controls
             //Colorea el fondo del control si esta activo
             base.BackColor = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? this.Style.ActiveBackcolor : _Backcolor;
             base.ForeColor = _bGotFocus & this.Style.ActiveForecolor != Color.Empty ? this.Style.ActiveForecolor : _Forecolor;
-            BorderGrap.FillRectangle(BackBrush, Rect);
-
-
+            //BorderGrap.FillRectangle(BackBrush, Rect);
+            //Rect.DrawRoundedRectangle(ref g,BorderPen);
 
 
             switch (this.Style.Draw)
             {
                 case InputAppearance.DrawStyle.Fill:
-                    BorderGrap.FillRectangle(BorderBrush, Rect);
-
+                    //BorderGrap.FillRectangle(BorderBrush, Rect);
+                    Rect.FillRoundedRectangle(ref BorderGrap,base.BackColor);
                     break;
                 case InputAppearance.DrawStyle.Line:
                     //BorderGrap.DrawRectangle(BorderPen, Rect);
-                    BorderGrap.DrawArc(BorderPen, Rect, 1.0f, 270.0f);
-                    
+                    //BorderGrap.DrawArc(BorderPen, Rect, 1.0f, 270.0f);
+                    Rect.DrawRoundedRectangle(ref BorderGrap, BorderPen);
 
                     break;
                 case (InputAppearance.DrawStyle.Fill | InputAppearance.DrawStyle.Line):
 
-                    BorderGrap.FillRectangle(BorderBrush, Rect);
-                    BorderGrap.DrawRectangle(BorderPen, Rect);
+                    //BorderGrap.FillRectangle(BorderBrush, Rect);
+                    //BorderGrap.DrawRectangle(BorderPen, Rect);
+                    Rect.FillRoundedRectangle(ref BorderGrap, base.BackColor);
+                    Rect.DrawRoundedRectangle(ref BorderGrap, BorderPen);
                     break;
 
             }

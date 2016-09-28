@@ -109,7 +109,9 @@
     <Compile Include="Controls\InputTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Controls\Radius.cs" />
+    <Compile Include="Controls\LabelButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\Rounded.cs" />
     <Compile Include="Controls\WindowControlBox.cs">
       <SubType>UserControl</SubType>

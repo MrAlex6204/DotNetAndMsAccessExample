@@ -36,6 +36,9 @@ C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev P
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csprojResolveAssemblyReference.cache
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.InputTextBox.resources
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\stdole.dll
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.WindowControlBox.resources
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Main.resources
+C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Test.resources
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\DB\dbVentas.mdb
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Office.Interop.Excel.dll
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Vbe.Interop.dll
@@ -76,6 +79,3 @@ C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeV
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.exe
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.pdb
 C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csprojResolveAssemblyReference.cache
-C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Controls.WindowControlBox.resources
-C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Main.resources
-C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Test.resources

@@ -71,20 +71,21 @@
             // 
             // txtUser
             // 
-            this.txtUser.BackColor = System.Drawing.SystemColors.Window;
+            this.txtUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
-            this.txtUser.Location = new System.Drawing.Point(82, 213);
+            this.txtUser.Location = new System.Drawing.Point(82, 210);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(283, 22);
-            inputAppearance1.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance1.ActiveBackcolor = System.Drawing.Color.Silver;
             inputAppearance1.ActiveForecolor = System.Drawing.Color.Gray;
             inputAppearance1.BorderActiveColor = System.Drawing.Color.Silver;
             inputAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             inputAppearance1.BorderPadding = 9;
+            inputAppearance1.BorderRadius = 5;
             inputAppearance1.BorderSize = 1;
-            inputAppearance1.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance1.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Fill;
             inputAppearance1.Forecolor = System.Drawing.Color.Empty;
             inputAppearance1.Style = System.Drawing.Drawing2D.DashStyle.Solid;
             inputAppearance1.TextPlaceholder = "Username";
@@ -94,20 +95,21 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.BackColor = System.Drawing.SystemColors.Window;
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.txtPassword.Location = new System.Drawing.Point(82, 270);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
             this.txtPassword.Size = new System.Drawing.Size(283, 22);
-            inputAppearance2.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance2.ActiveBackcolor = System.Drawing.Color.Silver;
             inputAppearance2.ActiveForecolor = System.Drawing.Color.Gray;
             inputAppearance2.BorderActiveColor = System.Drawing.Color.Silver;
             inputAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             inputAppearance2.BorderPadding = 9;
+            inputAppearance2.BorderRadius = 5;
             inputAppearance2.BorderSize = 1;
-            inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Both;
             inputAppearance2.Forecolor = System.Drawing.Color.Empty;
             inputAppearance2.Style = System.Drawing.Drawing2D.DashStyle.Solid;
             inputAppearance2.TextPlaceholder = "Password";
