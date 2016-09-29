@@ -6,69 +6,166 @@ using System.Drawing;
 using System.Runtime.InteropServices;
 using System.ComponentModel;
 using PuntoDeVentas.Controls;
+
 namespace PuntoDeVentas {
+
     class LabelButton : Button {
 
-        private ControlAppearance _Appearance = new ControlAppearance();        
-        private Form _ParentForm = null;
-        private Size _NormalSz = new Size();
-        private bool _bisFullScreen = false;
+        #region DECLARACIONES
 
-        public LabelButton() {            
+        private ControlAppearance _Style = new ControlAppearance();
+        private Color _Backcolor = Color.Empty;
+        private Color _Forecolor = Color.Empty;
+        private bool _bGotFocus = false;
+
+        private const int WM_NCPAINT = 0x85;
+        private const int WM_NCCREATE = 0x81;
+        private const int WM_MOUSEMOVE = 0x200;
+
+        [DllImport("user32.dll")]
+        private static extern IntPtr GetWindowDC(IntPtr hWnd);
+
+        #endregion
+
+        #region CONSTRUCTOR CLASS
+
+        public LabelButton() {
+
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+            SetStyle(ControlStyles.UserPaint, true);
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+
+            _Renderize();
         }
+
+        #endregion
+
+        #region PROPERTIES
 
         [TypeConverter(typeof(ExpandableObjectConverter))]
-        public ControlAppearance Appearance {
+        public ControlAppearance Style {
             get {
 
-                return _Appearance;
+                return _Style;
             }
             set {
-                _Appearance = value;
-                _RenderDesign();
+                _Style = value;
             }
         }
-               
-        
-        private void _MouseHover(object sender, object e) {
-            ((Control)sender).ForeColor = _Appearance.MouseOverForecolor;
+
+        [Description("Button border radius")]
+        public int BorderRadius { get; set; }
+
+        public override Color BackColor {
+            get {
+
+                return base.BackColor;
+            }
+            set {
+                base.BackColor = value;
+                _Backcolor = value;
+            }
         }
 
-        private void _MouseLeave(object sender, object e) {
-            ((Control)sender).ForeColor = _Appearance.Forecolor;
-        }
-        
-
-        private void _RenderStyle(ControlAppearance Value) {
-            this.ForeColor = Value.Forecolor;
-            this.FlatAppearance.BorderColor = Value.BorderColor;
-            this.FlatAppearance.BorderSize = Value.BorderSize;
-            this.FlatAppearance.CheckedBackColor = Value.CheckedBackColor;
-            this.FlatAppearance.MouseDownBackColor = Value.MouseDownBackColor;
-            this.FlatAppearance.MouseOverBackColor = Value.MouseOverBackColor;            
+        public override Color ForeColor {
+            get {
+                return base.ForeColor;
+            }
+            set {
+                base.ForeColor = value;
+                _Forecolor = value;
+            }
         }
 
-        public void _RenderDesign() {
+        #endregion
 
-            _RenderStyle(_Appearance);
-            _RenderStyle(_Appearance);
-            _RenderStyle(_Appearance);
-            _RenderStyle(_Appearance);
-            _RenderStyle(_Appearance);
+        #region FUNCTIONS
+
+
+        private void _Renderize() {
+
+            if (this.Parent != null) {
+                var hDC = GetWindowDC(this.Parent.Handle);
+                var Grph = Graphics.FromHdc(hDC);
+                _Renderize(ref Grph);
+                Grph.Dispose();
+            }
+
+        }
+
+        private void _Renderize(ref Graphics g) {
+
+            var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
+            var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
+            var BackgroundBrush = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBackColor) : new SolidBrush(_Backcolor);
+            var BorderBrush = _bGotFocus & this.Style.ActiveBorderColor != Color.Empty ? new SolidBrush(this.Style.ActiveBorderColor) : new SolidBrush(this.Style.BorderColor);
+            var BorderPen = new Pen(BorderBrush);
+            var Rect = new RoundedRect(BorderLocation, RegionSz, this.BorderRadius);
+
+            BorderPen.DashStyle = this.Style.BorderStyle;
+            BorderPen.Width = this.Style.BorderSize;
+
+            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.FlatAppearance.BorderSize = 0;
+            this.FlatAppearance.BorderColor = Color.Empty;
+
+            //COLOREA EL FONDO DEL CONTROL SI ESTA ACTIVO
+            //base.BackColor = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? this.Style.MouseOverBackColor : _Backcolor;
+            base.ForeColor = _bGotFocus & this.Style.MouseOverForecolor != Color.Empty ? this.Style.MouseOverForecolor : _Forecolor;
+
+            Rect.FillRoundedRectangle(ref g, BackgroundBrush.Color);
+            Rect.DrawRoundedRectangle(ref g, BorderPen);
+
+        }
+
+        protected override void WndProc(ref Message m) {
+
+            if (this.DesignMode && m.Msg == WM_NCPAINT) {
+
+                if (this.Parent != null && this.Parent.IsHandleCreated) {
+                    var hDC = GetWindowDC(this.Parent.Handle);
+                    var Grph = Graphics.FromHdc(hDC);
+
+                    _Renderize(ref Grph);
+
+                    Grph.Dispose();
+
+                }
+
+            }
+            //else if (!this.DesignMode && m.Msg == WM_NCPAINT || m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE) {
+
+            //    if (this.Parent != null) {
+            //        var hDC = GetWindowDC(this.Parent.Handle);
+            //        var Grph = Graphics.FromHdc(hDC);
+
+            //        Renderize(ref Grph);
+
+            //        Grph.Dispose();
+            //    }
+
+            //}
+
+            base.WndProc(ref m);
+        }
+
+        protected override void OnMouseHover(EventArgs e) {
+            base.OnMouseHover(e);
+            _bGotFocus = true;
+            _Renderize();
             
         }
-        
-        protected override void OnPaint(PaintEventArgs e) {
-            base.OnPaint(e);
 
-            if (this.DesignMode) {
-                _RenderDesign();
-            }
+        protected override void OnMouseLeave(EventArgs e) {
+            base.OnMouseLeave(e);
+            _bGotFocus = false;
+
+            _Renderize();
         }
         
-               
-               
+        #endregion
 
     }
+
 }

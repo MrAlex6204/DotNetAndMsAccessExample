@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Text;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 
 namespace PuntoDeVentas.Controls {
 
@@ -40,6 +41,12 @@ namespace PuntoDeVentas.Controls {
             }
         }
 
+        [Description("Border style")]
+        public DashStyle BorderStyle { get; set; }
+
+        [Description("Border padding")]
+        public int BorderPadding { get; set; }
+
         [Description("Control border color")]
         public Color BorderColor {
             get {
@@ -49,6 +56,9 @@ namespace PuntoDeVentas.Controls {
                 _BorderColor = value;
             }
         }
+
+        [Description("Active border color")]
+        public Color ActiveBorderColor { get; set; }
 
         [Description("Control backcolor when is checked")]
         public Color CheckedBackColor {

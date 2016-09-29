@@ -25,12 +25,15 @@
         private void InitializeComponent() {
             PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
             PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance2 = new PuntoDeVentas.Controls.ControlAppearance();
             this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.labelButton1 = new PuntoDeVentas.LabelButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,8 +45,11 @@
             // wndControlBox
             // 
             this.wndControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            controlAppearance1.ActiveBorderColor = System.Drawing.Color.Empty;
             controlAppearance1.BorderColor = System.Drawing.Color.Empty;
+            controlAppearance1.BorderPadding = 0;
             controlAppearance1.BorderSize = 0;
+            controlAppearance1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
             controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
             controlAppearance1.MouseDownBackColor = System.Drawing.Color.Empty;
@@ -77,11 +83,36 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(188)))), ((int)(((byte)(156)))));
+            this.panel4.Controls.Add(this.labelButton1);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(205, 596);
             this.panel4.TabIndex = 0;
+            // 
+            // labelButton1
+            // 
+            this.labelButton1.BorderRadius = 5;
+            this.labelButton1.FlatAppearance.BorderSize = 0;
+            this.labelButton1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.labelButton1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(208)))), ((int)(((byte)(186)))));
+            this.labelButton1.Location = new System.Drawing.Point(13, 144);
+            this.labelButton1.Name = "labelButton1";
+            this.labelButton1.Size = new System.Drawing.Size(179, 30);
+            controlAppearance2.ActiveBorderColor = System.Drawing.Color.WhiteSmoke;
+            controlAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(208)))), ((int)(((byte)(186)))));
+            controlAppearance2.BorderPadding = 5;
+            controlAppearance2.BorderSize = 1;
+            controlAppearance2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Dash;
+            controlAppearance2.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance2.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(208)))), ((int)(((byte)(186)))));
+            controlAppearance2.MouseDownBackColor = System.Drawing.Color.Empty;
+            controlAppearance2.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(95)))), ((int)(((byte)(208)))), ((int)(((byte)(186)))));
+            controlAppearance2.MouseOverForecolor = System.Drawing.Color.Gray;
+            this.labelButton1.Style = controlAppearance2;
+            this.labelButton1.TabIndex = 4;
+            this.labelButton1.Text = "Configuracion";
+            this.labelButton1.UseVisualStyleBackColor = true;
             // 
             // panel2
             // 
@@ -125,6 +156,7 @@
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.panel1.ResumeLayout(false);
+            this.panel4.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -138,6 +170,7 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
+        private LabelButton labelButton1;
 
     }
 }
