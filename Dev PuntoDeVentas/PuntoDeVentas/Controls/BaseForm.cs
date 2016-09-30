@@ -61,6 +61,8 @@ namespace PuntoDeVentas.Controls {
         #region CONTRUCTOR DE CLASE
 
         public BaseForm() {
+            SetStyle(ControlStyles.SupportsTransparentBackColor, true);
+
             this.InitializeComponent();
             MoveWindowBox = false;
 

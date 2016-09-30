@@ -103,9 +103,29 @@ namespace PuntoDeVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap code_bar {
+            get {
+                object obj = ResourceManager.GetObject("code_bar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap COGS03A {
             get {
                 object obj = ResourceManager.GetObject("COGS03A", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap dashboard {
+            get {
+                object obj = ResourceManager.GetObject("dashboard", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -166,6 +186,16 @@ namespace PuntoDeVentas.Properties {
         internal static System.Drawing.Bitmap Icon01321 {
             get {
                 object obj = ResourceManager.GetObject("Icon01321", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_dashboard_5_32 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-dashboard-5-32", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

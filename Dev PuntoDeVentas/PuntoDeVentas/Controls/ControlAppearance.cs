@@ -31,6 +31,9 @@ namespace PuntoDeVentas.Controls {
             }
         }
 
+        [Description("Control background color")]
+        public Color BackColor { get; set; }
+
         [Description("Control border size")]
         public int BorderSize {
             get {
@@ -57,8 +60,6 @@ namespace PuntoDeVentas.Controls {
             }
         }
 
-        [Description("Active border color")]
-        public Color ActiveBorderColor { get; set; }
 
         [Description("Control backcolor when is checked")]
         public Color CheckedBackColor {
@@ -101,6 +102,9 @@ namespace PuntoDeVentas.Controls {
                 _MouseOverForecolor = value;
             }
         }
+
+        [Description("Active border color")]
+        public Color MouseOverBorderColor { get; set; }
 
         public override string ToString() {
             return "Style";

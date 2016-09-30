@@ -11,11 +11,13 @@ using System.Windows.Forms;
 namespace PuntoDeVentas {
     public partial class FRM_Main : Controls.BaseForm {
         public FRM_Main() {
-            InitializeComponent();
+            InitializeComponent();            
         }
 
         private void FRM_Main_Load(object sender, EventArgs e) {
-
+            lblTitle.Text = Configurations.NombreDelNegocio;
         }
+
+        
     }
 }

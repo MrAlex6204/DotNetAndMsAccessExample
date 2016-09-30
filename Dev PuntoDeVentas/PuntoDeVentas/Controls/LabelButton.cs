@@ -14,7 +14,7 @@ namespace PuntoDeVentas {
         #region DECLARACIONES
 
         private ControlAppearance _Style = new ControlAppearance();
-        private Color _Backcolor = Color.Empty;
+        private Color _Backcolor = Color.Transparent;
         private Color _Forecolor = Color.Empty;
         private bool _bGotFocus = false;
 
@@ -43,6 +43,8 @@ namespace PuntoDeVentas {
 
         #region PROPERTIES
 
+       
+
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public ControlAppearance Style {
             get {
@@ -57,6 +59,9 @@ namespace PuntoDeVentas {
         [Description("Button border radius")]
         public int BorderRadius { get; set; }
 
+    
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public override Color BackColor {
             get {
 
@@ -68,6 +73,8 @@ namespace PuntoDeVentas {
             }
         }
 
+        [Browsable(false)]
+        [EditorBrowsable(EditorBrowsableState.Never)]
         public override Color ForeColor {
             get {
                 return base.ForeColor;
@@ -98,8 +105,8 @@ namespace PuntoDeVentas {
 
             var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
             var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
-            var BackgroundBrush = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBackColor) : new SolidBrush(_Backcolor);
-            var BorderBrush = _bGotFocus & this.Style.ActiveBorderColor != Color.Empty ? new SolidBrush(this.Style.ActiveBorderColor) : new SolidBrush(this.Style.BorderColor);
+            var BackgroundBrush = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBackColor) : new SolidBrush(this.Style.BackColor);
+            var BorderBrush = _bGotFocus & this.Style.MouseOverBorderColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBorderColor) : new SolidBrush(this.Style.BorderColor);
             var BorderPen = new Pen(BorderBrush);
             var Rect = new RoundedRect(BorderLocation, RegionSz, this.BorderRadius);
 
@@ -111,8 +118,10 @@ namespace PuntoDeVentas {
             this.FlatAppearance.BorderColor = Color.Empty;
 
             //COLOREA EL FONDO DEL CONTROL SI ESTA ACTIVO
-            //base.BackColor = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? this.Style.MouseOverBackColor : _Backcolor;
-            base.ForeColor = _bGotFocus & this.Style.MouseOverForecolor != Color.Empty ? this.Style.MouseOverForecolor : _Forecolor;
+            base.BackColor = BackgroundBrush.Color;
+            base.ForeColor = _bGotFocus & this.Style.MouseOverForecolor != Color.Empty ? this.Style.MouseOverForecolor : this.Style.Forecolor;
+            this.FlatAppearance.MouseOverBackColor = base.BackColor;
+            this.FlatAppearance.MouseDownBackColor = BackgroundBrush.Color;
 
             Rect.FillRoundedRectangle(ref g, BackgroundBrush.Color);
             Rect.DrawRoundedRectangle(ref g, BorderPen);
@@ -133,19 +142,31 @@ namespace PuntoDeVentas {
 
                 }
 
+            } else if (!this.DesignMode && m.Msg == WM_NCPAINT /*|| m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE*/) {
+
+                if (this.Parent != null) {
+                    var hDC = GetWindowDC(this.Parent.Handle);
+                    var Grph = Graphics.FromHdc(hDC);
+
+                    _Renderize(ref Grph);
+
+                    Grph.Dispose();
+                }
+
+                if (this.FindForm() != null) {
+                    this.FindForm().Load += delegate(object sender, EventArgs e) {
+                        //RenderizeBorderColor();
+                        //((Control)sender).Invalidate(false);
+                        this.OnLostFocus(e);
+
+                    };
+                    this.FindForm().Paint += delegate(object sender, PaintEventArgs e) {
+                        _Renderize();
+                    };
+
+                }
+
             }
-            //else if (!this.DesignMode && m.Msg == WM_NCPAINT || m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE) {
-
-            //    if (this.Parent != null) {
-            //        var hDC = GetWindowDC(this.Parent.Handle);
-            //        var Grph = Graphics.FromHdc(hDC);
-
-            //        Renderize(ref Grph);
-
-            //        Grph.Dispose();
-            //    }
-
-            //}
 
             base.WndProc(ref m);
         }
