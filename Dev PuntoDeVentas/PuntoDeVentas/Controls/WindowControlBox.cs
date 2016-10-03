@@ -13,11 +13,9 @@ namespace PuntoDeVentas.Controls {
     public partial class WindowControlBox : UserControl {
 
         private ControlAppearance _Appearance = new ControlAppearance();
-        private Buttons _Buttons = new Buttons();
-        private Form _ParentForm = null;
+        private Buttons _Buttons = new Buttons();        
         private Size _NormalSz = new Size();
-        private bool _bisFullScreen = false;
-
+        
         public WindowControlBox() {
             InitializeComponent();
             SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -53,59 +51,19 @@ namespace PuntoDeVentas.Controls {
         private void _MouseLeave(object sender, object e) {
             ((Control)sender).ForeColor = _Appearance.Forecolor;
         }
-
-        private void _SetFullScreen() {
-
-            if (_ParentForm != null) {
-
-                if (_ParentForm.MaximizeBox) {
-
-                    if (_bisFullScreen) {
-                        _ParentForm.WindowState = FormWindowState.Normal;
-                    } else {
-                        _ParentForm.WindowState = FormWindowState.Maximized;
-                    }
-
-                    _bisFullScreen = !_bisFullScreen;
-                    _RenderDesign();
-                    _ParentForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-
-                }
-
-            }
-
-        }
+              
 
         public void SplitLeft() {
 
-            if (_ParentForm != null) {
-                var primaryScreen = Screen.PrimaryScreen.WorkingArea;
-                var size = new Size(primaryScreen.Size.Width / 2, primaryScreen.Size.Height);
-                this.Size = size;
-
-                if (_bisFullScreen) {
-                    _SetFullScreen();
-                }
-
-                _ParentForm.Location = new Point(0, 0);
-
+            if (((BaseForm)this.ParentForm) != null) {
+                ((BaseForm)this.ParentForm).SplitLeft();
             }
         }
 
         public void SplitRigth() {
 
-            if (_ParentForm != null) {
-
-                var primaryScreen = Screen.PrimaryScreen.WorkingArea;
-                var size = new Size(primaryScreen.Size.Width / 2, primaryScreen.Size.Height);
-                this.Size = size;
-
-                if (_bisFullScreen) {
-                    _SetFullScreen();
-                }
-
-                _ParentForm.Location = new Point(size.Width, 0);
-
+            if (((BaseForm)this.ParentForm) != null) {
+                ((BaseForm)this.ParentForm).SplitRigth();
             }
         }
 
@@ -129,9 +87,9 @@ namespace PuntoDeVentas.Controls {
             cmdMaximize.Visible = _Buttons.Maximize;
             cmdMinimize.Visible = _Buttons.Minimize;
             pnlMoveWnd.Visible = _Buttons.MoveButtons;
-            
-            if (_ParentForm != null) {
-                if (_ParentForm.WindowState == FormWindowState.Maximized) {
+
+            if (((BaseForm)this.ParentForm) != null) {
+                if (((BaseForm)this.ParentForm).WindowState == FormWindowState.Maximized) {
                     cmdMaximize.Text = "2";
                 } else {
                     cmdMaximize.Text = "c";
@@ -149,9 +107,9 @@ namespace PuntoDeVentas.Controls {
         }
         
         protected override void OnLoad(EventArgs e) {
-            _ParentForm = this.FindForm();
-            if (_ParentForm != null) {
-                _NormalSz = _ParentForm.Size;
+
+            if (((BaseForm)this.ParentForm) != null) {
+                _NormalSz = ((BaseForm)this.ParentForm).Size;
             }
 
 
@@ -173,39 +131,39 @@ namespace PuntoDeVentas.Controls {
         }
 
         private void cmdClose_Click(object sender, EventArgs e) {
-            if (_ParentForm != null) {
-                _ParentForm.Close();
+            if (((BaseForm)this.ParentForm) != null) {
+                ((BaseForm)this.ParentForm).Close();
             }
         }
 
         private void cmdMaximize_Click(object sender, EventArgs e) {
-            if (_ParentForm != null) {
-                if (_ParentForm.WindowState == FormWindowState.Normal) {
-                    _ParentForm.WindowState = FormWindowState.Maximized;
+            if (((BaseForm)this.ParentForm) != null) {
+                if (((BaseForm)this.ParentForm).WindowState == FormWindowState.Normal) {
+                    ((BaseForm)this.ParentForm).WindowState = FormWindowState.Maximized;
                 } else {
-                    _ParentForm.WindowState = FormWindowState.Normal;
-                    _ParentForm.Size = _NormalSz;
-                    _ParentForm.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+                    ((BaseForm)this.ParentForm).WindowState = FormWindowState.Normal;
+                    ((BaseForm)this.ParentForm).Size = _NormalSz;
+                    ((BaseForm)this.ParentForm).FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 }
                 _RenderDesign();
             }
         }
 
         private void cmdMinimize_Click(object sender, EventArgs e) {
-            if (_ParentForm != null) {
-                _ParentForm.WindowState = FormWindowState.Minimized;
+            if (((BaseForm)this.ParentForm) != null) {
+                ((BaseForm)this.ParentForm).WindowState = FormWindowState.Minimized;
                 _RenderDesign();
             }
         }
 
         private void cmdMoveRight_Click(object sender, EventArgs e) {
-            if (_ParentForm != null) {
+            if (((BaseForm)this.ParentForm) != null) {
                 SplitRigth();
             }
         }
 
         private void cmdMoveLeft_Click(object sender, EventArgs e) {
-            if (_ParentForm != null) {
+            if (((BaseForm)this.ParentForm) != null) {
                 SplitLeft();
             }
         }

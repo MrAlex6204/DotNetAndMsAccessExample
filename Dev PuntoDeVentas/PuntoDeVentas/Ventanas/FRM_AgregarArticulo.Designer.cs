@@ -28,6 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance2 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance3 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance4 = new PuntoDeVentas.InputAppearance();
             this.cmdAceptar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.chkInventario = new System.Windows.Forms.CheckBox();
@@ -102,7 +106,7 @@
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.button1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.button1.ForeColor = System.Drawing.Color.Silver;
             this.button1.Location = new System.Drawing.Point(413, 61);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(39, 33);
@@ -125,58 +129,98 @@
             // 
             // txtCodigo
             // 
-            this.txtCodigo.BackColor = System.Drawing.Color.White;            
+            this.txtCodigo.BackColor = System.Drawing.Color.White;
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCodigo.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.txtCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.txtCodigo.ForeColor = System.Drawing.Color.Silver;
             this.txtCodigo.Location = new System.Drawing.Point(56, 67);
-            this.txtCodigo.Name = "txtCodigo";            
+            this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(342, 22);
+            inputAppearance1.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance1.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance1.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance1.BorderPadding = 7;
+            inputAppearance1.BorderRadius = 5;
+            inputAppearance1.BorderSize = 1;
+            inputAppearance1.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance1.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance1.TextPlaceholder = "Codigo";
+            this.txtCodigo.Style = inputAppearance1;
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
             this.txtCodigo.Leave += new System.EventHandler(this.txtCodigo_Leave);
-
-            this.txtCodigo.Style.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
-            this.txtCodigo.Style.BorderSize = 1;
-            this.txtCodigo.Style.BorderPadding = 7;
-            this.txtCodigo.Style.TextPlaceholder = "Codigo";
-            this.txtCodigo.Style.Style = System.Drawing.Drawing2D.DashStyle.Solid;
-            this.txtCodigo.Style.Draw = InputAppearance.DrawStyle.Line;
-            this.txtCodigo.Style.BorderColor = System.Drawing.Color.WhiteSmoke; 
             // 
             // txtDesc
             // 
-            this.txtDesc.BackColor = System.Drawing.Color.White;            
+            this.txtDesc.BackColor = System.Drawing.Color.White;
             this.txtDesc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDesc.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.txtDesc.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.txtDesc.ForeColor = System.Drawing.Color.Silver;
             this.txtDesc.Location = new System.Drawing.Point(56, 129);
-            this.txtDesc.Name = "txtDesc";            
+            this.txtDesc.Name = "txtDesc";
             this.txtDesc.Size = new System.Drawing.Size(387, 22);
+            inputAppearance2.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance2.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance2.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance2.BorderPadding = 7;
+            inputAppearance2.BorderRadius = 5;
+            inputAppearance2.BorderSize = 1;
+            inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance2.Forecolor = System.Drawing.Color.Silver;
+            inputAppearance2.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance2.TextPlaceholder = "Descripcion";
+            this.txtDesc.Style = inputAppearance2;
             this.txtDesc.TabIndex = 1;
             this.txtDesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc_KeyPress);
             // 
             // txtPrecio
             // 
-            this.txtPrecio.BackColor = System.Drawing.Color.White;            
+            this.txtPrecio.BackColor = System.Drawing.Color.White;
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.txtPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.txtPrecio.ForeColor = System.Drawing.Color.Silver;
             this.txtPrecio.Location = new System.Drawing.Point(55, 183);
-            this.txtPrecio.Name = "txtPrecio";            
+            this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(134, 22);
+            inputAppearance3.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance3.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance3.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance3.BorderPadding = 7;
+            inputAppearance3.BorderRadius = 5;
+            inputAppearance3.BorderSize = 1;
+            inputAppearance3.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance3.Forecolor = System.Drawing.Color.Silver;
+            inputAppearance3.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance3.TextPlaceholder = "$ Precio";
+            this.txtPrecio.Style = inputAppearance3;
             this.txtPrecio.TabIndex = 2;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
             // 
             // txtUnidad
             // 
-            this.txtUnidad.BackColor = System.Drawing.Color.White;            
+            this.txtUnidad.BackColor = System.Drawing.Color.White;
             this.txtUnidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUnidad.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.txtUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.txtUnidad.ForeColor = System.Drawing.Color.Silver;
             this.txtUnidad.Location = new System.Drawing.Point(212, 183);
-            this.txtUnidad.Name = "txtUnidad";            
+            this.txtUnidad.Name = "txtUnidad";
             this.txtUnidad.Size = new System.Drawing.Size(231, 22);
+            inputAppearance4.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance4.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance4.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance4.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance4.BorderPadding = 7;
+            inputAppearance4.BorderRadius = 5;
+            inputAppearance4.BorderSize = 1;
+            inputAppearance4.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance4.Forecolor = System.Drawing.Color.Silver;
+            inputAppearance4.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance4.TextPlaceholder = "Unidad";
+            this.txtUnidad.Style = inputAppearance4;
             this.txtUnidad.TabIndex = 3;
             this.txtUnidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidad_KeyPress);
             // 

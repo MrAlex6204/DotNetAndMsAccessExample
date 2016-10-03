@@ -37,7 +37,7 @@
             this.lblWndPanelTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.lblWndPanelTitle.Location = new System.Drawing.Point(2, 2);
             this.lblWndPanelTitle.Name = "lblWndPanelTitle";
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(907, 58);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(1157, 58);
             this.lblWndPanelTitle.TabIndex = 0;
             this.lblWndPanelTitle.DoubleClick += new System.EventHandler(this.lblPanelTitle_DoubleClick);
             this.lblWndPanelTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Wnd_MouseDown);
@@ -45,12 +45,16 @@
             // WindowBox
             // 
             this.WindowBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            controlAppearance1.BackColor = System.Drawing.Color.Empty;
             controlAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            controlAppearance1.BorderPadding = 0;
             controlAppearance1.BorderSize = 0;
+            controlAppearance1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
             controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
             controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             controlAppearance1.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
             controlAppearance1.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            controlAppearance1.MouseOverBorderColor = System.Drawing.Color.Empty;
             controlAppearance1.MouseOverForecolor = System.Drawing.Color.Empty;
             this.WindowBox.Appearance = controlAppearance1;
             this.WindowBox.AutoSize = true;
@@ -61,7 +65,7 @@
             buttons1.MoveButtons = true;
             this.WindowBox.ControlButtons = buttons1;
             this.WindowBox.ForeColor = System.Drawing.SystemColors.Control;
-            this.WindowBox.Location = new System.Drawing.Point(741, 10);
+            this.WindowBox.Location = new System.Drawing.Point(991, 10);
             this.WindowBox.Name = "WindowBox";
             this.WindowBox.Size = new System.Drawing.Size(159, 36);
             this.WindowBox.TabIndex = 1;
@@ -71,7 +75,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(911, 240);
+            this.ClientSize = new System.Drawing.Size(1161, 240);
             this.Controls.Add(this.lblWndPanelTitle);
             this.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));

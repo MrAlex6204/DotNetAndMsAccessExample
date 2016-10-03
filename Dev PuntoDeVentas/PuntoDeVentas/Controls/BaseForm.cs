@@ -244,11 +244,11 @@ namespace PuntoDeVentas.Controls {
             WindowBox.Visible = this.ControlBox;
             lblWndPanelTitle.Visible = _bShowLabelTitle;
 
-            if (!_bShowLabelTitle && this.ControlBox) {
-                WindowBox.Location = new Point(this.Size.Width - WindowBox.Size.Width - 5, (this.lblWndPanelTitle.Size.Height / 2) - (WindowBox.Size.Height / 2));
-                this.Controls.Add(this.WindowBox);
+            if (!_bShowLabelTitle && ControlBox) {
+                WindowBox.Location = new Point(Size.Width - WindowBox.Size.Width - 5, (lblWndPanelTitle.Size.Height / 2) - (WindowBox.Size.Height / 2));
+                Controls.Add(WindowBox);
             } else {
-                lblWndPanelTitle.Controls.Add(this.WindowBox);
+                lblWndPanelTitle.Controls.Add(WindowBox);
             }
 
         }
@@ -275,10 +275,15 @@ namespace PuntoDeVentas.Controls {
             g.DrawRectangle(p, _BorderRectangle);
 
         }
+        protected override void OnLoad(EventArgs e) {
+            base.OnLoad(e);
+            _RenderDesign();
+        }
 
         protected override void OnResize(EventArgs e) {
             base.OnResize(e);
             this.Invalidate();
+            _RenderDesign();
         }
 
         protected override void OnPaint(PaintEventArgs e) {
@@ -287,6 +292,10 @@ namespace PuntoDeVentas.Controls {
             var g = e.Graphics;
 
             RenderizeBorder(ref g);
+
+            if (this.DesignMode) {
+                _RenderDesign();
+            }
 
         }
 

@@ -25,11 +25,18 @@ namespace PuntoDeVentas
             //Load main configuartions
             System.Configurations.Load();
 
-#if !DEBUG
-            //Omitir el Splash creen en DEBUG
+#if DEBUG
+            //Code para ejecutar solo en Debug            
+            wndLogin.ShowDialog();
+            if (wndLogin.UserIsLoggued) {
+                var wndCbza = new FRM_Cbza();
+                wndCbza.ShowDialog();
+            }
+
+
+#else 
+            //Code para ejecutar solo en Release
             wndLoading.ShowDialog();            
-#endif           
-            
             wndLogin.ShowDialog(wndVentanaPrinicipal);
 
             if (wndLogin.UserIsLoggued) { 
@@ -39,6 +46,8 @@ namespace PuntoDeVentas
 
                 Application.Run(wndVentanaPrinicipal);            
             }
+#endif           
+            
             
         }
     }

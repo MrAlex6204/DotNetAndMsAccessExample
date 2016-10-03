@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Total));
             this.lblEfectivo = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,7 +44,7 @@
             // 
             this.lblWndPanelTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.lblWndPanelTitle.Controls.Add(this.label2);
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(415, 42);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(411, 42);
             this.lblWndPanelTitle.Controls.SetChildIndex(this.label2, 0);
             // 
             // lblEfectivo
@@ -120,12 +121,25 @@
             // 
             // txtPago
             // 
-            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));            
+            this.txtPago.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             this.txtPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPago.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPago.Font = new System.Drawing.Font("Consolas", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPago.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.txtPago.Location = new System.Drawing.Point(279, 100);
-            this.txtPago.Name = "txtPago";            
+            this.txtPago.Name = "txtPago";
             this.txtPago.Size = new System.Drawing.Size(100, 19);
+            inputAppearance1.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance1.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance1.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance1.BorderPadding = 7;
+            inputAppearance1.BorderRadius = 5;
+            inputAppearance1.BorderSize = 1;
+            inputAppearance1.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance1.Forecolor = System.Drawing.Color.Empty;
+            inputAppearance1.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance1.TextPlaceholder = "$ Pago";
+            this.txtPago.Style = inputAppearance1;
             this.txtPago.TabIndex = 7;
             this.txtPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPago_KeyPress);
             // 
