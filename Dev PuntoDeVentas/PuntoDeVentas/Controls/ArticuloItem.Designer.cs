@@ -56,12 +56,12 @@
             // 
             this.lblCantidad.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.lblCantidad.Location = new System.Drawing.Point(165, 55);
+            this.lblCantidad.Location = new System.Drawing.Point(137, 55);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(129, 23);
+            this.lblCantidad.Size = new System.Drawing.Size(154, 23);
             this.lblCantidad.TabIndex = 1;
             this.lblCantidad.Text = "[CANTIDAD]";
-            this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblPrecio
             // 
@@ -115,7 +115,7 @@
             this.Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
             this.Label1.Location = new System.Drawing.Point(93, 55);
             this.Label1.Name = "Label1";
-            this.Label1.Size = new System.Drawing.Size(72, 23);
+            this.Label1.Size = new System.Drawing.Size(50, 23);
             this.Label1.TabIndex = 7;
             this.Label1.Text = "Cant.:";
             this.Label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -126,7 +126,7 @@
             this.Label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
             this.Label4.Location = new System.Drawing.Point(587, 55);
             this.Label4.Name = "Label4";
-            this.Label4.Size = new System.Drawing.Size(70, 23);
+            this.Label4.Size = new System.Drawing.Size(72, 23);
             this.Label4.TabIndex = 8;
             this.Label4.Text = "Codigo :";
             this.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;

@@ -52,8 +52,7 @@ namespace PuntoDeVentas {
         }
 
         private void FRM_Login_Load(object sender, EventArgs e) {
-            this.Activate();
-            lblTitle.Text = Configurations.NombreDelNegocio;
+            this.Activate();            
         }
 
         private void label3_Click(object sender, EventArgs e) {

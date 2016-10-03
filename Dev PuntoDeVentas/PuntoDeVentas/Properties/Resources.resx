@@ -154,11 +154,17 @@
   <data name="Icon0132" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icon0132.ico;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LabelHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LabelHolder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="1363913224_application_side_list" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1363913224_application_side_list.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="PANE00J" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\PANE00J.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="iconmonstr-dashboard-5-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\iconmonstr-dashboard-5-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Eliminado" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Eliminado.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -184,8 +190,8 @@
   <data name="usr_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usr_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LabelHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LabelHolder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="PANE00J" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PANE00J.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="INPUT_SHORT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\INPUT_SHORT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -208,7 +214,7 @@
   <data name="COGS03A" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\COGS03A.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="iconmonstr-dashboard-5-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\iconmonstr-dashboard-5-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

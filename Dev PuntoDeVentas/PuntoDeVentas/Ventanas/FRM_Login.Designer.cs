@@ -28,32 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance2 = new PuntoDeVentas.InputAppearance();
-            this.label3 = new System.Windows.Forms.Label();
+            PuntoDeVentas.InputAppearance inputAppearance3 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Login));
             this.lblErrorMsg = new System.Windows.Forms.Label();
             this.txtUser = new PuntoDeVentas.Controls.InputTextBox();
             this.txtPassword = new PuntoDeVentas.Controls.InputTextBox();
-            this.lblTitle = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.inputTextBox1 = new PuntoDeVentas.Controls.InputTextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblWndPanelTitle.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(443, 51);
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.label3.Location = new System.Drawing.Point(164, 115);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 45);
-            this.label3.TabIndex = 29;
-            this.label3.Text = "Log In";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
+            this.lblWndPanelTitle.Controls.Add(this.inputTextBox1);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(580, 51);
+            this.lblWndPanelTitle.Controls.SetChildIndex(this.inputTextBox1, 0);
             // 
             // lblErrorMsg
             // 
@@ -61,9 +54,9 @@
             this.lblErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
             this.lblErrorMsg.Image = global::PuntoDeVentas.Properties.Resources.SmallFlag;
             this.lblErrorMsg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblErrorMsg.Location = new System.Drawing.Point(65, 351);
+            this.lblErrorMsg.Location = new System.Drawing.Point(151, 409);
             this.lblErrorMsg.Name = "lblErrorMsg";
-            this.lblErrorMsg.Size = new System.Drawing.Size(300, 43);
+            this.lblErrorMsg.Size = new System.Drawing.Size(287, 43);
             this.lblErrorMsg.TabIndex = 31;
             this.lblErrorMsg.Text = "[ERROR MESSAGE]";
             this.lblErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -75,9 +68,68 @@
             this.txtUser.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUser.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUser.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
-            this.txtUser.Location = new System.Drawing.Point(82, 210);
+            this.txtUser.Location = new System.Drawing.Point(155, 266);
             this.txtUser.Name = "txtUser";
             this.txtUser.Size = new System.Drawing.Size(283, 22);
+            inputAppearance2.ActiveBackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance2.ActiveForecolor = System.Drawing.Color.Gray;
+            inputAppearance2.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance2.BorderColor = System.Drawing.Color.Empty;
+            inputAppearance2.BorderPadding = 9;
+            inputAppearance2.BorderRadius = 5;
+            inputAppearance2.BorderSize = 1;
+            inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Fill;
+            inputAppearance2.Forecolor = System.Drawing.Color.Empty;
+            inputAppearance2.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance2.TextPlaceholder = "Username";
+            this.txtUser.Style = inputAppearance2;
+            this.txtUser.TabIndex = 0;
+            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
+            // 
+            // txtPassword
+            // 
+            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.txtPassword.Location = new System.Drawing.Point(155, 327);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.Size = new System.Drawing.Size(283, 22);
+            inputAppearance3.ActiveBackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance3.ActiveForecolor = System.Drawing.Color.Gray;
+            inputAppearance3.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance3.BorderPadding = 9;
+            inputAppearance3.BorderRadius = 5;
+            inputAppearance3.BorderSize = 1;
+            inputAppearance3.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Both;
+            inputAppearance3.Forecolor = System.Drawing.Color.Empty;
+            inputAppearance3.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance3.TextPlaceholder = "Password";
+            this.txtPassword.Style = inputAppearance3;
+            this.txtPassword.TabIndex = 1;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::PuntoDeVentas.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(146, 117);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 84);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // inputTextBox1
+            // 
+            this.inputTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.inputTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.inputTextBox1.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.inputTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.inputTextBox1.Location = new System.Drawing.Point(225, 14);
+            this.inputTextBox1.Name = "inputTextBox1";
+            this.inputTextBox1.Size = new System.Drawing.Size(283, 22);
             inputAppearance1.ActiveBackcolor = System.Drawing.Color.Silver;
             inputAppearance1.ActiveForecolor = System.Drawing.Color.Gray;
             inputAppearance1.BorderActiveColor = System.Drawing.Color.Silver;
@@ -89,59 +141,34 @@
             inputAppearance1.Forecolor = System.Drawing.Color.Empty;
             inputAppearance1.Style = System.Drawing.Drawing2D.DashStyle.Solid;
             inputAppearance1.TextPlaceholder = "Username";
-            this.txtUser.Style = inputAppearance1;
-            this.txtUser.TabIndex = 0;
-            this.txtUser.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
+            this.inputTextBox1.Style = inputAppearance1;
+            this.inputTextBox1.TabIndex = 2;
             // 
-            // txtPassword
+            // label1
             // 
-            this.txtPassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.txtPassword.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtPassword.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
-            this.txtPassword.Location = new System.Drawing.Point(82, 270);
-            this.txtPassword.Name = "txtPassword";
-            this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(283, 22);
-            inputAppearance2.ActiveBackcolor = System.Drawing.Color.Silver;
-            inputAppearance2.ActiveForecolor = System.Drawing.Color.Gray;
-            inputAppearance2.BorderActiveColor = System.Drawing.Color.Silver;
-            inputAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            inputAppearance2.BorderPadding = 9;
-            inputAppearance2.BorderRadius = 5;
-            inputAppearance2.BorderSize = 1;
-            inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Both;
-            inputAppearance2.Forecolor = System.Drawing.Color.Empty;
-            inputAppearance2.Style = System.Drawing.Drawing2D.DashStyle.Solid;
-            inputAppearance2.TextPlaceholder = "Password";
-            this.txtPassword.Style = inputAppearance2;
-            this.txtPassword.TabIndex = 1;
-            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.lblTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F);
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
-            this.lblTitle.Location = new System.Drawing.Point(6, 8);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(435, 78);
-            this.lblTitle.TabIndex = 34;
-            this.lblTitle.Text = "[EMPRESA]";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(234, 141);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(175, 45);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "ShopySale";
             // 
             // FRM_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(447, 422);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(584, 548);
             this.ControlBox = false;
-            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUser);
             this.Controls.Add(this.lblErrorMsg);
-            this.Controls.Add(this.lblTitle);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.MaximizeBox = false;
@@ -150,14 +177,17 @@
             this.ShowTitleLabel = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = " Login";
-            this.WindowBorderColor = System.Drawing.Color.WhiteSmoke;
+            this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(142)))), ((int)(((byte)(57)))));
             this.Load += new System.EventHandler(this.FRM_Login_Load);
-            this.Controls.SetChildIndex(this.lblTitle, 0);
-            this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.lblErrorMsg, 0);
             this.Controls.SetChildIndex(this.txtUser, 0);
             this.Controls.SetChildIndex(this.txtPassword, 0);
-            this.Controls.SetChildIndex(this.label3, 0);
+            this.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.lblWndPanelTitle.ResumeLayout(false);
+            this.lblWndPanelTitle.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -165,11 +195,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label lblErrorMsg;
         private Controls.InputTextBox txtUser;
         private Controls.InputTextBox txtPassword;
-        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private Controls.InputTextBox inputTextBox1;
+        private System.Windows.Forms.Label label1;
     }
 }
 

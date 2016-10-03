@@ -409,6 +409,9 @@
     <Content Include="Microsoft.Vbe.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\Bg1.png" />
+    <None Include="Resources\Logo.png" />
+    <None Include="Resources\Bg.png" />
     <None Include="Resources\iconmonstr-dashboard-5-32.png" />
     <None Include="Resources\dashboard.png" />
     <None Include="Resources\code_bar.png" />
