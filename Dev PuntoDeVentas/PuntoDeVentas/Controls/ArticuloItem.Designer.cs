@@ -36,6 +36,8 @@
             this.lblNo = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblEliminado = new System.Windows.Forms.Label();
+            this.picArticulo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.picArticulo)).BeginInit();
             this.SuspendLayout();
             // 
             // lblArticulo
@@ -47,7 +49,7 @@
             this.lblArticulo.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblArticulo.Location = new System.Drawing.Point(93, 16);
             this.lblArticulo.Name = "lblArticulo";
-            this.lblArticulo.Size = new System.Drawing.Size(152, 37);
+            this.lblArticulo.Size = new System.Drawing.Size(151, 37);
             this.lblArticulo.TabIndex = 0;
             this.lblArticulo.Text = "[ARTICULO]";
             this.lblArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -58,7 +60,7 @@
             this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
             this.lblCantidad.Location = new System.Drawing.Point(137, 55);
             this.lblCantidad.Name = "lblCantidad";
-            this.lblCantidad.Size = new System.Drawing.Size(154, 23);
+            this.lblCantidad.Size = new System.Drawing.Size(126, 23);
             this.lblCantidad.TabIndex = 1;
             this.lblCantidad.Text = "[CANTIDAD]";
             this.lblCantidad.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -67,9 +69,9 @@
             // 
             this.lblPrecio.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.lblPrecio.Location = new System.Drawing.Point(312, 55);
+            this.lblPrecio.Location = new System.Drawing.Point(288, 55);
             this.lblPrecio.Name = "lblPrecio";
-            this.lblPrecio.Size = new System.Drawing.Size(130, 23);
+            this.lblPrecio.Size = new System.Drawing.Size(106, 23);
             this.lblPrecio.TabIndex = 2;
             this.lblPrecio.Text = "[PRECIO]";
             this.lblPrecio.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,7 +81,7 @@
             this.Label2.AutoSize = true;
             this.Label2.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.Label2.Location = new System.Drawing.Point(294, 56);
+            this.Label2.Location = new System.Drawing.Point(263, 56);
             this.Label2.Name = "Label2";
             this.Label2.Size = new System.Drawing.Size(25, 21);
             this.Label2.TabIndex = 3;
@@ -90,9 +92,9 @@
             // 
             this.lblTotal.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.lblTotal.Location = new System.Drawing.Point(460, 55);
+            this.lblTotal.Location = new System.Drawing.Point(414, 55);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(127, 23);
+            this.lblTotal.Size = new System.Drawing.Size(102, 23);
             this.lblTotal.TabIndex = 4;
             this.lblTotal.Text = "[TOTAL]";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -102,7 +104,7 @@
             this.Label3.AutoSize = true;
             this.Label3.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.Label3.Location = new System.Drawing.Point(442, 56);
+            this.Label3.Location = new System.Drawing.Point(394, 56);
             this.Label3.Name = "Label3";
             this.Label3.Size = new System.Drawing.Size(20, 21);
             this.Label3.TabIndex = 5;
@@ -124,7 +126,7 @@
             // 
             this.Label4.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.Label4.Location = new System.Drawing.Point(587, 55);
+            this.Label4.Location = new System.Drawing.Point(516, 55);
             this.Label4.Name = "Label4";
             this.Label4.Size = new System.Drawing.Size(72, 23);
             this.Label4.TabIndex = 8;
@@ -135,9 +137,9 @@
             // 
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.lblCodigo.Location = new System.Drawing.Point(657, 55);
+            this.lblCodigo.Location = new System.Drawing.Point(588, 55);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(165, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(202, 23);
             this.lblCodigo.TabIndex = 9;
             this.lblCodigo.Text = "[CODIGO]";
             this.lblCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -162,7 +164,7 @@
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Location = new System.Drawing.Point(17, 86);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(966, 11);
+            this.panel1.Size = new System.Drawing.Size(920, 11);
             this.panel1.TabIndex = 16;
             // 
             // lblEliminado
@@ -172,20 +174,33 @@
             this.lblEliminado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.lblEliminado.Image = ((System.Drawing.Image)(resources.GetObject("lblEliminado.Image")));
             this.lblEliminado.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lblEliminado.Location = new System.Drawing.Point(780, 47);
+            this.lblEliminado.Location = new System.Drawing.Point(725, 40);
             this.lblEliminado.Name = "lblEliminado";
-            this.lblEliminado.Size = new System.Drawing.Size(201, 39);
+            this.lblEliminado.Size = new System.Drawing.Size(195, 39);
             this.lblEliminado.TabIndex = 15;
             this.lblEliminado.Text = "Articulo Eliminado";
             this.lblEliminado.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblEliminado.Visible = false;
+            this.lblEliminado.Click += new System.EventHandler(this.lblEliminado_Click);
+            // 
+            // picArticulo
+            // 
+            this.picArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picArticulo.Location = new System.Drawing.Point(851, 8);
+            this.picArticulo.Name = "picArticulo";
+            this.picArticulo.Size = new System.Drawing.Size(82, 74);
+            this.picArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picArticulo.TabIndex = 17;
+            this.picArticulo.TabStop = false;
+            this.picArticulo.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // ArticuloItem
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblEliminado);
+            this.Controls.Add(this.picArticulo);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblNo);
             this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.Label4);
@@ -197,9 +212,10 @@
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblArticulo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.MinimumSize = new System.Drawing.Size(994, 108);
+            this.MinimumSize = new System.Drawing.Size(800, 108);
             this.Name = "ArticuloItem";
-            this.Size = new System.Drawing.Size(994, 108);
+            this.Size = new System.Drawing.Size(948, 108);
+            ((System.ComponentModel.ISupportInitialize)(this.picArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -219,7 +235,6 @@
         private Windows.Forms.Label lblNo;
         private Windows.Forms.Label lblEliminado;
         private Windows.Forms.Panel panel1;
-        
-
+        private Windows.Forms.PictureBox picArticulo;
     }
 }

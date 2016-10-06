@@ -27,8 +27,8 @@ namespace PuntoDeVentas {
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Cbza));
-            PuntoDeVentas.Controls.ControlAppearance controlAppearance2 = new PuntoDeVentas.Controls.ControlAppearance();
-            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons2 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblFechaHra = new System.Windows.Forms.Label();
             this.tmrFechayHra = new System.Windows.Forms.Timer(this.components);
@@ -187,7 +187,7 @@ namespace PuntoDeVentas {
             this.lblCajero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCajero.Name = "lblCajero";
             this.lblCajero.Padding = new System.Windows.Forms.Padding(0, 15, 6, 0);
-            this.lblCajero.Size = new System.Drawing.Size(73, 35);
+            this.lblCajero.Size = new System.Drawing.Size(74, 35);
             this.lblCajero.TabIndex = 4;
             this.lblCajero.Text = "[CAJERO]";
             this.lblCajero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -373,25 +373,25 @@ namespace PuntoDeVentas {
             // windowControlBox1
             // 
             this.windowControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            controlAppearance2.BackColor = System.Drawing.Color.Transparent;
-            controlAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            controlAppearance2.BorderPadding = 0;
-            controlAppearance2.BorderSize = 0;
-            controlAppearance2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            controlAppearance2.CheckedBackColor = System.Drawing.Color.Empty;
-            controlAppearance2.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            controlAppearance2.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            controlAppearance2.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            controlAppearance2.MouseOverBorderColor = System.Drawing.Color.Empty;
-            controlAppearance2.MouseOverForecolor = System.Drawing.Color.Empty;
-            this.windowControlBox1.Appearance = controlAppearance2;
+            controlAppearance1.BackColor = System.Drawing.Color.Transparent;
+            controlAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            controlAppearance1.BorderPadding = 0;
+            controlAppearance1.BorderSize = 0;
+            controlAppearance1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            controlAppearance1.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            controlAppearance1.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            controlAppearance1.MouseOverBorderColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverForecolor = System.Drawing.Color.Empty;
+            this.windowControlBox1.Appearance = controlAppearance1;
             this.windowControlBox1.AutoSize = true;
             this.windowControlBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.windowControlBox1.BackColor = System.Drawing.Color.Transparent;
-            buttons2.Maximize = true;
-            buttons2.Minimize = true;
-            buttons2.MoveButtons = true;
-            this.windowControlBox1.ControlButtons = buttons2;
+            buttons1.Maximize = true;
+            buttons1.Minimize = true;
+            buttons1.MoveButtons = true;
+            this.windowControlBox1.ControlButtons = buttons1;
             this.windowControlBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.windowControlBox1.Location = new System.Drawing.Point(1056, 9);
             this.windowControlBox1.Name = "windowControlBox1";

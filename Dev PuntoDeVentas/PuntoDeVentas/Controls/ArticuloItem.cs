@@ -141,19 +141,25 @@ namespace System {
 
             this._Cantidad = Cantidad;
             this._Articulo = ArticuloItem;
-
             
             lblArticulo.Text = _Articulo.DESCRIPCION;
             lblPrecio.Text =  Functions.ToCurrency(_Articulo.PRECIO);
             lblCodigo.Text = _Articulo.ID;
             lblTotal.Text = Functions.ToCurrency(this.Total);
             lblCantidad.Text = this.Cantidad.ToString("0.00 " + ArticuloItem.UNIDAD);
+            picArticulo.Image = _Articulo.FOTO.GetImageSzOf(picArticulo.Size);
 
         }
 
-        
-        
+        private void lblEliminado_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
 
 
+        }
     }
 }
