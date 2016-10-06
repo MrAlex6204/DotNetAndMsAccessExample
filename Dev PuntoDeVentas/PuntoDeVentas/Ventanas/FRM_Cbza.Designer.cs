@@ -46,13 +46,12 @@ namespace PuntoDeVentas {
             this.pnlStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblArticuloCount = new System.Windows.Forms.Label();
-            this.panel7 = new System.Windows.Forms.Panel();
             this.LstArticulos = new PuntoDeVentas.ArticuloList();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.windowControlBox1 = new PuntoDeVentas.Controls.WindowControlBox();
+            this.panel6 = new System.Windows.Forms.Panel();
             this.lblWndPanelTitle.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
@@ -61,8 +60,8 @@ namespace PuntoDeVentas {
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.panel6.SuspendLayout();
             this.panel5.SuspendLayout();
+            this.panel6.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
@@ -102,7 +101,7 @@ namespace PuntoDeVentas {
             this.lblFechaHra.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFechaHra.Name = "lblFechaHra";
             this.lblFechaHra.Padding = new System.Windows.Forms.Padding(10, 0, 0, 0);
-            this.lblFechaHra.Size = new System.Drawing.Size(261, 30);
+            this.lblFechaHra.Size = new System.Drawing.Size(269, 18);
             this.lblFechaHra.TabIndex = 0;
             this.lblFechaHra.Text = "[dddd,dd-MMMM-yyyy hh:mm tt]";
             this.lblFechaHra.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -119,10 +118,10 @@ namespace PuntoDeVentas {
             this.lblTotal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTotal.Font = new System.Drawing.Font("Consolas", 24.75F, System.Drawing.FontStyle.Bold);
             this.lblTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
-            this.lblTotal.Location = new System.Drawing.Point(0, 30);
+            this.lblTotal.Location = new System.Drawing.Point(0, 18);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(261, 82);
+            this.lblTotal.Size = new System.Drawing.Size(269, 63);
             this.lblTotal.TabIndex = 13;
             this.lblTotal.Text = "$ 00.00";
             this.lblTotal.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -135,19 +134,19 @@ namespace PuntoDeVentas {
             this.panel2.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
             this.panel2.Controls.Add(this.panel8);
             this.panel2.Controls.Add(this.label2);
-            this.panel2.Location = new System.Drawing.Point(950, 60);
+            this.panel2.Location = new System.Drawing.Point(954, 59);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(269, 562);
+            this.panel2.Size = new System.Drawing.Size(269, 606);
             this.panel2.TabIndex = 21;
             // 
             // panel8
             // 
-            this.panel8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.panel8.BackColor = System.Drawing.Color.Transparent;
             this.panel8.Controls.Add(this.picArticulo);
-            this.panel8.Location = new System.Drawing.Point(4, 358);
+            this.panel8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel8.Location = new System.Drawing.Point(0, 404);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(261, 202);
+            this.panel8.Size = new System.Drawing.Size(269, 202);
             this.panel8.TabIndex = 24;
             // 
             // picArticulo
@@ -155,24 +154,23 @@ namespace PuntoDeVentas {
             this.picArticulo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.picArticulo.Location = new System.Drawing.Point(0, 0);
             this.picArticulo.Name = "picArticulo";
-            this.picArticulo.Size = new System.Drawing.Size(261, 202);
+            this.picArticulo.Size = new System.Drawing.Size(269, 202);
             this.picArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picArticulo.TabIndex = 0;
             this.picArticulo.TabStop = false;
             // 
             // label2
             // 
-            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoEllipsis = true;
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label2.Dock = System.Windows.Forms.DockStyle.Top;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F);
             this.label2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(112)))), ((int)(((byte)(113)))));
-            this.label2.Location = new System.Drawing.Point(6, 8);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(255, 552);
+            this.label2.Padding = new System.Windows.Forms.Padding(2);
+            this.label2.Size = new System.Drawing.Size(269, 394);
             this.label2.TabIndex = 19;
             this.label2.Text = resources.GetString("label2.Text");
             // 
@@ -187,7 +185,7 @@ namespace PuntoDeVentas {
             this.lblCajero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCajero.Name = "lblCajero";
             this.lblCajero.Padding = new System.Windows.Forms.Padding(0, 15, 6, 0);
-            this.lblCajero.Size = new System.Drawing.Size(74, 35);
+            this.lblCajero.Size = new System.Drawing.Size(73, 35);
             this.lblCajero.TabIndex = 4;
             this.lblCajero.Text = "[CAJERO]";
             this.lblCajero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -201,7 +199,7 @@ namespace PuntoDeVentas {
             this.panel1.Controls.Add(this.pnlStatus);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 745);
+            this.panel1.Location = new System.Drawing.Point(2, 751);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1224, 52);
             this.panel1.TabIndex = 19;
@@ -294,26 +292,16 @@ namespace PuntoDeVentas {
             this.pictureBox1.TabIndex = 5;
             this.pictureBox1.TabStop = false;
             // 
-            // panel6
-            // 
-            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.panel6.Controls.Add(this.panel5);
-            this.panel6.Controls.Add(this.panel7);
-            this.panel6.Location = new System.Drawing.Point(950, 624);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(268, 119);
-            this.panel6.TabIndex = 22;
-            // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.panel5.Controls.Add(this.lblArticuloCount);
             this.panel5.Controls.Add(this.lblTotal);
             this.panel5.Controls.Add(this.lblFechaHra);
-            this.panel5.Location = new System.Drawing.Point(3, 4);
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel5.Location = new System.Drawing.Point(0, 0);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(261, 112);
+            this.panel5.Size = new System.Drawing.Size(269, 81);
             this.panel5.TabIndex = 23;
             // 
             // lblArticuloCount
@@ -322,24 +310,13 @@ namespace PuntoDeVentas {
             this.lblArticuloCount.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.lblArticuloCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold);
             this.lblArticuloCount.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
-            this.lblArticuloCount.Location = new System.Drawing.Point(0, 73);
+            this.lblArticuloCount.Location = new System.Drawing.Point(0, 59);
             this.lblArticuloCount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblArticuloCount.Name = "lblArticuloCount";
-            this.lblArticuloCount.Size = new System.Drawing.Size(261, 39);
+            this.lblArticuloCount.Size = new System.Drawing.Size(269, 22);
             this.lblArticuloCount.TabIndex = 23;
             this.lblArticuloCount.Text = "CANT. ARTICULOS : 00";
             this.lblArticuloCount.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // panel7
-            // 
-            this.panel7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.panel7.BackColor = System.Drawing.Color.Transparent;
-            this.panel7.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
-            this.panel7.Location = new System.Drawing.Point(-75, 421);
-            this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(348, 42);
-            this.panel7.TabIndex = 22;
             // 
             // LstArticulos
             // 
@@ -349,7 +326,7 @@ namespace PuntoDeVentas {
             this.LstArticulos.BackColor = System.Drawing.Color.Transparent;
             this.LstArticulos.Location = new System.Drawing.Point(2, 144);
             this.LstArticulos.Name = "LstArticulos";
-            this.LstArticulos.Size = new System.Drawing.Size(942, 595);
+            this.LstArticulos.Size = new System.Drawing.Size(942, 601);
             this.LstArticulos.TabIndex = 0;
             this.LstArticulos.OnListChange += new PuntoDeVentas.ArticuloList.OnChangeHandler(this.LstArticulos_OnListChange);
             this.LstArticulos.OnSelectedItemChange += new System.ArticuloItemCollection.OnSelectedItemChangeHanlder(this.LstArticulos_OnSelectedItemChange);
@@ -398,15 +375,26 @@ namespace PuntoDeVentas {
             this.windowControlBox1.Size = new System.Drawing.Size(159, 36);
             this.windowControlBox1.TabIndex = 6;
             // 
+            // panel6
+            // 
+            this.panel6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel6.BackColor = System.Drawing.Color.Transparent;
+            this.panel6.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
+            this.panel6.Controls.Add(this.panel5);
+            this.panel6.Location = new System.Drawing.Point(954, 668);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(269, 81);
+            this.panel6.TabIndex = 25;
+            // 
             // FRM_Cbza
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(1228, 799);
+            this.ClientSize = new System.Drawing.Size(1228, 805);
             this.ControlBox = false;
-            this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.panel6);
+            this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.panel1);
@@ -428,8 +416,8 @@ namespace PuntoDeVentas {
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
-            this.Controls.SetChildIndex(this.panel6, 0);
             this.Controls.SetChildIndex(this.lblDireccion, 0);
+            this.Controls.SetChildIndex(this.panel6, 0);
             this.lblWndPanelTitle.ResumeLayout(false);
             this.lblWndPanelTitle.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -442,8 +430,8 @@ namespace PuntoDeVentas {
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.panel6.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -464,8 +452,6 @@ namespace PuntoDeVentas {
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.Panel panel6;
-        private System.Windows.Forms.Panel panel7;
         private PuntoDeVentas.ArticuloList LstArticulos;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblArticuloCount;
@@ -474,6 +460,7 @@ namespace PuntoDeVentas {
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.PictureBox picArticulo;
         private Controls.WindowControlBox windowControlBox1;
+        private System.Windows.Forms.Panel panel6;
 
     }
 }

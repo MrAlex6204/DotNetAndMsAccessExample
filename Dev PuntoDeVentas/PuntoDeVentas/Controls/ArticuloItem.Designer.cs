@@ -49,7 +49,7 @@
             this.lblArticulo.ForeColor = System.Drawing.Color.WhiteSmoke;
             this.lblArticulo.Location = new System.Drawing.Point(93, 16);
             this.lblArticulo.Name = "lblArticulo";
-            this.lblArticulo.Size = new System.Drawing.Size(151, 37);
+            this.lblArticulo.Size = new System.Drawing.Size(152, 37);
             this.lblArticulo.TabIndex = 0;
             this.lblArticulo.Text = "[ARTICULO]";
             this.lblArticulo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -58,7 +58,7 @@
             // 
             this.lblCantidad.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCantidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.lblCantidad.Location = new System.Drawing.Point(137, 55);
+            this.lblCantidad.Location = new System.Drawing.Point(135, 55);
             this.lblCantidad.Name = "lblCantidad";
             this.lblCantidad.Size = new System.Drawing.Size(126, 23);
             this.lblCantidad.TabIndex = 1;
@@ -115,7 +115,7 @@
             // 
             this.Label1.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.Label1.Location = new System.Drawing.Point(93, 55);
+            this.Label1.Location = new System.Drawing.Point(91, 55);
             this.Label1.Name = "Label1";
             this.Label1.Size = new System.Drawing.Size(50, 23);
             this.Label1.TabIndex = 7;
@@ -139,7 +139,7 @@
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
             this.lblCodigo.Location = new System.Drawing.Point(588, 55);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(202, 23);
+            this.lblCodigo.Size = new System.Drawing.Size(262, 23);
             this.lblCodigo.TabIndex = 9;
             this.lblCodigo.Text = "[CODIGO]";
             this.lblCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -162,19 +162,20 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.BackgroundImage = global::PuntoDeVentas.Properties.Resources.LINE;
             this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Location = new System.Drawing.Point(17, 86);
+            this.panel1.Location = new System.Drawing.Point(13, 91);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(920, 11);
+            this.panel1.Size = new System.Drawing.Size(966, 11);
             this.panel1.TabIndex = 16;
             // 
             // lblEliminado
             // 
+            this.lblEliminado.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.lblEliminado.BackColor = System.Drawing.Color.Transparent;
             this.lblEliminado.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEliminado.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
             this.lblEliminado.Image = ((System.Drawing.Image)(resources.GetObject("lblEliminado.Image")));
             this.lblEliminado.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lblEliminado.Location = new System.Drawing.Point(725, 40);
+            this.lblEliminado.Location = new System.Drawing.Point(707, 43);
             this.lblEliminado.Name = "lblEliminado";
             this.lblEliminado.Size = new System.Drawing.Size(195, 39);
             this.lblEliminado.TabIndex = 15;
@@ -185,10 +186,11 @@
             // 
             // picArticulo
             // 
-            this.picArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picArticulo.Location = new System.Drawing.Point(851, 8);
+            this.picArticulo.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.picArticulo.BackColor = System.Drawing.Color.Transparent;
+            this.picArticulo.Location = new System.Drawing.Point(883, 4);
             this.picArticulo.Name = "picArticulo";
-            this.picArticulo.Size = new System.Drawing.Size(82, 74);
+            this.picArticulo.Size = new System.Drawing.Size(129, 86);
             this.picArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picArticulo.TabIndex = 17;
             this.picArticulo.TabStop = false;
@@ -198,11 +200,10 @@
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblEliminado);
             this.Controls.Add(this.picArticulo);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblNo);
-            this.Controls.Add(this.lblCodigo);
             this.Controls.Add(this.Label4);
             this.Controls.Add(this.Label1);
             this.Controls.Add(this.Label3);
@@ -211,10 +212,11 @@
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblCantidad);
             this.Controls.Add(this.lblArticulo);
+            this.Controls.Add(this.lblCodigo);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(90)))), ((int)(((byte)(89)))), ((int)(((byte)(90)))));
-            this.MinimumSize = new System.Drawing.Size(800, 108);
+            this.MinimumSize = new System.Drawing.Size(942, 108);
             this.Name = "ArticuloItem";
-            this.Size = new System.Drawing.Size(948, 108);
+            this.Size = new System.Drawing.Size(992, 108);
             ((System.ComponentModel.ISupportInitialize)(this.picArticulo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

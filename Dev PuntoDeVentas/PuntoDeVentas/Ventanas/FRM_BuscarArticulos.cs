@@ -80,13 +80,16 @@ namespace PuntoDeVentas {
             if (TblResults.Rows.Count > 0) {
 
                 var Sz = pictArticulo.Size;//OBTENEMOS EL SIZE DEL PICTUREBOX
+                //Sz.Width -= (int)(Sz.Width * 0.5);
+                //Sz.Height-= (int)(Sz.Height * 0.5);
+
                 foreach (DataRow iRow in TblResults.Rows) {
 
                     //OBTENEMOS EL STREAM DE LA FOTO DEL VALOR DE LA CELDA QUE SE ENCUENTRA EN EL GRID
                     var Fs = iRow["FOTO"];
                     if (Fs != DBNull.Value) { 
                     //GENERAR FOTO Y GUARDAR EN LA COLUMNA FOTO_IMAGE
-                    iRow["FOTO_IMAGE"] = ImageInfo.GetImageSzOf((byte[])Fs, Sz);
+                        iRow["FOTO_IMAGE"] = ImageInfo.GetRoundCornersImage(ImageInfo.GetImageSzOf((byte[])Fs, Sz),5,this.BackColor);
                     }
                 }
                 

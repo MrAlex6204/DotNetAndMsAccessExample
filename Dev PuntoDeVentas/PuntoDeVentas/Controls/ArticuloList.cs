@@ -25,11 +25,16 @@ namespace PuntoDeVentas {
             public int Count;
             public double Total;
         }
-
-
+        
         public ArticuloList() {
 
             InitializeComponent();
+
+            if (!this.DesignMode) {//Delete the dummy item
+                this.Items.Clear();
+                this.pnlCobranza.Controls.Clear();
+            }
+
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
             this.SetStyle(ControlStyles.ContainerControl, true);
 
@@ -46,6 +51,8 @@ namespace PuntoDeVentas {
                 }
 
             };
+
+        
 
         }
         
@@ -66,15 +73,21 @@ namespace PuntoDeVentas {
         }
 
         public ArticuloItem Add(ArticuloItem Item) {
+                        
+            this.Items.Add(Item);//Agregar el item a la lista de articulos
 
-            Item.Dock = DockStyle.Top;
-            this.Items.Add(Item);
-            this.Items.SelectedItem = Item;
-            pnlCobranza.Controls.Add(Item);            
+            this.Items.SelectedItem = Item;//Seleccionar el item
+
+            Item.Size = new Size(this.Size.Width, Item.Size.Height);                       
+                       
+
+            pnlCobranza.Controls.Add(Item);//Agregar el container a la lista            
+
             pnlCobranza.ScrollControlIntoView(Item);
 
-            _RaiseEvent();        
+            _RaiseEvent();
 
+            this.Invalidate(true);
             return Item;
         }
 
@@ -102,6 +115,15 @@ namespace PuntoDeVentas {
             _RaiseEvent();
         }
 
+        protected override void OnSizeChanged(EventArgs e) {
+            base.OnSizeChanged(e);
+
+            foreach (ArticuloItem Item in this.Items) {
+                //Cambiar el ancho del Item cuando el control cambie de tamano
+                Item.Size = new Size(this.Size.Width, Item.Size.Height);             
+            }
+        }
+        
         private void _RaiseEvent() {
 
             if (OnListChange != null) {
