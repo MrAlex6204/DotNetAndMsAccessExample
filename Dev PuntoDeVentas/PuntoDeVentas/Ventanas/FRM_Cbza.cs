@@ -218,7 +218,7 @@ namespace PuntoDeVentas
                     }
                     else
                     {
-                        Functions.Message("NO HAY ARTICULOS POR COBRAR!");
+                        Functions.Message("NO HAY ARTICULOS POR COBRAR!",Color.FromArgb(192, 64, 0),this);
                     }
 
                     break;
@@ -256,7 +256,7 @@ namespace PuntoDeVentas
                         if (MessageBox.Show("Desea cancelar la transaccion?", "Cancelar Transaccion?", MessageBoxButtons.YesNo) == DialogResult.Yes)
                         {
                             BorrarCuenta();
-                            Functions.Message("TRANSACCION CANCELADA!");
+                            Functions.Message("TRANSACCION CANCELADA!", Color.FromArgb(192, 64, 0),this);
                         }
                     }
 

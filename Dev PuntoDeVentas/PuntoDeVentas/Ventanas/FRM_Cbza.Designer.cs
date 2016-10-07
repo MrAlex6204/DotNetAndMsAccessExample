@@ -194,6 +194,7 @@ namespace PuntoDeVentas {
             // 
             this.panel1.BackColor = System.Drawing.Color.Transparent;
             this.panel1.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.panel1.Controls.Add(this.panel4);
             this.panel1.Controls.Add(this.panel3);
             this.panel1.Controls.Add(this.pnlStatus);

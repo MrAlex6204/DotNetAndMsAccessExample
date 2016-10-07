@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    public partial class FRM_Message : Form
+    public partial class FRM_Message : Controls.BaseForm
     {
         public FRM_Message()
         {
@@ -33,7 +33,7 @@ namespace PuntoDeVentas
             }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void cmdClose_Click(object sender, EventArgs e)
         {
             this.Close();
         }

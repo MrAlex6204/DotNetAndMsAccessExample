@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    public partial class FRM_Cambio : Form
+    public partial class FRM_Cambio : Controls.BaseForm
     {
         private bool _ImprimirTiket = false;
         public FRM_Cambio()

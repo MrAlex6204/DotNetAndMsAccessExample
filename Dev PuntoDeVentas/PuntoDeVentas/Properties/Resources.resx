@@ -124,23 +124,29 @@
   <data name="SEARCH_BAR" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SEARCH_BAR.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="warehouse" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warehouse.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="us_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\us_1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="code_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\code_bar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="sale" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sale.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="usr_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usr_4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="GENERAL_BG" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GENERAL_BG.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="LabelHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\LabelHolder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="deliver" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\deliver.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Logo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lock" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lock.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="iconmonstr-dashboard-5-32" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconmonstr-dashboard-5-32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -160,11 +166,20 @@
   <data name="usr_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\usr_2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="LabelHolder" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\LabelHolder1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="code_bar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\code_bar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="INPUT_SHORT" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\INPUT_SHORT.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="LINE" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\LINE.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Bg1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Bg2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SUB_BG1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\SUB_BG1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -179,6 +194,12 @@
     <value>..\Resources\SmallFlag.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Bg" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Bg1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Bg.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="config" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\config.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="OpacityLogo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\OpacityLogo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

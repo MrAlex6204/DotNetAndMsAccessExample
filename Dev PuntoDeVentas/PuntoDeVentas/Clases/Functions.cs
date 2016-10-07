@@ -5,15 +5,26 @@ using System.Text;
 //nombre de espacions usados para imprimir el tiket
 using System.Drawing;
 using System.Drawing.Printing;
-
+using System.Windows.Forms;
 public static class Functions
 {
     //FUNCION PARA MOSTRAR UN MESAJE EN PANTALLA
-    public static void Message(string Text)
+    public static void Message(string Text,Nullable<Color> Bordercolor = null,Form Parent = null)
     {
         PuntoDeVentas.FRM_Message wndMessage = new PuntoDeVentas.FRM_Message();
         wndMessage.Message = Text;
-        wndMessage.ShowDialog();
+
+        if (Bordercolor.HasValue) { 
+            wndMessage.WindowBorderColor = Bordercolor.Value;        
+        }
+
+        if (Parent!=null) {
+            wndMessage.StartPosition = FormStartPosition.CenterParent;
+            wndMessage.ShowDialog(Parent);
+        } else {
+            wndMessage.ShowDialog();
+        }
+
     }
 
     public static void MostrarCambio(string Text, string Total, string Pago, string Cambio, System.Windows.Forms.Form Owner)

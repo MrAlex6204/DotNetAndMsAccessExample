@@ -31,13 +31,12 @@
             PuntoDeVentas.InputAppearance inputAppearance2 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance3 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Login));
-            this.lblErrorMsg = new System.Windows.Forms.Label();
             this.txtUser = new PuntoDeVentas.Controls.InputTextBox();
             this.txtPassword = new PuntoDeVentas.Controls.InputTextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.inputTextBox1 = new PuntoDeVentas.Controls.InputTextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblErrorMsg = new System.Windows.Forms.Label();
             this.lblWndPanelTitle.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -47,20 +46,6 @@
             this.lblWndPanelTitle.Controls.Add(this.inputTextBox1);
             this.lblWndPanelTitle.Size = new System.Drawing.Size(580, 51);
             this.lblWndPanelTitle.Controls.SetChildIndex(this.inputTextBox1, 0);
-            // 
-            // lblErrorMsg
-            // 
-            this.lblErrorMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(26)))), ((int)(((byte)(43)))));
-            this.lblErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
-            this.lblErrorMsg.Image = global::PuntoDeVentas.Properties.Resources.SmallFlag;
-            this.lblErrorMsg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblErrorMsg.Location = new System.Drawing.Point(151, 409);
-            this.lblErrorMsg.Name = "lblErrorMsg";
-            this.lblErrorMsg.Size = new System.Drawing.Size(287, 43);
-            this.lblErrorMsg.TabIndex = 31;
-            this.lblErrorMsg.Text = "[ERROR MESSAGE]";
-            this.lblErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblErrorMsg.Visible = false;
             // 
             // txtUser
             // 
@@ -110,17 +95,6 @@
             this.txtPassword.TabIndex = 1;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Input_KeyDown);
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::PuntoDeVentas.Properties.Resources.Logo;
-            this.pictureBox1.Location = new System.Drawing.Point(146, 117);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(82, 84);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 32;
-            this.pictureBox1.TabStop = false;
-            // 
             // inputTextBox1
             // 
             this.inputTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
@@ -149,19 +123,44 @@
             this.label1.AutoSize = true;
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             this.label1.Location = new System.Drawing.Point(234, 141);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(175, 45);
             this.label1.TabIndex = 33;
             this.label1.Text = "ShopySale";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::PuntoDeVentas.Properties.Resources.Logo;
+            this.pictureBox1.Location = new System.Drawing.Point(146, 117);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(82, 84);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 32;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblErrorMsg
+            // 
+            this.lblErrorMsg.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(206)))), ((int)(((byte)(26)))), ((int)(((byte)(43)))));
+            this.lblErrorMsg.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(204)))), ((int)(((byte)(204)))), ((int)(((byte)(204)))));
+            this.lblErrorMsg.Image = global::PuntoDeVentas.Properties.Resources.SmallFlag;
+            this.lblErrorMsg.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lblErrorMsg.Location = new System.Drawing.Point(151, 409);
+            this.lblErrorMsg.Name = "lblErrorMsg";
+            this.lblErrorMsg.Size = new System.Drawing.Size(287, 43);
+            this.lblErrorMsg.TabIndex = 31;
+            this.lblErrorMsg.Text = "[ERROR MESSAGE]";
+            this.lblErrorMsg.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblErrorMsg.Visible = false;
+            // 
             // FRM_Login
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::PuntoDeVentas.Properties.Resources.Bg1;
             this.ClientSize = new System.Drawing.Size(584, 548);
             this.ControlBox = false;
             this.Controls.Add(this.label1);

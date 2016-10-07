@@ -63,6 +63,16 @@ namespace PuntoDeVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _lock {
+            get {
+                object obj = ResourceManager.GetObject("lock", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Bg {
             get {
                 object obj = ResourceManager.GetObject("Bg", resourceCulture);
@@ -73,9 +83,39 @@ namespace PuntoDeVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Bg1 {
+            get {
+                object obj = ResourceManager.GetObject("Bg1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap code_bar {
             get {
                 object obj = ResourceManager.GetObject("code_bar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap config {
+            get {
+                object obj = ResourceManager.GetObject("config", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap deliver {
+            get {
+                object obj = ResourceManager.GetObject("deliver", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -193,6 +233,26 @@ namespace PuntoDeVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap OpacityLogo {
+            get {
+                object obj = ResourceManager.GetObject("OpacityLogo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap sale {
+            get {
+                object obj = ResourceManager.GetObject("sale", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap SEARCH_BAR {
             get {
                 object obj = ResourceManager.GetObject("SEARCH_BAR", resourceCulture);
@@ -266,6 +326,16 @@ namespace PuntoDeVentas.Properties {
         internal static System.Drawing.Bitmap usr_5 {
             get {
                 object obj = ResourceManager.GetObject("usr_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap warehouse {
+            get {
+                object obj = ResourceManager.GetObject("warehouse", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

@@ -35,9 +35,10 @@ namespace PuntoDeVentas {
             }else if (e.KeyCode == Keys.Enter && input == txtPassword) {
                 //Validar user y password
                 if (System.DbRepository.ValidarUsuario(txtUser.Text.Trim(), txtPassword.Text.Trim())) {
-                    lblErrorMsg.Visible = false;
-                    Functions.Message("BIENVENIDO! " + System.DbRepository.Nombre.ToUpper());
+                    this.Hide();
+                    lblErrorMsg.Visible = false;                    
                     _bUserIsLogged = true;
+                    Functions.Message("BIENVENIDO " + DbRepository.Nombre, Color.FromArgb(60, 184, 120), this);
                     this.Close();
                 } else {
                     _bUserIsLogged = false;
