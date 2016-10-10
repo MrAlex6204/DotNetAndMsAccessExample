@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace PuntoDeVentas
 {
-    public partial class FRM_Inventario : Form
+    public partial class FRM_Inventario : Controls.BaseForm
     {
         public FRM_Inventario()
         {
@@ -37,8 +37,8 @@ namespace PuntoDeVentas
                 if (TblResul.Rows.Count > 0)
                 {
                     cmdEntrada.Enabled = true;
-                    cmdRefresh.Enabled = true;
-                    cmdhist.Enabled = true;
+                    cmdActualizar.Enabled = true;
+                    cmdHist.Enabled = true;
                     _Sources.DataSource = TblResul;
                     lblArticulo.DataBindings.Add("Text", _Sources, "DESCRIPCION");
                     lblCodigo.DataBindings.Add("Text", _Sources, "ARTICULO_ID");
@@ -52,8 +52,8 @@ namespace PuntoDeVentas
                 {
                     Functions.Message("EL ARTICULO NO ES PARTE DEL INVENTARIO!");
                     cmdEntrada.Enabled = false;
-                    cmdRefresh.Enabled = false;
-                    cmdhist.Enabled = false;
+                    cmdActualizar.Enabled = false;
+                    cmdHist.Enabled = false;
                 }
 
 
@@ -62,25 +62,26 @@ namespace PuntoDeVentas
             }
             else {
                 cmdEntrada.Enabled = false;
-                cmdRefresh.Enabled = false;
-                cmdhist.Enabled = false;
+                cmdActualizar.Enabled = false;
+                cmdHist.Enabled = false;
             }
         }
 
         private void FRM_Inventario_Load(object sender, EventArgs e)
         {
-            
+            this.Invalidate(true);    
         }
 
-        private void cmdAceptar_Click(object sender, EventArgs e)
+        private void cmdSearch_Click(object sender, EventArgs e)
         {
             FRM_ConsultarArticulos wndBuscar = new FRM_ConsultarArticulos();
             wndBuscar.ShowDialog(this);
             _Id = wndBuscar.ArticuloId;
             Buscar();
+            this.Invalidate();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void cmdRegistrarEntrada_Click(object sender, EventArgs e)
         {
             FRM_RegistrarEntrada wndRegistrarEntrada = new FRM_RegistrarEntrada();
             wndRegistrarEntrada.Articulo = lblArticulo.Text;
@@ -94,7 +95,7 @@ namespace PuntoDeVentas
             Buscar();
         }
 
-        private void cmdhist_Click(object sender, EventArgs e)
+        private void cmdHist_Click(object sender, EventArgs e)
         {
             FRM_Historial wndHist = new FRM_Historial();
             wndHist.ArticuloId = lblCodigo.Text;

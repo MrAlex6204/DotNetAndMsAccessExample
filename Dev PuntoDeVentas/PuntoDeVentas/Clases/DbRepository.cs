@@ -372,12 +372,14 @@ namespace System
         {
             DataTable TblResult;
             string QryBuscar = @"
-                SELECT TOP 1000 ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,PRECIO,FOTO 
+                SELECT TOP 1000 ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,'@Currency '+Str(PRECIO) as [PRECIO],FOTO 
                 FROM TBL_ARTICULOS_SEARCH_VIEW 
                 WHERE DESCRIPCION LIKE '%@BUSCAR%'
                 ORDER BY ARTICULO_ID,DESCRIPCION
             ";
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
+            QryBuscar = QryBuscar.Replace("@Currency", Configurations.RegionProvider.NumberFormat.CurrencySymbol);
+            
             TblResult = Fill(QryBuscar, "TblResultados");
             return TblResult;
         }
@@ -672,6 +674,14 @@ namespace System
 
 
 
+        }
+
+        //OBTENER LA LISTA DE REGIONES
+        public static DataTable GetRegionList() {
+            string Qry = "SELECT [COUNTRY]+' - '+[LANGUAGE] as [COUNTRY],[CODE] FROM TBL_CULTURE_INFO ORDER BY COUNTRY ASC";
+            DataTable Tbl = Fill(Qry, "TblRegionList");
+
+            return Tbl; 
         }
 
         #endregion

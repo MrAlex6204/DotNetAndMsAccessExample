@@ -32,11 +32,14 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_ConsultarArticulos));
             this.Gridbuscar = new System.Windows.Forms.DataGridView();
             this.txtBuscar = new PuntoDeVentas.Controls.InputTextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.pictArticulo = new System.Windows.Forms.PictureBox();
+            this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.Gridbuscar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).BeginInit();
             this.SuspendLayout();
@@ -128,12 +131,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Light", 14F);
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            this.label5.Location = new System.Drawing.Point(18, 9);
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F);
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(154)))), ((int)(((byte)(169)))));
+            this.label5.Location = new System.Drawing.Point(13, 2);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(128, 25);
+            this.label5.Size = new System.Drawing.Size(232, 45);
             this.label5.TabIndex = 34;
             this.label5.Text = "Buscar Articulo";
             // 
@@ -148,6 +151,35 @@
             this.pictArticulo.TabIndex = 35;
             this.pictArticulo.TabStop = false;
             // 
+            // wndControlBox
+            // 
+            this.wndControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            controlAppearance1.BackColor = System.Drawing.Color.Empty;
+            controlAppearance1.BorderColor = System.Drawing.Color.Empty;
+            controlAppearance1.BorderPadding = 0;
+            controlAppearance1.BorderSize = 0;
+            controlAppearance1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            controlAppearance1.MouseDownBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverBorderColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.wndControlBox.Appearance = controlAppearance1;
+            this.wndControlBox.AutoSize = true;
+            this.wndControlBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.wndControlBox.BackColor = System.Drawing.Color.Transparent;
+            buttons1.Maximize = false;
+            buttons1.Minimize = false;
+            buttons1.MoveButtons = false;
+            this.wndControlBox.ControlButtons = buttons1;
+            this.wndControlBox.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Bold);
+            this.wndControlBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.wndControlBox.Location = new System.Drawing.Point(779, -2);
+            this.wndControlBox.Name = "wndControlBox";
+            this.wndControlBox.Size = new System.Drawing.Size(35, 36);
+            this.wndControlBox.TabIndex = 36;
+            // 
             // FRM_ConsultarArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
@@ -155,6 +187,7 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(811, 479);
             this.ControlBox = false;
+            this.Controls.Add(this.wndControlBox);
             this.Controls.Add(this.pictArticulo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBuscar);
@@ -176,6 +209,7 @@
             this.Controls.SetChildIndex(this.txtBuscar, 0);
             this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.pictArticulo, 0);
+            this.Controls.SetChildIndex(this.wndControlBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.Gridbuscar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).EndInit();
             this.ResumeLayout(false);
@@ -188,6 +222,7 @@
         private Controls.InputTextBox txtBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.PictureBox pictArticulo;
+        private Controls.WindowControlBox wndControlBox;
     }
 
 }

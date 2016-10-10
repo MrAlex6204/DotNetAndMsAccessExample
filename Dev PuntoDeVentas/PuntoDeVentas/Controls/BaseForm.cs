@@ -16,6 +16,7 @@ namespace PuntoDeVentas.Controls {
 
         #region WINDOWS API PARA MOVER EL FORMULARIO
 
+        private bool _bEnableWindowDrag = true;
         private const int WM_NCLBUTTONDOWN = 0x00a1;
         private const int WM_NCLBUTTONUP = 0x00a2;
         private const int HT_CAPTION = 0x2;
@@ -26,19 +27,23 @@ namespace PuntoDeVentas.Controls {
 
         private void Wnd_MouseDown(object sender, MouseEventArgs e) {
 
-            if (e.Button == System.Windows.Forms.MouseButtons.Left) {
-                ((Control)sender).Cursor = Cursors.SizeAll;
-                ReleaseCapture();
-                SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
-                Wnd_MouseUp(sender, e);
+            if (_bEnableWindowDrag) {
+                if (e.Button == System.Windows.Forms.MouseButtons.Left) {
+                    ((Control)sender).Cursor = Cursors.SizeAll;
+                    ReleaseCapture();
+                    SendMessage(this.Handle, WM_NCLBUTTONDOWN, HT_CAPTION, 0);
+                    Wnd_MouseUp(sender, e);
+                }
             }
 
         }
 
         private void Wnd_MouseUp(object sender, MouseEventArgs e) {
 
-            ((Control)sender).Cursor = Cursors.Default;
-            SendMessage(this.Handle, WM_NCLBUTTONUP, HT_CAPTION, 6);
+            if (_bEnableWindowDrag) {
+                ((Control)sender).Cursor = Cursors.Default;
+                SendMessage(this.Handle, WM_NCLBUTTONUP, HT_CAPTION, 6);
+            }
 
         }
 
@@ -54,7 +59,8 @@ namespace PuntoDeVentas.Controls {
         private bool _bisFullScreen = false,
                   _bIsOpaque = false,
                   _bMoveWindowBtn = false,
-                  _bShowLabelTitle = true;
+                  _bShowLabelTitle = true
+                  ;
 
         #endregion
 
@@ -75,6 +81,15 @@ namespace PuntoDeVentas.Controls {
         #endregion
 
         #region PROPERTIES
+
+        public bool EnableWindowDrag {
+            get {
+                return _bEnableWindowDrag;
+            }
+            set {
+                _bEnableWindowDrag = value;
+            }
+        }
 
         public bool ShowTitleLabel {
             get {

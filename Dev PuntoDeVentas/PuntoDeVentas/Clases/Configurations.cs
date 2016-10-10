@@ -10,6 +10,10 @@ namespace System
     {
         private static CultureInfo _RegionCurrency = null;
 
+
+        public delegate void ConfigChangeHandler();
+
+        public static event ConfigChangeHandler ConfigChange;
         public static string NombreDelNegocio
         {
             get;
@@ -63,10 +67,14 @@ namespace System
                                 DbRepository.UpdateConfig("DIRECCION", Direccion) &
                                 DbRepository.UpdateConfig("REGION", RegionString);
 
+            if (IsSaveSuccess) {
+                if (ConfigChange != null) {
+                    ConfigChange.Invoke();//EJECUTAR EVENTO SI SE LLEGO A REALIZAR CAMBIOS EN LA CONFIGURACION
+                }
+            }
+
             return IsSaveSuccess;
         }
-
-
-
+        
     }
 }

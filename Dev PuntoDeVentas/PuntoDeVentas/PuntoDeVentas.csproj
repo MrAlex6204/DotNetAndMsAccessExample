@@ -409,6 +409,7 @@
     <Content Include="Microsoft.Vbe.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\search.png" />
     <None Include="Resources\OpacityLogo.png" />
     <None Include="Resources\lock.png" />
     <None Include="Resources\deliver.png" />

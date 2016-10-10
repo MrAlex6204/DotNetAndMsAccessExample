@@ -32,6 +32,8 @@
             PuntoDeVentas.InputAppearance inputAppearance2 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance3 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance4 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
             this.cmdAceptar = new System.Windows.Forms.Button();
             this.cmdCancelar = new System.Windows.Forms.Button();
             this.chkInventario = new System.Windows.Forms.CheckBox();
@@ -44,6 +46,7 @@
             this.cmdExaminar = new System.Windows.Forms.Button();
             this.picArticuloFoto = new System.Windows.Forms.PictureBox();
             this.lblErrorMsg = new System.Windows.Forms.Label();
+            this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -118,12 +121,12 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI Light", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(154)))), ((int)(((byte)(169)))));
             this.label5.Location = new System.Drawing.Point(6, 6);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(218, 45);
+            this.label5.Size = new System.Drawing.Size(228, 45);
             this.label5.TabIndex = 30;
             this.label5.Text = "Nuevo articulo";
             // 
@@ -259,6 +262,35 @@
             this.lblErrorMsg.TabIndex = 34;
             this.lblErrorMsg.Text = "Este codigo ya existe! [ARTICULO]";
             // 
+            // wndControlBox
+            // 
+            this.wndControlBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            controlAppearance1.BackColor = System.Drawing.Color.Empty;
+            controlAppearance1.BorderColor = System.Drawing.Color.Empty;
+            controlAppearance1.BorderPadding = 0;
+            controlAppearance1.BorderSize = 0;
+            controlAppearance1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(68)))), ((int)(((byte)(68)))));
+            controlAppearance1.MouseDownBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverBackColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverBorderColor = System.Drawing.Color.Empty;
+            controlAppearance1.MouseOverForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(234)))), ((int)(((byte)(90)))), ((int)(((byte)(90)))));
+            this.wndControlBox.Appearance = controlAppearance1;
+            this.wndControlBox.AutoSize = true;
+            this.wndControlBox.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.wndControlBox.BackColor = System.Drawing.Color.Transparent;
+            buttons1.Maximize = false;
+            buttons1.Minimize = false;
+            buttons1.MoveButtons = false;
+            this.wndControlBox.ControlButtons = buttons1;
+            this.wndControlBox.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Bold);
+            this.wndControlBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.wndControlBox.Location = new System.Drawing.Point(650, -2);
+            this.wndControlBox.Name = "wndControlBox";
+            this.wndControlBox.Size = new System.Drawing.Size(35, 36);
+            this.wndControlBox.TabIndex = 35;
+            // 
             // FRM_AgregarArticulo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -266,6 +298,7 @@
             this.CancelButton = this.cmdCancelar;
             this.ClientSize = new System.Drawing.Size(682, 393);
             this.ControlBox = false;
+            this.Controls.Add(this.wndControlBox);
             this.Controls.Add(this.lblErrorMsg);
             this.Controls.Add(this.picArticuloFoto);
             this.Controls.Add(this.cmdExaminar);
@@ -301,6 +334,7 @@
             this.Controls.SetChildIndex(this.cmdExaminar, 0);
             this.Controls.SetChildIndex(this.picArticuloFoto, 0);
             this.Controls.SetChildIndex(this.lblErrorMsg, 0);
+            this.Controls.SetChildIndex(this.wndControlBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -320,6 +354,7 @@
         private System.Windows.Forms.Button cmdExaminar;
         private System.Windows.Forms.PictureBox picArticuloFoto;
         private System.Windows.Forms.Label lblErrorMsg;
+        private Controls.WindowControlBox wndControlBox;
     }
 
 }

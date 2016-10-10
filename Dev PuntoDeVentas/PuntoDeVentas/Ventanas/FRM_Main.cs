@@ -9,22 +9,44 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PuntoDeVentas {
+
+
     public partial class FRM_Main : Controls.BaseForm {
+
+        #region DECLARACIONES
+
+        FRM_AgregarArticulo wndArticulos = new FRM_AgregarArticulo();
+        FRM_ConsultarArticulos wndSearch = new FRM_ConsultarArticulos();
+        FRM_Config wndConfig = new FRM_Config();
+        FRM_Inventario wndInventario = new FRM_Inventario();
+
         public FRM_Main() {
             InitializeComponent();
+
+            //ADJUNTAR EVENTO PARA NOTIFICAR QUE SE NOTIFICARON CAMBIOS
+            System.Configurations.ConfigChange += this.ConfigurationChange_Event;
+        }
+
+        #endregion
+
+        #region EVENTOS DEL FORMULARIO
+
+        private void ConfigurationChange_Event() {
+            //RECARGAR LA CONFIGURACION SI SE REALIZARON CAMBIOS 
+            _LoadConfig();
         }
 
         private void FRM_Main_Load(object sender, EventArgs e) {
-            lblTitle.Text = Configurations.NombreDelNegocio;
             lblUserGreetings.Text = "Hello! " + DbRepository.Nombre;
+            _LoadConfig();
         }
 
         private void cmdSale_Click(object sender, EventArgs e) {
 
             using (var wndSale = new FRM_Cbza()) {
-                this.Hide();
+                this.Visible = false;
                 wndSale.ShowDialog();
-                this.Show();
+                this.Visible = true;
             }
         }
 
@@ -41,18 +63,54 @@ namespace PuntoDeVentas {
         }
 
         private void cmdConfig_Click(object sender, EventArgs e) {
-
+            wndConfig = new FRM_Config();
+            _DisplayWindow(wndConfig);
         }
 
         private void cmdArticulos_Click(object sender, EventArgs e) {
 
-            using (var wndArticulos = new FRM_AgregarArticulo()) {
-                
-                wndArticulos.ShowDialog(this);               
-
-            }
+            wndArticulos = new FRM_AgregarArticulo();
+            _DisplayWindow(wndArticulos);
 
         }
+
+        private void cmdSearch_Click(object sender, EventArgs e) {
+
+            wndSearch = new FRM_ConsultarArticulos();
+            _DisplayWindow(wndSearch);
+
+        }
+
+        private void cmdWarehouse_Click(object sender, EventArgs e) {
+            wndInventario = new FRM_Inventario();
+            _DisplayWindow(wndInventario);
+        }
+
+        #endregion
+
+        #region FUNCIONES
+
+        private void _DisplayWindow(Controls.BaseForm Wnd) {
+
+            Wnd.WindowBorderColor = Color.FromArgb(234, 90, 90);
+            Wnd.EnableWindowDrag = false;//DESHABILITAR EL ARRASTRE CON EL CURSOR
+            Wnd.MdiParent = this;
+            pnlContainer.Controls.Add(Wnd);
+            Wnd.WindowState = FormWindowState.Maximized;
+            Wnd.Show();
+
+        }
+
+        private void _LoadConfig() {
+            lblTitle.Text = Configurations.NombreDelNegocio;
+            lblDireccion.Text = Configurations.Direccion;
+        }
+
+        #endregion
+
+
+
+
 
 
     }
