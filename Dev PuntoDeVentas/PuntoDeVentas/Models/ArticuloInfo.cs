@@ -7,27 +7,30 @@ namespace PuntoDeVentas.Models {
 
     //CLASE PARA GUARDAR LA INFORMACION DE UN ARTICULO 
     public class ArticuloInfo {
-        public string ID;
-        public string DESCRIPCION;
-        public string PRECIO;
-        public string INV;
-        public string UNIDAD;
-        public bool EXIST;//SI EL ARTICULO EXISTE DEVUELVE TRUE
-        public ImageInfo FOTO = new ImageInfo(); //INFORMACION DE LA FOTO DEL ARTICULO
-
+        public string ID {get;set;}
+        public string DESCRIPCION { get; set; }
+        public string PRECIO { get; set; }
+        public string ES_INVENTARIADO { get; set; }
+        public string UNIDAD { get; set; }
+        public bool EXIST { get; set; } //SI EL ARTICULO EXISTE DEVUELVE TRUE
+        public ImageInfo FOTO{ get; set; }  //INFORMACION DE LA FOTO DEL ARTICULO
+        public InventarioInfo INVENTARIO {get;set;} //INFORMACION DEL INVENTARIO
 
         public ArticuloInfo() {
+            this.INVENTARIO = new InventarioInfo();
+            this.FOTO =  new ImageInfo();
             this.Clear();
         }
 
-        public void Clear() { 
-        ID = string.Empty;
-        DESCRIPCION = string.Empty;
-        PRECIO = string.Empty;
-        INV = string.Empty;
-        UNIDAD = string.Empty;
-        EXIST = false;
-        FOTO.Clear();
+        public void Clear() {
+            ID = string.Empty;
+            DESCRIPCION = string.Empty;
+            PRECIO = string.Empty;
+            ES_INVENTARIADO = string.Empty;
+            UNIDAD = string.Empty;
+            EXIST = false;
+            FOTO.Clear();
+            INVENTARIO.Clear();
 
         }
 
@@ -46,7 +49,7 @@ namespace PuntoDeVentas.Models {
 
             return ArticuloDesc;
         }
-        
+
     }
 
 }

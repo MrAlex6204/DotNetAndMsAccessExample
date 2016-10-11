@@ -47,6 +47,8 @@
             this.picArticuloFoto = new System.Windows.Forms.PictureBox();
             this.lblErrorMsg = new System.Windows.Forms.Label();
             this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
+            this.lblCurrencySymbol = new System.Windows.Forms.Label();
+            this.lblCurrencyCode = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -187,7 +189,7 @@
             this.txtPrecio.ForeColor = System.Drawing.Color.Silver;
             this.txtPrecio.Location = new System.Drawing.Point(55, 183);
             this.txtPrecio.Name = "txtPrecio";
-            this.txtPrecio.Size = new System.Drawing.Size(134, 22);
+            this.txtPrecio.Size = new System.Drawing.Size(70, 22);
             inputAppearance3.ActiveBackcolor = System.Drawing.Color.Empty;
             inputAppearance3.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             inputAppearance3.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
@@ -291,6 +293,30 @@
             this.wndControlBox.Size = new System.Drawing.Size(35, 36);
             this.wndControlBox.TabIndex = 35;
             // 
+            // lblCurrencySymbol
+            // 
+            this.lblCurrencySymbol.BackColor = System.Drawing.Color.White;
+            this.lblCurrencySymbol.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.lblCurrencySymbol.ForeColor = System.Drawing.Color.Silver;
+            this.lblCurrencySymbol.Location = new System.Drawing.Point(6, 182);
+            this.lblCurrencySymbol.Name = "lblCurrencySymbol";
+            this.lblCurrencySymbol.Size = new System.Drawing.Size(43, 23);
+            this.lblCurrencySymbol.TabIndex = 36;
+            this.lblCurrencySymbol.Text = "[$$]";
+            this.lblCurrencySymbol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblCurrencyCode
+            // 
+            this.lblCurrencyCode.BackColor = System.Drawing.Color.White;
+            this.lblCurrencyCode.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.lblCurrencyCode.ForeColor = System.Drawing.Color.Silver;
+            this.lblCurrencyCode.Location = new System.Drawing.Point(137, 183);
+            this.lblCurrencyCode.Name = "lblCurrencyCode";
+            this.lblCurrencyCode.Size = new System.Drawing.Size(59, 23);
+            this.lblCurrencyCode.TabIndex = 37;
+            this.lblCurrencyCode.Text = "[CURRENCY]";
+            this.lblCurrencyCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // FRM_AgregarArticulo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -298,6 +324,8 @@
             this.CancelButton = this.cmdCancelar;
             this.ClientSize = new System.Drawing.Size(682, 393);
             this.ControlBox = false;
+            this.Controls.Add(this.lblCurrencyCode);
+            this.Controls.Add(this.lblCurrencySymbol);
             this.Controls.Add(this.wndControlBox);
             this.Controls.Add(this.lblErrorMsg);
             this.Controls.Add(this.picArticuloFoto);
@@ -335,6 +363,8 @@
             this.Controls.SetChildIndex(this.picArticuloFoto, 0);
             this.Controls.SetChildIndex(this.lblErrorMsg, 0);
             this.Controls.SetChildIndex(this.wndControlBox, 0);
+            this.Controls.SetChildIndex(this.lblCurrencySymbol, 0);
+            this.Controls.SetChildIndex(this.lblCurrencyCode, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -355,6 +385,8 @@
         private System.Windows.Forms.PictureBox picArticuloFoto;
         private System.Windows.Forms.Label lblErrorMsg;
         private Controls.WindowControlBox wndControlBox;
+        private System.Windows.Forms.Label lblCurrencySymbol;
+        private System.Windows.Forms.Label lblCurrencyCode;
     }
 
 }

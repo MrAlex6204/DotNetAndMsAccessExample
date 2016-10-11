@@ -49,7 +49,7 @@ namespace PuntoDeVentas
                                                         System.DbRepository.CajeroId
                                                      );
 
-                if (Item.Articulo.INV == "TRUE")
+                if (Item.Articulo.ES_INVENTARIADO == "TRUE")
                 {//VALIDAMOS SI EL ARTICULO ES PARA REGISTRAR EN EL INVENTARIO
                     //REGISTRAMOS LA SALIDA DEL INVENTARIO DEL ARTICULO
                     System.DbRepository.InvRegistrarArticulo(

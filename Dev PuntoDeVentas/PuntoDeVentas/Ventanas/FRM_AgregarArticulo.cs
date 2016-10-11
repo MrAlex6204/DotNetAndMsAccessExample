@@ -15,7 +15,15 @@ namespace PuntoDeVentas {
         public FRM_AgregarArticulo() {
             InitializeComponent();
             lblErrorMsg.Visible = this.DesignMode;
+            Configurations.ConfigChange += this.LoadConfig;
+            LoadConfig();
+        }
 
+        private void LoadConfig() {
+            lblCurrencyCode.Text = Configurations.CurrencyCode;
+            lblCurrencySymbol.Text = Configurations.CurrencySymbol;
+            txtPrecio.Style.TextPlaceholder = Configurations.CurrencySymbol + " Precio ";
+            this.Invalidate(true);
         }
 
         private void FRM_AgregarArticulo_Load(object sender, EventArgs e) {
@@ -50,7 +58,7 @@ namespace PuntoDeVentas {
             Articulo.DESCRIPCION = txtDesc.Text.Trim();
             Articulo.UNIDAD = txtUnidad.Text.Trim();
             Articulo.PRECIO = txtPrecio.Text.Trim();
-            Articulo.INV = chkInventario.Checked ? "TRUE" : "FALSE";
+            Articulo.ES_INVENTARIADO = chkInventario.Checked ? "TRUE" : "FALSE";
             
             if (System.DbRepository.UpdateArticulo(Articulo)) {
                 if (!Articulo.FOTO.IsEmpty) {
@@ -84,12 +92,14 @@ namespace PuntoDeVentas {
                 txtPrecio.Text = Articulo.PRECIO;
                 txtUnidad.Text = Articulo.UNIDAD;
 
-                if (Articulo.INV.ToUpper() == "TRUE") {
+                if (Articulo.ES_INVENTARIADO.ToUpper() == "TRUE") {
                     chkInventario.Checked = true;
                 } else {
                     chkInventario.Checked = false;
                 }
                 picArticuloFoto.Image = Articulo.FOTO.GetImageSzOf(picArticuloFoto.Size);
+
+                this.Invalidate(true);
             }
 
 

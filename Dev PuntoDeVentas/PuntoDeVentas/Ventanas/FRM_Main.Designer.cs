@@ -86,7 +86,7 @@
             this.wndControlBox.ControlButtons = buttons1;
             this.wndControlBox.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Bold);
             this.wndControlBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.wndControlBox.Location = new System.Drawing.Point(1069, 15);
+            this.wndControlBox.Location = new System.Drawing.Point(1056, 12);
             this.wndControlBox.Name = "wndControlBox";
             this.wndControlBox.Size = new System.Drawing.Size(97, 36);
             this.wndControlBox.TabIndex = 1;
@@ -464,8 +464,8 @@
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1165, 743);
             this.ControlBox = false;
-            this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.wndControlBox);
+            this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pnlContainer);
@@ -479,8 +479,8 @@
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
-            this.Controls.SetChildIndex(this.wndControlBox, 0);
             this.Controls.SetChildIndex(this.lblDireccion, 0);
+            this.Controls.SetChildIndex(this.wndControlBox, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);

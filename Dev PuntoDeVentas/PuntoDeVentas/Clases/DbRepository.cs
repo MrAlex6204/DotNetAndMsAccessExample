@@ -240,10 +240,10 @@ namespace System
                 Articulo.ID = TblResult.Rows[0]["ARTICULO_ID"].ToString();
                 Articulo.DESCRIPCION = TblResult.Rows[0]["DESCRIPCION"].ToString();
                 Articulo.PRECIO = TblResult.Rows[0]["PRECIO"].ToString();
-                Articulo.INV = TblResult.Rows[0]["INV"].ToString();
+                Articulo.ES_INVENTARIADO = TblResult.Rows[0]["INV"].ToString();
                 Articulo.UNIDAD = TblResult.Rows[0]["UNIDAD"].ToString();
                 Articulo.FOTO = GetArticuloFoto(Articulo.ID);//Obtener la foto del articulo.
-
+                Articulo.INVENTARIO = GetInventarioInfo(Articulo.ID);//Obtener la informacion del inventario
             }
             else
             {
@@ -252,6 +252,28 @@ namespace System
 
             }
             return Articulo;
+        }
+
+        //FUNCION PARA OBTENER LA INFORMACION DEL INVENTARIO DEL ARTICULO.
+        public static InventarioInfo GetInventarioInfo(string ArticuloId) {
+            string Qry = "SELECT * FROM [TBL_INVENTARIO_VIEW] WHERE [ARTICULO_ID]='@ART_ID'";
+            InventarioInfo InvInfo = new InventarioInfo();
+            DataTable TblResult;
+            
+            Qry = Qry.Replace("@ART_ID", ArticuloId.Replace("'", ""));
+            TblResult = Fill(Qry, "TblResult");
+
+            if (TblResult.Rows.Count > 0) {
+                InvInfo.EXISTS = true;
+                InvInfo.ID = TblResult.Rows[0]["ARTICULO_ID"].ToString();
+                InvInfo.ENTRADA = Convert.ToDouble(TblResult.Rows[0]["ENTRADA"]);
+                InvInfo.SALIDA = Convert.ToDouble(TblResult.Rows[0]["SALIDA"]);
+                InvInfo.STOCK = Convert.ToDouble(TblResult.Rows[0]["STOCK"]);
+
+            } else {
+                InvInfo.Clear();
+            }
+            return InvInfo;
         }
 
         //FUNCION PARA AGREGAR UN NUEVO ARTICULO ALA BD.
@@ -265,7 +287,7 @@ namespace System
             " SET ARTICULO_ID='@ID',DESCRIPCION='@DESCRIPCION',UNIDAD='@UNIDAD',PRECIO='@PRECIO',INV='@INV'" +
             " WHERE ARTICULO_ID='@ID'";
 
-            int Inv = Articulo.INV == "TRUE" ? 1 : 0;
+            int Inv = Articulo.ES_INVENTARIADO == "TRUE" ? 1 : 0;
 
             //Validamos si no esta registrado ya este articulo
             if (GetArticuloInfo(Articulo.ID).EXIST)
@@ -372,13 +394,14 @@ namespace System
         {
             DataTable TblResult;
             string QryBuscar = @"
-                SELECT TOP 1000 ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,'@Currency '+Str(PRECIO) as [PRECIO],FOTO 
+                SELECT TOP 1000 ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,'@CurrencySymbol '+Str(PRECIO)+' @CurrencyCode' as [PRECIO],INV,FOTO 
                 FROM TBL_ARTICULOS_SEARCH_VIEW 
                 WHERE DESCRIPCION LIKE '%@BUSCAR%'
                 ORDER BY ARTICULO_ID,DESCRIPCION
             ";
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
-            QryBuscar = QryBuscar.Replace("@Currency", Configurations.RegionProvider.NumberFormat.CurrencySymbol);
+            QryBuscar = QryBuscar.Replace("@CurrencySymbol", Configurations.CurrencySymbol);
+            QryBuscar = QryBuscar.Replace("@CurrencyCode", Configurations.CurrencyCode);
             
             TblResult = Fill(QryBuscar, "TblResultados");
             return TblResult;

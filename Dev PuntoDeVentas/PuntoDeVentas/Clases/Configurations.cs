@@ -52,9 +52,41 @@ namespace System
             }
         }
 
+        public static string CurrencySymbol {
+
+            get {
+
+                var Symbol = string.Empty;
+
+                if(RegionProvider!=null ){
+                    Symbol = Configurations.RegionProvider.NumberFormat.CurrencySymbol;
+
+                }
+
+
+                return Symbol;            
+            }
+        }
+
+        public static string CurrencyCode {
+            get {
+
+                var Code = string.Empty;
+
+                if (RegionProvider != null) {
+                    Code = new RegionInfo(RegionProvider.LCID).ISOCurrencySymbol;
+
+                }
+
+
+                return Code;            
+            }
+        }
+
 
         public static void Load()
         {
+            _RegionCurrency = null;
             NombreDelNegocio = DbRepository.GetConfig("EMPRESA");
             Direccion = DbRepository.GetConfig("DIRECCION");
             RegionString = DbRepository.GetConfig("REGION");

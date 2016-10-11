@@ -60,10 +60,11 @@
             this.Gridbuscar.BackgroundColor = System.Drawing.Color.White;
             this.Gridbuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.Gridbuscar.CausesValidation = false;
+            this.Gridbuscar.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle1.Padding = new System.Windows.Forms.Padding(5);
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
@@ -71,7 +72,7 @@
             this.Gridbuscar.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.Gridbuscar.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.WhiteSmoke;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             dataGridViewCellStyle2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(40)))), ((int)(((byte)(40)))), ((int)(((byte)(40)))));
             dataGridViewCellStyle2.Padding = new System.Windows.Forms.Padding(5);
@@ -79,16 +80,16 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(35)))), ((int)(((byte)(0)))));
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.Gridbuscar.DefaultCellStyle = dataGridViewCellStyle2;
-            this.Gridbuscar.GridColor = System.Drawing.SystemColors.Control;
-            this.Gridbuscar.Location = new System.Drawing.Point(16, 103);
+            this.Gridbuscar.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.Gridbuscar.Location = new System.Drawing.Point(21, 103);
             this.Gridbuscar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Gridbuscar.MultiSelect = false;
             this.Gridbuscar.Name = "Gridbuscar";
             this.Gridbuscar.ReadOnly = true;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Green;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
@@ -97,7 +98,7 @@
             this.Gridbuscar.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Gridbuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Gridbuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Gridbuscar.Size = new System.Drawing.Size(511, 362);
+            this.Gridbuscar.Size = new System.Drawing.Size(506, 362);
             this.Gridbuscar.StandardTab = true;
             this.Gridbuscar.TabIndex = 2;
             this.Gridbuscar.SelectionChanged += new System.EventHandler(this.SelectedRow_Change);
@@ -143,7 +144,7 @@
             // pictArticulo
             // 
             this.pictArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictArticulo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.pictArticulo.BackColor = System.Drawing.Color.Transparent;
             this.pictArticulo.Location = new System.Drawing.Point(534, 103);
             this.pictArticulo.Name = "pictArticulo";
             this.pictArticulo.Size = new System.Drawing.Size(260, 289);
@@ -188,10 +189,10 @@
             this.ClientSize = new System.Drawing.Size(811, 479);
             this.ControlBox = false;
             this.Controls.Add(this.wndControlBox);
-            this.Controls.Add(this.pictArticulo);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtBuscar);
             this.Controls.Add(this.Gridbuscar);
+            this.Controls.Add(this.pictArticulo);
+            this.Controls.Add(this.txtBuscar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
@@ -204,11 +205,11 @@
             this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_ConsultarArticuloscs_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEvent);
+            this.Controls.SetChildIndex(this.txtBuscar, 0);
+            this.Controls.SetChildIndex(this.pictArticulo, 0);
             this.Controls.SetChildIndex(this.Gridbuscar, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
-            this.Controls.SetChildIndex(this.txtBuscar, 0);
             this.Controls.SetChildIndex(this.label5, 0);
-            this.Controls.SetChildIndex(this.pictArticulo, 0);
             this.Controls.SetChildIndex(this.wndControlBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.Gridbuscar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).EndInit();

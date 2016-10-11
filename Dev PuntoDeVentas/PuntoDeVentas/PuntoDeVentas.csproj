@@ -121,6 +121,7 @@
     </Compile>
     <Compile Include="Models\ArticuloInfo.cs" />
     <Compile Include="Models\CorteDeCajaInfo.cs" />
+    <Compile Include="Models\InventarioInfo.cs" />
     <Compile Include="Models\RegionCurrency.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Models\VentaDelDiaInfo.cs" />
@@ -443,10 +444,6 @@
     <None Include="Resources\usr_3.png" />
     <None Include="Resources\usr_2.png" />
     <None Include="Resources\us_1.png" />
-    <EmbeddedResource Include="Hibernate\Usuario.hbm.xml">
-      <CustomToolNamespace>PuntoDeVentas.Properties.Resources</CustomToolNamespace>
-      <Generator>PublicResXFileCodeGenerator</Generator>
-    </EmbeddedResource>
     <None Include="Resources\1363913224_application_side_list.png" />
     <None Include="Resources\1363913158_Warehouse_icon_3D_rev.png" />
     <None Include="Resources\1363913219_issue.png" />
