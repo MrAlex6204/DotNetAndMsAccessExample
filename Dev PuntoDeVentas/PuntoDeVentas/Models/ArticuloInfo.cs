@@ -23,11 +23,11 @@ namespace PuntoDeVentas.Models {
         }
 
         public void Clear() {
-            ID = string.Empty;
-            DESCRIPCION = string.Empty;
-            PRECIO = string.Empty;
-            ES_INVENTARIADO = string.Empty;
-            UNIDAD = string.Empty;
+            ID = "";
+            DESCRIPCION = "";
+            PRECIO = "";
+            ES_INVENTARIADO = "";
+            UNIDAD = "";
             EXIST = false;
             FOTO.Clear();
             INVENTARIO.Clear();

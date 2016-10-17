@@ -11,12 +11,13 @@ using PuntoDeVentas.Models;
 namespace PuntoDeVentas {
     public partial class FRM_Inventario : Controls.BaseForm {
 
+        #region DECLARACIONES
+
         BindingSource _Source = new BindingSource();
         ArticuloInfo _Articulo = new ArticuloInfo();
 
-        public FRM_Inventario() {
+        public FRM_Inventario() {//Constructor de clase
             InitializeComponent();
-
 
             _Source.DataSource = _Articulo;
 
@@ -36,22 +37,29 @@ namespace PuntoDeVentas {
             lblStock.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 
-            Configurations.ConfigChange += this.LoadConfig;
-            LoadConfig();
+            Configurations.ConfigChange += this._LoadConfig;
+            _LoadConfig();
 
         }
 
-        void Buscar(string ArticuloId) {
+        #endregion
 
-            _Articulo.Clear();
+        #region FUNCIONES
 
-            _Articulo = DbRepository.GetArticuloInfo(ArticuloId);
-            if (_Articulo.EXIST) {
+        void _LoadArticuloInfo(string ArticuloId) {
+            var Inv_Articulo = DbRepository.GetArticuloInfo(ArticuloId);
+
+            if (Inv_Articulo.EXIST) {
+
+                _Articulo = Inv_Articulo;//ACTUALIZAR INFORMACION
 
                 if (_Articulo.ES_INVENTARIADO != "False") {
+
+                    //ACTUALIZAR INFORMACION DEL DATASOURCE PARA MOSTRAR LA INFORMACION EN PANTALLA
                     _Source.DataSource = _Articulo;
+
                     var sz = pictArticulo.Size;
-                    cmdEliminar.Enabled = true;
+                    lnkRemoverArticulo.Enabled = true;
                     cmdEntrada.Enabled = true;
                     cmdActualizar.Enabled = true;
                     cmdHist.Enabled = true;
@@ -63,7 +71,7 @@ namespace PuntoDeVentas {
                     cmdEntrada.Enabled = false;
                     cmdActualizar.Enabled = false;
                     cmdHist.Enabled = false;
-                    cmdEliminar.Enabled = false;
+                    lnkRemoverArticulo.Enabled = false;
                 }
 
 
@@ -74,41 +82,67 @@ namespace PuntoDeVentas {
                 cmdEntrada.Enabled = false;
                 cmdActualizar.Enabled = false;
                 cmdHist.Enabled = false;
-                cmdEliminar.Enabled = false;
+                lnkRemoverArticulo.Enabled = false;
 
             }
         }
 
-        private void LoadConfig() {
+        private void _LoadConfig() {
             lblCurrencyCode.Text = Configurations.CurrencyCode;
             lblCurrencySymbol.Text = Configurations.CurrencySymbol;
             this.Invalidate(true);
         }
 
+        private void _Clear() {
+
+            _Articulo.Clear();
+            _Source.DataSource = _Articulo;
+
+            lblArticulo.Text = string.Empty;
+            lblCodigo.Text = string.Empty;
+            lblPrecio.Text = string.Empty;
+            lblEntrada.Text = string.Empty;
+            lblSalida.Text = string.Empty;
+            lblStock.Text = string.Empty;
+            lblUnidad.Text = string.Empty;
+
+            cmdEntrada.Enabled = false;
+            cmdActualizar.Enabled = false;
+            cmdHist.Enabled = false;
+            lnkRemoverArticulo.Enabled = false;
+            pictArticulo.Image = null;
+
+        }
+
+        #endregion
+
+        #region EVENTOS DEL FORMULARIO
+
         private void FRM_Inventario_Load(object sender, EventArgs e) {
             this.Invalidate(true);
-
         }
 
         private void cmdSearch_Click(object sender, EventArgs e) {
             FRM_ConsultarArticulos wndBuscar = new FRM_ConsultarArticulos();
 
             if (wndBuscar.ShowDialog(this) == System.Windows.Forms.DialogResult.OK) {
-                Buscar(wndBuscar.ArticuloId);
+                _LoadArticuloInfo(wndBuscar.ArticuloId);
                 this.Invalidate();
             }
         }
 
         private void cmdRegistrarEntrada_Click(object sender, EventArgs e) {
             FRM_RegistrarEntrada wndRegistrarEntrada = new FRM_RegistrarEntrada();
-            wndRegistrarEntrada.Articulo = lblArticulo.Text;
-            wndRegistrarEntrada.Codigo = lblCodigo.Text;
-            wndRegistrarEntrada.ShowDialog(this);
+            wndRegistrarEntrada.ArticuloId = _Articulo.ID;
+            if (wndRegistrarEntrada.ShowDialog(this) == System.Windows.Forms.DialogResult.OK) {
+                _LoadArticuloInfo(_Articulo.ID);
+            }
+            
 
         }
 
         private void cmdRefresh_Click(object sender, EventArgs e) {
-            Buscar(_Articulo.ID);
+            _LoadArticuloInfo(_Articulo.ID);
         }
 
         private void cmdHist_Click(object sender, EventArgs e) {
@@ -121,7 +155,25 @@ namespace PuntoDeVentas {
 
         }
 
+        #endregion
 
+        private void lnkRemoverArticulo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+
+            if (MessageBox.Show("Desea remover este articulo del sistema de inventario ?", "Remover ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes) {
+
+                if (DbRepository.RemoverDelInventario(_Articulo)) {
+                    //LIMPIAR Y ACTUALIZAR EL DATA SOURCE
+                    _Clear();
+                    Functions.Message("ARTICULO ELIMINADO DEL SISTEMA DE INVENTARIO!", Color.FromArgb(60, 184, 120), this);                    
+
+                } else {
+
+                    Functions.Message("NO SE PUEDO ELIMINAR ARTICULO DEL SISTEMA DE INVENTARIO.\nFAVOR DE VERIFICAR", this.WindowBorderColor, this);
+                }
+
+            }
+
+        }
 
     }
 }

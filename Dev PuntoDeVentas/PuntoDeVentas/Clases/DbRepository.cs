@@ -277,7 +277,7 @@ namespace System
         }
 
         //FUNCION PARA AGREGAR UN NUEVO ARTICULO ALA BD.
-        public static bool UpdateArticulo(ArticuloInfo Articulo)
+        public static bool SaveArticulo(ArticuloInfo Articulo)
         {
             string QryInsert = //ESTA INSTRUCCION SQL ES PARA INSERTAR UN ARTICULO EN LA BD.
            " INSERT INTO TBL_ARTICULOS (ARTICULO_ID,DESCRIPCION,UNIDAD,PRECIO,INV)" +
@@ -287,7 +287,7 @@ namespace System
             " SET ARTICULO_ID='@ID',DESCRIPCION='@DESCRIPCION',UNIDAD='@UNIDAD',PRECIO='@PRECIO',INV='@INV'" +
             " WHERE ARTICULO_ID='@ID'";
 
-            int Inv = Articulo.ES_INVENTARIADO == "TRUE" ? 1 : 0;
+            int Inv = Articulo.ES_INVENTARIADO.ToUpper() == "TRUE" ? 1 : 0;
 
             //Validamos si no esta registrado ya este articulo
             if (GetArticuloInfo(Articulo.ID).EXIST)
@@ -415,6 +415,13 @@ namespace System
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
             TblResult = Fill(QryBuscar, "TblResultados");
             return TblResult;
+        }
+
+        //REMOVE UN ARTICULO DEL SISTEMA DE INVENTARIO
+        public static bool RemoverDelInventario(ArticuloInfo Articulo) {
+
+            Articulo.ES_INVENTARIADO = "False";//Indicar que el articulo no se va inventariar
+            return SaveArticulo(Articulo);//Guardar los cambios realizados        
         }
 
         //REGISTRA EL ARTICULO EN LA BASE DE DATOS!
@@ -706,6 +713,9 @@ namespace System
 
             return Tbl; 
         }
+
+
+
 
         #endregion
 

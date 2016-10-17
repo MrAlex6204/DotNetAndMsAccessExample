@@ -41,7 +41,6 @@
             PuntoDeVentas.InputAppearance inputAppearance5 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance6 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance7 = new PuntoDeVentas.InputAppearance();
-            PuntoDeVentas.Controls.ControlAppearance controlAppearance6 = new PuntoDeVentas.Controls.ControlAppearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Inventario));
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -65,9 +64,9 @@
             this.lblPrecio = new PuntoDeVentas.Controls.InputTextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmdEliminar = new PuntoDeVentas.LabelButton();
             this.lblCurrencyCode = new System.Windows.Forms.Label();
             this.lblCurrencySymbol = new System.Windows.Forms.Label();
+            this.lnkRemoverArticulo = new System.Windows.Forms.LinkLabel();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -263,7 +262,7 @@
             this.cmdEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdEntrada.Location = new System.Drawing.Point(125, 601);
+            this.cmdEntrada.Location = new System.Drawing.Point(209, 601);
             this.cmdEntrada.Name = "cmdEntrada";
             this.cmdEntrada.Size = new System.Drawing.Size(145, 29);
             controlAppearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -294,7 +293,7 @@
             this.cmdHist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdHist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdHist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdHist.Location = new System.Drawing.Point(294, 601);
+            this.cmdHist.Location = new System.Drawing.Point(378, 601);
             this.cmdHist.Name = "cmdHist";
             this.cmdHist.Size = new System.Drawing.Size(145, 29);
             controlAppearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -325,7 +324,7 @@
             this.cmdActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdActualizar.Location = new System.Drawing.Point(632, 601);
+            this.cmdActualizar.Location = new System.Drawing.Point(547, 601);
             this.cmdActualizar.Name = "cmdActualizar";
             this.cmdActualizar.Size = new System.Drawing.Size(145, 29);
             controlAppearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -355,7 +354,7 @@
             this.cmdSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdSearch.Location = new System.Drawing.Point(801, 601);
+            this.cmdSearch.Location = new System.Drawing.Point(716, 601);
             this.cmdSearch.Name = "cmdSearch";
             this.cmdSearch.Size = new System.Drawing.Size(145, 29);
             controlAppearance4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -383,7 +382,7 @@
             this.lblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.lblCodigo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblCodigo.Location = new System.Drawing.Point(32, 140);
+            this.lblCodigo.Location = new System.Drawing.Point(88, 140);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.ReadOnly = true;
             this.lblCodigo.Size = new System.Drawing.Size(161, 25);
@@ -438,7 +437,7 @@
             this.lblArticulo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblArticulo.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.lblArticulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblArticulo.Location = new System.Drawing.Point(218, 140);
+            this.lblArticulo.Location = new System.Drawing.Point(274, 140);
             this.lblArticulo.Name = "lblArticulo";
             this.lblArticulo.ReadOnly = true;
             this.lblArticulo.Size = new System.Drawing.Size(714, 25);
@@ -464,7 +463,7 @@
             this.lblUnidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblUnidad.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.lblUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblUnidad.Location = new System.Drawing.Point(32, 188);
+            this.lblUnidad.Location = new System.Drawing.Point(88, 188);
             this.lblUnidad.Name = "lblUnidad";
             this.lblUnidad.ReadOnly = true;
             this.lblUnidad.Size = new System.Drawing.Size(161, 25);
@@ -490,7 +489,7 @@
             this.lblPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblPrecio.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.lblPrecio.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblPrecio.Location = new System.Drawing.Point(259, 188);
+            this.lblPrecio.Location = new System.Drawing.Point(315, 188);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.ReadOnly = true;
             this.lblPrecio.Size = new System.Drawing.Size(89, 25);
@@ -523,49 +522,18 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.label1.Location = new System.Drawing.Point(27, 89);
+            this.label1.Location = new System.Drawing.Point(83, 89);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(121, 25);
             this.label1.TabIndex = 52;
             this.label1.Text = "Info . Articulo";
             // 
-            // cmdEliminar
-            // 
-            this.cmdEliminar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cmdEliminar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cmdEliminar.BorderRadius = 5;
-            this.cmdEliminar.Enabled = false;
-            this.cmdEliminar.FlatAppearance.BorderSize = 0;
-            this.cmdEliminar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cmdEliminar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            this.cmdEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdEliminar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdEliminar.Location = new System.Drawing.Point(463, 601);
-            this.cmdEliminar.Name = "cmdEliminar";
-            this.cmdEliminar.Size = new System.Drawing.Size(145, 29);
-            controlAppearance6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            controlAppearance6.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
-            controlAppearance6.BorderPadding = 7;
-            controlAppearance6.BorderSize = 1;
-            controlAppearance6.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            controlAppearance6.CheckedBackColor = System.Drawing.Color.Empty;
-            controlAppearance6.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            controlAppearance6.MouseDownBackColor = System.Drawing.Color.Empty;
-            controlAppearance6.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            controlAppearance6.MouseOverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(54)))), ((int)(((byte)(54)))), ((int)(((byte)(54)))));
-            controlAppearance6.MouseOverForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.cmdEliminar.Style = controlAppearance6;
-            this.cmdEliminar.TabIndex = 7;
-            this.cmdEliminar.Text = "Eliminar del Inv.";
-            this.cmdEliminar.UseVisualStyleBackColor = false;
-            this.cmdEliminar.Click += new System.EventHandler(this.cmdEliminar_Click);
-            // 
             // lblCurrencyCode
             // 
             this.lblCurrencyCode.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrencyCode.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblCurrencyCode.Location = new System.Drawing.Point(361, 188);
+            this.lblCurrencyCode.Location = new System.Drawing.Point(417, 188);
             this.lblCurrencyCode.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCurrencyCode.Name = "lblCurrencyCode";
             this.lblCurrencyCode.Size = new System.Drawing.Size(160, 25);
@@ -577,7 +545,7 @@
             // 
             this.lblCurrencySymbol.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrencySymbol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblCurrencySymbol.Location = new System.Drawing.Point(204, 188);
+            this.lblCurrencySymbol.Location = new System.Drawing.Point(260, 188);
             this.lblCurrencySymbol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCurrencySymbol.Name = "lblCurrencySymbol";
             this.lblCurrencySymbol.Size = new System.Drawing.Size(45, 25);
@@ -585,15 +553,31 @@
             this.lblCurrencySymbol.Text = "[$$]";
             this.lblCurrencySymbol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // lnkRemoverArticulo
+            // 
+            this.lnkRemoverArticulo.AutoSize = true;
+            this.lnkRemoverArticulo.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.lnkRemoverArticulo.Enabled = false;
+            this.lnkRemoverArticulo.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F);
+            this.lnkRemoverArticulo.ForeColor = System.Drawing.Color.Silver;
+            this.lnkRemoverArticulo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            this.lnkRemoverArticulo.Location = new System.Drawing.Point(679, 188);
+            this.lnkRemoverArticulo.Name = "lnkRemoverArticulo";
+            this.lnkRemoverArticulo.Size = new System.Drawing.Size(309, 25);
+            this.lnkRemoverArticulo.TabIndex = 56;
+            this.lnkRemoverArticulo.TabStop = true;
+            this.lnkRemoverArticulo.Text = "Remover este articulo del inventario ";
+            this.lnkRemoverArticulo.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRemoverArticulo_LinkClicked);
+            // 
             // FRM_Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1071, 661);
             this.ControlBox = false;
+            this.Controls.Add(this.lnkRemoverArticulo);
             this.Controls.Add(this.lblCurrencySymbol);
             this.Controls.Add(this.lblCurrencyCode);
-            this.Controls.Add(this.cmdEliminar);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.wndControlBox);
@@ -633,9 +617,9 @@
             this.Controls.SetChildIndex(this.wndControlBox, 0);
             this.Controls.SetChildIndex(this.pictureBox1, 0);
             this.Controls.SetChildIndex(this.label1, 0);
-            this.Controls.SetChildIndex(this.cmdEliminar, 0);
             this.Controls.SetChildIndex(this.lblCurrencyCode, 0);
             this.Controls.SetChildIndex(this.lblCurrencySymbol, 0);
+            this.Controls.SetChildIndex(this.lnkRemoverArticulo, 0);
             this.pnlInfo.ResumeLayout(false);
             this.pnlInfo.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).EndInit();
@@ -669,9 +653,9 @@
         private Controls.InputTextBox lblStock;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictArticulo;
-        private LabelButton cmdEliminar;
         private System.Windows.Forms.Label lblCurrencyCode;
         private System.Windows.Forms.Label lblCurrencySymbol;
+        private System.Windows.Forms.LinkLabel lnkRemoverArticulo;
     }
 
 }

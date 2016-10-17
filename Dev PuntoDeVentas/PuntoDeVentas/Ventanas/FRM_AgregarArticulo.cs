@@ -60,7 +60,7 @@ namespace PuntoDeVentas {
             Articulo.PRECIO = txtPrecio.Text.Trim();
             Articulo.ES_INVENTARIADO = chkInventario.Checked ? "TRUE" : "FALSE";
             
-            if (System.DbRepository.UpdateArticulo(Articulo)) {
+            if (System.DbRepository.SaveArticulo(Articulo)) {
                 if (!Articulo.FOTO.IsEmpty) {
                     //Guardar el Stream de la foto
                     System.DbRepository.GuardarFoto(txtCodigo.Text,Articulo.FOTO.FSImage);

@@ -98,7 +98,7 @@
             this.Gridbuscar.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Gridbuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Gridbuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Gridbuscar.Size = new System.Drawing.Size(506, 362);
+            this.Gridbuscar.Size = new System.Drawing.Size(554, 362);
             this.Gridbuscar.StandardTab = true;
             this.Gridbuscar.TabIndex = 2;
             this.Gridbuscar.SelectionChanged += new System.EventHandler(this.SelectedRow_Change);
@@ -114,7 +114,7 @@
             this.txtBuscar.ForeColor = System.Drawing.Color.Silver;
             this.txtBuscar.Location = new System.Drawing.Point(27, 58);
             this.txtBuscar.Name = "txtBuscar";
-            this.txtBuscar.Size = new System.Drawing.Size(758, 22);
+            this.txtBuscar.Size = new System.Drawing.Size(806, 22);
             inputAppearance1.ActiveBackcolor = System.Drawing.Color.Empty;
             inputAppearance1.ActiveForecolor = System.Drawing.Color.Gray;
             inputAppearance1.BorderActiveColor = System.Drawing.Color.Silver;
@@ -145,7 +145,7 @@
             // 
             this.pictArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictArticulo.BackColor = System.Drawing.Color.Transparent;
-            this.pictArticulo.Location = new System.Drawing.Point(534, 103);
+            this.pictArticulo.Location = new System.Drawing.Point(582, 103);
             this.pictArticulo.Name = "pictArticulo";
             this.pictArticulo.Size = new System.Drawing.Size(260, 289);
             this.pictArticulo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -176,7 +176,7 @@
             this.wndControlBox.ControlButtons = buttons1;
             this.wndControlBox.Font = new System.Drawing.Font("Segoe UI Light", 12F, System.Drawing.FontStyle.Bold);
             this.wndControlBox.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
-            this.wndControlBox.Location = new System.Drawing.Point(779, -2);
+            this.wndControlBox.Location = new System.Drawing.Point(827, -2);
             this.wndControlBox.Name = "wndControlBox";
             this.wndControlBox.Size = new System.Drawing.Size(35, 36);
             this.wndControlBox.TabIndex = 36;
@@ -185,8 +185,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(811, 479);
+            this.ClientSize = new System.Drawing.Size(859, 479);
             this.ControlBox = false;
             this.Controls.Add(this.wndControlBox);
             this.Controls.Add(this.label5);

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using MES;//nombre de espacio para exportar a excel
 namespace PuntoDeVentas
 {
-    public partial class FRM_Historial : Form
+    public partial class FRM_Historial : Controls.BaseForm
     {
         public FRM_Historial()
         {
@@ -27,7 +27,7 @@ namespace PuntoDeVentas
         {
             TblHist = System.DbRepository.GetInvHistorial(Id);//mandamos a llamar la funcion para ver el historial
 
-            dataGrid.DataSource = TblHist;
+            gridResults.DataSource = TblHist;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -36,7 +36,7 @@ namespace PuntoDeVentas
             
         }
 
-        private void cmdAceptar_Click(object sender, EventArgs e)
+        private void cmdExport_Click(object sender, EventArgs e)
         {
             TblHist.TblToExcel();
         }
