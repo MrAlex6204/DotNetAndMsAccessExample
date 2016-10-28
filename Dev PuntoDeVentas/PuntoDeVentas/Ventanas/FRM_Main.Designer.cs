@@ -32,6 +32,7 @@
             PuntoDeVentas.Controls.ControlAppearance controlAppearance6 = new PuntoDeVentas.Controls.ControlAppearance();
             PuntoDeVentas.Controls.ControlAppearance controlAppearance7 = new PuntoDeVentas.Controls.ControlAppearance();
             PuntoDeVentas.Controls.ControlAppearance controlAppearance8 = new PuntoDeVentas.Controls.ControlAppearance();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Main));
             this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmdSearch = new PuntoDeVentas.LabelButton();
@@ -44,17 +45,14 @@
             this.cmdSale = new PuntoDeVentas.LabelButton();
             this.cmdArticulos = new PuntoDeVentas.LabelButton();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.lblUserGreetings = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pnlContainer = new System.Windows.Forms.Panel();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblDireccion = new System.Windows.Forms.Label();
+            this.pnlContainer = new System.Windows.Forms.Panel();
+            this.picUser = new System.Windows.Forms.PictureBox();
+            this.lblUserGreetings = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlContainer.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
@@ -383,66 +381,6 @@
             this.lblTitle.TabIndex = 3;
             this.lblTitle.Text = "[TITLE]";
             // 
-            // lblUserGreetings
-            // 
-            this.lblUserGreetings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblUserGreetings.BackColor = System.Drawing.Color.Transparent;
-            this.lblUserGreetings.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUserGreetings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
-            this.lblUserGreetings.Location = new System.Drawing.Point(52, 17);
-            this.lblUserGreetings.Name = "lblUserGreetings";
-            this.lblUserGreetings.Size = new System.Drawing.Size(430, 29);
-            this.lblUserGreetings.TabIndex = 4;
-            this.lblUserGreetings.Text = "Hello [USER NAME]";
-            this.lblUserGreetings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold);
-            this.label1.ForeColor = System.Drawing.Color.Gainsboro;
-            this.label1.Location = new System.Drawing.Point(69, 629);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(104, 25);
-            this.label1.TabIndex = 35;
-            this.label1.Text = "ShopySale";
-            // 
-            // pnlContainer
-            // 
-            this.pnlContainer.Controls.Add(this.pictureBox2);
-            this.pnlContainer.Controls.Add(this.label1);
-            this.pnlContainer.Controls.Add(this.pictureBox1);
-            this.pnlContainer.Controls.Add(this.lblUserGreetings);
-            this.pnlContainer.Location = new System.Drawing.Point(89, 72);
-            this.pnlContainer.Name = "pnlContainer";
-            this.pnlContainer.Size = new System.Drawing.Size(1076, 671);
-            this.pnlContainer.TabIndex = 37;
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox2.Image = global::PuntoDeVentas.Properties.Resources.OpacityLogo;
-            this.pictureBox2.Location = new System.Drawing.Point(8, 613);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(55, 56);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox2.TabIndex = 36;
-            this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::PuntoDeVentas.Properties.Resources.us_1;
-            this.pictureBox1.Location = new System.Drawing.Point(2, 6);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.pictureBox1.Size = new System.Drawing.Size(47, 53);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 6;
-            this.pictureBox1.TabStop = false;
-            // 
             // lblDireccion
             // 
             this.lblDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -457,6 +395,44 @@
             this.lblDireccion.Text = "Hello [USER NAME]";
             this.lblDireccion.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
+            // pnlContainer
+            // 
+            this.pnlContainer.BackgroundImage = global::PuntoDeVentas.Properties.Resources.bgImage;
+            this.pnlContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlContainer.Controls.Add(this.picUser);
+            this.pnlContainer.Controls.Add(this.lblUserGreetings);
+            this.pnlContainer.Location = new System.Drawing.Point(89, 72);
+            this.pnlContainer.Name = "pnlContainer";
+            this.pnlContainer.Size = new System.Drawing.Size(1076, 671);
+            this.pnlContainer.TabIndex = 37;
+            // 
+            // picUser
+            // 
+            this.picUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picUser.Image = global::PuntoDeVentas.Properties.Resources.us_1;
+            this.picUser.Location = new System.Drawing.Point(2, 6);
+            this.picUser.Margin = new System.Windows.Forms.Padding(0);
+            this.picUser.Name = "picUser";
+            this.picUser.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.picUser.Size = new System.Drawing.Size(93, 95);
+            this.picUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picUser.TabIndex = 6;
+            this.picUser.TabStop = false;
+            // 
+            // lblUserGreetings
+            // 
+            this.lblUserGreetings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUserGreetings.BackColor = System.Drawing.Color.Transparent;
+            this.lblUserGreetings.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserGreetings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.lblUserGreetings.Location = new System.Drawing.Point(98, 6);
+            this.lblUserGreetings.Name = "lblUserGreetings";
+            this.lblUserGreetings.Size = new System.Drawing.Size(430, 29);
+            this.lblUserGreetings.TabIndex = 4;
+            this.lblUserGreetings.Text = "Hello [USER NAME]";
+            this.lblUserGreetings.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // FRM_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
@@ -469,11 +445,12 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.pnlContainer);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;
             this.Name = "FRM_Main";
             this.Padding = new System.Windows.Forms.Padding(0);
             this.ShowTitleLabel = false;
-            this.Text = "FRM_Main";
+            this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.FRM_Main_Load);
             this.Controls.SetChildIndex(this.pnlContainer, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
@@ -484,9 +461,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);
-            this.pnlContainer.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -503,12 +478,10 @@
         private LabelButton cmdSale;
         private LabelButton cmdConfig;
         private System.Windows.Forms.Label lblUserGreetings;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picUser;
         private LabelButton cmdWarehouse;
         private LabelButton cmdDeliver;
         private LabelButton cmdLock;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.Panel pnlContainer;
         private LabelButton cmdSearch;
         private System.Windows.Forms.Label lblDireccion;

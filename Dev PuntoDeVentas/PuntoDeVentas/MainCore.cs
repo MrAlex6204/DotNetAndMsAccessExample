@@ -12,34 +12,34 @@ namespace PuntoDeVentas {
         static void Main() {
 
 
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);            
-            //Application.Run(new FRM_Login());
-            FRM_Login wndLogin = new FRM_Login();
-            FRM_Main wndVentanaPrinicipal = new FRM_Main();
-            FRM_SplashScreen wndLoading = new FRM_SplashScreen();
+            try {
 
-            //Load main configuartions
-            System.Configurations.Load();
+                FRM_Login wndLogin = new FRM_Login();
+                FRM_Main wndVentanaPrinicipal = new FRM_Main();
+                FRM_SplashScreen wndLoading = new FRM_SplashScreen();
+
+                //Load main configuartions
+                System.Configurations.Load();
 
 #if DEBUG
-            //Code para ejecutar solo en Debug 
-            wndLogin.ShowDialog(wndVentanaPrinicipal);
+                //Code para ejecutar solo en Debug 
+                var Usr = DbRepository.ValidarUsuario("mavxdp1", "123");
 
-            if (wndLogin.UserIsLoggued) {
+                if (Usr.Exists) {
+                    DbRepository.LoggedUser = Usr;
+                    Application.Run(wndVentanaPrinicipal);
 
-                var wndCbza = new FRM_Cbza();
-                wndCbza.ShowDialog();
-
-            }
+                }
 
 
 #else 
             //Code para ejecutar solo en Release
             wndLoading.ShowDialog();            
             wndLogin.ShowDialog(wndVentanaPrinicipal);
+            var User = wndLogin.User;
 
-            if (wndLogin.UserIsLoggued) { 
+            if (User.Exists) {
+                DbRepository.LoggedUser = User;
                 //Correr applicacion solo si esta logueado
                 wndVentanaPrinicipal.Show();
                 
@@ -47,6 +47,14 @@ namespace PuntoDeVentas {
                 Application.Run(wndVentanaPrinicipal);            
             }
 #endif
+
+            } catch (Exception ex) {
+
+
+
+            } finally {
+                Application.Exit();
+            }
 
 
         }

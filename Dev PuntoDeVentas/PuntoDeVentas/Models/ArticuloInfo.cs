@@ -10,6 +10,7 @@ namespace PuntoDeVentas.Models {
         public string ID {get;set;}
         public string DESCRIPCION { get; set; }
         public string PRECIO { get; set; }
+        public string COSTO { get; set; }
         public string ES_INVENTARIADO { get; set; }
         public string UNIDAD { get; set; }
         public bool EXIST { get; set; } //SI EL ARTICULO EXISTE DEVUELVE TRUE
@@ -26,6 +27,7 @@ namespace PuntoDeVentas.Models {
             ID = "";
             DESCRIPCION = "";
             PRECIO = "";
+            COSTO = "";
             ES_INVENTARIADO = "";
             UNIDAD = "";
             EXIST = false;

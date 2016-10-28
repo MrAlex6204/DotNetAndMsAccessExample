@@ -25,7 +25,7 @@ namespace PuntoDeVentas
         private void FRM_CorteDeCaja_Load(object sender, EventArgs e)
         {
 
-            Info = System.DbRepository.GetCorteDeCaja(System.DbRepository.CajeroId);
+            Info = System.DbRepository.GetCorteDeCaja(System.DbRepository.LoggedUser.Id.ToString());
 
             if (Info.CajeroExist)
             {
@@ -52,7 +52,7 @@ namespace PuntoDeVentas
         private void cmdCorte_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Desea realizar corte de Caja?", "Corte de Caja", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                System.DbRepository.CerrarCaja(System.DbRepository.CajeroId);
+                System.DbRepository.CerrarCaja(System.DbRepository.LoggedUser.Id.ToString());
                 this.Close();  
                 Functions.Message("CORTE DE CAJA REALIZADO EXITOSAMENTE!");
             }

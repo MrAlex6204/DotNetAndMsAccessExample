@@ -227,7 +227,25 @@ namespace PuntoDeVentas.Controls {
 
             RenderizeBorderColor();
             var g = e.Graphics;
-            g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0));
+            var TextFormat = StringFormat.GenericDefault;
+
+            if (this.TextAlign == HorizontalAlignment.Center) {
+                TextFormat.LineAlignment = StringAlignment.Near;
+                TextFormat.Alignment = StringAlignment.Center;
+                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0), TextFormat);               
+
+            } else if (this.TextAlign == HorizontalAlignment.Left) {
+                TextFormat.LineAlignment = StringAlignment.Near;
+                TextFormat.Alignment = StringAlignment.Near;
+                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0), TextFormat);
+            } else if (this.TextAlign == HorizontalAlignment.Right) {
+                TextFormat.LineAlignment = StringAlignment.Near;
+                TextFormat.Alignment = StringAlignment.Far;
+                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0),TextFormat);
+            } else {
+                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0));
+            }
+
         }
 
         protected override void OnGotFocus(EventArgs e) {

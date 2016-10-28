@@ -14,15 +14,17 @@ namespace PuntoDeVentas {
 
         public FRM_AgregarArticulo() {
             InitializeComponent();
-            lblErrorMsg.Visible = this.DesignMode;
+            lblErrorMsg.Visible = this.DesignMode;//Mostrar solo en DesignMode
             Configurations.ConfigChange += this.LoadConfig;
             LoadConfig();
         }
 
         private void LoadConfig() {
-            lblCurrencyCode.Text = Configurations.CurrencyCode;
+            lblCostoCurrency.Text = Configurations.CurrencySymbol;
             lblCurrencySymbol.Text = Configurations.CurrencySymbol;
+
             txtPrecio.Style.TextPlaceholder = Configurations.CurrencySymbol + " Precio ";
+            txtCosto.Style.TextPlaceholder = Configurations.CurrencySymbol + " Costo ";
             this.Invalidate(true);
         }
 
@@ -53,23 +55,42 @@ namespace PuntoDeVentas {
         }
 
         private void cmdAceptar_Click(object sender, EventArgs e) {
-
+            this.Validate(true);
             Articulo.ID = txtCodigo.Text.Trim();
             Articulo.DESCRIPCION = txtDesc.Text.Trim();
             Articulo.UNIDAD = txtUnidad.Text.Trim();
             Articulo.PRECIO = txtPrecio.Text.Trim();
             Articulo.ES_INVENTARIADO = chkInventario.Checked ? "TRUE" : "FALSE";
-            
+            Articulo.COSTO = txtCosto.Text.Trim();
+
+
+            if (String.IsNullOrEmpty(Articulo.ID)) {
+                Functions.Message("EL ID DEL ARTICULO NO PUEDE ESTAR VACIO!", SystemTheme.Danger, this);
+                return;
+            } else if (String.IsNullOrEmpty(Articulo.PRECIO)) {
+                Functions.Message("EL PRECIO DEL ARTICULO NO PUEDE ESTAR VACIO!", SystemTheme.Danger, this);
+                return;
+            } else if (String.IsNullOrEmpty(Articulo.COSTO)) {
+                Functions.Message("EL COSTO DEL ARTICULO NO PUEDE ESTAR VACIO!", SystemTheme.Danger, this);
+                return;
+            } else if (String.IsNullOrEmpty(Articulo.DESCRIPCION)) {
+                Functions.Message("EL LA DESCRIPCION DEL ARTICULO NO PUEDE ESTAR VACIO!", SystemTheme.Danger, this);
+                return;
+            } else if (String.IsNullOrEmpty(Articulo.UNIDAD)) {
+                Functions.Message("LA UNIDAD DEL ARTICULO NO PUEDE ESTAR VACIO!", SystemTheme.Danger, this);
+                return;
+            }
+
             if (System.DbRepository.SaveArticulo(Articulo)) {
                 if (!Articulo.FOTO.IsEmpty) {
                     //Guardar el Stream de la foto
-                    System.DbRepository.GuardarFoto(txtCodigo.Text,Articulo.FOTO.FSImage);
+                    System.DbRepository.GuardarArticuloFoto(txtCodigo.Text, Articulo.FOTO.FSImage);
                 }
 
                 Functions.Message("ARTICULO AGREGADO EXITOSAMENTE!!!");
                 this.Close();
             } else {
-                Functions.Message("NO SE PUDO AGREGAR INFORMACION!");
+                Functions.Message("NO SE PUDO AGREGAR INFORMACION!", SystemTheme.Danger, this);
             }
 
 
@@ -82,7 +103,7 @@ namespace PuntoDeVentas {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            FRM_ConsultarArticulos wndConsultar = new FRM_ConsultarArticulos();            
+            FRM_ConsultarArticulos wndConsultar = new FRM_ConsultarArticulos();
             wndConsultar.ShowDialog(this);
 
             if (wndConsultar.ArticuloId.Trim() != "") {
@@ -91,6 +112,7 @@ namespace PuntoDeVentas {
                 txtDesc.Text = Articulo.DESCRIPCION;
                 txtPrecio.Text = Articulo.PRECIO;
                 txtUnidad.Text = Articulo.UNIDAD;
+                txtCosto.Text = Articulo.COSTO;
 
                 if (Articulo.ES_INVENTARIADO.ToUpper() == "TRUE") {
                     chkInventario.Checked = true;
@@ -113,7 +135,7 @@ namespace PuntoDeVentas {
                 dlg.Multiselect = false;
 
                 if (dlg.ShowDialog() == DialogResult.OK) {
-                                        
+
                     Articulo.FOTO.FSImage = ImageInfo.GetFileStream(dlg.FileName);//Obtiene y guardar el Stream de la foto                    
                     picArticuloFoto.Image = Articulo.FOTO.GetImageSzOf(picArticuloFoto.Size);//Convertir y obtener el Image del stream de la foto.
 
@@ -126,10 +148,10 @@ namespace PuntoDeVentas {
 
         private void txtCodigo_Leave(object sender, EventArgs e) {
             var Art = DbRepository.GetArticuloInfo(txtCodigo.Text.Trim());
-            
+
             if (Art.EXIST) {
                 txtCodigo.Style.BorderColor = Color.Maroon;
-                lblErrorMsg.Text = "Este codigo ya existe! para el articulo "+Art.DESCRIPCION;
+                lblErrorMsg.Text = "Este codigo ya existe! para el articulo " + Art.DESCRIPCION;
                 lblErrorMsg.Visible = true;
 
                 picArticuloFoto.Image = Art.FOTO.GetImageSzOf(picArticuloFoto.Size);
@@ -143,8 +165,20 @@ namespace PuntoDeVentas {
         }
 
         private void FRM_AgregarArticulo_KeyPress(object sender, KeyPressEventArgs e) {
-            if (e.KeyChar ==  27) {
+            if (e.KeyChar == 27) {
                 this.Close();
+            }
+        }
+
+   
+
+        private void Field_Valid(object sender, CancelEventArgs e) {
+            if (!Functions.IsNumber(((TextBox)sender).Text.Trim())) {
+
+                Functions.Message("Valor invalido!", SystemTheme.Danger, this);
+                
+                ((TextBox)sender).Focus();
+                e.Cancel = true;
             }
         }
 

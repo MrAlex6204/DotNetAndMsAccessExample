@@ -33,6 +33,7 @@
             PuntoDeVentas.InputAppearance inputAppearance1 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance2 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.Controls.ControlAppearance controlAppearance2 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance3 = new PuntoDeVentas.InputAppearance();
             this.label5 = new System.Windows.Forms.Label();
             this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
             this.txtNomNegocio = new PuntoDeVentas.Controls.InputTextBox();
@@ -40,6 +41,12 @@
             this.cmbRegion = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmdSave = new PuntoDeVentas.LabelButton();
+            this.txtCajeroNombre = new PuntoDeVentas.Controls.InputTextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.lblUserName = new System.Windows.Forms.Label();
+            this.picUser = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
@@ -169,7 +176,7 @@
             this.cmdSave.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdSave.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdSave.Location = new System.Drawing.Point(38, 462);
+            this.cmdSave.Location = new System.Drawing.Point(38, 564);
             this.cmdSave.Name = "cmdSave";
             this.cmdSave.Size = new System.Drawing.Size(145, 29);
             controlAppearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -189,12 +196,86 @@
             this.cmdSave.UseVisualStyleBackColor = false;
             this.cmdSave.Click += new System.EventHandler(this.cmdSave_Click);
             // 
+            // txtCajeroNombre
+            // 
+            this.txtCajeroNombre.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtCajeroNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCajeroNombre.Font = new System.Drawing.Font("Segoe UI Light", 14F);
+            this.txtCajeroNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            this.txtCajeroNombre.Location = new System.Drawing.Point(38, 414);
+            this.txtCajeroNombre.Name = "txtCajeroNombre";
+            this.txtCajeroNombre.Size = new System.Drawing.Size(438, 25);
+            inputAppearance3.ActiveBackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            inputAppearance3.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
+            inputAppearance3.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            inputAppearance3.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            inputAppearance3.BorderPadding = 7;
+            inputAppearance3.BorderRadius = 5;
+            inputAppearance3.BorderSize = 1;
+            inputAppearance3.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Fill;
+            inputAppearance3.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            inputAppearance3.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance3.TextPlaceholder = "Nombre del cajero";
+            this.txtCajeroNombre.Style = inputAppearance3;
+            this.txtCajeroNombre.TabIndex = 42;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 14F);
+            this.label2.Location = new System.Drawing.Point(33, 361);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(176, 25);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Nombre de usuario :";
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.AutoSize = true;
+            this.lblUserName.Font = new System.Drawing.Font("Segoe UI Light", 14F);
+            this.lblUserName.Location = new System.Drawing.Point(215, 361);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(123, 25);
+            this.lblUserName.TabIndex = 44;
+            this.lblUserName.Text = "[USER_NAME]";
+            // 
+            // picUser
+            // 
+            this.picUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.picUser.Image = global::PuntoDeVentas.Properties.Resources.us_1;
+            this.picUser.Location = new System.Drawing.Point(572, 278);
+            this.picUser.Margin = new System.Windows.Forms.Padding(0);
+            this.picUser.Name = "picUser";
+            this.picUser.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
+            this.picUser.Size = new System.Drawing.Size(134, 142);
+            this.picUser.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picUser.TabIndex = 45;
+            this.picUser.TabStop = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            this.linkLabel1.Location = new System.Drawing.Point(590, 430);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(100, 21);
+            this.linkLabel1.TabIndex = 46;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Cambiar Foto";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
             // FRM_Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
-            this.ClientSize = new System.Drawing.Size(852, 513);
+            this.ClientSize = new System.Drawing.Size(852, 618);
             this.ControlBox = false;
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.picUser);
+            this.Controls.Add(this.lblUserName);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.txtCajeroNombre);
             this.Controls.Add(this.cmdSave);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmbRegion);
@@ -214,6 +295,12 @@
             this.Controls.SetChildIndex(this.cmbRegion, 0);
             this.Controls.SetChildIndex(this.label1, 0);
             this.Controls.SetChildIndex(this.cmdSave, 0);
+            this.Controls.SetChildIndex(this.txtCajeroNombre, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.lblUserName, 0);
+            this.Controls.SetChildIndex(this.picUser, 0);
+            this.Controls.SetChildIndex(this.linkLabel1, 0);
+            ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +315,11 @@
         private System.Windows.Forms.ComboBox cmbRegion;
         private System.Windows.Forms.Label label1;
         private LabelButton cmdSave;
+        private Controls.InputTextBox txtCajeroNombre;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblUserName;
+        private System.Windows.Forms.PictureBox picUser;
+        private System.Windows.Forms.LinkLabel linkLabel1;
 
        
     }

@@ -34,8 +34,9 @@
             PuntoDeVentas.InputAppearance inputAppearance4 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
             PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
-            this.cmdAceptar = new System.Windows.Forms.Button();
-            this.cmdCancelar = new System.Windows.Forms.Button();
+            PuntoDeVentas.InputAppearance inputAppearance5 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance2 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance3 = new PuntoDeVentas.Controls.ControlAppearance();
             this.chkInventario = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -48,7 +49,13 @@
             this.lblErrorMsg = new System.Windows.Forms.Label();
             this.wndControlBox = new PuntoDeVentas.Controls.WindowControlBox();
             this.lblCurrencySymbol = new System.Windows.Forms.Label();
-            this.lblCurrencyCode = new System.Windows.Forms.Label();
+            this.lblCostoCurrency = new System.Windows.Forms.Label();
+            this.txtCosto = new PuntoDeVentas.Controls.InputTextBox();
+            this.cmdGuardar = new PuntoDeVentas.LabelButton();
+            this.cmdCancelar = new PuntoDeVentas.LabelButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,48 +63,13 @@
             // 
             this.lblWndPanelTitle.Size = new System.Drawing.Size(678, 55);
             // 
-            // cmdAceptar
-            // 
-            this.cmdAceptar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cmdAceptar.AutoSize = true;
-            this.cmdAceptar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.cmdAceptar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.cmdAceptar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdAceptar.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.cmdAceptar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdAceptar.Location = new System.Drawing.Point(256, 348);
-            this.cmdAceptar.Name = "cmdAceptar";
-            this.cmdAceptar.Size = new System.Drawing.Size(80, 33);
-            this.cmdAceptar.TabIndex = 6;
-            this.cmdAceptar.Text = "Guardar";
-            this.cmdAceptar.UseVisualStyleBackColor = true;
-            this.cmdAceptar.Click += new System.EventHandler(this.cmdAceptar_Click);
-            // 
-            // cmdCancelar
-            // 
-            this.cmdCancelar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.cmdCancelar.AutoSize = true;
-            this.cmdCancelar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancelar.FlatAppearance.BorderColor = System.Drawing.Color.WhiteSmoke;
-            this.cmdCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdCancelar.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.cmdCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.cmdCancelar.Location = new System.Drawing.Point(345, 348);
-            this.cmdCancelar.Name = "cmdCancelar";
-            this.cmdCancelar.Size = new System.Drawing.Size(80, 33);
-            this.cmdCancelar.TabIndex = 7;
-            this.cmdCancelar.Text = "Cancelar";
-            this.cmdCancelar.UseVisualStyleBackColor = true;
-            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
-            // 
             // chkInventario
             // 
             this.chkInventario.AutoSize = true;
             this.chkInventario.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkInventario.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.chkInventario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            this.chkInventario.Location = new System.Drawing.Point(144, 258);
+            this.chkInventario.Location = new System.Drawing.Point(170, 323);
             this.chkInventario.Name = "chkInventario";
             this.chkInventario.Size = new System.Drawing.Size(166, 25);
             this.chkInventario.TabIndex = 4;
@@ -151,7 +123,7 @@
             inputAppearance1.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
             inputAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
             inputAppearance1.Style = System.Drawing.Drawing2D.DashStyle.Solid;
-            inputAppearance1.TextPlaceholder = "Codigo";
+            inputAppearance1.TextPlaceholder = "Codigo del articulo";
             this.txtCodigo.Style = inputAppearance1;
             this.txtCodigo.TabIndex = 0;
             this.txtCodigo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtCodigo_KeyPress);
@@ -176,7 +148,7 @@
             inputAppearance2.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
             inputAppearance2.Forecolor = System.Drawing.Color.Silver;
             inputAppearance2.Style = System.Drawing.Drawing2D.DashStyle.Solid;
-            inputAppearance2.TextPlaceholder = "Descripcion";
+            inputAppearance2.TextPlaceholder = "Ingrese una descripcion";
             this.txtDesc.Style = inputAppearance2;
             this.txtDesc.TabIndex = 1;
             this.txtDesc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDesc_KeyPress);
@@ -187,7 +159,7 @@
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPrecio.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtPrecio.ForeColor = System.Drawing.Color.Silver;
-            this.txtPrecio.Location = new System.Drawing.Point(55, 183);
+            this.txtPrecio.Location = new System.Drawing.Point(164, 181);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(70, 22);
             inputAppearance3.ActiveBackcolor = System.Drawing.Color.Empty;
@@ -204,6 +176,7 @@
             this.txtPrecio.Style = inputAppearance3;
             this.txtPrecio.TabIndex = 2;
             this.txtPrecio.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecio_KeyPress);
+            this.txtPrecio.Validating += new System.ComponentModel.CancelEventHandler(this.Field_Valid);
             // 
             // txtUnidad
             // 
@@ -211,9 +184,9 @@
             this.txtUnidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUnidad.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtUnidad.ForeColor = System.Drawing.Color.Silver;
-            this.txtUnidad.Location = new System.Drawing.Point(212, 183);
+            this.txtUnidad.Location = new System.Drawing.Point(53, 256);
             this.txtUnidad.Name = "txtUnidad";
-            this.txtUnidad.Size = new System.Drawing.Size(231, 22);
+            this.txtUnidad.Size = new System.Drawing.Size(390, 22);
             inputAppearance4.ActiveBackcolor = System.Drawing.Color.Empty;
             inputAppearance4.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             inputAppearance4.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
@@ -224,7 +197,7 @@
             inputAppearance4.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
             inputAppearance4.Forecolor = System.Drawing.Color.Silver;
             inputAppearance4.Style = System.Drawing.Drawing2D.DashStyle.Solid;
-            inputAppearance4.TextPlaceholder = "Unidad";
+            inputAppearance4.TextPlaceholder = "Ingrese la unidad del articulo";
             this.txtUnidad.Style = inputAppearance4;
             this.txtUnidad.TabIndex = 3;
             this.txtUnidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUnidad_KeyPress);
@@ -298,33 +271,164 @@
             this.lblCurrencySymbol.BackColor = System.Drawing.Color.White;
             this.lblCurrencySymbol.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.lblCurrencySymbol.ForeColor = System.Drawing.Color.Silver;
-            this.lblCurrencySymbol.Location = new System.Drawing.Point(6, 182);
+            this.lblCurrencySymbol.Location = new System.Drawing.Point(115, 180);
             this.lblCurrencySymbol.Name = "lblCurrencySymbol";
             this.lblCurrencySymbol.Size = new System.Drawing.Size(43, 23);
             this.lblCurrencySymbol.TabIndex = 36;
             this.lblCurrencySymbol.Text = "[$$]";
             this.lblCurrencySymbol.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // lblCurrencyCode
+            // lblCostoCurrency
             // 
-            this.lblCurrencyCode.BackColor = System.Drawing.Color.White;
-            this.lblCurrencyCode.Font = new System.Drawing.Font("Segoe UI Light", 12F);
-            this.lblCurrencyCode.ForeColor = System.Drawing.Color.Silver;
-            this.lblCurrencyCode.Location = new System.Drawing.Point(137, 183);
-            this.lblCurrencyCode.Name = "lblCurrencyCode";
-            this.lblCurrencyCode.Size = new System.Drawing.Size(59, 23);
-            this.lblCurrencyCode.TabIndex = 37;
-            this.lblCurrencyCode.Text = "[CURRENCY]";
-            this.lblCurrencyCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblCostoCurrency.BackColor = System.Drawing.Color.White;
+            this.lblCostoCurrency.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.lblCostoCurrency.ForeColor = System.Drawing.Color.Silver;
+            this.lblCostoCurrency.Location = new System.Drawing.Point(333, 179);
+            this.lblCostoCurrency.Name = "lblCostoCurrency";
+            this.lblCostoCurrency.Size = new System.Drawing.Size(43, 23);
+            this.lblCostoCurrency.TabIndex = 39;
+            this.lblCostoCurrency.Text = "[$$]";
+            this.lblCostoCurrency.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // txtCosto
+            // 
+            this.txtCosto.BackColor = System.Drawing.Color.White;
+            this.txtCosto.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCosto.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.txtCosto.ForeColor = System.Drawing.Color.Silver;
+            this.txtCosto.Location = new System.Drawing.Point(382, 180);
+            this.txtCosto.Name = "txtCosto";
+            this.txtCosto.Size = new System.Drawing.Size(70, 22);
+            inputAppearance5.ActiveBackcolor = System.Drawing.Color.Empty;
+            inputAppearance5.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance5.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
+            inputAppearance5.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            inputAppearance5.BorderPadding = 7;
+            inputAppearance5.BorderRadius = 5;
+            inputAppearance5.BorderSize = 1;
+            inputAppearance5.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Line;
+            inputAppearance5.Forecolor = System.Drawing.Color.Silver;
+            inputAppearance5.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance5.TextPlaceholder = "$ Costo";
+            this.txtCosto.Style = inputAppearance5;
+            this.txtCosto.TabIndex = 38;
+            this.txtCosto.Validating += new System.ComponentModel.CancelEventHandler(this.Field_Valid);
+            // 
+            // cmdGuardar
+            // 
+            this.cmdGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.cmdGuardar.BackColor = System.Drawing.Color.White;
+            this.cmdGuardar.BorderRadius = 5;
+            this.cmdGuardar.FlatAppearance.BorderSize = 0;
+            this.cmdGuardar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.cmdGuardar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.cmdGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdGuardar.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdGuardar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.cmdGuardar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.cmdGuardar.Location = new System.Drawing.Point(53, 367);
+            this.cmdGuardar.Name = "cmdGuardar";
+            this.cmdGuardar.Size = new System.Drawing.Size(103, 34);
+            controlAppearance2.BackColor = System.Drawing.Color.White;
+            controlAppearance2.BorderColor = System.Drawing.Color.WhiteSmoke;
+            controlAppearance2.BorderPadding = 5;
+            controlAppearance2.BorderSize = 1;
+            controlAppearance2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            controlAppearance2.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance2.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            controlAppearance2.MouseDownBackColor = System.Drawing.Color.Silver;
+            controlAppearance2.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            controlAppearance2.MouseOverBorderColor = System.Drawing.Color.Gray;
+            controlAppearance2.MouseOverForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.cmdGuardar.Style = controlAppearance2;
+            this.cmdGuardar.TabIndex = 40;
+            this.cmdGuardar.Text = "Guardar";
+            this.cmdGuardar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.cmdGuardar.UseVisualStyleBackColor = false;
+            this.cmdGuardar.Click += new System.EventHandler(this.cmdAceptar_Click);
+            // 
+            // cmdCancelar
+            // 
+            this.cmdCancelar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdCancelar.BackColor = System.Drawing.Color.White;
+            this.cmdCancelar.BorderRadius = 5;
+            this.cmdCancelar.FlatAppearance.BorderSize = 0;
+            this.cmdCancelar.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.cmdCancelar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.cmdCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cmdCancelar.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdCancelar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.cmdCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.cmdCancelar.Location = new System.Drawing.Point(560, 367);
+            this.cmdCancelar.Name = "cmdCancelar";
+            this.cmdCancelar.Size = new System.Drawing.Size(103, 34);
+            controlAppearance3.BackColor = System.Drawing.Color.White;
+            controlAppearance3.BorderColor = System.Drawing.Color.WhiteSmoke;
+            controlAppearance3.BorderPadding = 5;
+            controlAppearance3.BorderSize = 1;
+            controlAppearance3.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            controlAppearance3.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance3.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            controlAppearance3.MouseDownBackColor = System.Drawing.Color.Silver;
+            controlAppearance3.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
+            controlAppearance3.MouseOverBorderColor = System.Drawing.Color.Gray;
+            controlAppearance3.MouseOverForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            this.cmdCancelar.Style = controlAppearance3;
+            this.cmdCancelar.TabIndex = 41;
+            this.cmdCancelar.Text = "Cancelar";
+            this.cmdCancelar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.cmdCancelar.UseVisualStyleBackColor = false;
+            this.cmdCancelar.Click += new System.EventHandler(this.cmdCancelar_Click);
+            // 
+            // label1
+            // 
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.label1.ForeColor = System.Drawing.Color.Silver;
+            this.label1.Location = new System.Drawing.Point(276, 180);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(60, 23);
+            this.label1.TabIndex = 42;
+            this.label1.Text = "Costo";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label2
+            // 
+            this.label2.BackColor = System.Drawing.Color.White;
+            this.label2.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.label2.ForeColor = System.Drawing.Color.Silver;
+            this.label2.Location = new System.Drawing.Point(52, 180);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(60, 23);
+            this.label2.TabIndex = 43;
+            this.label2.Text = "Precio";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label3
+            // 
+            this.label3.BackColor = System.Drawing.Color.White;
+            this.label3.Font = new System.Drawing.Font("Segoe UI Light", 12F);
+            this.label3.ForeColor = System.Drawing.Color.Silver;
+            this.label3.Location = new System.Drawing.Point(50, 220);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(89, 23);
+            this.label3.TabIndex = 44;
+            this.label3.Text = "Unidad";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FRM_AgregarArticulo
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.White;
-            this.CancelButton = this.cmdCancelar;
-            this.ClientSize = new System.Drawing.Size(682, 393);
+            this.ClientSize = new System.Drawing.Size(682, 433);
             this.ControlBox = false;
-            this.Controls.Add(this.lblCurrencyCode);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.cmdCancelar);
+            this.Controls.Add(this.cmdGuardar);
+            this.Controls.Add(this.lblCostoCurrency);
+            this.Controls.Add(this.txtCosto);
             this.Controls.Add(this.lblCurrencySymbol);
             this.Controls.Add(this.wndControlBox);
             this.Controls.Add(this.lblErrorMsg);
@@ -337,8 +441,6 @@
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.cmdCancelar);
-            this.Controls.Add(this.cmdAceptar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -349,8 +451,6 @@
             this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_AgregarArticulo_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FRM_AgregarArticulo_KeyPress);
-            this.Controls.SetChildIndex(this.cmdAceptar, 0);
-            this.Controls.SetChildIndex(this.cmdCancelar, 0);
             this.Controls.SetChildIndex(this.button1, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.label5, 0);
@@ -364,7 +464,13 @@
             this.Controls.SetChildIndex(this.lblErrorMsg, 0);
             this.Controls.SetChildIndex(this.wndControlBox, 0);
             this.Controls.SetChildIndex(this.lblCurrencySymbol, 0);
-            this.Controls.SetChildIndex(this.lblCurrencyCode, 0);
+            this.Controls.SetChildIndex(this.txtCosto, 0);
+            this.Controls.SetChildIndex(this.lblCostoCurrency, 0);
+            this.Controls.SetChildIndex(this.cmdGuardar, 0);
+            this.Controls.SetChildIndex(this.cmdCancelar, 0);
+            this.Controls.SetChildIndex(this.label1, 0);
+            this.Controls.SetChildIndex(this.label2, 0);
+            this.Controls.SetChildIndex(this.label3, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picArticuloFoto)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -372,8 +478,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button cmdAceptar;
-        private System.Windows.Forms.Button cmdCancelar;
+
         private System.Windows.Forms.CheckBox chkInventario;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label5;
@@ -386,7 +491,13 @@
         private System.Windows.Forms.Label lblErrorMsg;
         private Controls.WindowControlBox wndControlBox;
         private System.Windows.Forms.Label lblCurrencySymbol;
-        private System.Windows.Forms.Label lblCurrencyCode;
+        private System.Windows.Forms.Label lblCostoCurrency;
+        private Controls.InputTextBox txtCosto;
+        private LabelButton cmdGuardar;
+        private LabelButton cmdCancelar;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
     }
 
 }

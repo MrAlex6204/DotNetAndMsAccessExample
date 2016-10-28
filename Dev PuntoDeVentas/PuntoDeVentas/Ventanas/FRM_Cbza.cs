@@ -44,9 +44,10 @@ namespace PuntoDeVentas
                                                         Item.Articulo.ID,
                                                         Item.Articulo.DESCRIPCION,
                                                         Item.Articulo.PRECIO,
+                                                        Item.Articulo.COSTO,  
                                                         Item.Cantidad.ToString(),
                                                         Item.Total.ToString(),
-                                                        System.DbRepository.CajeroId
+                                                        System.DbRepository.LoggedUser.Id.ToString()
                                                      );
 
                 if (Item.Articulo.ES_INVENTARIADO == "TRUE")
@@ -55,7 +56,7 @@ namespace PuntoDeVentas
                     System.DbRepository.InvRegistrarArticulo(
                                                                 Item.Articulo.ID, "0",
                                                                 Item.Cantidad.ToString(),
-                                                                System.DbRepository.CajeroId,
+                                                                System.DbRepository.LoggedUser.Id.ToString(),
                                                                 "**VENTA**"
                                                              );
 
@@ -77,9 +78,13 @@ namespace PuntoDeVentas
         private void FRM_Cbza_Load(object sender, EventArgs e)
         {
 
-            lblCajero.Text = System.DbRepository.Nombre.ToUpper();
+            lblCajero.Text = System.DbRepository.LoggedUser.Name;
             lblTitle.Text = System.Configurations.NombreDelNegocio;
             lblDireccion.Text = System.Configurations.Direccion;
+
+            if (!DbRepository.LoggedUser.Picture.IsEmpty) {
+                picCajero.Image = DbRepository.LoggedUser.Picture.FSImage.GetImageSzOf(picCajero.Size).ConvertToGrayScale();
+            }
 
             pnlStatus.Text = "";
             txtCodigo.Text = "";

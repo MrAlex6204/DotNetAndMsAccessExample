@@ -27,7 +27,17 @@ namespace PuntoDeVentas {
             lblEntrada.DataBindings.Add("Text", _Source, "INVENTARIO.ENTRADA");
             lblSalida.DataBindings.Add("Text", _Source, "INVENTARIO.SALIDA");
             lblStock.DataBindings.Add("Text", _Source, "INVENTARIO.STOCK");
+            lblInversion.DataBindings.Add("Text", _Source, "INVENTARIO.INVERSION");
+            lblStatus.DataBindings.Add("Text", _Source, "INVENTARIO.STATUS_DESC");
             lblUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
+            lblEntradaUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
+            lblSalidaUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
+            lblStockUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
+
+            lblCosto.DataBindings.Add("Text", _Source, "COSTO");
+            lblGanancia.DataBindings.Add("Text", _Source, "INVENTARIO.GANANCIA_GENERADA");
+                       
+            
 
             lblArticulo.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblCodigo.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
@@ -35,7 +45,16 @@ namespace PuntoDeVentas {
             lblEntrada.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblSalida.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblStock.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+            lblInversion.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+            lblStatus.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+
+            lblEntradaUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+            lblSalidaUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+            lblStockUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+            lblGanancia.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+            lblCosto.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
+
 
             Configurations.ConfigChange += this._LoadConfig;
             _LoadConfig();
@@ -53,6 +72,8 @@ namespace PuntoDeVentas {
 
                 _Articulo = Inv_Articulo;//ACTUALIZAR INFORMACION
 
+                lblStatus.ForeColor = _Articulo.INVENTARIO.DISPONIBLE ? SystemTheme.Success : SystemTheme.Danger;
+
                 if (_Articulo.ES_INVENTARIADO != "False") {
 
                     //ACTUALIZAR INFORMACION DEL DATASOURCE PARA MOSTRAR LA INFORMACION EN PANTALLA
@@ -63,7 +84,7 @@ namespace PuntoDeVentas {
                     cmdEntrada.Enabled = true;
                     cmdActualizar.Enabled = true;
                     cmdHist.Enabled = true;
-                    pictArticulo.Image = ImageInfo.GetRoundCornersImage(_Articulo.FOTO.GetGrayScaleImageSzOf(sz), 5, Color.Empty);
+                    pictArticulo.Image = _Articulo.FOTO.FSImage.GetImageSzOf(sz).GetRoundCornersImage(5,this.BackColor);
 
                 } else {
 
@@ -88,8 +109,10 @@ namespace PuntoDeVentas {
         }
 
         private void _LoadConfig() {
-            lblCurrencyCode.Text = Configurations.CurrencyCode;
+            lblCostoSymbol.Text = Configurations.CurrencySymbol;
             lblCurrencySymbol.Text = Configurations.CurrencySymbol;
+            lblCostoCurrencySymbol.Text = Configurations.CurrencySymbol;
+            lblGanciaSymbol.Text = Configurations.CurrencySymbol;
             this.Invalidate(true);
         }
 
@@ -146,8 +169,10 @@ namespace PuntoDeVentas {
         }
 
         private void cmdHist_Click(object sender, EventArgs e) {
-            FRM_Historial wndHist = new FRM_Historial();
-            wndHist.ArticuloId = _Articulo.ID;
+            BaseListWindow wndHist = new BaseListWindow("Historial  -  Registro de Inventario");
+            DataTable Source = DbRepository.GetInvHistorial(_Articulo.ID);
+
+            wndHist.DataSource = Source;
             wndHist.ShowDialog(this);
         }
 

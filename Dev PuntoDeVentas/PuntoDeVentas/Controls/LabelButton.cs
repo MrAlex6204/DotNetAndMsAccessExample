@@ -43,7 +43,7 @@ namespace PuntoDeVentas {
 
         #region PROPERTIES
 
-       
+
 
         [TypeConverter(typeof(ExpandableObjectConverter))]
         public ControlAppearance Style {
@@ -59,7 +59,7 @@ namespace PuntoDeVentas {
         [Description("Button border radius")]
         public int BorderRadius { get; set; }
 
-    
+
         [Browsable(false)]
         [EditorBrowsable(EditorBrowsableState.Never)]
         public override Color BackColor {
@@ -103,28 +103,32 @@ namespace PuntoDeVentas {
 
         private void _Renderize(ref Graphics g) {
 
-            var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
-            var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
-            var BackgroundBrush = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBackColor) : new SolidBrush(this.Style.BackColor);
-            var BorderBrush = _bGotFocus & this.Style.MouseOverBorderColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBorderColor) : new SolidBrush(this.Style.BorderColor);
-            var BorderPen = new Pen(BorderBrush);
-            var Rect = new RoundedRect(BorderLocation, RegionSz, this.BorderRadius);
+            if (g != null) {
 
-            BorderPen.DashStyle = this.Style.BorderStyle;
-            BorderPen.Width = this.Style.BorderSize;
+                var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
+                var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
+                var BackgroundBrush = _bGotFocus & this.Style.MouseOverBackColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBackColor) : new SolidBrush(this.Style.BackColor);
+                var BorderBrush = _bGotFocus & this.Style.MouseOverBorderColor != Color.Empty ? new SolidBrush(this.Style.MouseOverBorderColor) : new SolidBrush(this.Style.BorderColor);
+                var BorderPen = new Pen(BorderBrush);
+                var Rect = new RoundedRect(BorderLocation, RegionSz, this.BorderRadius);
 
-            this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.FlatAppearance.BorderSize = 0;
-            this.FlatAppearance.BorderColor = Color.Empty;
+                BorderPen.DashStyle = this.Style.BorderStyle;
+                BorderPen.Width = this.Style.BorderSize;
 
-            //COLOREA EL FONDO DEL CONTROL SI ESTA ACTIVO
-            base.BackColor = BackgroundBrush.Color;
-            base.ForeColor = _bGotFocus & this.Style.MouseOverForecolor != Color.Empty ? this.Style.MouseOverForecolor : this.Style.Forecolor;
-            this.FlatAppearance.MouseOverBackColor = base.BackColor;
-            this.FlatAppearance.MouseDownBackColor = BackgroundBrush.Color;
+                this.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+                this.FlatAppearance.BorderSize = 0;
+                this.FlatAppearance.BorderColor = Color.Empty;
 
-            Rect.FillRoundedRectangle(ref g, BackgroundBrush.Color);
-            Rect.DrawRoundedRectangle(ref g, BorderPen);
+                //COLOREA EL FONDO DEL CONTROL SI ESTA ACTIVO
+                base.BackColor = BackgroundBrush.Color;
+                base.ForeColor = _bGotFocus & this.Style.MouseOverForecolor != Color.Empty ? this.Style.MouseOverForecolor : this.Style.Forecolor;
+                this.FlatAppearance.MouseOverBackColor = base.BackColor;
+                this.FlatAppearance.MouseDownBackColor = BackgroundBrush.Color;
+
+                Rect.FillRoundedRectangle(ref g, BackgroundBrush.Color);
+                Rect.DrawRoundedRectangle(ref g, BorderPen);
+
+            }
 
         }
 
@@ -175,7 +179,7 @@ namespace PuntoDeVentas {
             base.OnMouseHover(e);
             _bGotFocus = true;
             _Renderize();
-            
+
         }
 
         protected override void OnMouseLeave(EventArgs e) {
@@ -184,7 +188,7 @@ namespace PuntoDeVentas {
 
             _Renderize();
         }
-        
+
         #endregion
 
     }

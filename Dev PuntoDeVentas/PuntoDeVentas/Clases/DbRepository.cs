@@ -15,8 +15,7 @@ using System.Drawing.Printing;
 using PuntoDeVentas;
 using PuntoDeVentas.Models;
 
-namespace System
-{
+namespace System {
 
     public static class DbRepository //CLASE PARA HACER CONSULTAS A NUESTRA BASE DE DATOS
     {
@@ -32,12 +31,6 @@ namespace System
         //OBJETO DE PRINTDOCUMENT PARA IMPRIMIR EL TICKET
         private static PrintDocument _PrintTiket = new PrintDocument();
 
-        //INFORMACION DE EL USUARIO LOGUEADO!
-        private static string _Usr = "";//Usuario
-        private static string _Nombre = "";//Nombre
-        private static string _Tipo = "";//Tipo
-        private static string _Id = ""; //Id del usuario
-        
         public struct CorteDeCajaInfo// ESTRUCTURA PARA GUARDAR INFORMACION DEL CORTE DE CAJA
         {
             public string NomCajero;
@@ -56,50 +49,23 @@ namespace System
             public bool HayVenta;
         }
 
-        public struct UserInfo//ESTRUCTURA PARA GUARDAR INFORMACION DE UN USUARIO...
-        { 
-            public string Nombre;
-            public string Login;
-            public string Password;
-            public string Tipo;
-            public string Fecha;
-            public bool EXIST;
-        }
+
 
         #endregion
 
         #region  <PROPIEDADES>
 
         //Propiedades para consultar la informacion del usuario logueado
-        public static string Usr
-        {
-            get
-            {
-                return _Usr;
+        private static UserInfo _LoggedUser;
+        public static UserInfo LoggedUser {
+            get {
+                if (_LoggedUser != null) {
+                    _LoggedUser.Picture = GetUserPicture(_LoggedUser.Id.ToString());
+                }
+                return _LoggedUser;
             }
-        }
-
-        public static string Nombre
-        {
-            get
-            {
-                return _Nombre;
-            }
-        }
-
-        public static string Tipo
-        {
-            get
-            {
-                return _Tipo;
-            }
-        }
-
-        public static string CajeroId
-        {
-            get
-            {
-                return _Id;
+            set {
+                _LoggedUser = value;
             }
         }
 
@@ -110,23 +76,17 @@ namespace System
         static DbRepository() //CONSTRUCTOR DE LA CLASE
         {
 
-            try
-            {
+            try {
 
                 //SI LA CONEXION NO ESTA ABIERTA LA ABRIMOS
-                if (_objConn.State != ConnectionState.Open)
-                {
+                if (_objConn.State != ConnectionState.Open) {
                     _objConn.Open();//ABRIMOS LA CONEXION SI NO ESTA EN EL ESTADO OPEN.
                 }
 
-            }
-            catch (OleDbException OleDbEx)
-            {
+            } catch (OleDbException OleDbEx) {
                 throw OleDbEx;//ARROJAR ERROR DE OLEDB
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw ex;//ARROJAR CUALQUIER OTRO TIPO DE ERROR
             }
 
@@ -140,39 +100,39 @@ namespace System
         #endregion
 
         #region  <FUNCIONES PUBLICAS>
-        
+
         //FUNCION PARA VALIDAR SI UN USUARIO EXISTE EN EL LOGIN
-        public static bool ValidarUsuario(string Login, string Password)
-        {
-            //consulta para validar si el usuario existe!
-            string Qry =
-            " SELECT [USR_ID],[LOGIN],[NOMBRE],[TIPO] FROM [TBL_USUARIOS]" +
-            " WHERE LOGIN='@LOGIN' AND PASSWORD='@PWD'";
+        public static UserInfo ValidarUsuario(string Login, string Password) {
+            UserInfo Usr = new UserInfo();
             DataTable TblResult;
+            //CONSULTA PARA VALIDAR SI EL USUARIO EXISTE!
+            string Qry =
+            " SELECT * FROM [TBL_USUARIOS]" +
+            " WHERE LOGIN='@LOGIN' AND PASSWORD='@PWD'";
+
             Qry = Qry.Replace("@LOGIN", Login.Replace("'", ""));//Remplazamos el Texto @LOGIN EN LA  VARIABLE QRY
             Qry = Qry.Replace("@PWD", Password.Replace("'", ""));//Remplazamos el Texto @PWD EN LA  VARIABLE QRY
 
             TblResult = Fill(Qry, "Results");//Llamanos a la funcion para llenar la tabla.
 
-            if (TblResult.Rows.Count > 0)
-            {
+            if (TblResult.Rows.Count > 0) {
                 //Guardar informacion del usuario logueado
-                _Usr = TblResult.Rows[0]["LOGIN"].ToString();
-                _Nombre = TblResult.Rows[0]["NOMBRE"].ToString();
-                _Tipo = TblResult.Rows[0]["TIPO"].ToString();
-                _Id = TblResult.Rows[0]["USR_ID"].ToString();
-                return true;
+                Usr.Exists = true;
+                Usr.Id = Convert.ToInt16(TblResult.Rows[0]["USR_ID"].ToString());
+                Usr.Name = TblResult.Rows[0]["NOMBRE"].ToString();
+                Usr.UserName = TblResult.Rows[0]["LOGIN"].ToString();
+                Usr.LevelType = TblResult.Rows[0]["TIPO"].ToString();
+                Usr.Password = TblResult.Rows[0]["PASSWORD"].ToString();
+                Usr.Date = Convert.ToDateTime(TblResult.Rows[0]["FECHA"].ToString());
+                Usr.Picture = GetUserPicture(Usr.Id.ToString());
             }
-            else
-            {
-                //Regresamos False si no tiene registros la tabla de resultados
-                return false;
-            }
+
+
+            return Usr;
         }
 
         //FUNCION PARA OBTENER CONFIGURACIONES DE LA TABLA TBL_CONFIG
-        public static string GetConfig(string Config_Name)
-        {
+        public static string GetConfig(string Config_Name) {
             DataTable TblResult;
             string Qry =
             " SELECT [CONFIG_VALUE] FROM [TBL_CONFIG]" +
@@ -181,19 +141,15 @@ namespace System
 
             TblResult = Fill(Qry, "TblConfig");
 
-            if (TblResult.Rows.Count > 0)
-            {
+            if (TblResult.Rows.Count > 0) {
                 return TblResult.Rows[0][0].ToString();
-            }
-            else
-            {
+            } else {
                 return "";
             }
         }
 
         //FUNCION PARA ACTUALIZAR UNA CONFIGURACION EN LA TABLA CONFIG
-        public static bool UpdateConfig(string Config_Name, string Config_Value)
-        {
+        public static bool UpdateConfig(string Config_Name, string Config_Value) {
 
             string QryUpdate =
             " UPDATE TBL_CONFIG" +
@@ -214,39 +170,33 @@ namespace System
             QryInsert = QryInsert.Replace("@CONFIG_NAME", Config_Name.Replace("'", ""));
             QryInsert = QryInsert.Replace("@CONFIG_VALUE", Config_Value.Replace("'", ""));
 
-            if (tblResult.Rows.Count > 0)
-            {
+            if (tblResult.Rows.Count > 0) {
                 return (Execute(QryUpdate) > 0);
-            }
-            else
-            {
+            } else {
                 return (Execute(QryInsert) > 0);
             }
 
         }
 
         //FUNCION PARA OBTENER LA INFORMACION DEL UN ARTICULO
-        public static ArticuloInfo GetArticuloInfo(string ArticuloId)
-        {
+        public static ArticuloInfo GetArticuloInfo(string ArticuloId) {
             ArticuloInfo Articulo = new ArticuloInfo();
             DataTable TblResult;
             string Qry = "SELECT * FROM [TBL_ARTICULOS] WHERE [ARTICULO_ID]='@ART_ID'";
             Qry = Qry.Replace("@ART_ID", ArticuloId.Replace("'", ""));
             TblResult = Fill(Qry, "TblResult");
 
-            if (TblResult.Rows.Count > 0)
-            {
+            if (TblResult.Rows.Count > 0) {
                 Articulo.EXIST = true;
                 Articulo.ID = TblResult.Rows[0]["ARTICULO_ID"].ToString();
                 Articulo.DESCRIPCION = TblResult.Rows[0]["DESCRIPCION"].ToString();
                 Articulo.PRECIO = TblResult.Rows[0]["PRECIO"].ToString();
+                Articulo.COSTO = TblResult.Rows[0]["COSTO"].ToString();
                 Articulo.ES_INVENTARIADO = TblResult.Rows[0]["INV"].ToString();
                 Articulo.UNIDAD = TblResult.Rows[0]["UNIDAD"].ToString();
                 Articulo.FOTO = GetArticuloFoto(Articulo.ID);//Obtener la foto del articulo.
                 Articulo.INVENTARIO = GetInventarioInfo(Articulo.ID);//Obtener la informacion del inventario
-            }
-            else
-            {
+            } else {
                 Articulo.EXIST = false;
                 Articulo.PRECIO = "0";
 
@@ -259,16 +209,20 @@ namespace System
             string Qry = "SELECT * FROM [TBL_INVENTARIO_VIEW] WHERE [ARTICULO_ID]='@ART_ID'";
             InventarioInfo InvInfo = new InventarioInfo();
             DataTable TblResult;
-            
+
             Qry = Qry.Replace("@ART_ID", ArticuloId.Replace("'", ""));
             TblResult = Fill(Qry, "TblResult");
 
             if (TblResult.Rows.Count > 0) {
                 InvInfo.EXISTS = true;
+                InvInfo.DISPONIBLE = Convert.ToBoolean(TblResult.Rows[0]["DISPONIBLE"]);
                 InvInfo.ID = TblResult.Rows[0]["ARTICULO_ID"].ToString();
                 InvInfo.ENTRADA = Convert.ToDouble(TblResult.Rows[0]["ENTRADA"]);
                 InvInfo.SALIDA = Convert.ToDouble(TblResult.Rows[0]["SALIDA"]);
                 InvInfo.STOCK = Convert.ToDouble(TblResult.Rows[0]["STOCK"]);
+                InvInfo.INVERSION = Convert.ToDouble(TblResult.Rows[0]["INVERSION"]);
+                InvInfo.GANANCIA_GENERADA = Convert.ToDouble(TblResult.Rows[0]["GANCIAS_GENERADAS"]);
+                InvInfo.STATUS_DESC = TblResult.Rows[0]["STATUS_DESC"].ToString();
 
             } else {
                 InvInfo.Clear();
@@ -277,55 +231,47 @@ namespace System
         }
 
         //FUNCION PARA AGREGAR UN NUEVO ARTICULO ALA BD.
-        public static bool SaveArticulo(ArticuloInfo Articulo)
-        {
+        public static bool SaveArticulo(ArticuloInfo Articulo) {
             string QryInsert = //ESTA INSTRUCCION SQL ES PARA INSERTAR UN ARTICULO EN LA BD.
-           " INSERT INTO TBL_ARTICULOS (ARTICULO_ID,DESCRIPCION,UNIDAD,PRECIO,INV)" +
-           " VALUES('@ID','@DESCRIPCION','@UNIDAD','@PRECIO','@INV')";
+           " INSERT INTO TBL_ARTICULOS (ARTICULO_ID,DESCRIPCION,UNIDAD,PRECIO,COSTO,INV)" +
+           " VALUES('@ID','@DESCRIPCION','@UNIDAD','@PRECIO','@COSTO','@INV')";
             string QryUpdate =
             " UPDATE TBL_ARTICULOS" +
-            " SET ARTICULO_ID='@ID',DESCRIPCION='@DESCRIPCION',UNIDAD='@UNIDAD',PRECIO='@PRECIO',INV='@INV'" +
+            " SET ARTICULO_ID='@ID',DESCRIPCION='@DESCRIPCION',UNIDAD='@UNIDAD',PRECIO='@PRECIO',COSTO='@COSTO',INV='@INV'" +
             " WHERE ARTICULO_ID='@ID'";
 
             int Inv = Articulo.ES_INVENTARIADO.ToUpper() == "TRUE" ? 1 : 0;
 
             //Validamos si no esta registrado ya este articulo
-            if (GetArticuloInfo(Articulo.ID).EXIST)
-            { //Llamamos a la funcion GetArticuloInfo para saber si existe
+            if (GetArticuloInfo(Articulo.ID).EXIST) { //Llamamos a la funcion GetArticuloInfo para saber si existe
                 QryUpdate = QryUpdate.Replace("@ID", Articulo.ID.Replace(",", ""));
                 QryUpdate = QryUpdate.Replace("@DESCRIPCION", Articulo.DESCRIPCION.ToUpper().Trim().Replace(",", ""));
                 QryUpdate = QryUpdate.Replace("@PRECIO", Articulo.PRECIO.Trim().Replace(",", ""));
+                QryUpdate = QryUpdate.Replace("@COSTO", Articulo.COSTO.Trim().Replace(",", ""));
                 QryUpdate = QryUpdate.Replace("@UNIDAD", Articulo.UNIDAD.ToUpper().Trim().Replace(",", ""));
                 QryUpdate = QryUpdate.Replace("@INV", Convert.ToInt16(Inv).ToString());//Convertimos a entero la variable bool para que guarde 1 o 0
 
-                if (Execute(QryUpdate) > 0)
-                {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL 
+                if (Execute(QryUpdate) > 0) {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL 
                     return true;//Retornamos True si la funcion _Execute nos regresa mas 0
 
-                }
-                else
-                {
+                } else {
                     return false;//Retornamos False si la funcion no nos regreso nada
                 }
 
 
-            }
-            else
-            {
+            } else {
                 //Remplazamos los valores en la de la instruccion por los valores a insertar
                 QryInsert = QryInsert.Replace("@ID", Articulo.ID.Replace(",", ""));
                 QryInsert = QryInsert.Replace("@DESCRIPCION", Articulo.DESCRIPCION.ToUpper().Trim().Replace(",", ""));
                 QryInsert = QryInsert.Replace("@PRECIO", Articulo.PRECIO.Trim().Replace(",", ""));
+                QryInsert = QryInsert.Replace("@COSTO", Articulo.COSTO.Trim().Replace(",", ""));
                 QryInsert = QryInsert.Replace("@UNIDAD", Articulo.UNIDAD.ToUpper().Trim().Replace(",", ""));
                 QryInsert = QryInsert.Replace("@INV", Convert.ToInt16(Inv).ToString());//Convertimos a entero la variable bool para que guarde 1 o 0
 
-                if (Execute(QryInsert) > 0)
-                {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL {
+                if (Execute(QryInsert) > 0) {//Mandamos a llamar la funcion Execute para ejecutar la instruccion SQL {
                     return true;//Retornamos True si la funcion _Execute nos regresa mas 0
 
-                }
-                else
-                {
+                } else {
                     return false;//Retornamos False si la funcion no nos regreso nada
                 }
 
@@ -333,8 +279,7 @@ namespace System
 
         }
 
-        public static ImageInfo GetArticuloFoto(string ArticuloId)
-        {
+        public static ImageInfo GetArticuloFoto(string ArticuloId) {
             var ImgInfo = new ImageInfo();
             var Tbl = new DataTable();
             var Qry = "SELECT FOTO FROM TBL_ARTICULOS_FOTO WHERE ARTICULO_ID = '@ARTICULO_ID' ";
@@ -343,8 +288,7 @@ namespace System
 
             Tbl = Fill(Qry, "Temp");
 
-            if (Tbl.Rows.Count > 0)
-            {
+            if (Tbl.Rows.Count > 0) {
                 //Descomprimir foto de la Tbl a byte array
                 ImgInfo.FSImage = (byte[])Tbl.Rows[0]["FOTO"];
             }
@@ -352,9 +296,27 @@ namespace System
             return ImgInfo;
         }
 
+        public static ImageInfo GetUserPicture(string UserId) {
+            var ImgInfo = new ImageInfo();
+            var Tbl = new DataTable();
+            var Qry = "SELECT FOTO FROM TBL_USUARIOS WHERE USR_ID = @USR_ID ";
+
+            Qry = Qry.Replace("@USR_ID", UserId.Replace("'", "''"));
+
+            Tbl = Fill(Qry, "Temp");
+
+            if (Tbl.Rows.Count > 0) {
+                if (Tbl.Rows[0]["FOTO"] != DBNull.Value) {
+                    //Descomprimir foto de la Tbl a byte array
+                    ImgInfo.FSImage = (byte[])Tbl.Rows[0]["FOTO"];
+                }
+            }
+
+            return ImgInfo;
+        }
+
         //FUNCION PARA GUARDARLA INFORMACION DE LA FOTO DELARTICULO EN LA BD
-        public static bool GuardarFoto(string ArticuloId, object Foto)
-        {
+        public static bool GuardarArticuloFoto(string ArticuloId, object Foto) {
             string InsertQry = "INSERT INTO TBL_ARTICULOS_FOTO (ARTICULO_ID,FOTO) VALUES(?,?)";
             string UpdateQry = "UPDATE TBL_ARTICULOS_FOTO SET ARTICULO_ID = ? ,FOTO = ? WHERE ARTICULO_ID = ?";
             int Counter = -1;
@@ -363,8 +325,7 @@ namespace System
 
             Tbl = Fill("SELECT ARTICULO_ID FROM TBL_ARTICULOS_FOTO WHERE ARTICULO_ID = '" + ArticuloId.Replace("'", "''") + "'", "TblTemp");
 
-            if (Tbl.Rows.Count > 0)
-            {
+            if (Tbl.Rows.Count > 0) {
                 //SI LA FOTO DEL ARTICULO YA EXISTE
                 _objCmd.Parameters.Clear();
                 _objCmd.CommandText = UpdateQry;
@@ -372,9 +333,7 @@ namespace System
                 _objCmd.Parameters.Add(new OleDbParameter("?", Foto));
                 _objCmd.Parameters.Add(new OleDbParameter("?", ArticuloId));
 
-            }
-            else
-            {
+            } else {
                 //SI NO EXISTE LA FOTO DEL ARTICULO
                 _objCmd.Parameters.Clear();
                 _objCmd.CommandText = InsertQry;
@@ -389,9 +348,27 @@ namespace System
 
         }
 
+        public static bool GuardarUserFoto(string UserId, object Foto) {
+            string UpdateQry = "UPDATE TBL_USUARIOS SET FOTO = ? WHERE USR_ID = ?";
+            int Counter = -1;
+            var Tbl = new DataTable();
+
+
+            //SI LA FOTO DEL ARTICULO YA EXISTE
+            _objCmd.Parameters.Clear();
+            _objCmd.CommandText = UpdateQry;
+            _objCmd.Parameters.Add(new OleDbParameter("?", Foto));
+            _objCmd.Parameters.Add(new OleDbParameter("?", UserId));
+
+
+            Counter = _objCmd.ExecuteNonQuery();
+
+            return (Counter > 0);
+
+        }
+
         //FUNCION PARA BUSCAR UN ARTICULO POR DESCRIPCION EN LA BD
-        public static DataTable BuscarArticulo(string Buscar)
-        {
+        public static DataTable BuscarArticulo(string Buscar) {
             DataTable TblResult;
             string QryBuscar = @"
                 SELECT TOP 1000 ARTICULO_ID AS [CODIGO],DESCRIPCION,UNIDAD,'@CurrencySymbol '+Str(PRECIO)+' @CurrencyCode' as [PRECIO],INV,FOTO 
@@ -402,14 +379,13 @@ namespace System
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
             QryBuscar = QryBuscar.Replace("@CurrencySymbol", Configurations.CurrencySymbol);
             QryBuscar = QryBuscar.Replace("@CurrencyCode", Configurations.CurrencyCode);
-            
+
             TblResult = Fill(QryBuscar, "TblResultados");
             return TblResult;
         }
 
         //BUSCA UN ARTICULO EN LA VISTA DE INVENTARIO
-        public static DataTable BuscarInventarioArticulo(string Buscar)
-        {
+        public static DataTable BuscarInventarioArticulo(string Buscar) {
             DataTable TblResult;
             string QryBuscar = "SELECT * FROM TBL_INVENTARIO_VIEW WHERE DESCRIPCION LIKE '%@BUSCAR%'";
             QryBuscar = QryBuscar.Replace("@BUSCAR", Buscar.Replace("'", ""));
@@ -425,15 +401,15 @@ namespace System
         }
 
         //REGISTRA EL ARTICULO EN LA BASE DE DATOS!
-        public static int RegistrarArticulo(string Id, string Descripcion, string Precio, string Cantidad, string Total, string UsrId)
-        {
+        public static int RegistrarArticulo(string Id, string Descripcion, string Precio,string Costo ,string Cantidad, string Total, string UsrId) {
 
             string Qry =
-            " INSERT INTO TBL_VENTAS ([ARTICULO_ID],[DESCRIPCION],[PRECIO],[CANTIDAD],[TOTAL],[USR_ID],[OPEN],[FECHA])" +
-            " VALUES('@ID','@DESCRIPCION','@PRECIO','@CANTIDAD','@TOTAL','@USR','1',NOW())";
+            " INSERT INTO TBL_VENTAS ([ARTICULO_ID],[DESCRIPCION],[PRECIO],[COSTO],[CANTIDAD],[TOTAL],[USR_ID],[OPEN],[FECHA])" +
+            " VALUES('@ID','@DESCRIPCION','@PRECIO','@COSTO','@CANTIDAD','@TOTAL','@USR','1',NOW())";
             Qry = Qry.Replace("@ID", Id);
             Qry = Qry.Replace("@DESCRIPCION", Descripcion);
             Qry = Qry.Replace("@PRECIO", Precio);
+            Qry = Qry.Replace("@COSTO", Costo);
             Qry = Qry.Replace("@USR", UsrId);
             Qry = Qry.Replace("@CANTIDAD", Cantidad);
             Qry = Qry.Replace("@TOTAL", Total);
@@ -443,8 +419,7 @@ namespace System
         }
 
         //REGISTRA UN ARTICULO AL SYSTEMA DE INVETARIO
-        public static int InvRegistrarArticulo(string Id, string Entrada, string Salida, string UsrId, string TransType)
-        {
+        public static int InvRegistrarArticulo(string Id, string Entrada, string Salida, string UsrId, string TransType) {
             string Qry =
            " INSERT INTO TBL_INVENTARIO (ARTICULO_ID,ENTRADA,SALIDA,FECHA,USR_ID,TRANS_TYPE)" +
            " VALUES('@ART_ID','@ENTRADA','@SALIDA',NOW(),'@USR_ID','@TRANS_TYPE')";
@@ -458,16 +433,14 @@ namespace System
         }
 
         //OBTIENE EL HISTORIAL DEL INVENTARIO DE UN ARTICULO
-        public static DataTable GetInvHistorial(string ArticuloId)
-        {
+        public static DataTable GetInvHistorial(string ArticuloId) {
             string Qry = "SELECT A.*,B.NOMBRE AS USUARIO FROM TBL_INVENTARIO AS A INNER JOIN TBL_USUARIOS AS B ON A.USR_ID =B.USR_ID WHERE ARTICULO_ID='@ART_ID'";
             Qry = Qry.Replace("@ART_ID", ArticuloId.Replace(",", ""));
             return Fill(Qry, "TblResult");
         }
 
         //OBTIENE LA INFORMACION PARA EL CORTE DE CAJA
-        public static CorteDeCajaInfo GetCorteDeCaja(string UsrId)
-        {
+        public static CorteDeCajaInfo GetCorteDeCaja(string UsrId) {
             DataTable TblResult;
             CorteDeCajaInfo CorteDeCaja = new CorteDeCajaInfo();//Declaramos una variable del tipo de la estructura CorteDeCajaInfo
             // EN LA TABLA TBL_VENTAS EL CAMPO OPEN REPRESENTA EL ESTADO DE LA CAJA
@@ -496,15 +469,12 @@ namespace System
             CorteDeCaja.Articulos = Fill(QryArtVendidos, "ARTICULOS_VENDIDOS");//Llenamos los articulos vendidos por el cajero
             TblResult = Fill(QryTotal, "TOTAL");//OBTENEMOS EL TOTAL DE LO VENDIDO POR EL CAJERO
 
-            if (TblResult.Rows.Count > 0)
-            {
+            if (TblResult.Rows.Count > 0) {
                 CorteDeCaja.NomCajero = TblResult.Rows[0]["NOMBRE"].ToString().ToUpper();
                 CorteDeCaja.CajeroExist = true;
                 CorteDeCaja.Total = Convert.ToDouble(TblResult.Rows[0]["TOTAL_VENDIDO"].ToString());
                 CorteDeCaja.TotalArticulos = Convert.ToInt16(TblResult.Rows[0]["TOTAL_ARTICULOS"].ToString());
-            }
-            else
-            {
+            } else {
                 CorteDeCaja.Total = 0;
                 CorteDeCaja.TotalArticulos = 0;
                 CorteDeCaja.CajeroExist = false;
@@ -516,34 +486,28 @@ namespace System
         }
 
         //CERRAR LA CAJE DEL CAJERO
-        public static bool CerrarCaja(string UsrId)
-        {
+        public static bool CerrarCaja(string UsrId) {
             string QryCerrarCaja =//CONSULTA PARA CERRAR LA CAJA DEL CAJERO
             " UPDATE TBL_VENTAS " +
             " SET [OPEN]= False,[CORTE_DE_CAJA]=NOW()" +
             " WHERE USR_ID= @USR_ID AND [OPEN]= True ";
             QryCerrarCaja = QryCerrarCaja.Replace("@USR_ID", UsrId.Replace("'", ""));
-            if (Execute(QryCerrarCaja) > 0)
-            {//EJECUTAMOS LA CONSULTA , SI HAY HAY REGISTROS AFECTADOS NOS REGRESA EL TOTAL DE REGISTROS AFECTADO POR LA CONSULTA {
+            if (Execute(QryCerrarCaja) > 0) {//EJECUTAMOS LA CONSULTA , SI HAY HAY REGISTROS AFECTADOS NOS REGRESA EL TOTAL DE REGISTROS AFECTADO POR LA CONSULTA {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
 
         }
 
         //OBTIENE EL STOCK ACTUAL DE LOS ARTICULOS
-        public static DataTable GerArticulosStock()
-        {
+        public static DataTable GerArticulosStock() {
             string Qry = "SELECT * FROM TBL_STOCK_VIEW";
             return Fill(Qry, "TBL_STOCK");
         }
 
         //OBTENEMOS LA INFORMACION DE LA VENTA DEL DIA
-        public static VentadelDia GetVentaDelDia()
-        {
+        public static VentadelDia GetVentaDelDia() {
             VentadelDia Info = new VentadelDia();
             DataTable TblResult;
             string QryVentaDelDia = "SELECT * FROM  TBL_VENTA_DEL_DIA_VIEW";
@@ -554,20 +518,16 @@ namespace System
             Info.Articulos = Fill(QryArticulosVendidos, "ARTICULOS_VENDIDOS");
             Info.Cajeros = Fill(QryVentaDeCajeros, "VENTA_X_CAJEROS");
 
-            if (TblResult.Rows.Count > 0)
-            {
+            if (TblResult.Rows.Count > 0) {
                 Info.HayVenta = true;
-                if (Equals(TblResult.Rows[0]["VENTA_TOTAL"], System.DBNull.Value))
-                {
+                if (Equals(TblResult.Rows[0]["VENTA_TOTAL"], System.DBNull.Value)) {
                     Info.HayVenta = false;
                     return Info;
                 }
                 Info.Total = Convert.ToDouble(TblResult.Rows[0]["VENTA_TOTAL"].ToString());
                 Info.TotalArticulos = Convert.ToDouble(TblResult.Rows[0]["TOTAL_ARTICULOS"].ToString());
 
-            }
-            else
-            {
+            } else {
                 Info.HayVenta = false;
             }
 
@@ -575,8 +535,7 @@ namespace System
         }
 
         //GUARDA UN LOGIN DE USUARIO EN LA BD
-        public static bool GuardarUsuario(string Nombre, string Login, string Password, string Tipo)
-        {
+        public static bool GuardarUsuario(UserInfo User) {
             DataTable TblResult;
             string QryExist =
             "SELECT LOGIN FROM TBL_USUARIOS WHERE LOGIN='@LOGIN'";
@@ -588,39 +547,32 @@ namespace System
             " INSERT INTO TBL_USUARIOS ([NOMBRE],[LOGIN],[PASSWORD],[TIPO],[FECHA])" +
             " VALUES('@NOMBRE','@LOGIN','@PASSWORD','@TIPO',NOW())";
 
-            QryExist = QryExist.Replace("@LOGIN", Login.Replace("'", ""));
+            QryExist = QryExist.Replace("@LOGIN", User.UserName.Replace("'", ""));
 
-            QryUpdate = QryUpdate.Replace("@LOGIN", Login.Replace("'", ""));
-            QryUpdate = QryUpdate.Replace("@NOMBRE", Nombre.Replace("'", ""));
-            QryUpdate = QryUpdate.Replace("@PASS", Password.Replace("'", ""));
-            QryUpdate = QryUpdate.Replace("@TIPO", Tipo.Replace("'", ""));
+            QryUpdate = QryUpdate.Replace("@LOGIN", User.UserName.Replace("'", ""));
+            QryUpdate = QryUpdate.Replace("@NOMBRE", User.Name.Replace("'", ""));
+            QryUpdate = QryUpdate.Replace("@PASS", User.Password.Replace("'", ""));
+            QryUpdate = QryUpdate.Replace("@TIPO", User.LevelType.Replace("'", ""));
 
-            QryInsert = QryInsert.Replace("@LOGIN", Login.Replace("'", ""));
-            QryInsert = QryInsert.Replace("@NOMBRE", Nombre.Replace("'", ""));
-            QryInsert = QryInsert.Replace("@PASSWORD", Password.Replace("'", ""));
-            QryInsert = QryInsert.Replace("@TIPO", Tipo.Replace("'", ""));
+            QryInsert = QryInsert.Replace("@LOGIN", User.UserName.Replace("'", ""));
+            QryInsert = QryInsert.Replace("@NOMBRE", User.Name.Replace("'", ""));
+            QryInsert = QryInsert.Replace("@PASSWORD", User.Password.Replace("'", ""));
+            QryInsert = QryInsert.Replace("@TIPO", User.LevelType.Replace("'", ""));
 
             TblResult = Fill(QryExist, "TblResult");
 
-            if (TblResult.Rows.Count > 0)
-            {
-                if (Execute(QryUpdate) > 0)
-                {
+            if (TblResult.Rows.Count > 0) {
+                if (Execute(QryUpdate) > 0) {
+                    GuardarUserFoto(User.Id.ToString(), User.Picture.FSImage);
                     return true;
-                }
-                else
-                {
+                } else {
                     return false;
                 }
-            }
-            else
-            {
-                if (Execute(QryInsert) > 0)
-                {
+            } else {
+                if (Execute(QryInsert) > 0) {
+                    GuardarUserFoto(User.Id.ToString(), User.Picture.FSImage);
                     return true;
-                }
-                else
-                {
+                } else {
                     return false;
                 }
             }
@@ -631,33 +583,29 @@ namespace System
         }
 
         //OBTENEMOS INFORMACION DE UN USUARIO                      
-        public static UserInfo GetUserInfo(string UsrId)
-        {
-            UserInfo Info = new UserInfo();
+        public static UserInfo GetUserInfo(string UsrId) {
+            UserInfo Usr = new UserInfo();
             DataTable TblResult;
             string Qry = "SELECT * FROM TBL_USUARIOS WHERE USR_ID= @USR_ID";
             Qry = Qry = Qry.Replace("@USR_ID", UsrId);
             TblResult = Fill(Qry, "TblResult");
 
-            if (TblResult.Rows.Count > 0)
-            {
-                Info.EXIST = true;
-                Info.Nombre = TblResult.Rows[0]["NOMBRE"].ToString();
-                Info.Login = TblResult.Rows[0]["LOGIN"].ToString();
-                Info.Password = TblResult.Rows[0]["PASSWORD"].ToString();
-                Info.Fecha = TblResult.Rows[0]["FECHA"].ToString();
-                Info.Tipo = TblResult.Rows[0]["TIPO"].ToString();
+            if (TblResult.Rows.Count > 0) {
+                Usr.Exists = true;
+                Usr.Id = Convert.ToInt16(TblResult.Rows[0]["USR_ID"].ToString());
+                Usr.Name = TblResult.Rows[0]["NOMBRE"].ToString();
+                Usr.UserName = TblResult.Rows[0]["LOGIN"].ToString();
+                Usr.Password = TblResult.Rows[0]["PASSWORD"].ToString();
+                Usr.Date = Convert.ToDateTime(TblResult.Rows[0]["FECHA"].ToString());
+                Usr.LevelType = TblResult.Rows[0]["TIPO"].ToString();
             }
-            else
-            {
-                Info.EXIST = false;
-            }
-            return Info;
+
+
+            return Usr;
         }
 
         //BUSCA EL NOMBRE DE UN USUARIO EN LA DB
-        public static DataTable BuscarUsuario(string Nombre)
-        {
+        public static DataTable BuscarUsuario(string Nombre) {
             string Qry = "SELECT USR_ID as ID,LOGIN AS USUARIO,NOMBRE,TIPO,FECHA FROM TBL_USUARIOS WHERE NOMBRE LIKE '%@BUSCAR%' OR LOGIN LIKE '%@BUSCAR%'";
             DataTable TblResult;
 
@@ -667,15 +615,13 @@ namespace System
         }
 
         //OBTIENE TODOS LO PEDIDOS NO CANCELADOS
-        public static DataTable GetPedidos()
-        {
+        public static DataTable GetPedidos() {
             string Qry = "SELECT * FROM TBL_PEDIDOS_VIEW";
             return Fill(Qry, "TblPedidos");
         }
 
         //ELIMINA UN PEDIDO DE LA LISTA
-        public static void CambiarStatus(string No, string Status)
-        {
+        public static void CambiarStatus(string No, string Status) {
             string QryUpdate = "UPDATE TBL_PEDIDOS SET STATUS='@STATUS' WHERE ID= @NO";
             QryUpdate = QryUpdate.Replace("@NO", No.Replace("'", ""));
             QryUpdate = QryUpdate.Replace("@STATUS", Status.Replace("'", ""));
@@ -684,8 +630,7 @@ namespace System
         }
 
         //AGREGA UN PEDIDO A LA TABLA DE PEDIDOS
-        public static bool AgregarPedido(string UsrId, string ArticuloId, string Cantidad, string Nombre)
-        {
+        public static bool AgregarPedido(string UsrId, string ArticuloId, string Cantidad, string Nombre) {
             string Qry =
             " INSERT INTO TBL_PEDIDOS (USR_ID,ARTICULO_ID,CANTIDAD,CLIENTE_NOM,FECHA,STATUS)" +
             " VALUES('@USR_ID','@ARTICULO_ID','@CANTIDAD','@CLIENTE_NOMBRE',NOW(),'ABIERTO')";
@@ -693,12 +638,9 @@ namespace System
             Qry = Qry.Replace("@ARTICULO_ID", ArticuloId);
             Qry = Qry.Replace("@CANTIDAD", Cantidad);
             Qry = Qry.Replace("@CLIENTE_NOMBRE", Nombre.Replace(",", ""));
-            if (Execute(Qry) > 0)
-            {
+            if (Execute(Qry) > 0) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
 
@@ -711,12 +653,9 @@ namespace System
             string Qry = "SELECT [COUNTRY]+' - '+[LANGUAGE] as [COUNTRY],[CODE] FROM TBL_CULTURE_INFO ORDER BY COUNTRY ASC";
             DataTable Tbl = Fill(Qry, "TblRegionList");
 
-            return Tbl; 
+            return Tbl;
         }
-
-
-
-
+        
         #endregion
 
         #region  <FUNCION PARA IMPRIMR EL TIKET>
@@ -727,35 +666,27 @@ namespace System
         private static string _Cambio = "";//Cambio del cliente
 
         //PROPIEDAD PARA ESTABLECER LOS ARTICULOS A IMPRIMIR
-        public static ArticuloItemCollection ArticulosParaImprimir
-        {
-            set
-            {
+        public static ArticuloItemCollection ArticulosParaImprimir {
+            set {
                 _ArticulosList = value;
             }
         }
 
         //IMPRIME EL TIKET
-        public static void ImprimirTiket(string Total, string Pago, string Cambio)
-        {
-            try
-            {
+        public static void ImprimirTiket(string Total, string Pago, string Cambio) {
+            try {
                 _Total = Total;
                 _Pago = Pago;
                 _Cambio = Cambio;
                 _PrintTiket.Print();
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw (ex);
             }
 
         }
 
-        private static void PrintTiketPage(object sender, PrintPageEventArgs e)
-        {
-            try
-            {
+        private static void PrintTiketPage(object sender, PrintPageEventArgs e) {
+            try {
                 int PosX = 0;
                 int PosY = 31;
                 int TituloTam = 16;
@@ -771,7 +702,7 @@ namespace System
                 Font font8 = new Font("Consolas", (float)TituloTam, FontStyle.Bold);
                 Font font9 = new Font("Courier New", 8f, FontStyle.Bold);
 
-                string Cajero = "Le Atendio : " + Nombre;//Nombre del Cajero
+                string Cajero = "Le Atendio : " + DbRepository.LoggedUser.Name;//Nombre del Cajero
                 e.PageSettings.Margins.Top = 0;
                 e.PageSettings.Margins.Left = 0;
                 e.PageSettings.Margins.Right = 0;
@@ -785,8 +716,7 @@ namespace System
                 PosY = PosY + 14;
                 int iCount = 1;
 
-                foreach (ArticuloItem Item in _ArticulosList)
-                {
+                foreach (ArticuloItem Item in _ArticulosList) {
 
                     var Articulo = iCount.ToString() + "-" + Item.Articulo.DESCRIPCION;
                     var Cantidad = "CANT.: " + Item.Cantidad.ToString("00.00") + " @ $" + Functions.ToCurrency(Item.Articulo.PRECIO) + " = " + Functions.ToCurrency(Item.Total);
@@ -815,9 +745,7 @@ namespace System
                 //Fecha y Hra
                 e.Graphics.DrawString(">" + DateTime.Now.ToString("dd-MMMM-yyyy hh:mm:ss tt", Configurations.RegionProvider).ToUpper(), font9, Brushes.Black, PosX, PosY);
 
-            }
-            catch (Exception ex)
-            {
+            } catch (Exception ex) {
                 throw new Exception("Erro al imprimir Tiket.\nError Msg:\n" + ex.Message);
             }
         }
@@ -826,8 +754,7 @@ namespace System
 
         #region  <FUNCIONES ESPECIALES>
         //Esta funcion es para llenar una tabla
-        public static DataTable Fill(string Qry, string TableName)
-        {
+        public static DataTable Fill(string Qry, string TableName) {
             DataTable TblResult = new DataTable(TableName); //Tabla para guardar el resultado!.
             OleDbDataReader Reader;
             _objCmd.CommandText = Qry;//Le pasamos la consulta, para poder extraer los datos
@@ -836,8 +763,7 @@ namespace System
             Reader.Close();//cerramos el datareader para que no se quede abierto
             return TblResult;//Retornamos el datatable
         }
-        public static int Execute(string Qry)
-        {
+        public static int Execute(string Qry) {
             _objCmd.CommandText = Qry;
             return _objCmd.ExecuteNonQuery();
         }

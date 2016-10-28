@@ -36,7 +36,7 @@ namespace PuntoDeVentas
 
             if (MessageBox.Show("Desea Agregar el pedido?", "Agregar pedido?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
                 //agregamos el pedido
-                if (System.DbRepository.AgregarPedido(System.DbRepository.CajeroId, lblCodigo.Text.Trim(), txtCantidad.Text.Trim(), txtNombre.Text.Trim()))
+                if (System.DbRepository.AgregarPedido(System.DbRepository.LoggedUser.Id.ToString(), lblCodigo.Text.Trim(), txtCantidad.Text.Trim(), txtNombre.Text.Trim()))
                 {
                     Functions.Message("PEDIDO AGREGADO EXITOSAMENTE!");
                     this.Close();

@@ -45,7 +45,7 @@ namespace PuntoDeVentas {
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.pnlStatus = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picCajero = new System.Windows.Forms.PictureBox();
             this.panel5 = new System.Windows.Forms.Panel();
             this.lblArticuloCount = new System.Windows.Forms.Label();
             this.LstArticulos = new PuntoDeVentas.ArticuloList();
@@ -59,7 +59,7 @@ namespace PuntoDeVentas {
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCajero)).BeginInit();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
             this.SuspendLayout();
@@ -70,10 +70,10 @@ namespace PuntoDeVentas {
             this.lblWndPanelTitle.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
             this.lblWndPanelTitle.Controls.Add(this.windowControlBox1);
             this.lblWndPanelTitle.Controls.Add(this.lblCajero);
-            this.lblWndPanelTitle.Controls.Add(this.pictureBox1);
+            this.lblWndPanelTitle.Controls.Add(this.picCajero);
             this.lblWndPanelTitle.Padding = new System.Windows.Forms.Padding(1);
             this.lblWndPanelTitle.Size = new System.Drawing.Size(1224, 55);
-            this.lblWndPanelTitle.Controls.SetChildIndex(this.pictureBox1, 0);
+            this.lblWndPanelTitle.Controls.SetChildIndex(this.picCajero, 0);
             this.lblWndPanelTitle.Controls.SetChildIndex(this.lblCajero, 0);
             this.lblWndPanelTitle.Controls.SetChildIndex(this.windowControlBox1, 0);
             // 
@@ -181,11 +181,11 @@ namespace PuntoDeVentas {
             this.lblCajero.Font = new System.Drawing.Font("Segoe UI Light", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCajero.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(199)))), ((int)(((byte)(199)))), ((int)(((byte)(199)))));
             this.lblCajero.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.lblCajero.Location = new System.Drawing.Point(48, 1);
+            this.lblCajero.Location = new System.Drawing.Point(55, 1);
             this.lblCajero.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCajero.Name = "lblCajero";
-            this.lblCajero.Padding = new System.Windows.Forms.Padding(0, 15, 6, 0);
-            this.lblCajero.Size = new System.Drawing.Size(73, 35);
+            this.lblCajero.Padding = new System.Windows.Forms.Padding(5, 15, 6, 0);
+            this.lblCajero.Size = new System.Drawing.Size(78, 35);
             this.lblCajero.TabIndex = 4;
             this.lblCajero.Text = "[CAJERO]";
             this.lblCajero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -280,18 +280,17 @@ namespace PuntoDeVentas {
             this.label1.TabIndex = 9;
             this.label1.Text = "@";
             // 
-            // pictureBox1
+            // picCajero
             // 
-            this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pictureBox1.Image = global::PuntoDeVentas.Properties.Resources.us_1;
-            this.pictureBox1.Location = new System.Drawing.Point(1, 1);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(0);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Padding = new System.Windows.Forms.Padding(0, 0, 0, 10);
-            this.pictureBox1.Size = new System.Drawing.Size(47, 53);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox1.TabIndex = 5;
-            this.pictureBox1.TabStop = false;
+            this.picCajero.Dock = System.Windows.Forms.DockStyle.Left;
+            this.picCajero.Image = global::PuntoDeVentas.Properties.Resources.us_1;
+            this.picCajero.Location = new System.Drawing.Point(1, 1);
+            this.picCajero.Margin = new System.Windows.Forms.Padding(0);
+            this.picCajero.Name = "picCajero";
+            this.picCajero.Size = new System.Drawing.Size(54, 53);
+            this.picCajero.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picCajero.TabIndex = 5;
+            this.picCajero.TabStop = false;
             // 
             // panel5
             // 
@@ -430,7 +429,7 @@ namespace PuntoDeVentas {
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCajero)).EndInit();
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -450,7 +449,7 @@ namespace PuntoDeVentas {
         private System.Windows.Forms.Label pnlStatus;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picCajero;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel4;
         private PuntoDeVentas.ArticuloList LstArticulos;

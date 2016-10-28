@@ -37,7 +37,7 @@ namespace PuntoDeVentas {
         }
 
         private void FRM_Main_Load(object sender, EventArgs e) {
-            lblUserGreetings.Text = "Hello! " + DbRepository.Nombre;
+            
             _LoadConfig();
         }
 
@@ -55,7 +55,8 @@ namespace PuntoDeVentas {
                 this.Hide();
                 wndLock.ShowDialog(this);
 
-                if (wndLock.UserIsLoggued) {
+                if (wndLock.User.Exists) {
+                    DbRepository.LoggedUser = wndLock.User;
                     this.Show();//VOLVER A MOSTRAR SI EL USUARIO ESTA LOGUEADO
                 }
 
@@ -92,25 +93,28 @@ namespace PuntoDeVentas {
 
         private void _DisplayWindow(Controls.BaseForm Wnd) {
 
-            Wnd.WindowBorderColor = Color.FromArgb(234, 90, 90);
+            //Wnd.WindowBorderColor = this.BackColor;
             Wnd.EnableWindowDrag = false;//DESHABILITAR EL ARRASTRE CON EL CURSOR
             Wnd.MdiParent = this;
             pnlContainer.Controls.Add(Wnd);
             Wnd.WindowState = FormWindowState.Maximized;
             Wnd.Show();
-
         }
 
         private void _LoadConfig() {
             lblTitle.Text = Configurations.NombreDelNegocio;
             lblDireccion.Text = Configurations.Direccion;
+            lblUserGreetings.Text = "Hello! " + DbRepository.LoggedUser.Name;
+
+            if (!DbRepository.LoggedUser.Picture.IsEmpty) {
+                picUser.Image = DbRepository.LoggedUser.Picture.GetGrayScaleImageSzOf(picUser.Size).GetTintImage(0f, 0.36f, 0f);
+                picUser.BackColor = Color.Transparent;
+            
+            }
+
         }
 
         #endregion
-
-
-
-
 
 
     }

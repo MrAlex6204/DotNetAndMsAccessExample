@@ -123,7 +123,7 @@
     <Compile Include="Models\CorteDeCajaInfo.cs" />
     <Compile Include="Models\InventarioInfo.cs" />
     <Compile Include="Models\RegionCurrency.cs" />
-    <Compile Include="Models\Usuario.cs" />
+    <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\VentaDelDiaInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -178,11 +178,11 @@
     <Compile Include="Ventanas\FRM_CorteDeCaja.Designer.cs">
       <DependentUpon>FRM_CorteDeCaja.cs</DependentUpon>
     </Compile>
-    <Compile Include="Ventanas\FRM_Historial.cs">
+    <Compile Include="Controls\BaseListWindow.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Ventanas\FRM_Historial.Designer.cs">
-      <DependentUpon>FRM_Historial.cs</DependentUpon>
+    <Compile Include="Controls\BaseListWindow.Designer.cs">
+      <DependentUpon>BaseListWindow.cs</DependentUpon>
     </Compile>
     <Compile Include="Ventanas\FRM_Inventario.cs">
       <SubType>Form</SubType>
@@ -258,8 +258,8 @@
       <DependentUpon>FRM_CorteDeCaja.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Ventanas\FRM_Historial.resx">
-      <DependentUpon>FRM_Historial.cs</DependentUpon>
+    <EmbeddedResource Include="Controls\BaseListWindow.resx">
+      <DependentUpon>BaseListWindow.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Ventanas\FRM_Inventario.resx">
@@ -410,6 +410,7 @@
     <Content Include="Microsoft.Vbe.Interop.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <None Include="Resources\bgImage.jpg" />
     <None Include="Resources\history.png" />
     <None Include="Resources\search.png" />
     <None Include="Resources\OpacityLogo.png" />

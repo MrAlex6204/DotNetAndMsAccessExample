@@ -11,6 +11,8 @@ namespace PuntoDeVentas
 {
     public partial class FRM_Usuarios : Form
     {
+        private Models.UserInfo _Usr = new Models.UserInfo();
+
         public FRM_Usuarios()
         {
             InitializeComponent();
@@ -123,7 +125,13 @@ namespace PuntoDeVentas
                 Tipo = "ADMIN";
             }
 
-            if (System.DbRepository.GuardarUsuario(txtNombre.Text, txtUsuario.Text, txtPassword.Text, Tipo))
+
+            _Usr.UserName = txtUsuario.Text;
+            _Usr.Name = txtNombre.Text;
+            _Usr.Password = txtPassword.Text;
+            _Usr.LevelType = Tipo;
+
+            if (System.DbRepository.GuardarUsuario(_Usr))
             {
                 Functions.Message("Usuario agregado exitosamente!");
             }
@@ -138,15 +146,16 @@ namespace PuntoDeVentas
             wndBuscarUsr.ShowDialog(this);
 
             if (wndBuscarUsr.UserId.Trim() != "") {
-                System.DbRepository.UserInfo UserInfo;
-                UserInfo = System.DbRepository.GetUserInfo(wndBuscarUsr.UserId);
+                
+              _Usr  = System.DbRepository.GetUserInfo(wndBuscarUsr.UserId);
+               
+                txtNombre.Text = _Usr.Name ;
+                txtUsuario.Text = _Usr.UserName;
+                txtPassword.Text = _Usr.Password;
+                txtConfirmPassword.Text = _Usr.Password;
+                lblFecha.Text = _Usr.Date.Value.ToString();
 
-                txtNombre.Text = UserInfo.Nombre;
-                txtUsuario.Text = UserInfo.Login;
-                txtPassword.Text = UserInfo.Password;
-                txtConfirmPassword.Text = UserInfo.Password;
-                lblFecha.Text = UserInfo.Fecha;
-                if (UserInfo.Tipo.Trim().ToUpper() == "ADMIN")
+                if (_Usr.LevelType.Trim().ToUpper() == "ADMIN")
                 {
                     rdioAdmin.Checked = true;
                     rdioUsuario.Checked = false;
@@ -155,8 +164,7 @@ namespace PuntoDeVentas
                     rdioUsuario.Checked = true;
                     rdioAdmin.Checked = false;
                 }
-
-
+                
 
             }
         }

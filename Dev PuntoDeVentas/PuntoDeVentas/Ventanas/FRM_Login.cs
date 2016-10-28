@@ -10,14 +10,17 @@ using System.Windows.Forms;
 namespace PuntoDeVentas {
     public partial class FRM_Login : Controls.BaseForm {
 
-        private bool _bUserIsLogged = false;
+        
+        private Models.UserInfo _Usr = new Models.UserInfo();
 
 
-        public bool UserIsLoggued {
+        public Models.UserInfo  User{
             get {
-                return _bUserIsLogged;
+                return _Usr;
             }
         }
+
+
 
         public FRM_Login() {
             InitializeComponent();
@@ -33,15 +36,18 @@ namespace PuntoDeVentas {
             if (e.KeyCode == Keys.Enter && input == txtUser) {
                 txtPassword.Focus();
             }else if (e.KeyCode == Keys.Enter && input == txtPassword) {
-                //Validar user y password
-                if (System.DbRepository.ValidarUsuario(txtUser.Text.Trim(), txtPassword.Text.Trim())) {
+
+                _Usr.Clear();
+
+                _Usr = System.DbRepository.ValidarUsuario(txtUser.Text.Trim(), txtPassword.Text.Trim());
+
+                //VALIDAR USER Y PASSWORD
+                if (_Usr.Exists) {
                     this.Hide();
-                    lblErrorMsg.Visible = false;                    
-                    _bUserIsLogged = true;
-                    Functions.Message("BIENVENIDO " + DbRepository.Nombre, Color.FromArgb(60, 184, 120), this);
+                    lblErrorMsg.Visible = false;                                        
+                    Functions.Message("BIENVENIDO " + _Usr.Name, Color.FromArgb(60, 184, 120), this);
                     this.Close();
-                } else {
-                    _bUserIsLogged = false;
+                } else {                    
                     lblErrorMsg.Visible = true;
                     lblErrorMsg.Text = "Usuario Invalido!";
                     txtPassword.Focus();

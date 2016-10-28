@@ -8,6 +8,8 @@ using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
 
+
+
 namespace PuntoDeVentas {
 
     public class ImageInfo {
@@ -56,18 +58,46 @@ namespace PuntoDeVentas {
         public static Image GetImageSzOf(byte[] Fs, System.Drawing.Size sz) {
 
             if (Fs != null) {
-                System.Drawing.Image Img, FixedImg;
-                System.Drawing.Size AspectRatioSz = new System.Drawing.Size();
-
+                Bitmap Img, FixedImg;
+                Size RatioSz = Size.Empty;
+                
                 using (System.IO.MemoryStream ImgStream = new System.IO.MemoryStream(Fs)) {
-                    Img = System.Drawing.Image.FromStream(ImgStream);
+                    Img = (Bitmap)Bitmap.FromStream(ImgStream);
+
                     float Orignal_Height = Img.Size.Height - 10;
                     float Orignal_Width = Img.Size.Width - 10;
 
-                    //Calcular el aspect ratio para evitar que se distorcione                    
-                    AspectRatioSz = new System.Drawing.Size(sz.Width, (int)((Orignal_Height / Orignal_Width) * sz.Width));
+                    //CALCULAR EL ASPECT RATIO PARA EVITAR QUE SE DISTORCIONE                    
+                    RatioSz = new System.Drawing.Size(sz.Width, (int)((Orignal_Height / Orignal_Width) * sz.Width));
+                    
+                    FixedImg =  new Bitmap(RatioSz.Width,RatioSz.Height);
 
-                    FixedImg = Img.GetThumbnailImage(AspectRatioSz.Width, AspectRatioSz.Height, null, IntPtr.Zero);
+
+                    using (Graphics g = Graphics.FromImage(FixedImg)) {
+
+
+                        g.CompositingQuality = CompositingQuality.HighQuality;
+                        g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                        g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+
+
+                        g.DrawImage(Img,
+                                       new Rectangle(0, 0,
+                                           FixedImg.Width, FixedImg.Height),
+                                       new Rectangle(0, 0,
+                                           Img.Width, Img.Height),
+                                           GraphicsUnit.Pixel);
+                        g.Flush();
+                    }
+
+
+                    //float Orignal_Height = Img.Size.Height - 10;
+                    //float Orignal_Width = Img.Size.Width - 10;
+
+                    ////Calcular el aspect ratio para evitar que se distorcione                    
+                    //AspectRatioSz = new System.Drawing.Size(sz.Width, (int)((Orignal_Height / Orignal_Width) * sz.Width));
+
+                    //FixedImg = Img.GetThumbnailImage(AspectRatioSz.Width, AspectRatioSz.Height, null, IntPtr.Zero);
 
                 }
 
@@ -81,7 +111,7 @@ namespace PuntoDeVentas {
         }
 
         //CONVIERTE LA IMAGEN A ESCALA DE GRISES
-        public static Image ConvertToGrayScale(System.Drawing.Image SourceImage) {
+        public static Image ConvertToGrayScale(Image SourceImage) {
             Image grayScaleImg = null;
 
             if (SourceImage != null) {
@@ -92,9 +122,12 @@ namespace PuntoDeVentas {
                     for (var h = 0; h < SourceImage.Size.Height; h++) {
 
                         var pxColor = bmp.GetPixel(w, h);
+
+
                         var grayScale = (pxColor.R + pxColor.G + pxColor.B) / 3;
                         var pxNewColor = Color.FromArgb(grayScale, grayScale, grayScale);
                         bmp.SetPixel(w, h, pxNewColor);
+
 
                     }
 
@@ -138,7 +171,7 @@ namespace PuntoDeVentas {
         }
 
         public static Image GetTintImage(Image SourceImage, float RedTint, float GreenTint, float BlueTint) {
-            Image TintImage = new Bitmap(SourceImage.Width,SourceImage.Height);
+            Image TintImage = new Bitmap(SourceImage.Width, SourceImage.Height);
 
             byte[] pxBuffer = null;
             BitmapData SourceBmpData = ((Bitmap)SourceImage).LockBits(new Rectangle(0, 0, SourceImage.Width, SourceImage.Height), ImageLockMode.ReadOnly, PixelFormat.Format32bppArgb);
@@ -153,8 +186,8 @@ namespace PuntoDeVentas {
 
             float Red = 0f, Green = 0f, Blue = 0f;
 
-            for (int Idx = 0, RedIdx = Idx, GreenIdx = Idx + 1, BlueIdx = Idx + 2; Idx + 4 < pxBuffer.Length; Idx += 4,RedIdx = Idx, GreenIdx = Idx + 1, BlueIdx = Idx + 2) {
-                
+            for (int Idx = 0, RedIdx = Idx, GreenIdx = Idx + 1, BlueIdx = Idx + 2; Idx + 4 < pxBuffer.Length; Idx += 4, RedIdx = Idx, GreenIdx = Idx + 1, BlueIdx = Idx + 2) {
+
 
 
                 Red = pxBuffer[RedIdx] + (255 - pxBuffer[RedIdx]) * RedTint;
@@ -175,7 +208,7 @@ namespace PuntoDeVentas {
 
             Marshal.Copy(pxBuffer, 0, NewBmpData.Scan0, pxBuffer.Length);
             ((Bitmap)TintImage).UnlockBits(NewBmpData);
-            
+
             GC.Collect();
             return TintImage;
         }
@@ -196,6 +229,30 @@ namespace PuntoDeVentas {
             return bmp;
         }
 
+    }
+
+}
+
+namespace System.Drawing {
+
+
+    public static class ImageInfoExtension {
+
+        public static Image GetOvalImage(this Image img) {
+            return PuntoDeVentas.ImageInfo.GetOvalImage(img);
+        }
+        public static Image GetTintImage(this Image SourceImage, float RedTint, float GreenTint, float BlueTint) {
+            return PuntoDeVentas.ImageInfo.GetTintImage(SourceImage, RedTint, GreenTint, BlueTint);
+        }
+        public static Image GetRoundCornersImage(this Image SourceImage, int CornerRadius, Color BackgroundColor) {
+            return PuntoDeVentas.ImageInfo.GetRoundCornersImage(SourceImage, CornerRadius, BackgroundColor);
+        }
+        public static Image ConvertToGrayScale(this Image SourceImage) {
+            return PuntoDeVentas.ImageInfo.ConvertToGrayScale(SourceImage);
+        }
+        public static Image GetImageSzOf(this byte[] Fs, System.Drawing.Size sz) {
+            return PuntoDeVentas.ImageInfo.GetImageSzOf(Fs, sz);
+        }
 
     }
 

@@ -28,7 +28,7 @@ namespace PuntoDeVentas {
 
 
         private void FRM_RegistrarEntrada_Load(object sender, EventArgs e) {
-            lblUsr.Text = System.DbRepository.Nombre.ToUpper();
+            lblUsr.Text = System.DbRepository.LoggedUser.Name;
 
             if (_Articulo != null && !_Articulo.EXIST) {
                 Functions.Message("El articulo especificado no existe!", SystemTheme.Danger, this);
@@ -61,7 +61,7 @@ namespace PuntoDeVentas {
                 return;
             }
             if (MessageBox.Show("Desea registrar la entrada?", "Registro de Entrada", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                System.DbRepository.InvRegistrarArticulo(lblCodigo.Text, txtCantidad.Text, "0", System.DbRepository.CajeroId, "*ENTRADA_DE_INVENTARIO**");
+                System.DbRepository.InvRegistrarArticulo(lblCodigo.Text, txtCantidad.Text, "0", System.DbRepository.LoggedUser.Id.ToString(), "*ENTRADA_DE_INVENTARIO**");
                 Functions.Message("ENTRADA REGISTRADA EXITOSAMENTE!",SystemTheme.Success,this);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
