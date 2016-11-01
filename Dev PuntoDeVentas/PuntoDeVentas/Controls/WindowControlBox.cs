@@ -77,7 +77,7 @@ namespace PuntoDeVentas.Controls {
         }
 
         public void _RenderDesign() {
-
+            this.SuspendLayout();
             _RenderButtonnFlatStyle(cmdMaximize, _Appearance);
             _RenderButtonnFlatStyle(cmdMinimize, _Appearance);
             _RenderButtonnFlatStyle(cmdClose, _Appearance);
@@ -96,15 +96,16 @@ namespace PuntoDeVentas.Controls {
                 }
 
             }
+            this.ResumeLayout();
         }
         
-        protected override void OnPaint(PaintEventArgs e) {
-            base.OnPaint(e);
+        //protected override void OnPaint(PaintEventArgs e) {
+        //    base.OnPaint(e);
 
-            if (this.DesignMode) {
-                _RenderDesign();
-            }
-        }
+        //    //if (this.DesignMode) {
+        //    //    _RenderDesign();
+        //    //}
+        //}
         
         protected override void OnLoad(EventArgs e) {
 

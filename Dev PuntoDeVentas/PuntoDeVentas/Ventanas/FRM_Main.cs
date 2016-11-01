@@ -25,6 +25,8 @@ namespace PuntoDeVentas {
 
             //ADJUNTAR EVENTO PARA NOTIFICAR QUE SE NOTIFICARON CAMBIOS
             System.Configurations.ConfigChange += this.ConfigurationChange_Event;
+            DbRepository.Events.OnInventarioChange += _Inversion;
+            DbRepository.Events.OnVentaRegistradaChange += _Inversion;
         }
 
         #endregion
@@ -37,8 +39,8 @@ namespace PuntoDeVentas {
         }
 
         private void FRM_Main_Load(object sender, EventArgs e) {
-            
             _LoadConfig();
+            _Inversion();
         }
 
         private void cmdSale_Click(object sender, EventArgs e) {
@@ -87,13 +89,23 @@ namespace PuntoDeVentas {
             _DisplayWindow(wndInventario);
         }
 
+        private void lnkInversionDetail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            using (var wndInversionDetail = new BaseListWindow("Inversion en Inventario")){
+                wndInversionDetail.DataSource = DbRepository.GetInversionDetalle();
+
+                wndInversionDetail.ShowDialog(this);
+
+
+            }
+        }
+
         #endregion
 
         #region FUNCIONES
 
         private void _DisplayWindow(Controls.BaseForm Wnd) {
 
-            //Wnd.WindowBorderColor = this.BackColor;
+            Wnd.WindowBorderColor = Wnd.BackColor;
             Wnd.EnableWindowDrag = false;//DESHABILITAR EL ARRASTRE CON EL CURSOR
             Wnd.MdiParent = this;
             pnlContainer.Controls.Add(Wnd);
@@ -109,12 +121,17 @@ namespace PuntoDeVentas {
             if (!DbRepository.LoggedUser.Picture.IsEmpty) {
                 picUser.Image = DbRepository.LoggedUser.Picture.GetGrayScaleImageSzOf(picUser.Size).GetTintImage(0f, 0.36f, 0f);
                 picUser.BackColor = Color.Transparent;
-            
+
             }
 
         }
 
+        private void _Inversion() {
+            lblInversion.Text = Functions.ToCurrency(DbRepository.GetInversionEnInventario());
+        }
+
         #endregion
+
 
 
     }

@@ -16,11 +16,13 @@ namespace PuntoDeVentas {
         BindingSource _Source = new BindingSource();
         ArticuloInfo _Articulo = new ArticuloInfo();
 
-        public FRM_Inventario() {//Constructor de clase
+        public FRM_Inventario() {//CONSTRUCTOR DE CLASE INICIALIZAR LA CONFIGURACION AL CREAR LA INSTANCIA
             InitializeComponent();
 
             _Source.DataSource = _Articulo;
 
+
+            //REALIZAMOS EL DATA BINDING DEL OBJETO ARTICULO CON RELACION A LOS CONTROLES
             lblArticulo.DataBindings.Add("Text", _Source, "DESCRIPCION");
             lblCodigo.DataBindings.Add("Text", _Source, "ID");
             lblPrecio.DataBindings.Add("Text", _Source, "PRECIO");
@@ -33,12 +35,11 @@ namespace PuntoDeVentas {
             lblEntradaUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
             lblSalidaUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
             lblStockUnidad.DataBindings.Add("Text", _Source, "UNIDAD");
-
             lblCosto.DataBindings.Add("Text", _Source, "COSTO");
             lblGanancia.DataBindings.Add("Text", _Source, "INVENTARIO.GANANCIA_GENERADA");
-                       
-            
 
+
+            //REALIZAR EL UPDATE DE LA INFORMACION AL CAMBIAR LOS VALORES DE LAS PROPIEDADES DEL OBJETO ARTICULO
             lblArticulo.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblCodigo.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblPrecio.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
@@ -48,7 +49,6 @@ namespace PuntoDeVentas {
             lblInversion.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblStatus.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
-
             lblEntradaUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblSalidaUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
             lblStockUnidad.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
@@ -56,8 +56,14 @@ namespace PuntoDeVentas {
             lblCosto.DataBindings.DefaultDataSourceUpdateMode = DataSourceUpdateMode.OnPropertyChanged;
 
 
-            Configurations.ConfigChange += this._LoadConfig;
             _LoadConfig();
+
+            //REGISTRAR EVENTOS DEL SISTEMA
+            Configurations.ConfigChange += this._LoadConfig;
+
+            DbRepository.Events.OnInventarioChange += this._UpdateInfo;
+
+
 
         }
 
@@ -84,7 +90,7 @@ namespace PuntoDeVentas {
                     cmdEntrada.Enabled = true;
                     cmdActualizar.Enabled = true;
                     cmdHist.Enabled = true;
-                    pictArticulo.Image = _Articulo.FOTO.FSImage.GetImageSzOf(sz).GetRoundCornersImage(5,this.BackColor);
+                    pictArticulo.Image = _Articulo.FOTO.FSImage.GetImageSzOf(sz).GetRoundCornersImage(5, this.BackColor);
 
                 } else {
 
@@ -114,6 +120,14 @@ namespace PuntoDeVentas {
             lblCostoCurrencySymbol.Text = Configurations.CurrencySymbol;
             lblGanciaSymbol.Text = Configurations.CurrencySymbol;
             this.Invalidate(true);
+        }
+
+        private void _UpdateInfo() {
+
+            if (!string.IsNullOrEmpty(_Articulo.ID)) {
+                _LoadArticuloInfo(_Articulo.ID);
+            }
+
         }
 
         private void _Clear() {
@@ -160,12 +174,12 @@ namespace PuntoDeVentas {
             if (wndRegistrarEntrada.ShowDialog(this) == System.Windows.Forms.DialogResult.OK) {
                 _LoadArticuloInfo(_Articulo.ID);
             }
-            
+
 
         }
 
         private void cmdRefresh_Click(object sender, EventArgs e) {
-            _LoadArticuloInfo(_Articulo.ID);
+            _UpdateInfo();
         }
 
         private void cmdHist_Click(object sender, EventArgs e) {
@@ -180,8 +194,6 @@ namespace PuntoDeVentas {
 
         }
 
-        #endregion
-
         private void lnkRemoverArticulo_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
 
             if (MessageBox.Show("Desea remover este articulo del sistema de inventario ?", "Remover ?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes) {
@@ -189,7 +201,7 @@ namespace PuntoDeVentas {
                 if (DbRepository.RemoverDelInventario(_Articulo)) {
                     //LIMPIAR Y ACTUALIZAR EL DATA SOURCE
                     _Clear();
-                    Functions.Message("ARTICULO ELIMINADO DEL SISTEMA DE INVENTARIO!", Color.FromArgb(60, 184, 120), this);                    
+                    Functions.Message("ARTICULO ELIMINADO DEL SISTEMA DE INVENTARIO!", Color.FromArgb(60, 184, 120), this);
 
                 } else {
 
@@ -199,6 +211,9 @@ namespace PuntoDeVentas {
             }
 
         }
+
+        #endregion
+
 
     }
 }

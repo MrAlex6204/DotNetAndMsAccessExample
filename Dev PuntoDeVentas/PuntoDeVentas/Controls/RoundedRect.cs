@@ -36,8 +36,11 @@ namespace PuntoDeVentas {
                 this.Radius = 1;
             }
 
+            g.CompositingQuality = CompositingQuality.HighQuality;
+            g.InterpolationMode = InterpolationMode.HighQualityBicubic;
+            g.PixelOffsetMode = PixelOffsetMode.HighQuality;
+            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
 
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             BaseRect = new RectangleF(PosF, this.Size);
             ArcRect = new RectangleF(BaseRect.Location, new SizeF(this.Radius, this.Radius));
 
@@ -62,7 +65,9 @@ namespace PuntoDeVentas {
 
 
 
-
+            
+            
+            
 
         }
 

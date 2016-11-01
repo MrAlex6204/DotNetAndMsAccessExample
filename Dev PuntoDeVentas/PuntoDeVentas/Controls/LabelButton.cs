@@ -89,21 +89,40 @@ namespace PuntoDeVentas {
 
         #region FUNCTIONS
 
+        private Form _ParentForm = null;
+        private Graphics _g = null;
+        private Graphics g {
+
+            get {
+                if (!this.DesignMode && _g == null && this.Parent != null) {
+                    if (this.Parent.IsHandleCreated) {
+                        var hDC = GetWindowDC(this.Parent.Handle);
+
+                        _g = Graphics.FromHdc(hDC);
+
+                    }
+                }
+
+                if (this.DesignMode) {
+                    if (this.Parent != null && this.Parent.IsHandleCreated) {
+
+                        var hDC = GetWindowDC(this.Parent.Handle);
+                        _g = Graphics.FromHdc(hDC);
+
+                    }
+                }
+
+                return _g;
+            }
+        }
+
 
         private void _Renderize() {
 
-            if (this.Parent != null) {
-                var hDC = GetWindowDC(this.Parent.Handle);
-                var Grph = Graphics.FromHdc(hDC);
-                _Renderize(ref Grph);
-                Grph.Dispose();
-            }
+            if (this.g != null) {
 
-        }
-
-        private void _Renderize(ref Graphics g) {
-
-            if (g != null) {
+                this.SuspendLayout();
+                Graphics GraphObj = this.g;
 
                 var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
                 var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
@@ -125,9 +144,10 @@ namespace PuntoDeVentas {
                 this.FlatAppearance.MouseOverBackColor = base.BackColor;
                 this.FlatAppearance.MouseDownBackColor = BackgroundBrush.Color;
 
-                Rect.FillRoundedRectangle(ref g, BackgroundBrush.Color);
-                Rect.DrawRoundedRectangle(ref g, BorderPen);
+                Rect.FillRoundedRectangle(ref GraphObj, BackgroundBrush.Color);
+                Rect.DrawRoundedRectangle(ref GraphObj, BorderPen);
 
+                this.ResumeLayout();
             }
 
         }
@@ -136,39 +156,28 @@ namespace PuntoDeVentas {
 
             if (this.DesignMode && m.Msg == WM_NCPAINT) {
 
-                if (this.Parent != null && this.Parent.IsHandleCreated) {
-                    var hDC = GetWindowDC(this.Parent.Handle);
-                    var Grph = Graphics.FromHdc(hDC);
+                _Renderize();
 
-                    _Renderize(ref Grph);
+            } else if (!this.DesignMode && m.Msg == WM_NCPAINT /*|| m.Msg == WM_MOUSEMOVE*/ || m.Msg == WM_NCCREATE) {
 
-                    Grph.Dispose();
 
-                }
+                if (this.FindForm() != null && _ParentForm == null) {
 
-            } else if (!this.DesignMode && m.Msg == WM_NCPAINT /*|| m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE*/) {
+                    if (this.FindForm().IsHandleCreated) {
+                        _ParentForm = this.FindForm();
 
-                if (this.Parent != null) {
-                    var hDC = GetWindowDC(this.Parent.Handle);
-                    var Grph = Graphics.FromHdc(hDC);
+                        _ParentForm.Load += delegate(object sender, EventArgs e) {
+                            _Renderize();
+                        };
 
-                    _Renderize(ref Grph);
-
-                    Grph.Dispose();
-                }
-
-                if (this.FindForm() != null) {
-                    this.FindForm().Load += delegate(object sender, EventArgs e) {
-                        //RenderizeBorderColor();
-                        //((Control)sender).Invalidate(false);
-                        this.OnLostFocus(e);
-
-                    };
-                    this.FindForm().Paint += delegate(object sender, PaintEventArgs e) {
+                        this.Parent.Paint += delegate(object sender, PaintEventArgs e) {
+                            _Renderize();
+                        };
                         _Renderize();
-                    };
+                    }
 
                 }
+
 
             }
 
@@ -185,9 +194,13 @@ namespace PuntoDeVentas {
         protected override void OnMouseLeave(EventArgs e) {
             base.OnMouseLeave(e);
             _bGotFocus = false;
-
             _Renderize();
         }
+
+        //protected override void OnPaint(PaintEventArgs pevent) {
+        //    base.OnPaint(pevent);
+        //    _Renderize();
+        //}
 
         #endregion
 

@@ -50,6 +50,10 @@ namespace PuntoDeVentas {
 
             } catch (Exception ex) {
 
+#if DEBUG
+                MessageBox.Show(ex.Message+"\n"+ex.StackTrace);
+                
+#endif
 
 
             } finally {

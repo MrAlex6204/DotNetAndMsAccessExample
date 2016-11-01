@@ -12,7 +12,7 @@ using System.Diagnostics;
 namespace PuntoDeVentas.Controls {
     class InputTextBox : System.Windows.Forms.TextBox {
 
-        #region TextBoxRenderize
+        #region TEXTBOX RENDERIZE SPECIAL FUNCTIONS
 
         private const int WM_NCPAINT = 0x85;
         private const int WM_NCCREATE = 0x81;
@@ -25,7 +25,7 @@ namespace PuntoDeVentas.Controls {
 
         #endregion
 
-        #region Constructor Class
+        #region CONSTRUCTOR CLASS
         //Dummy Panel used to draw over the TextBox
         private Panel pnlLayout = new Panel();
         private Color _Backcolor = Color.Empty;
@@ -44,18 +44,20 @@ namespace PuntoDeVentas.Controls {
             this.pnlLayout.Dock = DockStyle.Fill;
             this.pnlLayout.Location = new Point(0, 0);
             this.pnlLayout.Paint += LayoutPaint;
+            this.pnlLayout.TabStop = true;
+            this.pnlLayout.SendToBack();
             this.pnlLayout.Name = "Layout";
             this.Click += MouseClick;
             this.pnlLayout.Click += MouseClick;
             this.Modified = true;
 
-            this.OnLostFocus(null);
+
 
         }
 
         #endregion
 
-        #region Custom Properties
+        #region CUSTOM PROPERTIES
 
 
         private InputAppearance _InputStyle = new InputAppearance();
@@ -97,9 +99,36 @@ namespace PuntoDeVentas.Controls {
 
         #endregion
 
-        #region Functions & Events
+        #region FUNCTIONS & EVENTS
 
         private bool _bGotFocus = false;
+        private Form _ParentForm = null;
+        private Graphics _g = null;
+
+        private Graphics g {
+
+            get {
+                if (!this.DesignMode && _g == null && this.Parent != null) {
+                    if (this.Parent.IsHandleCreated) {
+                        var hDC = GetWindowDC(this.Parent.Handle);
+
+                        _g = Graphics.FromHdc(hDC);
+
+                    }
+                }
+
+                if (this.DesignMode) {
+                    if (this.Parent != null && this.Parent.IsHandleCreated) {
+
+                        var hDC = GetWindowDC(this.Parent.Handle);
+                        _g = Graphics.FromHdc(hDC);
+
+                    }
+                }
+
+                return _g;
+            }
+        }
 
         private void DesignerRenderize() {
 
@@ -116,123 +145,116 @@ namespace PuntoDeVentas.Controls {
 
         }
 
-        private void Renderize(ref Graphics g) {
+        private void Renderize() {
 
-            var BorderGrap = g;
-            var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
-            var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
-            var BackBrush = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? new SolidBrush(this.Style.ActiveBackcolor) : new SolidBrush(_Backcolor);
-            var BorderBrush = _bGotFocus & this.Style.BorderActiveColor != Color.Empty ? new SolidBrush(this.Style.BorderActiveColor) : new SolidBrush(this.Style.BorderColor);
-            var BorderPen = new Pen(BorderBrush);
-            var Rect = new RoundedRect(BorderLocation, RegionSz, this.Style.BorderRadius);
+            if (this.g != null) {
 
-            BorderPen.DashStyle = this.Style.Style;
-            BorderPen.Width = this.Style.BorderSize;
+                this.SuspendLayout();
+                Graphics GraphObj = this.g;
+
+                var BorderLocation = new Point(this.Location.X - this.Style.BorderPadding - this.Style.BorderSize, this.Location.Y - this.Style.BorderPadding - this.Style.BorderSize);
+                var RegionSz = new Size(this.Width + ((this.Style.BorderSize + this.Style.BorderPadding) * 2), this.Height + ((this.Style.BorderSize + this.Style.BorderPadding) * 2));
+                var BackBrush = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? new SolidBrush(this.Style.ActiveBackcolor) : new SolidBrush(_Backcolor);
+                var BorderBrush = _bGotFocus & this.Style.BorderActiveColor != Color.Empty ? new SolidBrush(this.Style.BorderActiveColor) : new SolidBrush(this.Style.BorderColor);
+                var BorderPen = new Pen(BorderBrush);
+                var Rect = new RoundedRect(BorderLocation, RegionSz, this.Style.BorderRadius);
+
+                BorderPen.DashStyle = this.Style.Style;
+                BorderPen.Width = this.Style.BorderSize;
 
 
-            //Colorea el fondo del control si esta activo
-            base.BackColor = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? this.Style.ActiveBackcolor : _Backcolor;
-            base.ForeColor = _bGotFocus & this.Style.ActiveForecolor != Color.Empty ? this.Style.ActiveForecolor : _Forecolor;
+                //COLOREA EL FONDO DEL CONTROL SI ESTA ACTIVO
+                base.BackColor = _bGotFocus & this.Style.ActiveBackcolor != Color.Empty ? this.Style.ActiveBackcolor : _Backcolor;
+                base.ForeColor = _bGotFocus & this.Style.ActiveForecolor != Color.Empty ? this.Style.ActiveForecolor : _Forecolor;
 
 
-            switch (this.Style.Draw) {
-                case InputAppearance.DrawStyle.Fill:
+                switch (this.Style.Draw) {
+                    case InputAppearance.DrawStyle.Fill:
 
-                    Rect.FillRoundedRectangle(ref BorderGrap, base.BackColor);
-                    break;
-                case InputAppearance.DrawStyle.Line:
+                        Rect.FillRoundedRectangle(ref GraphObj, base.BackColor);
+                        break;
+                    case InputAppearance.DrawStyle.Line:
 
-                    Rect.DrawRoundedRectangle(ref BorderGrap, BorderPen);
-                    break;
-                case (InputAppearance.DrawStyle.Fill | InputAppearance.DrawStyle.Line):
+                        Rect.DrawRoundedRectangle(ref GraphObj, BorderPen);
+                        break;
+                    case (InputAppearance.DrawStyle.Fill | InputAppearance.DrawStyle.Line):
 
-                    Rect.FillRoundedRectangle(ref BorderGrap, base.BackColor);
-                    Rect.DrawRoundedRectangle(ref BorderGrap, BorderPen);
-                    break;
+                        Rect.FillRoundedRectangle(ref GraphObj, base.BackColor);
+                        Rect.DrawRoundedRectangle(ref GraphObj, BorderPen);
+                        break;
+                }
+
+                //Redraw Textbox region
+                GraphObj.FillRectangle(new SolidBrush(this.BackColor), new Rectangle(this.Location, this.Size));
+
+                if (!_bGotFocus && string.IsNullOrEmpty(this.Text) && !string.IsNullOrEmpty(this.Style.TextPlaceholder)) {
+
+                    this.pnlLayout.Visible = true;
+
+                } else {
+
+                    this.pnlLayout.Visible = false;
+
+                    this.Invalidate();
+                }
+
+
+
+                this.ResumeLayout();
             }
-
-            //Redraw Textbox region
-            BorderGrap.FillRectangle(new SolidBrush(this.BackColor), new Rectangle(this.Location, this.Size));
-
-            if (!_bGotFocus && string.IsNullOrEmpty(this.Text) && !string.IsNullOrEmpty(this.Style.TextPlaceholder)) {
-
-                this.pnlLayout.Visible = true;
-
-            } else {
-
-                this.pnlLayout.Visible = false;
-
-                this.Invalidate();
-            }
-
-
-        }
-
-        private void RenderizeBorderColor() {
-
-            if (this.Parent != null) {
-                var hDC = GetWindowDC(this.Parent.Handle);
-                var Grph = Graphics.FromHdc(hDC);
-                Renderize(ref Grph);
-                Grph.Dispose();
-            }
-
         }
 
         protected override void WndProc(ref Message m) {
 
             if (this.DesignMode && m.Msg == WM_NCPAINT) {
 
-                if (this.Parent != null && this.Parent.IsHandleCreated) {
-                    var hDC = GetWindowDC(this.Parent.Handle);
-                    var Grph = Graphics.FromHdc(hDC);
+                Renderize();
 
-                    Renderize(ref Grph);
+            } else if (!this.DesignMode && m.Msg == WM_NCPAINT /*|| m.Msg == WM_MOUSEMOVE*/ || m.Msg == WM_NCCREATE) {
 
-                    Grph.Dispose();
-                }
 
-            } else if (!this.DesignMode && m.Msg == WM_NCPAINT || m.Msg == WM_MOUSEMOVE || m.Msg == WM_NCCREATE) {
+                if (this.FindForm() != null && _ParentForm == null) {
 
-                if (this.Parent != null) {
-                    var hDC = GetWindowDC(this.Parent.Handle);
-                    var Grph = Graphics.FromHdc(hDC);
+                    if (this.FindForm().IsHandleCreated) {
+                        _ParentForm = this.FindForm();
+                        _ParentForm.Load += delegate(object sender, EventArgs e) {
+                            Renderize();
+                            //((Control)sender).Invalidate(true);
+                        };
 
-                    Renderize(ref Grph);
+                        this.Parent.Paint += delegate(object sender, PaintEventArgs e) {
+                            Renderize();
+                        };
 
-                    Grph.Dispose();
-                }
+                        if (!this.DesignMode) {
+                            //IF NOT IN DESIGMODE
+                            _ParentForm.Paint += delegate(object sender, PaintEventArgs e) {
+                                Renderize();
+                            };
 
-                if (this.FindForm() != null) {
-                    this.FindForm().Load += delegate(object sender, EventArgs e) {
-                        //RenderizeBorderColor();
-                        //((Control)sender).Invalidate(false);
-                        this.OnLostFocus(e);
+                        }
 
-                    };
-                    this.FindForm().Paint += delegate(object sender, PaintEventArgs e) {
-                        RenderizeBorderColor();
-                    };
+                        Renderize();
+                    }
 
                 }
 
             }
 
-
             base.WndProc(ref m);
-
         }
 
         private void LayoutPaint(object sender, PaintEventArgs e) {
 
-            RenderizeBorderColor();
+            Renderize();
+
             var g = e.Graphics;
             var TextFormat = StringFormat.GenericDefault;
 
             if (this.TextAlign == HorizontalAlignment.Center) {
                 TextFormat.LineAlignment = StringAlignment.Near;
                 TextFormat.Alignment = StringAlignment.Center;
-                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0), TextFormat);               
+                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0), TextFormat);
 
             } else if (this.TextAlign == HorizontalAlignment.Left) {
                 TextFormat.LineAlignment = StringAlignment.Near;
@@ -241,7 +263,7 @@ namespace PuntoDeVentas.Controls {
             } else if (this.TextAlign == HorizontalAlignment.Right) {
                 TextFormat.LineAlignment = StringAlignment.Near;
                 TextFormat.Alignment = StringAlignment.Far;
-                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0),TextFormat);
+                g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0), TextFormat);
             } else {
                 g.DrawString(this.Style.TextPlaceholder, this.Font, new SolidBrush(_Forecolor), new Point(0, 0));
             }
@@ -251,25 +273,19 @@ namespace PuntoDeVentas.Controls {
         protected override void OnGotFocus(EventArgs e) {
             base.OnGotFocus(e);
             _bGotFocus = true;
-            //if (this.Text.Trim() == _Placeholder.Trim()) {
-            //    this.Text = "";
-            //}
-            RenderizeBorderColor();
+            Renderize();
         }
 
         protected override void OnLeave(EventArgs e) {
             base.OnLeave(e);
             _bGotFocus = false;
-            RenderizeBorderColor();
-            this.Invalidate();
-
+            Renderize();
         }
 
         protected override void OnLostFocus(EventArgs e) {
             base.OnLostFocus(e);
             _bGotFocus = false;
-            RenderizeBorderColor();
-            this.Invalidate();
+            Renderize();
         }
 
         private void MouseClick(object sender, EventArgs e) {
@@ -278,6 +294,11 @@ namespace PuntoDeVentas.Controls {
             this.Focus();
             this.Invalidate(true);
         }
+
+        //protected override void OnPaint(PaintEventArgs e) {
+        //    base.OnPaint(e);
+        //    Renderize();
+        //}
 
         #endregion
 

@@ -97,7 +97,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(154)))), ((int)(((byte)(169)))));
-            this.label5.Location = new System.Drawing.Point(6, 6);
+            this.label5.Location = new System.Drawing.Point(6, 5);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(228, 45);
@@ -271,7 +271,7 @@
             this.lblCurrencySymbol.BackColor = System.Drawing.Color.White;
             this.lblCurrencySymbol.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.lblCurrencySymbol.ForeColor = System.Drawing.Color.Silver;
-            this.lblCurrencySymbol.Location = new System.Drawing.Point(115, 180);
+            this.lblCurrencySymbol.Location = new System.Drawing.Point(112, 180);
             this.lblCurrencySymbol.Name = "lblCurrencySymbol";
             this.lblCurrencySymbol.Size = new System.Drawing.Size(43, 23);
             this.lblCurrencySymbol.TabIndex = 36;
@@ -283,7 +283,7 @@
             this.lblCostoCurrency.BackColor = System.Drawing.Color.White;
             this.lblCostoCurrency.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.lblCostoCurrency.ForeColor = System.Drawing.Color.Silver;
-            this.lblCostoCurrency.Location = new System.Drawing.Point(333, 179);
+            this.lblCostoCurrency.Location = new System.Drawing.Point(328, 179);
             this.lblCostoCurrency.Name = "lblCostoCurrency";
             this.lblCostoCurrency.Size = new System.Drawing.Size(43, 23);
             this.lblCostoCurrency.TabIndex = 39;
@@ -385,7 +385,7 @@
             this.label1.BackColor = System.Drawing.Color.White;
             this.label1.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.label1.ForeColor = System.Drawing.Color.Silver;
-            this.label1.Location = new System.Drawing.Point(276, 180);
+            this.label1.Location = new System.Drawing.Point(271, 180);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(60, 23);
             this.label1.TabIndex = 42;
@@ -397,7 +397,7 @@
             this.label2.BackColor = System.Drawing.Color.White;
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.label2.ForeColor = System.Drawing.Color.Silver;
-            this.label2.Location = new System.Drawing.Point(52, 180);
+            this.label2.Location = new System.Drawing.Point(49, 180);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(60, 23);
             this.label2.TabIndex = 43;

@@ -49,6 +49,9 @@ namespace System {
             public bool HayVenta;
         }
 
+        public enum TransactionType {//TIPO DE TRANSACCION
+            VENTA, INVENTARIO
+        }
 
 
         #endregion
@@ -100,6 +103,24 @@ namespace System {
         #endregion
 
         #region  <FUNCIONES PUBLICAS>
+
+        //OBTENER EL REPORTE DETALLE DE ARTICULOS EN INVENTARIO
+        public static DataTable GetInversionDetalle() {
+            var Tbl = Fill("SELECT ARTICULO_ID,DESCRIPCION,UNIDAD,PRECIO,COSTO,ENTRADA AS [ENTRADA INVENTARIO],SALIDA AS [SALIDA DE INVENTARIO],STOCK AS [STOCK ACTUAL],INVERSION FROM TBL_INVENTARIO_VIEW WHERE INVERSION > 0", "InventarioDetalle");
+
+            return Tbl;        
+        }
+
+        //OBTIENE LA INVERSION ACTUAL EN INVENTARIO
+        public static double GetInversionEnInventario() {
+            var Total = 0d;
+            var Qry = "SELECT SUM(INVERSION) FROM TBL_INVENTARIO_VIEW";
+
+            Total =(double)ExecuteScalar(Qry);
+
+            return Total;
+        }
+              
 
         //FUNCION PARA VALIDAR SI UN USUARIO EXISTE EN EL LOGIN
         public static UserInfo ValidarUsuario(string Login, string Password) {
@@ -279,6 +300,7 @@ namespace System {
 
         }
 
+        //OBTENER LA FOTO DEL ARTICULO DE LA BD
         public static ImageInfo GetArticuloFoto(string ArticuloId) {
             var ImgInfo = new ImageInfo();
             var Tbl = new DataTable();
@@ -296,6 +318,7 @@ namespace System {
             return ImgInfo;
         }
 
+        //OBTENER LA FOTO ACTUAL DEL USUARIO
         public static ImageInfo GetUserPicture(string UserId) {
             var ImgInfo = new ImageInfo();
             var Tbl = new DataTable();
@@ -348,6 +371,7 @@ namespace System {
 
         }
 
+        //GUARDAR LA FOTO DEL USUARIO EN LA BD
         public static bool GuardarUserFoto(string UserId, object Foto) {
             string UpdateQry = "UPDATE TBL_USUARIOS SET FOTO = ? WHERE USR_ID = ?";
             int Counter = -1;
@@ -401,7 +425,7 @@ namespace System {
         }
 
         //REGISTRA EL ARTICULO EN LA BASE DE DATOS!
-        public static int RegistrarArticulo(string Id, string Descripcion, string Precio,string Costo ,string Cantidad, string Total, string UsrId) {
+        public static int RegistrarVenta(string Id, string Descripcion, string Precio, string Costo, string Cantidad, string Total, string UsrId) {
 
             string Qry =
             " INSERT INTO TBL_VENTAS ([ARTICULO_ID],[DESCRIPCION],[PRECIO],[COSTO],[CANTIDAD],[TOTAL],[USR_ID],[OPEN],[FECHA])" +
@@ -418,18 +442,36 @@ namespace System {
 
         }
 
-        //REGISTRA UN ARTICULO AL SYSTEMA DE INVETARIO
-        public static int InvRegistrarArticulo(string Id, string Entrada, string Salida, string UsrId, string TransType) {
+        //REGISTRA UN ARTICULO AL SYSTEMA DE INVETARIO      
+        public static int RegistrarInventario(ArticuloInfo Articulo, UserInfo User, TransactionType Transaccion, double Cantidad) {
+            int Change = -1;
             string Qry =
            " INSERT INTO TBL_INVENTARIO (ARTICULO_ID,ENTRADA,SALIDA,FECHA,USR_ID,TRANS_TYPE)" +
            " VALUES('@ART_ID','@ENTRADA','@SALIDA',NOW(),'@USR_ID','@TRANS_TYPE')";
 
-            Qry = Qry.Replace("@ART_ID", Id);
-            Qry = Qry.Replace("@ENTRADA", Entrada);
-            Qry = Qry.Replace("@SALIDA", Salida);
-            Qry = Qry.Replace("@USR_ID", UsrId);
-            Qry = Qry.Replace("@TRANS_TYPE", TransType);
-            return Execute(Qry);
+            Qry = Qry.Replace("@ART_ID", Articulo.ID);
+            Qry = Qry.Replace("@USR_ID", User.Id.ToString());
+
+            switch (Transaccion) {
+                case TransactionType.INVENTARIO:
+                    Qry = Qry.Replace("@TRANS_TYPE", "**ENTRADA_DE_INVENTARIO**");
+                    Qry = Qry.Replace("@SALIDA", "0");
+                    Qry = Qry.Replace("@ENTRADA", Cantidad.ToString());
+                    break;
+                case TransactionType.VENTA:
+                    Qry = Qry.Replace("@TRANS_TYPE", "**VENTA**");
+                    Qry = Qry.Replace("@SALIDA", Cantidad.ToString());
+                    Qry = Qry.Replace("@ENTRADA", "0");
+                    break;
+            }
+
+            Change = Execute(Qry);
+
+            if (Change > 0) {
+                Events.InventarioChange();
+            }
+
+            return Change;
         }
 
         //OBTIENE EL HISTORIAL DEL INVENTARIO DE UN ARTICULO
@@ -485,7 +527,7 @@ namespace System {
             return CorteDeCaja;
         }
 
-        //CERRAR LA CAJE DEL CAJERO
+        //REALIZAR EL CORTE DE CAJA
         public static bool CerrarCaja(string UsrId) {
             string QryCerrarCaja =//CONSULTA PARA CERRAR LA CAJA DEL CAJERO
             " UPDATE TBL_VENTAS " +
@@ -655,7 +697,7 @@ namespace System {
 
             return Tbl;
         }
-        
+
         #endregion
 
         #region  <FUNCION PARA IMPRIMR EL TIKET>
@@ -767,6 +809,47 @@ namespace System {
             _objCmd.CommandText = Qry;
             return _objCmd.ExecuteNonQuery();
         }
+
+        public static object ExecuteScalar(string Qry) {
+            _objCmd.CommandText = Qry;
+            return _objCmd.ExecuteScalar();        
+        }
+
+        #endregion
+
+        #region  <EVENTOS DEL SISTEMA>
+
+        public static class Events {
+
+            public delegate void OnInventarioChangeHandler();
+            public delegate void OnVentaRegistradaChangeHandler();
+            public delegate void OnCorteDeCajaHandler();
+
+            public static event OnInventarioChangeHandler OnInventarioChange;
+            public static event OnVentaRegistradaChangeHandler OnVentaRegistradaChange;
+            public static event OnCorteDeCajaHandler OnCorteDeCaja;
+
+            public static void InventarioChange() {
+                if (OnInventarioChange != null) {
+                    OnInventarioChange.Invoke();
+                }
+            }
+
+            public static void CorteDeCajaChange() {
+                if (OnCorteDeCaja != null) {
+                    OnCorteDeCaja.Invoke();
+                }
+            
+            }
+
+            public static void VentaRegistradaChange() {
+                if (OnVentaRegistradaChange != null) {
+                    OnVentaRegistradaChange.Invoke();
+                }
+            }
+
+        }
+
         #endregion
 
     }

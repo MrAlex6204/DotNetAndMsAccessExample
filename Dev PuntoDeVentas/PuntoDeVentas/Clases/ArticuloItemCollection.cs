@@ -123,6 +123,11 @@ namespace System
             });
         }
 
+        protected override void OnClear() {
+            base.OnClear();
+            GC.Collect();
+        }
+
     }
 
 }

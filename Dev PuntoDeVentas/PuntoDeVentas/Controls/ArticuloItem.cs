@@ -53,6 +53,7 @@ namespace System {
         }
 
         private void _RenderSelectionFormat() {
+            this.SuspendLayout();
 
             if (this.IsSelected) {
                 _SetSelectedFormat();
@@ -60,7 +61,8 @@ namespace System {
             } else {
                 _SetDefaultFormat();
             }
-            this.Update();
+
+            this.ResumeLayout();
         }
 
         private void _SetDefaultFormat() {

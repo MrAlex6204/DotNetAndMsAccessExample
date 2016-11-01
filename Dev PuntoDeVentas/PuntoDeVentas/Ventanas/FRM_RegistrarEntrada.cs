@@ -60,8 +60,14 @@ namespace PuntoDeVentas {
                 txtCantidad.Focus();
                 return;
             }
+            if (!Functions.IsNumber(txtCantidad.Text)) {
+                Functions.Message("EL VALOR INVALIDO!", SystemTheme.Danger, this);
+                txtCantidad.Focus();
+                return;
+            }
+
             if (MessageBox.Show("Desea registrar la entrada?", "Registro de Entrada", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) {
-                System.DbRepository.InvRegistrarArticulo(lblCodigo.Text, txtCantidad.Text, "0", System.DbRepository.LoggedUser.Id.ToString(), "*ENTRADA_DE_INVENTARIO**");
+                System.DbRepository.RegistrarInventario(_Articulo, DbRepository.LoggedUser, DbRepository.TransactionType.INVENTARIO, Convert.ToDouble(txtCantidad.Text));
                 Functions.Message("ENTRADA REGISTRADA EXITOSAMENTE!",SystemTheme.Success,this);
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();

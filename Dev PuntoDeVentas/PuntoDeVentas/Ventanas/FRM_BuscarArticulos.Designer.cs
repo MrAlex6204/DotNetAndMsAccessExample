@@ -46,7 +46,7 @@
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(807, 45);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(855, 45);
             // 
             // Gridbuscar
             // 
@@ -98,7 +98,7 @@
             this.Gridbuscar.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.Gridbuscar.ScrollBars = System.Windows.Forms.ScrollBars.None;
             this.Gridbuscar.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Gridbuscar.Size = new System.Drawing.Size(554, 362);
+            this.Gridbuscar.Size = new System.Drawing.Size(554, 375);
             this.Gridbuscar.StandardTab = true;
             this.Gridbuscar.TabIndex = 2;
             this.Gridbuscar.SelectionChanged += new System.EventHandler(this.SelectedRow_Change);
@@ -112,7 +112,7 @@
             this.txtBuscar.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtBuscar.Font = new System.Drawing.Font("Segoe UI Light", 12F);
             this.txtBuscar.ForeColor = System.Drawing.Color.Silver;
-            this.txtBuscar.Location = new System.Drawing.Point(27, 58);
+            this.txtBuscar.Location = new System.Drawing.Point(27, 64);
             this.txtBuscar.Name = "txtBuscar";
             this.txtBuscar.Size = new System.Drawing.Size(806, 22);
             inputAppearance1.ActiveBackcolor = System.Drawing.Color.Empty;
@@ -134,7 +134,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 24F);
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(154)))), ((int)(((byte)(169)))));
-            this.label5.Location = new System.Drawing.Point(13, 2);
+            this.label5.Location = new System.Drawing.Point(13, 3);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(232, 45);
@@ -187,13 +187,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(859, 479);
+            this.ClientSize = new System.Drawing.Size(859, 492);
             this.ControlBox = false;
             this.Controls.Add(this.wndControlBox);
-            this.Controls.Add(this.label5);
             this.Controls.Add(this.Gridbuscar);
             this.Controls.Add(this.pictArticulo);
             this.Controls.Add(this.txtBuscar);
+            this.Controls.Add(this.label5);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
@@ -206,11 +206,11 @@
             this.WindowBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(184)))), ((int)(((byte)(120)))));
             this.Load += new System.EventHandler(this.FRM_ConsultarArticuloscs_Load);
             this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.KeyPressEvent);
+            this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.txtBuscar, 0);
             this.Controls.SetChildIndex(this.pictArticulo, 0);
             this.Controls.SetChildIndex(this.Gridbuscar, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
-            this.Controls.SetChildIndex(this.label5, 0);
             this.Controls.SetChildIndex(this.wndControlBox, 0);
             ((System.ComponentModel.ISupportInitialize)(this.Gridbuscar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).EndInit();

@@ -47,11 +47,15 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.lnkInversionDetail = new System.Windows.Forms.LinkLabel();
+            this.lblInversion = new System.Windows.Forms.Label();
             this.picUser = new System.Windows.Forms.PictureBox();
             this.lblUserGreetings = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlContainer.SuspendLayout();
+            this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -399,6 +403,7 @@
             // 
             this.pnlContainer.BackgroundImage = global::PuntoDeVentas.Properties.Resources.bgImage;
             this.pnlContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlContainer.Controls.Add(this.panel3);
             this.pnlContainer.Controls.Add(this.picUser);
             this.pnlContainer.Controls.Add(this.lblUserGreetings);
             this.pnlContainer.Location = new System.Drawing.Point(89, 72);
@@ -406,9 +411,47 @@
             this.pnlContainer.Size = new System.Drawing.Size(1076, 671);
             this.pnlContainer.TabIndex = 37;
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.panel3.Controls.Add(this.lnkInversionDetail);
+            this.panel3.Controls.Add(this.lblInversion);
+            this.panel3.Location = new System.Drawing.Point(4, 107);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(234, 64);
+            this.panel3.TabIndex = 8;
+            // 
+            // lnkInversionDetail
+            // 
+            this.lnkInversionDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.lnkInversionDetail.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F);
+            this.lnkInversionDetail.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkInversionDetail.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.lnkInversionDetail.Location = new System.Drawing.Point(0, 43);
+            this.lnkInversionDetail.Name = "lnkInversionDetail";
+            this.lnkInversionDetail.Size = new System.Drawing.Size(234, 21);
+            this.lnkInversionDetail.TabIndex = 8;
+            this.lnkInversionDetail.TabStop = true;
+            this.lnkInversionDetail.Text = "Inversion en Inventario";
+            this.lnkInversionDetail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.lnkInversionDetail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkInversionDetail_LinkClicked);
+            // 
+            // lblInversion
+            // 
+            this.lblInversion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.lblInversion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInversion.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInversion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            this.lblInversion.Location = new System.Drawing.Point(0, 0);
+            this.lblInversion.Name = "lblInversion";
+            this.lblInversion.Size = new System.Drawing.Size(234, 64);
+            this.lblInversion.TabIndex = 7;
+            this.lblInversion.Text = "[$$] [000.00]";
+            this.lblInversion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
             // picUser
             // 
-            this.picUser.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.picUser.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
             this.picUser.Image = global::PuntoDeVentas.Properties.Resources.us_1;
             this.picUser.Location = new System.Drawing.Point(2, 6);
             this.picUser.Margin = new System.Windows.Forms.Padding(0);
@@ -461,6 +504,7 @@
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -485,6 +529,9 @@
         private System.Windows.Forms.Panel pnlContainer;
         private LabelButton cmdSearch;
         private System.Windows.Forms.Label lblDireccion;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label lblInversion;
+        private System.Windows.Forms.LinkLabel lnkInversionDetail;
 
     }
 }
