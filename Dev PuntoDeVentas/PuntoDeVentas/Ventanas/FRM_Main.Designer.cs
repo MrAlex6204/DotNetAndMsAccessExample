@@ -47,22 +47,29 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblDireccion = new System.Windows.Forms.Label();
             this.pnlContainer = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.pnlInvInversion = new System.Windows.Forms.Panel();
             this.lnkInversionDetail = new System.Windows.Forms.LinkLabel();
-            this.lblInversion = new System.Windows.Forms.Label();
+            this.lblInvInversion = new System.Windows.Forms.Label();
+            this.pnlInvGanancias = new System.Windows.Forms.Panel();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lblInvGanancias = new System.Windows.Forms.Label();
             this.picUser = new System.Windows.Forms.PictureBox();
             this.lblUserGreetings = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.pnlContainer.SuspendLayout();
-            this.panel3.SuspendLayout();
+            this.panel5.SuspendLayout();
+            this.pnlInvInversion.SuspendLayout();
+            this.pnlInvGanancias.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             this.SuspendLayout();
             // 
             // lblWndPanelTitle
             // 
-            this.lblWndPanelTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblWndPanelTitle.Size = new System.Drawing.Size(1165, 58);
+            this.lblWndPanelTitle.Location = new System.Drawing.Point(89, 0);
+            this.lblWndPanelTitle.Size = new System.Drawing.Size(1076, 58);
             // 
             // wndControlBox
             // 
@@ -401,9 +408,8 @@
             // 
             // pnlContainer
             // 
-            this.pnlContainer.BackgroundImage = global::PuntoDeVentas.Properties.Resources.bgImage;
             this.pnlContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pnlContainer.Controls.Add(this.panel3);
+            this.pnlContainer.Controls.Add(this.panel5);
             this.pnlContainer.Controls.Add(this.picUser);
             this.pnlContainer.Controls.Add(this.lblUserGreetings);
             this.pnlContainer.Location = new System.Drawing.Point(89, 72);
@@ -411,15 +417,43 @@
             this.pnlContainer.Size = new System.Drawing.Size(1076, 671);
             this.pnlContainer.TabIndex = 37;
             // 
-            // panel3
+            // panel5
             // 
-            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
-            this.panel3.Controls.Add(this.lnkInversionDetail);
-            this.panel3.Controls.Add(this.lblInversion);
-            this.panel3.Location = new System.Drawing.Point(4, 107);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(234, 64);
-            this.panel3.TabIndex = 8;
+            this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.panel5.Controls.Add(this.linkLabel2);
+            this.panel5.Controls.Add(this.pnlInvInversion);
+            this.panel5.Controls.Add(this.pnlInvGanancias);
+            this.panel5.Location = new System.Drawing.Point(2, 106);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(519, 126);
+            this.panel5.TabIndex = 10;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.Dock = System.Windows.Forms.DockStyle.Top;
+            this.linkLabel2.Font = new System.Drawing.Font("Segoe UI", 21.75F);
+            this.linkLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
+            this.linkLabel2.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel2.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            this.linkLabel2.Location = new System.Drawing.Point(0, 0);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(519, 36);
+            this.linkLabel2.TabIndex = 8;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "INVENTARIO";
+            this.linkLabel2.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkInversionDetail_LinkClicked);
+            // 
+            // pnlInvInversion
+            // 
+            this.pnlInvInversion.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.pnlInvInversion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.pnlInvInversion.Controls.Add(this.lnkInversionDetail);
+            this.pnlInvInversion.Controls.Add(this.lblInvInversion);
+            this.pnlInvInversion.Location = new System.Drawing.Point(4, 47);
+            this.pnlInvInversion.Name = "pnlInvInversion";
+            this.pnlInvInversion.Size = new System.Drawing.Size(234, 64);
+            this.pnlInvInversion.TabIndex = 8;
             // 
             // lnkInversionDetail
             // 
@@ -432,22 +466,59 @@
             this.lnkInversionDetail.Size = new System.Drawing.Size(234, 21);
             this.lnkInversionDetail.TabIndex = 8;
             this.lnkInversionDetail.TabStop = true;
-            this.lnkInversionDetail.Text = "Inversion en Inventario";
+            this.lnkInversionDetail.Text = "Inversion";
             this.lnkInversionDetail.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.lnkInversionDetail.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkInversionDetail_LinkClicked);
             // 
-            // lblInversion
+            // lblInvInversion
             // 
-            this.lblInversion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
-            this.lblInversion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblInversion.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblInversion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblInversion.Location = new System.Drawing.Point(0, 0);
-            this.lblInversion.Name = "lblInversion";
-            this.lblInversion.Size = new System.Drawing.Size(234, 64);
-            this.lblInversion.TabIndex = 7;
-            this.lblInversion.Text = "[$$] [000.00]";
-            this.lblInversion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblInvInversion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.lblInvInversion.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInvInversion.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvInversion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(154)))), ((int)(((byte)(169)))));
+            this.lblInvInversion.Location = new System.Drawing.Point(0, 0);
+            this.lblInvInversion.Name = "lblInvInversion";
+            this.lblInvInversion.Size = new System.Drawing.Size(234, 64);
+            this.lblInvInversion.TabIndex = 7;
+            this.lblInvInversion.Text = "[$$] [000.00]";
+            this.lblInvInversion.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // pnlInvGanancias
+            // 
+            this.pnlInvGanancias.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.pnlInvGanancias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.pnlInvGanancias.Controls.Add(this.linkLabel1);
+            this.pnlInvGanancias.Controls.Add(this.lblInvGanancias);
+            this.pnlInvGanancias.Location = new System.Drawing.Point(282, 47);
+            this.pnlInvGanancias.Name = "pnlInvGanancias";
+            this.pnlInvGanancias.Size = new System.Drawing.Size(234, 64);
+            this.pnlInvGanancias.TabIndex = 9;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F);
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
+            this.linkLabel1.Location = new System.Drawing.Point(0, 43);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(234, 21);
+            this.linkLabel1.TabIndex = 8;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Proyeccion de ganancias";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            // 
+            // lblInvGanancias
+            // 
+            this.lblInvGanancias.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(254)))), ((int)(((byte)(250)))), ((int)(((byte)(254)))));
+            this.lblInvGanancias.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblInvGanancias.Font = new System.Drawing.Font("Segoe UI", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblInvGanancias.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(142)))), ((int)(((byte)(154)))), ((int)(((byte)(169)))));
+            this.lblInvGanancias.Location = new System.Drawing.Point(0, 0);
+            this.lblInvGanancias.Name = "lblInvGanancias";
+            this.lblInvGanancias.Size = new System.Drawing.Size(234, 64);
+            this.lblInvGanancias.TabIndex = 7;
+            this.lblInvGanancias.Text = "[$$] [000.00]";
+            this.lblInvGanancias.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // picUser
             // 
@@ -496,15 +567,17 @@
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.FRM_Main_Load);
             this.Controls.SetChildIndex(this.pnlContainer, 0);
-            this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.panel1, 0);
             this.Controls.SetChildIndex(this.lblDireccion, 0);
             this.Controls.SetChildIndex(this.wndControlBox, 0);
+            this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
             this.panel1.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.pnlContainer.ResumeLayout(false);
-            this.panel3.ResumeLayout(false);
+            this.panel5.ResumeLayout(false);
+            this.pnlInvInversion.ResumeLayout(false);
+            this.pnlInvGanancias.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -529,9 +602,14 @@
         private System.Windows.Forms.Panel pnlContainer;
         private LabelButton cmdSearch;
         private System.Windows.Forms.Label lblDireccion;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Label lblInversion;
+        private System.Windows.Forms.Panel pnlInvInversion;
+        private System.Windows.Forms.Label lblInvInversion;
         private System.Windows.Forms.LinkLabel lnkInversionDetail;
+        private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Panel pnlInvGanancias;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label lblInvGanancias;
+        private System.Windows.Forms.Panel panel5;
 
     }
 }

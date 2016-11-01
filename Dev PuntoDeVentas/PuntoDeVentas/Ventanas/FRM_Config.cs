@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Globalization;
 
 namespace PuntoDeVentas {
     public partial class FRM_Config : Controls.BaseForm {
@@ -85,6 +86,19 @@ namespace PuntoDeVentas {
                 
             }
 
+        }
+
+        private void cmbRegion_SelectedIndexChanged(object sender, EventArgs e) {
+            if (cmbRegion.SelectedIndex > -1) {
+                try {
+                    var SelectedRegion = new CultureInfo(cmbRegion.SelectedValue.ToString()); 
+                    var RegionInfo = new RegionInfo(SelectedRegion.LCID);
+                    lblMoneda.Text = "Moneda : " + Functions.ToCurrency(0.00d, SelectedRegion) + " " + RegionInfo.ISOCurrencySymbol;                    
+
+                } catch {
+                    lblMoneda.Text = "Moneda : ";                
+                }
+            }
         }
 
 

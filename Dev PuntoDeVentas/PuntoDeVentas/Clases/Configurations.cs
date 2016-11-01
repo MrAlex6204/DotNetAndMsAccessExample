@@ -98,7 +98,7 @@ namespace System
                                 DbRepository.UpdateConfig("EMPRESA", NombreDelNegocio) &
                                 DbRepository.UpdateConfig("DIRECCION", Direccion) &
                                 DbRepository.UpdateConfig("REGION", RegionString);
-
+            Load();
             if (IsSaveSuccess) {
                 if (ConfigChange != null) {
                     ConfigChange.Invoke();//EJECUTAR EVENTO SI SE LLEGO A REALIZAR CAMBIOS EN LA CONFIGURACION

@@ -105,9 +105,18 @@ namespace System {
         #region  <FUNCIONES PUBLICAS>
 
         //OBTENER EL REPORTE DETALLE DE ARTICULOS EN INVENTARIO
-        public static DataTable GetInversionDetalle() {
-            var Tbl = Fill("SELECT ARTICULO_ID,DESCRIPCION,UNIDAD,PRECIO,COSTO,ENTRADA AS [ENTRADA INVENTARIO],SALIDA AS [SALIDA DE INVENTARIO],STOCK AS [STOCK ACTUAL],INVERSION FROM TBL_INVENTARIO_VIEW WHERE INVERSION > 0", "InventarioDetalle");
+        public static DataTable GetInversionDetalle() { 
+            var Qry = @"
+                SELECT 
+                       ARTICULO_ID,DESCRIPCION,UNIDAD,'@CurrencySymbol'+STR(PRECIO) as [PRECIO],'@CurrencySymbol' + STR(COSTO) as [COSTO],
+                       ENTRADA AS [CANT ENTRADA],SALIDA AS [CANT SALIDA],STOCK AS [STOCK ACTUAL], '@CurrencySymbol'+STR(INVERSION) AS [INVERSION],
+                       '@CurrencySymbol' + STR(GANCIAS_GENERADAS) AS [GANACIA X GENERAR] 
+                FROM TBL_INVENTARIO_VIEW WHERE INVERSION > 0";
 
+            Qry = Qry.Replace("@CurrencySymbol", Configurations.CurrencySymbol);
+            
+
+            var Tbl = Fill(Qry, "InventarioDetalle");
             return Tbl;        
         }
 
@@ -120,8 +129,17 @@ namespace System {
 
             return Total;
         }
-              
 
+        //OBTIENE LA GANANCIA A GENERAR DEL INVENTARIO
+        public static double GetGananciasDelInventario() {
+            var Total = 0d;
+            var Qry = "SELECT SUM(GANCIAS_GENERADAS) FROM TBL_INVENTARIO_VIEW";
+
+            Total = (double)ExecuteScalar(Qry);
+
+            return Total;
+        }
+        
         //FUNCION PARA VALIDAR SI UN USUARIO EXISTE EN EL LOGIN
         public static UserInfo ValidarUsuario(string Login, string Password) {
             UserInfo Usr = new UserInfo();

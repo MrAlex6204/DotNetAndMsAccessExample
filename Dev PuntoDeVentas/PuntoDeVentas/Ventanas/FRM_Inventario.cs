@@ -71,7 +71,7 @@ namespace PuntoDeVentas {
 
         #region FUNCIONES
 
-        void _LoadArticuloInfo(string ArticuloId) {
+        private bool _LoadArticuloInfo(string ArticuloId) {
             var Inv_Articulo = DbRepository.GetArticuloInfo(ArticuloId);
 
             if (Inv_Articulo.EXIST) {
@@ -80,7 +80,7 @@ namespace PuntoDeVentas {
 
                 lblStatus.ForeColor = _Articulo.INVENTARIO.DISPONIBLE ? SystemTheme.Success : SystemTheme.Danger;
 
-                if (_Articulo.ES_INVENTARIADO != "False") {
+                if (Convert.ToBoolean(_Articulo.ES_INVENTARIADO) ) {
 
                     //ACTUALIZAR INFORMACION DEL DATASOURCE PARA MOSTRAR LA INFORMACION EN PANTALLA
                     _Source.DataSource = _Articulo;
@@ -91,25 +91,28 @@ namespace PuntoDeVentas {
                     cmdActualizar.Enabled = true;
                     cmdHist.Enabled = true;
                     pictArticulo.Image = _Articulo.FOTO.FSImage.GetImageSzOf(sz).GetRoundCornersImage(5, this.BackColor);
+                    return true;
 
                 } else {
 
-                    Functions.Message("EL ARTICULO NO ES PARTE DEL INVENTARIO!", this.WindowBorderColor, this);
+                    Functions.Message("EL ARTICULO NO ES PARTE DEL INVENTARIO!", SystemTheme.Danger, this);
                     cmdEntrada.Enabled = false;
                     cmdActualizar.Enabled = false;
                     cmdHist.Enabled = false;
                     lnkRemoverArticulo.Enabled = false;
+                    return false;
                 }
 
 
 
             } else {
 
-                Functions.Message("NO SE ENCONTRO ARTICULO.\nFAVOR DE VERIFICAR", this.WindowBorderColor, this);
+                Functions.Message("NO SE ENCONTRO ARTICULO.\nFAVOR DE VERIFICAR", SystemTheme.Danger, this);
                 cmdEntrada.Enabled = false;
                 cmdActualizar.Enabled = false;
                 cmdHist.Enabled = false;
                 lnkRemoverArticulo.Enabled = false;
+                return false;
 
             }
         }
@@ -212,7 +215,19 @@ namespace PuntoDeVentas {
 
         }
 
+        private void txtLocalizar_KeyDown(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Enter) {
+                if (_LoadArticuloInfo(txtLocalizar.Text)) {
+                    txtLocalizar.Text = string.Empty;
+                    cmdSearch.Focus();
+                }
+
+            }
+        }
+
         #endregion
+
+
 
 
     }

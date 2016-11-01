@@ -40,7 +40,6 @@ namespace PuntoDeVentas {
 
         private void FRM_Main_Load(object sender, EventArgs e) {
             _LoadConfig();
-            _Inversion();
         }
 
         private void cmdSale_Click(object sender, EventArgs e) {
@@ -90,11 +89,10 @@ namespace PuntoDeVentas {
         }
 
         private void lnkInversionDetail_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
-            using (var wndInversionDetail = new BaseListWindow("Inversion en Inventario")){
-                wndInversionDetail.DataSource = DbRepository.GetInversionDetalle();
+            using (var wndInvDetalle = new BaseListWindow("Inversion en inventario")) {
 
-                wndInversionDetail.ShowDialog(this);
-
+                wndInvDetalle.DataSource = DbRepository.GetInversionDetalle();
+                wndInvDetalle.ShowDialog(this);
 
             }
         }
@@ -123,11 +121,12 @@ namespace PuntoDeVentas {
                 picUser.BackColor = Color.Transparent;
 
             }
-
+            _Inversion();
         }
 
         private void _Inversion() {
-            lblInversion.Text = Functions.ToCurrency(DbRepository.GetInversionEnInventario());
+            lblInvInversion.Text = Functions.ToCurrency(DbRepository.GetInversionEnInventario()) + " " + Configurations.CurrencyCode;
+            lblInvGanancias.Text = Functions.ToCurrency(DbRepository.GetGananciasDelInventario()) + " " + Configurations.CurrencyCode;
         }
 
         #endregion

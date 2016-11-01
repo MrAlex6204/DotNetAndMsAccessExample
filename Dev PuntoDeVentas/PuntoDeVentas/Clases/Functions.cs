@@ -66,6 +66,21 @@ public static class Functions
         return Convert.ToDouble(Value);
     }
 
+    public static string ToCurrency(double value,IFormatProvider provider ) {
+        return string.Format(provider, "{0:C2}", value);
+    }
+
+    public static string ToCurrency(string value, IFormatProvider provider) {
+        var val = 0.0d;
+
+        if (double.TryParse(value, out val)) {
+            return ToCurrency(val,provider);
+        } else {
+            return value;
+        }
+                
+    }
+
     public static string ToCurrency(double value)
     {
         return string.Format(Configurations.RegionProvider, "{0:C2}", value);

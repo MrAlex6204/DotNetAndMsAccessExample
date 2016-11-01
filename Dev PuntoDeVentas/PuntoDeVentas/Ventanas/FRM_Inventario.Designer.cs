@@ -44,6 +44,7 @@
             PuntoDeVentas.InputAppearance inputAppearance8 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance9 = new PuntoDeVentas.InputAppearance();
             PuntoDeVentas.InputAppearance inputAppearance10 = new PuntoDeVentas.InputAppearance();
+            PuntoDeVentas.InputAppearance inputAppearance11 = new PuntoDeVentas.InputAppearance();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Inventario));
             this.label15 = new System.Windows.Forms.Label();
             this.label13 = new System.Windows.Forms.Label();
@@ -83,6 +84,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblCostoSymbol = new System.Windows.Forms.Label();
             this.lblCosto = new PuntoDeVentas.Controls.InputTextBox();
+            this.txtLocalizar = new PuntoDeVentas.Controls.InputTextBox();
             this.pnlInfo.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictArticulo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -432,7 +434,7 @@
             this.cmdEntrada.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdEntrada.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdEntrada.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdEntrada.Location = new System.Drawing.Point(209, 601);
+            this.cmdEntrada.Location = new System.Drawing.Point(324, 601);
             this.cmdEntrada.Name = "cmdEntrada";
             this.cmdEntrada.Size = new System.Drawing.Size(145, 29);
             controlAppearance1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -463,7 +465,7 @@
             this.cmdHist.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdHist.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdHist.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdHist.Location = new System.Drawing.Point(378, 601);
+            this.cmdHist.Location = new System.Drawing.Point(493, 601);
             this.cmdHist.Name = "cmdHist";
             this.cmdHist.Size = new System.Drawing.Size(145, 29);
             controlAppearance2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -494,7 +496,7 @@
             this.cmdActualizar.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdActualizar.Location = new System.Drawing.Point(547, 601);
+            this.cmdActualizar.Location = new System.Drawing.Point(662, 601);
             this.cmdActualizar.Name = "cmdActualizar";
             this.cmdActualizar.Size = new System.Drawing.Size(145, 29);
             controlAppearance3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -524,7 +526,7 @@
             this.cmdSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.cmdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cmdSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.cmdSearch.Location = new System.Drawing.Point(716, 601);
+            this.cmdSearch.Location = new System.Drawing.Point(831, 601);
             this.cmdSearch.Name = "cmdSearch";
             this.cmdSearch.Size = new System.Drawing.Size(145, 29);
             controlAppearance4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
@@ -789,6 +791,31 @@
             this.lblCosto.Style = inputAppearance10;
             this.lblCosto.TabIndex = 58;
             // 
+            // txtLocalizar
+            // 
+            this.txtLocalizar.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.txtLocalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            this.txtLocalizar.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtLocalizar.Font = new System.Drawing.Font("Segoe UI Light", 14F);
+            this.txtLocalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            this.txtLocalizar.Location = new System.Drawing.Point(88, 603);
+            this.txtLocalizar.Name = "txtLocalizar";
+            this.txtLocalizar.Size = new System.Drawing.Size(211, 25);
+            inputAppearance11.ActiveBackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            inputAppearance11.ActiveForecolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            inputAppearance11.BorderActiveColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            inputAppearance11.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
+            inputAppearance11.BorderPadding = 7;
+            inputAppearance11.BorderRadius = 5;
+            inputAppearance11.BorderSize = 1;
+            inputAppearance11.Draw = PuntoDeVentas.InputAppearance.DrawStyle.Both;
+            inputAppearance11.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
+            inputAppearance11.Style = System.Drawing.Drawing2D.DashStyle.Solid;
+            inputAppearance11.TextPlaceholder = "Localizar x Codigo Id";
+            this.txtLocalizar.Style = inputAppearance11;
+            this.txtLocalizar.TabIndex = 62;
+            this.txtLocalizar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtLocalizar_KeyDown);
+            // 
             // FRM_Inventario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
@@ -815,6 +842,7 @@
             this.Controls.Add(this.lblPrecio);
             this.Controls.Add(this.lblUnidad);
             this.Controls.Add(this.lblArticulo);
+            this.Controls.Add(this.txtLocalizar);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(5, 8, 5, 8);
             this.MaximizeBox = false;
@@ -825,6 +853,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Inventario";
             this.Load += new System.EventHandler(this.FRM_Inventario_Load);
+            this.Controls.SetChildIndex(this.txtLocalizar, 0);
             this.Controls.SetChildIndex(this.lblArticulo, 0);
             this.Controls.SetChildIndex(this.lblUnidad, 0);
             this.Controls.SetChildIndex(this.lblPrecio, 0);
@@ -895,6 +924,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblCostoSymbol;
         private Controls.InputTextBox lblCosto;
+        private Controls.InputTextBox txtLocalizar;
     }
 
 }

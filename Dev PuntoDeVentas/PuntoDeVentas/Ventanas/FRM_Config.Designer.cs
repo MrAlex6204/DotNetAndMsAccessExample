@@ -46,6 +46,7 @@
             this.lblUserName = new System.Windows.Forms.Label();
             this.picUser = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.lblMoneda = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).BeginInit();
             this.SuspendLayout();
             // 
@@ -151,10 +152,11 @@
             this.cmbRegion.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.cmbRegion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmbRegion.FormattingEnabled = true;
-            this.cmbRegion.Location = new System.Drawing.Point(38, 297);
+            this.cmbRegion.Location = new System.Drawing.Point(33, 297);
             this.cmbRegion.Name = "cmbRegion";
             this.cmbRegion.Size = new System.Drawing.Size(438, 33);
             this.cmbRegion.TabIndex = 39;
+            this.cmbRegion.SelectedIndexChanged += new System.EventHandler(this.cmbRegion_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -202,7 +204,7 @@
             this.txtCajeroNombre.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCajeroNombre.Font = new System.Drawing.Font("Segoe UI Light", 14F);
             this.txtCajeroNombre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.txtCajeroNombre.Location = new System.Drawing.Point(38, 414);
+            this.txtCajeroNombre.Location = new System.Drawing.Point(38, 446);
             this.txtCajeroNombre.Name = "txtCajeroNombre";
             this.txtCajeroNombre.Size = new System.Drawing.Size(438, 25);
             inputAppearance3.ActiveBackcolor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
@@ -223,7 +225,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI Light", 14F);
-            this.label2.Location = new System.Drawing.Point(33, 361);
+            this.label2.Location = new System.Drawing.Point(33, 393);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(176, 25);
             this.label2.TabIndex = 43;
@@ -233,7 +235,7 @@
             // 
             this.lblUserName.AutoSize = true;
             this.lblUserName.Font = new System.Drawing.Font("Segoe UI Light", 14F);
-            this.lblUserName.Location = new System.Drawing.Point(215, 361);
+            this.lblUserName.Location = new System.Drawing.Point(215, 393);
             this.lblUserName.Name = "lblUserName";
             this.lblUserName.Size = new System.Drawing.Size(123, 25);
             this.lblUserName.TabIndex = 44;
@@ -265,12 +267,23 @@
             this.linkLabel1.Text = "Cambiar Foto";
             this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
+            // lblMoneda
+            // 
+            this.lblMoneda.AutoSize = true;
+            this.lblMoneda.Font = new System.Drawing.Font("Segoe UI Light", 14F);
+            this.lblMoneda.Location = new System.Drawing.Point(33, 335);
+            this.lblMoneda.Name = "lblMoneda";
+            this.lblMoneda.Size = new System.Drawing.Size(93, 25);
+            this.lblMoneda.TabIndex = 47;
+            this.lblMoneda.Text = "Moneda : ";
+            // 
             // FRM_Config
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 21F);
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(24)))));
             this.ClientSize = new System.Drawing.Size(852, 618);
             this.ControlBox = false;
+            this.Controls.Add(this.lblMoneda);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.picUser);
             this.Controls.Add(this.lblUserName);
@@ -300,6 +313,7 @@
             this.Controls.SetChildIndex(this.lblUserName, 0);
             this.Controls.SetChildIndex(this.picUser, 0);
             this.Controls.SetChildIndex(this.linkLabel1, 0);
+            this.Controls.SetChildIndex(this.lblMoneda, 0);
             ((System.ComponentModel.ISupportInitialize)(this.picUser)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -320,6 +334,7 @@
         private System.Windows.Forms.Label lblUserName;
         private System.Windows.Forms.PictureBox picUser;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label lblMoneda;
 
        
     }
