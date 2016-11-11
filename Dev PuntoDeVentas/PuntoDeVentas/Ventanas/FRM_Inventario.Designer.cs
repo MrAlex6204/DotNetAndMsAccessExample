@@ -147,12 +147,12 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.label4.Location = new System.Drawing.Point(13, 242);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(168, 25);
+            this.label4.Size = new System.Drawing.Size(169, 24);
             this.label4.TabIndex = 27;
             this.label4.Text = "Stock de Inventario";
             // 
@@ -198,9 +198,9 @@
             // 
             // lblGanciaSymbol
             // 
-            this.lblGanciaSymbol.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGanciaSymbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGanciaSymbol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblGanciaSymbol.Location = new System.Drawing.Point(441, 158);
+            this.lblGanciaSymbol.Location = new System.Drawing.Point(431, 158);
             this.lblGanciaSymbol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGanciaSymbol.Name = "lblGanciaSymbol";
             this.lblGanciaSymbol.Size = new System.Drawing.Size(45, 25);
@@ -234,9 +234,9 @@
             // 
             // lblCostoCurrencySymbol
             // 
-            this.lblCostoCurrencySymbol.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoCurrencySymbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoCurrencySymbol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
-            this.lblCostoCurrencySymbol.Location = new System.Drawing.Point(441, 72);
+            this.lblCostoCurrencySymbol.Location = new System.Drawing.Point(431, 72);
             this.lblCostoCurrencySymbol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCostoCurrencySymbol.Name = "lblCostoCurrencySymbol";
             this.lblCostoCurrencySymbol.Size = new System.Drawing.Size(45, 25);
@@ -246,7 +246,7 @@
             // 
             // lblStatus
             // 
-            this.lblStatus.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lblStatus.Location = new System.Drawing.Point(660, 222);
             this.lblStatus.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -375,7 +375,7 @@
             // 
             // lblSalidaUnidad
             // 
-            this.lblSalidaUnidad.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSalidaUnidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSalidaUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lblSalidaUnidad.Location = new System.Drawing.Point(267, 95);
             this.lblSalidaUnidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -387,7 +387,7 @@
             // 
             // lblEntradaUnidad
             // 
-            this.lblEntradaUnidad.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEntradaUnidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEntradaUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lblEntradaUnidad.Location = new System.Drawing.Point(267, 38);
             this.lblEntradaUnidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -399,7 +399,7 @@
             // 
             // lblStockUnidad
             // 
-            this.lblStockUnidad.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblStockUnidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStockUnidad.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lblStockUnidad.Location = new System.Drawing.Point(267, 151);
             this.lblStockUnidad.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -548,8 +548,7 @@
             // 
             // lblCodigo
             // 
-            this.lblCodigo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCodigo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCodigo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblCodigo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI Light", 14F);
@@ -603,8 +602,7 @@
             // 
             // lblArticulo
             // 
-            this.lblArticulo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblArticulo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblArticulo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblArticulo.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblArticulo.Font = new System.Drawing.Font("Segoe UI Light", 14F);
@@ -629,8 +627,7 @@
             // 
             // lblUnidad
             // 
-            this.lblUnidad.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblUnidad.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblUnidad.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblUnidad.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblUnidad.Font = new System.Drawing.Font("Segoe UI Light", 14F);
@@ -655,8 +652,7 @@
             // 
             // lblPrecio
             // 
-            this.lblPrecio.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPrecio.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblPrecio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblPrecio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblPrecio.Font = new System.Drawing.Font("Segoe UI Light", 14F);
@@ -681,6 +677,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::PuntoDeVentas.Properties.Resources.LINE;
             this.pictureBox1.Location = new System.Drawing.Point(18, 270);
             this.pictureBox1.Name = "pictureBox1";
@@ -691,19 +688,21 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.label1.Location = new System.Drawing.Point(83, 71);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 25);
+            this.label1.Size = new System.Drawing.Size(118, 24);
             this.label1.TabIndex = 52;
             this.label1.Text = "Info . Articulo";
             // 
             // lblCurrencySymbol
             // 
-            this.lblCurrencySymbol.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCurrencySymbol.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCurrencySymbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCurrencySymbol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lblCurrencySymbol.Location = new System.Drawing.Point(159, 172);
             this.lblCurrencySymbol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -715,15 +714,16 @@
             // 
             // lnkRemoverArticulo
             // 
+            this.lnkRemoverArticulo.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lnkRemoverArticulo.AutoSize = true;
             this.lnkRemoverArticulo.DisabledLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lnkRemoverArticulo.Enabled = false;
-            this.lnkRemoverArticulo.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F);
+            this.lnkRemoverArticulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F);
             this.lnkRemoverArticulo.ForeColor = System.Drawing.Color.Silver;
             this.lnkRemoverArticulo.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lnkRemoverArticulo.Location = new System.Drawing.Point(679, 188);
             this.lnkRemoverArticulo.Name = "lnkRemoverArticulo";
-            this.lnkRemoverArticulo.Size = new System.Drawing.Size(309, 25);
+            this.lnkRemoverArticulo.Size = new System.Drawing.Size(314, 24);
             this.lnkRemoverArticulo.TabIndex = 56;
             this.lnkRemoverArticulo.TabStop = true;
             this.lnkRemoverArticulo.Text = "Remover este articulo del inventario ";
@@ -731,7 +731,8 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.label3.Location = new System.Drawing.Point(92, 172);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -743,7 +744,8 @@
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.label7.Location = new System.Drawing.Point(339, 172);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -755,7 +757,8 @@
             // 
             // lblCostoSymbol
             // 
-            this.lblCostoSymbol.Font = new System.Drawing.Font("Segoe UI Semilight", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCostoSymbol.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblCostoSymbol.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCostoSymbol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.lblCostoSymbol.Location = new System.Drawing.Point(403, 172);
             this.lblCostoSymbol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
@@ -767,8 +770,7 @@
             // 
             // lblCosto
             // 
-            this.lblCosto.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCosto.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.lblCosto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(34)))), ((int)(((byte)(34)))));
             this.lblCosto.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lblCosto.Font = new System.Drawing.Font("Segoe UI Light", 14F);

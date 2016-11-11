@@ -91,6 +91,7 @@ namespace PuntoDeVentas {
                     cmdActualizar.Enabled = true;
                     cmdHist.Enabled = true;
                     pictArticulo.Image = _Articulo.FOTO.FSImage.GetImageSzOf(sz).GetRoundCornersImage(5, this.BackColor);
+                    this.Refresh();
                     return true;
 
                 } else {
@@ -100,6 +101,7 @@ namespace PuntoDeVentas {
                     cmdActualizar.Enabled = false;
                     cmdHist.Enabled = false;
                     lnkRemoverArticulo.Enabled = false;
+                    this.Refresh();
                     return false;
                 }
 
@@ -112,6 +114,7 @@ namespace PuntoDeVentas {
                 cmdActualizar.Enabled = false;
                 cmdHist.Enabled = false;
                 lnkRemoverArticulo.Enabled = false;
+                this.Refresh();
                 return false;
 
             }

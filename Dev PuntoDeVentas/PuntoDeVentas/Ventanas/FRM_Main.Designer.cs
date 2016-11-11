@@ -127,7 +127,7 @@
             this.cmdSearch.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdSearch.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdSearch.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdSearch.Image = global::PuntoDeVentas.Properties.Resources.search;
             this.cmdSearch.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -185,7 +185,7 @@
             this.cmdLock.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdLock.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdLock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdLock.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdLock.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdLock.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdLock.Image = global::PuntoDeVentas.Properties.Resources._lock;
             this.cmdLock.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -219,7 +219,7 @@
             this.cmdDeliver.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdDeliver.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdDeliver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdDeliver.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdDeliver.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdDeliver.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdDeliver.Image = global::PuntoDeVentas.Properties.Resources.deliver;
             this.cmdDeliver.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -252,7 +252,7 @@
             this.cmdWarehouse.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdWarehouse.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdWarehouse.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdWarehouse.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdWarehouse.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdWarehouse.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdWarehouse.Image = global::PuntoDeVentas.Properties.Resources.warehouse;
             this.cmdWarehouse.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -286,7 +286,7 @@
             this.cmdConfig.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdConfig.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdConfig.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdConfig.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdConfig.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdConfig.Image = global::PuntoDeVentas.Properties.Resources.config;
             this.cmdConfig.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -320,7 +320,7 @@
             this.cmdSale.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdSale.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdSale.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdSale.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdSale.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdSale.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdSale.Image = global::PuntoDeVentas.Properties.Resources.sale;
             this.cmdSale.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -354,7 +354,7 @@
             this.cmdArticulos.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdArticulos.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(49)))), ((int)(((byte)(53)))), ((int)(((byte)(65)))));
             this.cmdArticulos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cmdArticulos.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmdArticulos.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdArticulos.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(106)))), ((int)(((byte)(117)))), ((int)(((byte)(131)))));
             this.cmdArticulos.Image = global::PuntoDeVentas.Properties.Resources.code_bar;
             this.cmdArticulos.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -397,7 +397,7 @@
             this.lblDireccion.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblDireccion.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.lblDireccion.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDireccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDireccion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.lblDireccion.Location = new System.Drawing.Point(92, 40);
             this.lblDireccion.Name = "lblDireccion";
@@ -408,6 +408,9 @@
             // 
             // pnlContainer
             // 
+            this.pnlContainer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pnlContainer.Controls.Add(this.panel5);
             this.pnlContainer.Controls.Add(this.picUser);
@@ -458,7 +461,7 @@
             // lnkInversionDetail
             // 
             this.lnkInversionDetail.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.lnkInversionDetail.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F);
+            this.lnkInversionDetail.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.lnkInversionDetail.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lnkInversionDetail.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.lnkInversionDetail.Location = new System.Drawing.Point(0, 43);
@@ -496,7 +499,7 @@
             // linkLabel1
             // 
             this.linkLabel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.linkLabel1.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F);
+            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F);
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.linkLabel1.Location = new System.Drawing.Point(0, 43);
@@ -538,7 +541,7 @@
             this.lblUserGreetings.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblUserGreetings.BackColor = System.Drawing.Color.Transparent;
-            this.lblUserGreetings.Font = new System.Drawing.Font("Segoe UI Semilight", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUserGreetings.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUserGreetings.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(193)))), ((int)(((byte)(193)))), ((int)(((byte)(193)))));
             this.lblUserGreetings.Location = new System.Drawing.Point(98, 6);
             this.lblUserGreetings.Name = "lblUserGreetings";
