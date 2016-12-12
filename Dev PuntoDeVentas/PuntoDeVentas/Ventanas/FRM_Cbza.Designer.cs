@@ -27,8 +27,8 @@ namespace PuntoDeVentas {
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FRM_Cbza));
-            PuntoDeVentas.Controls.ControlAppearance controlAppearance1 = new PuntoDeVentas.Controls.ControlAppearance();
-            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons1 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
+            PuntoDeVentas.Controls.ControlAppearance controlAppearance2 = new PuntoDeVentas.Controls.ControlAppearance();
+            PuntoDeVentas.Controls.WindowControlBox.Buttons buttons2 = new PuntoDeVentas.Controls.WindowControlBox.Buttons();
             this.lblTitle = new System.Windows.Forms.Label();
             this.lblFechaHra = new System.Windows.Forms.Label();
             this.tmrFechayHra = new System.Windows.Forms.Timer(this.components);
@@ -38,7 +38,7 @@ namespace PuntoDeVentas {
             this.picArticulo = new System.Windows.Forms.PictureBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblCajero = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.pnlInput = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.txtCantidad = new System.Windows.Forms.TextBox();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -56,7 +56,7 @@ namespace PuntoDeVentas {
             this.panel2.SuspendLayout();
             this.panel8.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picArticulo)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.pnlInput.SuspendLayout();
             this.panel4.SuspendLayout();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picCajero)).BeginInit();
@@ -190,20 +190,20 @@ namespace PuntoDeVentas {
             this.lblCajero.Text = "[CAJERO]";
             this.lblCajero.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // panel1
+            // pnlInput
             // 
-            this.panel1.BackColor = System.Drawing.Color.Transparent;
-            this.panel1.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.panel4);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.pnlStatus);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(2, 751);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1224, 52);
-            this.panel1.TabIndex = 19;
+            this.pnlInput.BackColor = System.Drawing.Color.Transparent;
+            this.pnlInput.BackgroundImage = global::PuntoDeVentas.Properties.Resources.SUB_BG1;
+            this.pnlInput.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.pnlInput.Controls.Add(this.panel4);
+            this.pnlInput.Controls.Add(this.panel3);
+            this.pnlInput.Controls.Add(this.pnlStatus);
+            this.pnlInput.Controls.Add(this.label1);
+            this.pnlInput.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.pnlInput.Location = new System.Drawing.Point(2, 751);
+            this.pnlInput.Name = "pnlInput";
+            this.pnlInput.Size = new System.Drawing.Size(1224, 52);
+            this.pnlInput.TabIndex = 19;
             // 
             // panel4
             // 
@@ -327,9 +327,11 @@ namespace PuntoDeVentas {
             this.LstArticulos.Location = new System.Drawing.Point(2, 144);
             this.LstArticulos.Name = "LstArticulos";
             this.LstArticulos.Size = new System.Drawing.Size(942, 601);
+            this.LstArticulos.SubTotalPanelVisible = false;
             this.LstArticulos.TabIndex = 0;
             this.LstArticulos.OnListChange += new PuntoDeVentas.ArticuloList.OnChangeHandler(this.LstArticulos_OnListChange);
             this.LstArticulos.OnSelectedItemChange += new System.ArticuloItemCollection.OnSelectedItemChangeHanlder(this.LstArticulos_OnSelectedItemChange);
+            this.LstArticulos.OnTransactionEnd += new PuntoDeVentas.Controls.SubTotalPanel.OnTransactionEndHandler(this.LstArticulos_OnTransactionEnd);
             // 
             // lblDireccion
             // 
@@ -350,25 +352,25 @@ namespace PuntoDeVentas {
             // windowControlBox1
             // 
             this.windowControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            controlAppearance1.BackColor = System.Drawing.Color.Transparent;
-            controlAppearance1.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            controlAppearance1.BorderPadding = 0;
-            controlAppearance1.BorderSize = 0;
-            controlAppearance1.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            controlAppearance1.CheckedBackColor = System.Drawing.Color.Empty;
-            controlAppearance1.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
-            controlAppearance1.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
-            controlAppearance1.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            controlAppearance1.MouseOverBorderColor = System.Drawing.Color.Empty;
-            controlAppearance1.MouseOverForecolor = System.Drawing.Color.Empty;
-            this.windowControlBox1.Appearance = controlAppearance1;
+            controlAppearance2.BackColor = System.Drawing.Color.Transparent;
+            controlAppearance2.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            controlAppearance2.BorderPadding = 0;
+            controlAppearance2.BorderSize = 0;
+            controlAppearance2.BorderStyle = System.Drawing.Drawing2D.DashStyle.Solid;
+            controlAppearance2.CheckedBackColor = System.Drawing.Color.Empty;
+            controlAppearance2.Forecolor = System.Drawing.Color.FromArgb(((int)(((byte)(113)))), ((int)(((byte)(113)))), ((int)(((byte)(113)))));
+            controlAppearance2.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(50)))), ((int)(((byte)(50)))));
+            controlAppearance2.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            controlAppearance2.MouseOverBorderColor = System.Drawing.Color.Empty;
+            controlAppearance2.MouseOverForecolor = System.Drawing.Color.Empty;
+            this.windowControlBox1.Appearance = controlAppearance2;
             this.windowControlBox1.AutoSize = true;
             this.windowControlBox1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.windowControlBox1.BackColor = System.Drawing.Color.Transparent;
-            buttons1.Maximize = true;
-            buttons1.Minimize = true;
-            buttons1.MoveButtons = true;
-            this.windowControlBox1.ControlButtons = buttons1;
+            buttons2.Maximize = true;
+            buttons2.Minimize = true;
+            buttons2.MoveButtons = true;
+            this.windowControlBox1.ControlButtons = buttons2;
             this.windowControlBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.windowControlBox1.Location = new System.Drawing.Point(1056, 9);
             this.windowControlBox1.Name = "windowControlBox1";
@@ -397,7 +399,7 @@ namespace PuntoDeVentas {
             this.Controls.Add(this.lblDireccion);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pnlInput);
             this.Controls.Add(this.LstArticulos);
             this.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(36)))), ((int)(((byte)(33)))));
             this.KeyPreview = true;
@@ -413,7 +415,7 @@ namespace PuntoDeVentas {
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Wnd_KeyDown);
             this.Controls.SetChildIndex(this.LstArticulos, 0);
             this.Controls.SetChildIndex(this.lblWndPanelTitle, 0);
-            this.Controls.SetChildIndex(this.panel1, 0);
+            this.Controls.SetChildIndex(this.pnlInput, 0);
             this.Controls.SetChildIndex(this.lblTitle, 0);
             this.Controls.SetChildIndex(this.panel2, 0);
             this.Controls.SetChildIndex(this.lblDireccion, 0);
@@ -423,8 +425,8 @@ namespace PuntoDeVentas {
             this.panel2.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picArticulo)).EndInit();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.pnlInput.ResumeLayout(false);
+            this.pnlInput.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.panel4.PerformLayout();
             this.panel3.ResumeLayout(false);
@@ -447,7 +449,7 @@ namespace PuntoDeVentas {
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Label pnlStatus;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel pnlInput;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.PictureBox picCajero;
         private System.Windows.Forms.Panel panel3;

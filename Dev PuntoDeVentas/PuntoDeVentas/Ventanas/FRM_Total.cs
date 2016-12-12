@@ -42,9 +42,7 @@ namespace PuntoDeVentas
                 return _Cancelled;
             }
         }
-
-
-
+        
         private void FRM_Total_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyValue == 27)
@@ -98,5 +96,7 @@ namespace PuntoDeVentas
 
             }
         }
+
+
     }
 }

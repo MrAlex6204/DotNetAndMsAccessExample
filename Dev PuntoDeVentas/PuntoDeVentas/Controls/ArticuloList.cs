@@ -14,25 +14,29 @@ namespace PuntoDeVentas {
 
     [DefaultEvent("OnListChange")]
     public partial class ArticuloList : UserControl {
+
         private System.ArticuloItemCollection _LstArticulos = new System.ArticuloItemCollection();
 
-        public delegate void OnChangeHandler (object sender, object e);
+        public delegate void OnChangeHandler(object sender, object e);
         public event OnChangeHandler OnListChange;
-        //Creamos un evento de SelectedItemChange para notificar cuando el item seleccionado cambio
+
+        //CREAMOS EL EVENTO DE SELECTED ITEM CHANGE PARA NOTIFICAR CUANDO EL ITEM SELECCIONADO CAMBIO
         public event ArticuloItemCollection.OnSelectedItemChangeHanlder OnSelectedItemChange;
+        //CREAMOS EL EVENTO DE ON TRASACTION END PARA NOTIFICAR QUE LA TRANSACCION TERMINO
+        public event Controls.SubTotalPanel.OnTransactionEndHandler OnTransactionEnd;
 
         public struct SubtotalInfo {
             public int Count;
             public double Total;
         }
-        
+
         public ArticuloList() {
 
             InitializeComponent();
 
             if (!this.DesignMode) {//Delete the dummy item
                 this.Items.Clear();
-                this.pnlCobranza.Controls.Clear();
+                this.pnlCobranzaList.Controls.Clear();
             }
 
             this.SetStyle(ControlStyles.SupportsTransparentBackColor, true);
@@ -42,8 +46,7 @@ namespace PuntoDeVentas {
                 this.BackColor = Color.FromArgb(64, 64, 64);
             }
             //ADJUNTAR EVENTO A LA LISTA CUANDO EL ITEM SELECCIONADO CAMBIO
-            this.Items.OnSelectedItemChange += delegate (ArticuloItem e)
-            {
+            this.Items.OnSelectedItemChange += delegate(ArticuloItem e) {
 
                 if (this.OnSelectedItemChange != null) {
                     //INVOCAR EVENTO CUANDO EL ITEM SELECCIONADO CAMBIO
@@ -52,14 +55,40 @@ namespace PuntoDeVentas {
 
             };
 
-        
+            //ADJUNTAR EVENTO PARA CUANDO LA TRANSACCION SE COBRO POR COMPLETO
+            this.pnlSubTotal.OnTransactionEnd += delegate(string Total, string Pago, string Cambio) {
+                if (this.OnTransactionEnd != null) {
+                    this.OnTransactionEnd.Invoke(Total, Pago, Cambio);
+                }
+            };
 
         }
-        
+
+        public bool SubTotalPanelVisible {
+
+            get {
+                return pnlSubTotal.Visible;
+            }
+            set {
+                this.pnlSubTotal.Clear();
+                this.pnlSubTotal.Items = _LstArticulos;
+                this.pnlSubTotal.Visible = value;
+
+                if (this.pnlSubTotal.Visible) {
+                    if (_LstArticulos.Count > 0) {
+                        //HACER SCROLL HASTA EL ITEM SELECCIONADO
+                        this.pnlCobranzaList.ScrollControlIntoView(_LstArticulos.SelectedItem);
+                    }                    
+                }
+                                
+                this.Invalidate(true);
+            }
+        }
+
         public ArticuloItemCollection Items {
 
             get {
-                
+
                 return _LstArticulos;
 
             }
@@ -69,21 +98,21 @@ namespace PuntoDeVentas {
         }
 
         public void ScrollIntoView(ArticuloItem Item) {
-            pnlCobranza.ScrollControlIntoView(Item);
+            pnlCobranzaList.ScrollControlIntoView(Item);
         }
 
         public ArticuloItem Add(ArticuloItem Item) {
-                        
+
             this.Items.Add(Item);//Agregar el item a la lista de articulos
 
             this.Items.SelectedItem = Item;//Seleccionar el item
 
-            Item.Size = new Size(this.Size.Width, Item.Size.Height);                       
-                       
+            Item.Size = new Size(this.Size.Width, Item.Size.Height);
 
-            pnlCobranza.Controls.Add(Item);//Agregar el container a la lista            
 
-            pnlCobranza.ScrollControlIntoView(Item);
+            pnlCobranzaList.Controls.Add(Item);//Agregar el container a la lista            
+
+            pnlCobranzaList.ScrollControlIntoView(Item);
 
             _RaiseEvent();
 
@@ -96,7 +125,7 @@ namespace PuntoDeVentas {
             Item.IsDeleted = true;
 
             _RaiseEvent();
-            
+
             return Item;
         }
 
@@ -110,9 +139,9 @@ namespace PuntoDeVentas {
 
         public void Clear() {
             _LstArticulos.Clear();
-            pnlCobranza.Controls.Clear();
-
+            pnlCobranzaList.Controls.Clear();
             _RaiseEvent();
+            this.pnlSubTotal.Visible = false;
         }
 
         protected override void OnSizeChanged(EventArgs e) {
@@ -120,10 +149,11 @@ namespace PuntoDeVentas {
 
             foreach (ArticuloItem Item in this.Items) {
                 //Cambiar el ancho del Item cuando el control cambie de tamano
-                Item.Size = new Size(this.Size.Width, Item.Size.Height);             
+                Item.Size = new Size(this.Size.Width, Item.Size.Height);
             }
+            
         }
-        
+
         private void _RaiseEvent() {
 
             if (OnListChange != null) {
@@ -131,7 +161,7 @@ namespace PuntoDeVentas {
             }
 
         }
-        
+
 
     }
 }

@@ -77,3 +77,5 @@ C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev P
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Release\PuntoDeVentas.FRM_VentaDelDia.resources
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Release\PuntoDeVentas.Test.resources
 C:\Users\MrRobot\Desktop\DotNetAndMsAccessExample\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Release\PuntoDeVentas.csproj.GenerateResource.Cache
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Release\PuntoDeVentas.csprojResolveAssemblyReference.cache
+C:\Users\oavera\Desktop\Temp\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Release\PuntoDeVentas.Controls.SubTotalPanel.resources

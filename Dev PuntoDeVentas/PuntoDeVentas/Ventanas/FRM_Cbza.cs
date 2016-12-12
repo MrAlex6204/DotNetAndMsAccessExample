@@ -29,6 +29,8 @@ namespace PuntoDeVentas {
             this.pnlStatus.Text = "";
             this.LstArticulos.Clear();
             this.picArticulo.Image = null;
+            this.pnlInput.Visible = true;
+            this.txtCodigo.Focus();
         }
 
         private void GuardarTrans() {
@@ -127,6 +129,14 @@ namespace PuntoDeVentas {
 
         }
 
+        private void LstArticulos_OnTransactionEnd(string Total, string Pago, string Cambio) {
+
+            GuardarTrans();//Guardamos la transaccion en la Bd.
+            BorrarCuenta();
+            Functions.MostrarCambio("CAMBIO : " + Cambio, Total, Pago, Cambio, this);
+
+        }
+
         #endregion
 
         #region EVENTOS DEL TECLADO
@@ -177,21 +187,21 @@ namespace PuntoDeVentas {
                     break;
                 case COBRAR:
 
-                    if (this.LstArticulos.Items.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
-                        FRM_Total wndTotal = new FRM_Total();
-                        wndTotal.Total = this.LstArticulos.Items.SubTotal;
-                        //Lista de articulo para imprimir
-                        System.DbRepository.ArticulosParaImprimir = this.LstArticulos.Items;
+                    if (!this.LstArticulos.SubTotalPanelVisible) {
+                        if (this.LstArticulos.Items.SubTotal > 0) {//VALIDAMOS SI HAY COBRANZA ANTES DE MOSTRAR EL TOTAL 
 
-                        wndTotal.ShowDialog(this);
+                            this.LstArticulos.SubTotalPanelVisible = true;
+                            this.pnlInput.Visible = false;
 
-                        if (wndTotal.IsCancelled == false) {//si la transaccion no fue borrada
-                            GuardarTrans();//Guardamos la transaccion en la Bd.
-                            BorrarCuenta();
+                        } else {
+                            this.pnlInput.Visible = true;
+                            Functions.Message("NO HAY ARTICULOS POR COBRAR!", SystemTheme.Danger, this);
+                            this.txtCodigo.Focus();
                         }
-
                     } else {
-                        Functions.Message("NO HAY ARTICULOS POR COBRAR!", Color.FromArgb(192, 64, 0), this);
+                        this.pnlInput.Visible = true;
+                        this.LstArticulos.SubTotalPanelVisible = false;
+                        this.txtCodigo.Focus();
                     }
 
                     break;
@@ -381,6 +391,8 @@ namespace PuntoDeVentas {
         }
 
         #endregion
+
+
 
     }
 }
