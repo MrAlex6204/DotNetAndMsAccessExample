@@ -60,6 +60,7 @@ namespace System {
 
         //Propiedades para consultar la informacion del usuario logueado
         private static UserInfo _LoggedUser;
+
         public static UserInfo LoggedUser {
             get {
                 if (_LoggedUser != null) {
@@ -103,6 +104,25 @@ namespace System {
         #endregion
 
         #region  <FUNCIONES PUBLICAS>
+
+        //FUNCION PARA REALIZAR UN DEPOSITO A NOMBRE DEL CAJERO
+        public static bool RegistrarDeposito(UserInfo User,float Deposito) {
+            string Qry = "UPDATE TBL_USUARIOS SET DEPOSITO_DE_EFECTIVO = @Deposito WHERE USR_ID=@UsrId";
+
+            Qry = Qry.Replace("@UsrId", User.Id.ToString());
+            Qry = Qry.Replace("@Deposito", Deposito.ToString());
+
+            return Execute(Qry) > 0;
+        }
+
+        //FUNCION PARA REALIZAR EL RETIRO DE DEPOSITO DE CAJA
+        public static bool RetirarDeposito(UserInfo User) {
+            string Qry = "UPDATE TBL_USUARIOS SET DEPOSITO_DE_EFECTIVO = 0 WHERE USR_ID=@UsrId";
+
+            Qry = Qry.Replace("@UsrId", User.Id.ToString());
+
+            return Execute(Qry) > 0;
+        }
 
         //OBTENER EL REPORTE DETALLE DE ARTICULOS EN INVENTARIO
         public static DataTable GetInversionDetalle() { 
@@ -164,6 +184,7 @@ namespace System {
                 Usr.Password = TblResult.Rows[0]["PASSWORD"].ToString();
                 Usr.Date = Convert.ToDateTime(TblResult.Rows[0]["FECHA"].ToString());
                 Usr.Picture = GetUserPicture(Usr.Id.ToString());
+                Usr.DepositoEnCaja = TblResult.Rows[0]["DEPOSITO_DE_EFECTIVO"].ToString();
             }
 
 
@@ -658,6 +679,7 @@ namespace System {
                 Usr.Password = TblResult.Rows[0]["PASSWORD"].ToString();
                 Usr.Date = Convert.ToDateTime(TblResult.Rows[0]["FECHA"].ToString());
                 Usr.LevelType = TblResult.Rows[0]["TIPO"].ToString();
+                Usr.DepositoEnCaja = TblResult.Rows[0]["DEPOSITO_DE_EFECTIVO"].ToString();
             }
 
 
@@ -839,14 +861,20 @@ namespace System {
 
         public static class Events {
 
+            //Delegados
             public delegate void OnInventarioChangeHandler();
             public delegate void OnVentaRegistradaChangeHandler();
             public delegate void OnCorteDeCajaHandler();
+            public delegate void OnDepositoDeCajaChangeHandler(string Monto);
 
+            //Eventos
             public static event OnInventarioChangeHandler OnInventarioChange;
             public static event OnVentaRegistradaChangeHandler OnVentaRegistradaChange;
             public static event OnCorteDeCajaHandler OnCorteDeCaja;
+            public static event OnDepositoDeCajaChangeHandler OnDepositoDeCajaChange;
 
+
+            //EVENTS FUNCTIONS DISPATCHER
             public static void InventarioChange() {
                 if (OnInventarioChange != null) {
                     OnInventarioChange.Invoke();
@@ -864,6 +892,15 @@ namespace System {
                 if (OnVentaRegistradaChange != null) {
                     OnVentaRegistradaChange.Invoke();
                 }
+            }
+
+            public static void DepositoDeCajaChange(string Monto) {
+
+                if (OnInventarioChange != null) {
+
+                    OnDepositoDeCajaChange.Invoke(Monto);
+                }
+
             }
 
         }

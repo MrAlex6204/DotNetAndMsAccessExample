@@ -161,7 +161,8 @@ namespace PuntoDeVentas {
                  DECREMENTAR_CANTIDAD = (Keys.Control | Keys.Down),
                  CONSULTAR_ARTICULO = (Keys.Control | Keys.Tab),
                  SCREEN_LEFT = (Keys.Control | Keys.Left),
-                 SCREEN_RIGHT = (Keys.Control | Keys.Right);
+                 SCREEN_RIGHT = (Keys.Control | Keys.Right),
+                 REGISTRAR_DEPOSITO_INICIAL = (Keys.Control | Keys.R);
 
 
         private void txtCantidad_KeyPress(object sender, KeyPressEventArgs e) {
@@ -345,6 +346,30 @@ namespace PuntoDeVentas {
                         } else {
                             pnlStatus.Text = "** NO EXISTE **";
                         }
+
+                    }
+                                       
+
+                    break;
+
+                case REGISTRAR_DEPOSITO_INICIAL:
+
+                    if (DbRepository.LoggedUser.LevelType != "ADMIN") {
+
+
+                        using (FRM_ACCESS_LOGIN wndAccess = new FRM_ACCESS_LOGIN()) {
+
+                            if (wndAccess.ShowDialog(this) != System.Windows.Forms.DialogResult.OK) {
+                                //===>Retornar por que no tiene accesso;
+                                return;
+                            } 
+                        }
+            
+                    }
+
+                    using (FRM_DepositosDeEfectivo wndDeposito = new FRM_DepositosDeEfectivo()) {
+
+                        wndDeposito.ShowDialog(this);
 
                     }
 

@@ -173,6 +173,16 @@ namespace PuntoDeVentas.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap iconmonstr_checkout_2_32 {
+            get {
+                object obj = ResourceManager.GetObject("iconmonstr-checkout-2-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap iconmonstr_dashboard_5_32 {
             get {
                 object obj = ResourceManager.GetObject("iconmonstr-dashboard-5-32", resourceCulture);
@@ -236,6 +246,16 @@ namespace PuntoDeVentas.Properties {
         internal static System.Drawing.Bitmap LINE {
             get {
                 object obj = ResourceManager.GetObject("LINE", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lock__2_ {
+            get {
+                object obj = ResourceManager.GetObject("lock (2)", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

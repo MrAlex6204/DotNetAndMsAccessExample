@@ -15,7 +15,8 @@ namespace PuntoDeVentas.Models {
         public string Password { get; set; }
         public Nullable<DateTime> Date { get; set; }
         public ImageInfo Picture { get; set; }  //FOTO DEL USUARIO
-        
+        public string DepositoEnCaja { get; set; }
+
         public UserInfo() {
 
             this.Picture = new ImageInfo();
@@ -32,6 +33,7 @@ namespace PuntoDeVentas.Models {
             Picture.Clear();
             Password= string.Empty;
             Date = null;
+            DepositoEnCaja = string.Empty;
 
         }
 

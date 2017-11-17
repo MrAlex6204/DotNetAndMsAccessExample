@@ -27,11 +27,16 @@ namespace PuntoDeVentas {
             System.Configurations.ConfigChange += this.ConfigurationChange_Event;
             DbRepository.Events.OnInventarioChange += _Inversion;
             DbRepository.Events.OnVentaRegistradaChange += _Inversion;
+            DbRepository.Events.OnDepositoDeCajaChange += this.DepositoEnCajaChange_Event;
         }
 
         #endregion
 
         #region EVENTOS DEL FORMULARIO
+
+        private void DepositoEnCajaChange_Event(string Monto) {
+            lblDepositoEnEfectivo.Text = String.Format("{0} {1} {2}", Configurations.CurrencySymbol, Monto, Configurations.CurrencyCode);
+        }
 
         private void ConfigurationChange_Event() {
             //RECARGAR LA CONFIGURACION SI SE REALIZARON CAMBIOS 
@@ -112,9 +117,13 @@ namespace PuntoDeVentas {
         }
 
         private void _LoadConfig() {
+
             lblTitle.Text = Configurations.NombreDelNegocio;
             lblDireccion.Text = Configurations.Direccion;
             lblUserGreetings.Text = "Hello! " + DbRepository.LoggedUser.Name;
+
+            //Actualizar monto del deposito
+            DepositoEnCajaChange_Event(DbRepository.LoggedUser.DepositoEnCaja);
 
             if (!DbRepository.LoggedUser.Picture.IsEmpty) {
                 picUser.Image = DbRepository.LoggedUser.Picture.GetGrayScaleImageSzOf(picUser.Size).GetTintImage(0f, 0.36f, 0f);
@@ -122,6 +131,8 @@ namespace PuntoDeVentas {
 
             }
             _Inversion();
+
+
         }
 
         private void _Inversion() {
