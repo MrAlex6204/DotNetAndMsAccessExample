@@ -35,3 +35,44 @@ C:\SharedCodes\MES Codes\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas
 C:\SharedCodes\MES Codes\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ReportCajero.resources
 C:\SharedCodes\MES Codes\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ReportView.resources
 C:\SharedCodes\MES Codes\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ReportArticulos.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.exe
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.pdb
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\DB\dbVentas.accdb
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\PuntoDeVentas.exe.config
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\PuntoDeVentas.exe
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\PuntoDeVentas.pdb
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\ExcelExtencion.dll
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Office.Interop.Excel.dll
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\office.dll
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Vbe.Interop.dll
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\stdole.dll
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\Microsoft.Office.Interop.Excel.xml
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\bin\Debug\office.xml
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csproj.AssemblyReference.cache
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.Properties.Resources.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_AgregarArticulo.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_AgregarPedido.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_BuscarUsuarios.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Cambio.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Cbza.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Config.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ConsultarArticulos.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_CorteDeCaja.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Historial.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Inventario.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Login.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Menu.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Message.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Pedidos.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_RegistrarEntrada.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ReportArticulos.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ReportCajero.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_ReportView.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_SplashScreen.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Total.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_Usuarios.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_VentaDelDia.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.FRM_VentanaPrincipal.resources
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csproj.GenerateResource.cache
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csproj.CoreCompileInputs.cache
+C:\Users\veraheoa\Downloads\DotNetAndMsAccessExample\Dev PuntoDeVentas\PuntoDeVentas\obj\Debug\PuntoDeVentas.csproj.CopyComplete
